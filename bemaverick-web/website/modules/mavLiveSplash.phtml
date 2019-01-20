@@ -1,0 +1,150 @@
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<!-- start -->
+<?php
+$site = $this->site;
+
+$pageConfig = $this->pageConfig;
+$cssIncludes = array();
+$files = $pageConfig->getCssFiles();
+$cssIncludes[] ='<style id="critical-css">';
+if ( $files ) {
+    $cssIncludes[] = str_replace( "\n", " ", $this->mergeFiles( 'css', $files, true ) );
+}
+$cssIncludes[] = '</style>';
+print  join( '', $cssIncludes );
+
+$jsIncludes = array();
+$files = $pageConfig->getJsFiles();
+$jsIncludes[] ='<script>';
+if ( $files ) {
+    $jsIncludes[] = str_replace( "\n", " ", $this->mergeFiles( 'js', $files, true ) );
+}
+$jsIncludes[] = '</script>';
+print  join( '', $jsIncludes );
+
+
+// image urls
+$logoImg = $this->url( "imageStatic", array( "imageName" => "logo-brandmark-1-teal.svg") );
+$cameraMobileImg = $this->url( "imageStatic", array( "imageName" => "mav-live-camera-mobile.png") );
+$cameraImg = $this->url( "imageStatic", array( "imageName" => "mav-live-camera.png") );
+
+$bannerMobileImg = $this->url( "imageStatic", array( "imageName" => "mav-live-banner-mobile.png") );
+$bannerBlackImg = $this->url( "imageStatic", array( "imageName" => "mav-live-banner-black.png") );
+$bannerRedTabletImg = $this->url( "imageStatic", array( "imageName" => "mav-live-banner-red-tablet.png") );
+$bannerRedDesktopImg = $this->url( "imageStatic", array( "imageName" => "mav-live-banner-red-desktop.png") );
+$appStoreBlackImg = $this->url( "imageStatic", array( "imageName" => "apple-store-black.svg") );
+$appStoreWhiteImg = $this->url( "imageStatic", array( "imageName" => "apple-store-white.svg") );
+
+$parentBannerMobileImg = $this->url( "imageStatic", array( "imageName" => "mav-live-parent.png") );
+$instagramImg = $this->url( "imageStatic", array( "imageName" => "instagram-logo.png") );
+
+// link urls
+$instagramLink = 'https://www.instagram.com/genmaverick/';
+$appStoreLink = 'https://itunes.apple.com/us/app/maverick-do-your-thing/id1301478918?mt=8';
+
+print '
+    <!--    mobile    -->
+    <div class="mav-splash edger-reset">
+    <div class="mav-splash__sections">
+    <div class="branch-journeys-top"></div>
+            <!--    header    -->
+            <div class="mav-splash-header">
+                <a href="'.$site->getUrl('home').'"><img class="logo" src="'.$logoImg.'"></a>
+                <div class="header-nav">
+
+                </div>
+            </div>
+            <!--    content    -->
+            <div class="mav-splash-content">
+                <div class="image-cont">
+                    <img class="camera-mobile" src="'.$cameraMobileImg.'">
+                    <img class="banner-mobile" src="'.$bannerMobileImg.'">
+                </div>
+                <img class="banner-tablet-black" src="'.$bannerBlackImg.'">
+                <img class="banner-tablet-red-tablet" src="'.$bannerRedTabletImg.'">
+                <img class="banner-tablet-red-desktop" src="'.$bannerRedDesktopImg.'">
+                <img class="camera-tablet" src="'.$cameraImg.'">
+                <a href="'.$site->getUrl('authRegisterParent').'">
+                    <img class="parent-banner-tablet" src="'.$parentBannerMobileImg.'">
+                </a>
+                <div class="countdown-container">
+                    <div class="launch-text">LAUNCH!</div>
+                    <div class="launch-count">
+                        <div class="cube-container">
+                            <div class="black-cube"></div>
+                            <div class="white-cube">
+                                <div id="monthNum" class="num"></div>
+                                <div id="monthText" class="num-text"></div>
+                            </div>
+                        </div>
+                        <div class="cube-container">
+                            <div class="black-cube"></div>
+                            <div class="white-cube">
+                                <div id="dayNum" class="num"></div>
+                                <div id="dayText" class="num-text"></div>
+                            </div>
+                        </div>
+                        <div class="cube-container">
+                            <div class="black-cube"></div>
+                            <div id="hours" class="white-cube">
+                                <div id="hourNum" class="num"></div>
+                                <div id="hourText" class="num-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="launch-date">April 28, 2018</div>
+                    <a class="app-store" href="'.$appStoreLink.'"><img  src="'.$appStoreBlackImg.'"></a>
+                </div>
+              
+            </div>
+            <!--    footer    -->
+            <div class="mav-splash-footer">
+                <div class="sign-up-container">
+                    <div class="form-title">TAKE THE CHALLENGE:</div>
+                    <form action="//bemaverick.us16.list-manage.com/subscribe/post?u=6513073419a1bdfdc96136f2e&id=9df74e716d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div class="input-container">
+                            <div class="mc-field-group">
+                                <input type="email" style="width: 93%;" placeholder="Email address" name="EMAIL" class="required email"  id="mce-EMAIL">
+                            </div>
+                            <input type="submit" value="SIGN UP" name="subscribe" id="mc-embedded-subscribe" class="btn">
+                        </div>
+                        <div id="mce-responses" class="clear">
+                            <div class="response"  id="mce-error-response" style="display:none"></div>
+                            <div class="response"  id="mce-success-response" style="display:none"></div>
+                        </div>   
+                    </form>
+                </div>
+                <a class="app-store-mobile" href="'.$appStoreLink.'"><img  src="'.$appStoreWhiteImg.'"></a>
+                <a href="'.$site->getUrl('authRegisterParent').'"><img class="parent-banner-mobile" src="'.$parentBannerMobileImg.'"></a>
+                <div class="nav-links">
+                    <a href="'.$instagramLink.'"><img class="instagram-logo" src="'.$instagramImg.'"></a>
+                    <a href="'.$site->getUrl('contactUs').'">Contact Us</a>
+                    <a href="'.$site->getUrl('termsOfService').'">Terms of Service</a>
+                    <a href="'.$site->getUrl('faq').'">FAQ</a>
+                    <a href="'.$site->getUrl('privacyPolicy').'">Privacy Policy</a>
+                </div>
+                <div class="copy-text">
+                    ©2018 BeMaverick. All Rights Reserved
+                </div>
+            </div>
+            <div class="mav-splash-footer-desktop">
+                <div class="nav-links">
+                        <a href="'.$instagramLink.'"><img class="instagram-logo" src="'.$instagramImg.'"></a>
+                        <a href="mailto:support@bemaverick.com">Contact Us</a>
+                        | <a href="'.$site->getUrl('termsOfService').'">Terms of Service</a>
+                        | <a href="'.$site->getUrl('faq').'">FAQ</a>
+                        | <a href="'.$site->getUrl('privacyPolicy').'">Privacy Policy</a>
+                </div>
+                <div class="copy-text">
+                    ©2018 BeMaverick. All Rights Reserved
+                </div>
+            </div>
+         </div>       
+        </div>
+    ';
+?>
+
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='BIRTHDAY';ftypes[3]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!-- end -->
+
+

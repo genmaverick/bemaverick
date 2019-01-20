@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="EmptyCollectionCellId" reuseIdentifier="EmptyCollectionCellId" id="oEU-Je-fLG" customClass="EmptyCollectionCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="584" height="315"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="584" height="315"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-3T-qkf" customClass="EmptyView" customModule="Maverick" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="584" height="315"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUy-Gj-guc" customClass="LoggedInNoChallengesView" customModule="Maverick" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="584" height="315"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Dar-3T-qkf" firstAttribute="top" secondItem="oEU-Je-fLG" secondAttribute="top" id="0zL-co-5po"/>
+                <constraint firstItem="IQf-zC-cnb" firstAttribute="trailing" secondItem="dUy-Gj-guc" secondAttribute="trailing" id="LTC-Q3-mAy"/>
+                <constraint firstItem="IQf-zC-cnb" firstAttribute="bottom" secondItem="dUy-Gj-guc" secondAttribute="bottom" id="Q0b-Zh-V0l"/>
+                <constraint firstAttribute="trailing" secondItem="Dar-3T-qkf" secondAttribute="trailing" id="R5I-d9-FxR"/>
+                <constraint firstAttribute="bottom" secondItem="Dar-3T-qkf" secondAttribute="bottom" id="S5I-4k-4OS"/>
+                <constraint firstItem="dUy-Gj-guc" firstAttribute="top" secondItem="IQf-zC-cnb" secondAttribute="top" id="a42-Nu-7vg"/>
+                <constraint firstItem="Dar-3T-qkf" firstAttribute="leading" secondItem="oEU-Je-fLG" secondAttribute="leading" id="g6U-rI-qeV"/>
+                <constraint firstItem="dUy-Gj-guc" firstAttribute="leading" secondItem="IQf-zC-cnb" secondAttribute="leading" id="hhs-oX-LcI"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="IQf-zC-cnb"/>
+            <size key="customSize" width="584" height="315"/>
+            <connections>
+                <outlet property="emptyView" destination="Dar-3T-qkf" id="8xr-eV-kY0"/>
+                <outlet property="loggedInNoChallengesView" destination="dUy-Gj-guc" id="LN4-sN-yEN"/>
+            </connections>
+            <point key="canvasLocation" x="4" y="-677.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

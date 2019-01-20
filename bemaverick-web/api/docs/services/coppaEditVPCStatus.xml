@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Edit VPC status</name>
+    <description>This service will update the status of the vpc for the kid account </description>
+    <uri>/coppa/editvpcstatus</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>childUserId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>123</examples>
+            <description>Kid's user id</description>
+        </param>
+        <param>
+            <name>vpc</name>
+            <required>yes</required>
+            <default>0</default>
+            <format>0 or 1</format>
+            <examples>1</examples>
+            <description>Flag to indicate the vpc status.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/coppa/verifyparent" \
+  --data "appKey=test_key&childUserId=42&vpc=1"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

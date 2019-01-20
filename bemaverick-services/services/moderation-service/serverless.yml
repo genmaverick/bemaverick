@@ -1,0 +1,57 @@
+service: moderation-service
+
+functions:
+  moderateComments:
+      # - method: GET request
+      handler: src/moderateComments.main
+      events:
+        - http:
+            path: comments
+            method: get
+            cors: true
+  notifications:
+      # - method: GET request
+      handler: src/notificationHandler.main
+      events:
+        - http:
+            path: notifications
+            method: post
+            cors: true
+  text:
+      handler: src/moderateText.main
+      events:
+        - http:
+            path: text
+            method: post
+            cors: true
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+# Configuration for serverless-webpack
+# Enable auto-packing of external modules
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  defaultStage: dev
+  currentStage: ${opt:stage, self:custom.defaultStage} # 'dev' is default unless overriden by --stage flag
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: ${self:custom.currentStage}
+  environment:
+      DEBUG_ENABLED: ${file(./config.${self:custom.currentStage}.json):DEBUG_ENABLED}
+      API_URL: ${file(./config.${self:custom.currentStage}.json):API_URL}
+      API_KEY: ${file(./config.${self:custom.currentStage}.json):API_KEY}
+      COMMENT_APP_ID: ${file(./config.${self:custom.currentStage}.json):COMMENT_APP_ID}
+      TEXT_APP_ID: ${file(./config.${self:custom.currentStage}.json):TEXT_APP_ID}
+  region: us-east-1
+
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: ${self:service}-${self:custom.currentStage}

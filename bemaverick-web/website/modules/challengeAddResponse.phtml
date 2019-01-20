@@ -1,0 +1,65 @@
+<?php
+$challenge = $this->challenge;
+$input = $this->input;
+$translator = $this->translator;
+$user = $this->user;
+
+$formatFormBootstrap2 = $this->formatFormBootstrap2();
+$formatModule = $this->formatModule();
+
+$bodyContent = array();
+
+$this->AddItem( 'popupSettings', "full", 'type' );
+$this->AddItem( 'popupSettings', $challenge->getTitle(), 'title' );
+
+$formItems = array();
+$formItems['description'] = $formatFormBootstrap2->getDescription( $input->description, '' );
+$formItems['tagNames'] = $formatFormBootstrap2->getTagNames( $input->tagNames, '' );
+
+$content = '
+    <div class="challenge-add-response">
+        <div class="challenge-add-response__content">
+            <div class="challenge-add-response__body">
+                <div class="challenge-add-response__upload">
+                    <div data-action="'.$challenge->getUrl( 'challengeAddResponseConfirm' ).'" data-method="post" class="dropzone-form">
+                        <div class="dropzone">
+                        </div>
+                        <div class="preview">
+                            <div class="dropzone-previews"></div>
+                        </div>
+                        <div class="form-contents">
+                            '.$formatFormBootstrap2->getList( $formItems ).'
+                            <input class="response-type" type="hidden" name="responseType" value="">
+                            <div class="submit button button--primary">Submit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+
+// users must be verified or 13 years old to upload
+if ( ! $user->isTeen()  && !$user->getVPCStatus() ) {
+    $headerContent = $formatModule->getBasicModuleHeader(
+        array(
+            'title' => $translator->_( 'Account Verification' )
+        )
+    );
+
+    $bodyContent = array('
+        <h1>A parent must verify your account.</h1>
+    ');
+
+    $content = $formatModule->getBasicCoppaModule(
+        array(
+            'headerContent' => join( '', $headerContent ),
+            'bodyContent' => join( '', $bodyContent ),
+            'classPrefixes' => array( 'coppa-module', 'coppa-verify' )
+        )
+    );
+}
+
+print $content;
+
+?>

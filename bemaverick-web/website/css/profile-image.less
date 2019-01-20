@@ -1,0 +1,111 @@
+@import "variables.less";
+.profile-image {
+    position: relative;
+    display: block;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: @white;
+    .profile-image-proxy,
+    .profile-image-placeholder {
+        position: absolute;
+        background-color: @header-footer;
+        border-radius: 100%;
+        overflow: hidden;
+        z-index: 1;
+        line-height: 1;
+    }
+    .profile-image-maverick-level {
+        position: absolute;
+        border-radius: 100%;
+        overflow: hidden;
+        background-position: center center;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        //.rotate(92.5deg);
+    }
+    .profile-image-placeholder {
+        color: @trinidad;
+        text-align: center;
+        &:before {
+            background-color: @white;
+            //background-image: -webkit-linear-gradient(top, @cerise-gradient 0%, @poppy-gradient 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+.profile-image--default {
+    background-color: @white;
+    //#gradient > .vertical( @cerise-gradient, @poppy-gradient );
+}
+.profile-image--mentor {
+    .profile-image-placeholder {
+        background-color: @primary-ruby;
+    }
+    background-color: @white;
+}
+.profile-image--small {
+    width: 32px;
+    height: 32px;
+    .profile-image-placeholder,
+    .profile-image-proxy {
+        left: 1px;
+        top: 1px;
+        width: 30px;
+        height: 30px;
+    }
+    .profile-image-placeholder {
+        padding-top: 5px;
+        font-size: 20px;
+    }
+}
+.profile-image--medium {
+    width: 48px;
+    height: 48px;
+    .profile-image-placeholder,
+    .profile-image-proxy {
+        left: 2px;
+        top: 2px;
+        width: 44px;
+        height: 44px;
+    }
+    .profile-image-placeholder {
+        padding-top: 7px;
+        font-size: 30px;
+    }
+}
+.profile-image--large {
+    width: 128px;
+    height: 128px;
+    .profile-image-placeholder,
+    .profile-image-proxy {
+        left: 2px;
+        top: 2px;
+        width: 124px;
+        height: 124px;
+    }
+    .profile-image-placeholder {
+        padding-top: 16px;
+        font-size: 90px;
+    }
+}
+@media (min-width: @break-good-size-min) {
+    .profile-image--medium {
+        width: 64px;
+        height: 64px;
+        .profile-image-placeholder,
+        .profile-image-proxy {
+            left: 2px;
+            top: 2px;
+            width: 60px;
+            height: 60px;
+        }
+        .profile-image-placeholder {
+            padding-top: 10px;
+            font-size: 40px;
+        }
+    }
+}

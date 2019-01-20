@@ -1,0 +1,6 @@
+framework module JotUI {
+  umbrella header "JotUI.h"
+
+  export *
+  module * { export * }
+}

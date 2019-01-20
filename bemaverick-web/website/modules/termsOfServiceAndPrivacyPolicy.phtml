@@ -1,0 +1,49 @@
+<?php
+// globals
+$site = $this->site;
+
+//formatters
+$formatPost = $this->formatPost();
+
+// get css
+$pageConfig = $this->pageConfig;
+$cssIncludes = array();
+$files = $pageConfig->getCssFiles();
+$cssIncludes[] ='<style id="critical-css">';
+if ( $files ) {
+    $cssIncludes[] = str_replace( "\n", " ", $this->mergeFiles( 'css', $files, true ) );
+}
+$cssIncludes[] = '</style>';
+print  join( '', $cssIncludes );
+
+// get terms of service page (id 6)
+$tosPage = $site->getPost(6, 'pages');
+$tosPostObj = $formatPost->getPostObject( null, $tosPage );
+$tosContent = $tosPostObj->getContent();
+
+// get privacy policy page (id 6)
+$privacyPage = $site->getPost(8, 'pages');
+$privacyPostObj = $formatPost->getPostObject( null, $privacyPage );
+$privacyContent = $privacyPostObj->getContent();
+
+print '
+    <div class="mobile-app-pages">
+        <div class="header">
+            <div class="logo">
+                <div class="svgicon--logo-brandmark-1"></div>
+                <div class="svgicon--logo-wordmark"></div>
+            </div>
+        </div>
+        <div class="title">Terms of Service</div>
+        <div class="body-text">
+            '.$tosContent.'
+        </div>
+        <br>
+        </b><div class="title">Privacy Policy</div>
+        <div class="body-text">
+            '.$privacyContent.'
+        </div>
+    </div>
+';
+
+?>

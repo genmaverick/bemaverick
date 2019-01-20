@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>userDeactivateEdit</name>
+    <title>
+        <text>Deactivate Account</text>
+    </title>
+    <nav>
+        <primary>settings</primary>
+        <secondary>deactivate</secondary>
+    </nav>
+    <type>users</type>
+    <subType>user-notifications-edit</subType>
+    <includes>
+        <primary append="true">
+            <file>userSettingsNav.phtml</file>
+            <file>userDeactivateEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

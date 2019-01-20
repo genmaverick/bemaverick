@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>contentEdit</name>
+    <title>
+        <text>Edit Content</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>contentEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

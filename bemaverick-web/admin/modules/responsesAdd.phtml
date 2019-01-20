@@ -1,0 +1,87 @@
+<?php
+$input = $this->input;
+$site = $this->site;
+$response = $this->response;
+$formatFormBootstrap = $this->formatFormBootstrap2();
+$systemConfig = $this->systemConfig;
+
+$maxAddResponses = $systemConfig->getSetting( 'SYSTEM_ADMIN_ADD_MAX_RESPONSES_AT_ONE_TIME' );
+?>
+
+<h1 class="page-header">Bulk Add Responses</h1>
+
+<form method="post" action="<?php print $this->url( 'responsesAddConfirm' ); ?>" enctype="multipart/form-data">
+    <div class="bd">
+        <?php
+        $formItems = array();
+        $formItems[] = $formatFormBootstrap->getChallenge( $input->challengeId, null );
+        print $formatFormBootstrap->getList( $formItems );
+        ?>
+
+        <table cellpadding="0" cellspacing="0" class="table table-striped table-bordered tableType-response noGroups">
+            <thead>
+                <tr class="last">
+                    <th>Username</th>
+                    <th>Tags</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>File</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            $labelSettings = array(
+                'text' => '',
+            );
+
+            $options = array(
+                'returnType' => 'title',
+            );
+
+            for ( $i = 1; $i <= $maxAddResponses; $i++ ) {
+
+                $usernameInputSettings = array(
+                    'name' => "username-$i",
+                    'isRequired' => false,
+                );
+
+                $tagsInputSettings = array(
+                    'name' => "tagNames-$i",
+                );
+
+                $descriptionInputSettings = array(
+                    'name' => "description-$i",
+                );
+
+                $typeInputSettings = array(
+                    'name' => "responseType-$i",
+                );
+
+                $statusInputSettings = array(
+                    'name' => "responseStatus-$i",
+                );
+
+                $fileInputSettings = array(
+                    'name' => "file-$i",
+                );
+
+                print '<tr>';
+                print '<td>' . $formatFormBootstrap->getUsername( null, null, $usernameInputSettings, $labelSettings, $options ) . '</td>';
+                print '<td>' . $formatFormBootstrap->getTagNames( null, null, $tagsInputSettings, $labelSettings, $options ) . '</td>';
+                print '<td>' . $formatFormBootstrap->getDescription( null, null, $descriptionInputSettings, $labelSettings, $options ) . '</td>';
+                print '<td>' . $formatFormBootstrap->getResponseType( null, 'video', $typeInputSettings, $labelSettings, $options ) . '</td>';
+                print '<td>' . $formatFormBootstrap->getResponseStatus( null, 'active', $statusInputSettings, $labelSettings, $options ) . '</td>';
+                print '<td>' . $formatFormBootstrap->getFileUpload( $fileInputSettings, $labelSettings, $options ) . '</td>';
+                print '</tr>';
+            }
+            ?>
+            </tbody>
+        </table>
+        <?php
+        $formItems = array();
+        $formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => 'Submit', 'style' => 'btn btn-primary' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+        print $formatFormBootstrap->getList( $formItems );
+        ?>
+    </div>
+</form>

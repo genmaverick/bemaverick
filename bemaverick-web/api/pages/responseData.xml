@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>responseData</name>
+    <template>template_api.phtml</template>
+    <includes>
+        <primary>
+            <file>responseData.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

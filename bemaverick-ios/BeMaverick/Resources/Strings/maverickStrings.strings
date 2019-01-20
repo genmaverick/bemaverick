@@ -1,0 +1,394 @@
+/* 
+  maverickStrings.strings
+  BeMaverick
+
+  Created by Garrett Fritz on 2/19/18.
+  Copyright © 2018 BeMaverick. All rights reserved.
+*/
+
+
+"ProgressionProjectDetailsRewardTemplate" = "Reward: %@ points";
+"ProgressionProjectDetailsProgressTemplate" = "You’re %@%% complete and on your way to accomplishing this Project.";
+"ProgressionProjectDetailsProgressNotStarted" = "You haven't started working on this project yet, get going!";
+"ProgressionProjectCompletedDescription" = "Congratulations! You've just completed this project!";
+"ProgressionLevelCompletedTitle" = "YOU'VE LEVELED UP!\n\nCongratulations on\nreaching Level %@";
+"ProgressionLevelCompletedDescription" = "You may now:\n%@";
+
+"ProgressionMyLevelHeader" = "Level Progress";
+"ProgressionMyProjectsHeader" = "Project Progress";
+"ProgressionMyBadgesHeader" = "Badge Progress";
+"ProgressionTabTitleMyProgress" =  "My Progress";
+"ProgressionTabTitleLeaderboard" =  "Leaderboard";
+
+"ProgressionLockedRewardTitle" =  "LOCKED!";
+"ProgressionLockedRewardDescription" = "This feature is currently locked until you reach level %@";
+
+"ProgressionLockedConfirmMessage" = "Got It";
+// MARK: - Record Flow
+
+"RecordFlow:GoBack:ActionSheet:Title" = "GO BACK";
+"RecordFlow:GoBack:ActionSheet:Button:SaveDraft" = "Save Draft";
+"RecordFlow:GoBack:ActionSheet:Button:StartOver" = "Start Over";
+"RecordFlow:GoBack:ActionSheet:Button:Cancel" = "Cancel";
+
+"RecordFlow:PhotoModeToggle:ActionSheet:Title" = "SWITCH MODE";
+"RecordFlow:PhotoModeToggle:ActionSheet:Message" = "Switching away from video mode means you will lose any progress you will have made. Still down?";
+"RecordFlow:PhotoModeToggle:ActionSheet:Button" = "Yep, take me away!";
+
+// MARK: - Final Post Flow
+"FinalPost:AdditionalInfoFooter" = "Your posts will appear on your profile, the challenge details page, and will be visible to anyone who follows you.";
+"FinalPost:AdditionalInfoFooterForStandalonePosts" = "Your posts will appear on your profile and will be visible to anyone who follows you.";
+"FinalPost:PlaceholderTextForDescriptionField" = "Write a #description";
+
+
+// MARK: - Profile
+
+"Profile:Responses:ActionSheet:Title" = "MY RESPONSE OPTIONS";
+"Profile:Challenges:ActionSheet:Title" = "MY CHALLENGE OPTIONS";
+"Profile:Header:ActionSheet:Title" = "BLOCK USER";
+"Profile:DraftResponses:ActionSheet:Title" = "DRAFT RESPONSE";
+
+// MARK: - Comments
+"Comments:ReportComment:ActionSheet:Title" = "REPORT COMMENT";
+
+
+// MARK: - Onboarding
+"SignUpButtonTitle" = "JOIN";
+"LoginButtonTitle" = "SIGN IN";
+
+
+"smsVerifyConfirmCode" = "Enter the 4 digit code sent to you at %@";
+
+"termsOfServiceMainBold" = "Terms of Service & Privacy Policy";
+"termsOfServiceMainBody" = "By signing up, I agree to the %@";
+"termsOfServiceCopaMainBody" = "I agree to Maverick's %@";
+"termsOfServiceCopaMainBold" = "Privacy Policy";
+"loginUsernameHint" = "Enter your username";
+"loginUsernameShortHint" = "Username";
+
+"vpcTerms_1" = "I agree to Maverick's privacy policy and terms of service";
+"vpcTerms_2" = "privacy policy";
+"vpcTerms_3" = "terms of service";
+
+"loginPasswordHint" = "Password";
+
+"signupUsernameHint" = "Create a Username";
+"signupPasswordHint" = "Create a Password";
+
+"forgotButton" = "Forgot?";
+
+"forgotPasswordTitle" = "Recover Password";
+"forgotPasswordHint" = "Enter your username";
+"forgotPasswordShortHint" = "Username";
+
+"forgotUsernameHint" = "Enter your email address";
+"forgotUsernameShortHint" = "Your Email";
+"forgotUsernameTitle" = "Recover Username";
+
+"birthdateCTA" = "Next";
+"signupEmailCTA" = "Done";
+"usernameCTA" = "Done";
+
+"under13EmailHint" = "Enter your parent or guardian's email";
+"over13EmailHint" = "Your Email Address";
+
+"under13EmailShortHint" = "Parent/Guardian Email";
+"over13EmailShortHint" = "Your Email";
+
+"forgotCTA" = "SEND LINK";
+
+"favoriteResponse" = "Favorite Response";
+"favoriteConfirmation" = "Favorited!";
+
+"onboardPickAvatar" = "ADD A PHOTO";
+"onboardWelcomeLabel" = "Hey %@, here's your first Challenge:\nBuild your profile so other Mavericks know who you are!";
+
+"show" = "SHOW";
+"next" = "Next";
+"skip" = "Skip";
+"hide" = "HIDE";
+
+"email" = "Email";
+"emailAddress" = "Email address";
+"forgotUsername" = "Forgot Username?";
+"forgotPassword" = "Forgot Password?";
+"invalidEmail" = "Please enter a valid email address";
+
+"birthdateTitle" = "When's your birthday?";
+"birthdayReassurance" = "Your birthday won't be shown publicly";
+"fieldInvalid" = "Please check your %@";
+"fieldRequired" = "Please enter a %@";
+"fieldRequiredWithQuantity" = "Please enter a %@ with at least %d characters";
+"logInButton" = "Log In";
+
+"TwitterSignUpErrorAppNotInstalled" = "Unable to access Twitter. Please check that the Twitter App is correctly installed on your device.";
+"TwitterSignUpErrorUserCancelled" = "Unable to complete sign up through Twitter because process was cancelled.";
+
+
+// MARK: - Settings
+"changeEmailActionSheetTitle" = "CHANGE EMAIL";
+"changeEmailActionSheetMessage" = "Please contact support for assistance changing email address.";
+"supportEmailAddress" = "support@bemaverick.com";
+"contactUs" = "Contact Us";
+
+"changeProfilePhotoActionSheetTitle" = "CHANGE PROFILE PHOTO";
+"changeCoverPhotoActionSheetTitle" = "CHANGE COVER PHOTO";
+
+"deactivateAccountActionSheetTitle" = "DEACTIVATE ACCOUNT";
+"contactUsTitle" = "CONTACT US";
+"contactUsInstructionLabel" = "We love to hear from you! Fill out the form below, and we’ll get in touch ASAP!";
+"contactUsSuccessMessage" = "Message sent!";
+"errorSendingTicket" = "Unable to submit your message at this time. Please try again later.";
+"changePasswordTittle" = "Change Password";
+"currentPasswordShortHint" = "Current";
+"currentPasswordLongHint" = "Enter Current Password";
+"newPasswordShortHint" = "Enter New Password";
+"newPasswordLongHint" = "New";
+"Save" = "Save";
+"send" = "Send";
+"invite" = "Invite";
+"Pick" = "Pick";
+"warning" = "Warning";
+"deactivate" = "Deactivate";
+"deactivateAccountWarning" = "Are you sure you want to deactivate your account?\n\nYou will no longer have access to your profile and will be logged out.";
+"deactivateAccountMessage" = "We’re sad to see you go, but when you’re ready to reactivate, please contact support@bemaverick.com.";
+
+"logoutAction" = "Log Out";
+"deactivateAction" = "Deactivate Account";
+"reactivateAction" = "Reactivate Account";
+"termsOfServiceAction" = "Terms of Service & Privacy Policy";
+"communityGuidelinesAction" = "Community Guidelines";
+
+"notificationSettingsTitle" = "Notification Settings";
+
+"userGeneratedChallengeModeration" = "Sorry, it seems your post does not adhere to our community guidelines. Please review your image and text before attempting to re-post.";
+"pushNotificationSettingsTitle" = "Push Notifications";
+"editProfileTitle" = "Edit Your Profile";
+"editCoverTitle" = "Pick Your Cover";
+"firstNameHint" = "First Name";
+"lastNameHint" = "Last Name";
+"vpcFirstNameHint" = "Your first name";
+"vpcLastNameHint" = "Your last name";
+"vpcStreetHint" = "Your house number";
+"vpcZipHint" = "Your zipcode";
+"vpcSsnHint" = "Last 4 digits of your SSN";
+
+"findFriends" = "Find your friends";
+
+"vpcValidateFirstNameHint" = "first name";
+"vpcValidateLastNameHint" = "last name";
+"vpcValidateStreetHint" = "house number";
+"vpcValidateZipHint" = "zipcode";
+"vpcValidateSsnHint" = "SSN";
+
+"vpcTitle" = "ADULT'S PERMISSION";
+"vpcCompleteTitle" = "You're All Set!";
+"vpcFirstErrorTitle" = "THAT WASN'T QUITE RIGHT";
+"vpcFirstErrorSubTitle" = "Please double-check your details and try again.";
+
+"vpcFinalErrorTitle" = "We're having trouble verifying that you are, in fact, an adult. To sort this out, please email us.";
+"vpcConvincingText" = "We ask for this information to run a quick identity check so as to make sure you are an adult.\n\nHowever, in partnership with a leading provider of real-time identity verifications, we permanently delete this personal information immediately after you complete the registration process.";
+
+"change" = "Change";
+"submit" = "Submit";
+"close" = "Close";
+
+
+"vpcCheckboxConfirmText" = "Good news: we've confirmed your identity, and you are now able to grant access to your Maverick.";
+
+"vpcInitialLabel_1" = "Mavericks: ";
+"vpcInitialLabel_2" = "Mavericks: Uh oh! You don’t yet have permission from your parent or guardian to personalize your account. Please (nicely!) ask them to fill in the following.\n\n";
+
+"vpcInitialLabel_3" = "Adults: ";
+"vpcInitialLabel_4" = "Adults: Digital platforms like Maverick that offer interactive features for audiences under 13 must comply with the Children’s Online Privacy Protection Act (COPPA). A key part of this is making sure that those under 13 have a parent or guardian's consent to use our app.";
+
+"changeCover" = "Change Cover";
+"changePhoto" = "Change Photo";
+"removePhoto" = "Remove current photo";
+"takePhoto" = "Take a photo";
+"pickFromLibrary" = "Choose from your library";
+"selectMaverickCover" = "Select a maverick cover";
+"bioHint" = "Bio";
+
+"under13SocialLoginError" = "Since you're under 13, you can't make an account this way. Please create a username and password instead.";
+// MARK: - Streams
+"FeaturedStreamName" = "FEATURED";
+"MyStreamName" = "MY FEED";
+
+"ChallengeOverLabel" = " It's too late to become a Catalyst fave, but good news: you can still post a response";
+"ChallengeOverSublabel" = "Check out the Catalyst faves";
+
+
+// MARK: - Network Manager
+"NetworkManagerMessageViewNibName" = "NetworkManagerMessageView";
+"networkReachableMessage" = ".... And we're back!";
+"networkUnreachableMessage" = "Oh no! There's no network connection!";
+
+// MARK: - Content
+"ViewChallenge" = "View This Challenge";
+"PostResponse" = "DO YOUR THING";
+"ViewComments" = "View all comments";
+"ViewResponses" = "View Responses";
+
+"addComment" = "add your comment";
+
+"ViewBadges" = "View All Badges";
+
+"Report" = "Report";
+"reportClarification" = "Please tell us why you are reporting this";
+"Cancel" = "Cancel";
+"ReportConfirmation" = "Thanks for reporting";
+"SaveChallenge" = "Save Challenge";
+"SaveChallengeConfirmation" = "Saved";
+"Draft" = "DRAFT";
+"Uploading" = "UPLOADING";
+
+"UserResponseStreamTitle" = "%@'s Responses";
+"ChallengeResponseStreamTitle" = "Responses to %@";
+"UserInspirationStreamTitle" = "%@'s Badged Responses";
+
+"Followers" = "Followers";
+"Following" = "Following";
+"SelfFollowers" = "Followers %d";
+"SelfFollowing" = "Following %d";
+"UnFollow" = "UNFOLLOW";
+"Follow" = "+ FOLLOW";
+
+"SuggestedHeader" = "Mavericks you may know";
+"MyStreamUsers" = "Check out these fellow Mavericks";
+"CommentPlaceholder" = "Say something...";
+
+// MARK: - TAB TITLES
+
+"TabTitleChallenge" = "Challenges";
+"TabTitleMaverick" = "Featured";
+"TabTitleProfile" = "Profile";
+
+
+"CoachmarkCTAResponse" = "Tap here to give props to your fellow Mavericks!";
+"CoachmarkCTAChallenge" = "Tap here to respond to this Challenge. Do Your Thing!";
+// MARK: - Deep link and Sharing
+
+"ShareOtherUser" = "Check out %@ on Maverick ";
+"ShareMyProfileByEmailSubjectLine" = "Come join me on Maverick!";
+"ShareMyProfileByEmailBody" = "Hey there!\n\nI want you to join me on Maverick, a new creative community, where you can flex your creative muscles and connect with new friends.\n\nDownload it at https://itunes.apple.com/us/app/maverick-do-your-thing/id1301478918 and check out my profile at the link below.";
+"ShareChallenge" = "Check out this Challenge on Maverick: \n %@";
+"ShareContent" = "Check this out on Maverick: \n %@";
+"ShareResponse" = "Check out this response to %@ on Maverick";
+"ShareContent" = "Check out this post from %@ on Maverick";
+
+"postTitle" = "%@'s Post";
+"challengeTitle" = "%@'s Challenge";
+
+"followCustomActionSheetTitle" = "FOLLOW MY FRIEND";
+
+"inviteFriendMessage" = "Hey! I think you should check out Maverick, a new creative community. Download it now, and don’t forget to follow me \n%@.";
+
+
+// MAIL
+
+"ShareResponseSubject" = "Check out %@ post on Maverick.";
+"ShareResponseBody" = "Hey! I want you to check out %@ post on Maverick.\n";
+
+"ShareChallengeSubject" = "Check out %@ Challenge on Maverick";
+"ShareChallengeBody" = "Hey! I want you to check out %@ Challenge on Maverick.\n";
+
+"ShareResponse_twitter" = "Check out %@ post on the @genmaverick app. Download the app now!\n";
+"ShareChallenge_twitter" = "Take %@ challenge on the @genmaverick app. Download the app now!\n";
+
+"ShareResponse_sms" = "Check out %@ post on Maverick:\n\n";
+"Share_sms_ps" = "Download the app and don't forget to follow me: %@";
+"ShareChallenge_sms" = "Check out %@ post on Maverick:\n\n";
+
+
+// ------------------------------
+
+// MARK: - User Messaging
+
+"NetworkError" = "We are having trouble connecting, please check your internet connection and try again later";
+"IncorrectPassword" = "Sorry, that is not your current password.\n\n Please try again.";
+"PasswordChangedSuccess" = "Password changed";
+"Success" = "Success";
+
+// MARK: - Empty States
+
+"UserSelfCreatedResponsesEmptyTitle" = "There's nothing to see here ... yet";
+"UserSelfCreatedResponsesEmptySubTitle" = "Your responses to Challenges will appear here";
+
+"UserSelfInsiprationsEmptyTitle" = "There's nothing to see here ... yet";
+"UserSelfInspirationsEmptySubTitle" = "You can see all the responses you've badged from here";
+
+"UserSelfSavedEmptyTitle" = "There's nothing to see here ... yet";
+"UserSelfSavedEmptySubTitle" = "When you save Challenges for later, you'll find 'em here";
+
+
+"UserOtherCreatedResponsesEmptyTitle" = "There's nothing to see here ... yet";
+"UserOtherCreatedResponsesEmptySubTitle" = "Follow %@ to find out when they start responding to Challenges";
+
+"UserOtherCreatedPostsEmptyTitle" = "There's nothing to see here ... yet";
+"UserOtherCreatedPostsEmptySubTitle" = "Follow %@ to find out when they start posting";
+
+
+"UserOtherInsiprationsEmptyTitle" = "There's nothing to see here ... yet";
+"UserOtherInspirationsEmptySubTitle" = "Follow %@ to find out when they start badging Responses";
+
+"UserOtherCreatedChallengesEmptyTitle" = "There's nothing to see here ... yet";
+"UserOtherCreatedChallengesEmptySubTitle" = "Follow %@ to find out when they start creating Challenges";
+
+"CommentEmptyTitle" = "First!\n...\nTo comment, that is";
+
+"FollowersEmptyTitle" = "No Followers Yet";
+"FollowersEmptySubTitle" = "Follow %@ to be kept up to date with their latest activity";
+
+"FollowingEmptyTitle" = "No One Yet";
+"FollowingEmptySubTitle" = "Follow %@ to start a connection";
+
+"ChallengesResponsesEmptyTitle" = "Nothing yet!";
+"ChallengesResponsesEmptySubTitle" = "Tap the + button and be the first to respond!";
+
+"BadgeBagSelfEmptyTitle" = "You haven't received any badges of this type... yet.";
+"BadgeBagSelfEmptySubTitle" = "Gather good karma by telling another Maverick they're %@.";
+"BadgeBagOtherUserEmptyTitle" = "There are no badges of this type ... yet.";
+"BadgeBagOtherUserEmptySubTitle" = "Translation: This is a prime opportunity to tell another Maverick they're %@.";
+
+"BadgeBagOtherAllEmptyTitle" = "There are no badges...yet.";
+"BadgeBagOtherAllEmptySubTitle" = "This is a prime opportunity to tell another Maverick they are Creative, Awesome, Unstoppable or Funny.";
+"BadgeBagSelfAllEmptyTitle" = "You haven't received any badges... yet.";
+"BadgeBagSelfAllEmptySubTitle" = "Gather good karma by telling another Maverick they're Creative, Awesome, Unstoppable or Funny.";
+
+"NotificationsEmptyTitle" = "Nothing yet!";
+"NotificationsEmptySubTitle" = "Start Following, Badging, Commenting and Responding to Challenges";
+
+"NotificationsSettingsDeniedTitle" = "DISABLED!";
+"NotificationsSettingsDeniedSubTitle" = "Tap here to go to settings and let us send you push notifications";
+
+"NotificationsSettingsNotDeterminedTitle" = "Want Push Notifications?";
+"NotificationsSettingsNotDeterminedSubTitle" = "Tap here to let us send you push notifications";
+
+"shareUrl" = "%@/share/%@/%@";
+
+"inactiveUserTitle" = "⚠️  Account Deactivated  ⚠️";
+"inactiveUserSubTitle" = "Oh, no! It looks like you previously requested that we deactivate your account. You can either reactivate it now, or try entering another username.";
+
+
+"badgeCoachMarkInitial" = "Badges are > likes. Let this Maverick know how they inspired you";
+"badgeCoachMarkFinal" = "These %'s show how a video or photo is trending.";
+
+"usernameCharacterValidation" = "Remember, the only characters you can use are letters, numbers, periods, underscores, and dashes.";
+
+"custom_invite_template_body" = "Hey there!\n\nYour friend, @%@, wants you to join them at Maverick, a next-gen social network where you can flex your creative muscles and connect with new friends.";
+
+"custom_invite_template_subject" = "Come join me, @%@ on Maverick!";
+
+"custom_invite_challenge_template_subject" = "@%@, just invited you to take their Challenge on Maverick!";
+"custom_invite_challenge_template_body" = "Hey there!\n\nYour friend, @%@, just invited you to take their Challenge on Maverick, a new creative community where you’re invited to respond to fun Challenges and post a Challenge about what interests you.";
+
+
+
+"challengeFriendMessage" = "Hey! I invite you to take my Challenge on Maverick, a new creative social network. Download it now, and don’t forget to follow me \n@%@.";
+
+"gameWall_createChallengeBadgeRequirement" = "Badged %d responses";
+"gameWall_createChallengeResponseRequirement" = "Responded to %d Challenges";
+
+
+"createChallengeTypeHint" = "Tap to type!";

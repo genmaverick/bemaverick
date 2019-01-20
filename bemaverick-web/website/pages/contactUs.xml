@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>contacUs</name>
+    <title>
+        <text>Contact Us</text>
+        <headingText>Contact Us</headingText>
+    </title>
+    <type>index</type>
+    <subType>contact-us</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>contactUs.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

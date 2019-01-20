@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Content Badge Users</name>
+    <description>Get a list of users and badges for a content</description>
+    <uri>/content/badgeusers</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>contentId</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 542</examples>
+            <description>The content id to get list of users/badges</description>
+        </param>
+        <param>
+            <name>badgeId</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 3</examples>
+            <description>Only return users that badged this badge id</description>
+        </param>
+        <param>
+            <name>count</name>
+            <required>no</required>
+            <default>25</default>
+            <format>integer</format>
+            <examples>25, 50</examples>
+            <description>Return the number of users</description>
+        </param>
+        <param>
+            <name>offset</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>10</examples>
+            <description>Start with the offset for list of users. 0 based.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/content/badgeusers?contentId=22&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

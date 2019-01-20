@@ -1,0 +1,12 @@
+{
+  "name": "SlyTrunk/sly-core",
+  "description": "Sly Trunk Code Framework for Zend",
+  "homepage": "https://github.com/SlyTrunk/sly-core",
+  "type": "library",
+  "_comment": "oauth and jwt libraries are only for IDE source browsing and type-hinting purpose.",
+  "require": {
+    "php": ">=5.3.0",
+    "bshaffer/oauth2-server-php": "~1.8",
+    "firebase/php-jwt": "^4.0"
+  }
+}

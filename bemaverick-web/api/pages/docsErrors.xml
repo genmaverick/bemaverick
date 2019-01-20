@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>docsErrors</name>
+    <title>
+        <text>API Documentation</text>
+    </title>
+    <includes>
+        <secondary>
+            <file>docsErrors.phtml</file>
+        </secondary>
+    </includes>
+</pageConfig>

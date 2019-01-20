@@ -1,0 +1,12 @@
+# PHP Storm
+.idea
+
+defines.php
+databases.php
+paths.php
+settings.php
+cache
+.DS_Store
+
+# Composer
+vendor

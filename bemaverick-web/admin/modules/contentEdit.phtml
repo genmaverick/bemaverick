@@ -1,0 +1,54 @@
+<?php
+$input = $this->input;
+$site = $this->site;                                  /* @var BeMaverick_Site $site */
+$content = $this->content;                            /* @var BeMaverick_Content $content */
+$formatFormBootstrap = $this->formatFormBootstrap2(); /* @var BeMaverick_View_Helper_FormatFormBootstrap2 $formatFormBootstrap*/
+
+$contentType = $content->getContentType();
+
+if ( $contentType == BeMaverick_Content::CONTENT_TYPE_VIDEO ) {
+    $video = $content->getVideo();
+    $fileHtml = $video ? '<br/><a href="' . $video->getVideoUrl() . '">' . $video->getVideoUrl() . '</a>' : '';
+} else if ($contentType == BeMaverick_Content::CONTENT_TYPE_IMAGE ) {
+    $image = $content->getImage();
+    $fileHtml = $image ? '<br/><a href="' . $image->getUrl() . '">' . $image->getUrl() . '</a>' : '';
+}
+
+$coverImageUrl = $content->getCoverImageUrl( 60, 108 );
+$coverImageHtml = $coverImageUrl ? '<br/><img class="image" src="'.$coverImageUrl.'" width="60" height="108">' : '';
+
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getContentStatus( $input->contentStatus, $content->getStatus() );
+$formItems[] = $formatFormBootstrap->getContentType( $input->contentType, $content->getContentType() );
+$formItems[] = $formatFormBootstrap->getMentor( $input->mentorId, $content->getUser()->getId() );
+$formItems[] = $formatFormBootstrap->getContentTitle( $input->getUnescaped( 'contentTitle' ), $content->getTitle() );
+$formItems[] = $formatFormBootstrap->getContentDescription( $input->getUnescaped( 'contentDescription' ), $content->getDescription() );
+$formItems[] = $formatFormBootstrap->getTagNames( $input->tagNames, join( ', ', $content->getTagNames() ) );
+
+
+$inputSettings = array(
+    'name' => "file",
+);
+
+$labelSettings = array(
+    'text' => 'File Upload',
+);
+
+$formItems['file'] = $formatFormBootstrap->getFileUpload( $inputSettings, $labelSettings );
+$formItems['file']['postTitleContent'] = $fileHtml;
+
+$formItems['coverImage'] = $formatFormBootstrap->getImageFileUpload( $input->coverImage, 'coverImage', 'Cover Image' );
+$formItems['coverImage']['postTitleContent'] = $coverImageHtml;
+
+$formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => 'Submit', 'style' => 'btn btn-primary' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+?>
+
+<h1 class="page-header">Edit Content: <?php print $content->getTitle() ?></h1>
+
+<form method="post" action="<?php print $this->url( 'contentEditConfirm' ); ?>" enctype="multipart/form-data">
+    <input type="hidden" name="contentId" value="<?php print $content->getId() ?>">
+    <div class="bd">
+        <?php print $formatFormBootstrap->getList( $formItems ); ?>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+<?php
+
+$input = $this->input;
+$site = $this->site;
+$query = $input->query;
+
+$filterBy = array(
+    'query' => $query,
+    'status' => 'active',
+    'notUserType' => BeMaverick_User::USER_TYPE_PARENT,
+);
+
+$users = $site->getUsers( $filterBy, null, 50, 0 );
+$objects = array();
+
+foreach ( $users as $user ) {
+
+    $profileImage = $user->getProfileImage();
+    $profileImageUrl = $profileImage ? $profileImage->getUrl( 100, 100 ) : null;
+
+    $objects[] = array(
+        'type' => 'user',
+        'id' => $user->getId(),
+        'searchText' => $user->getUsername(),
+        'userName' =>  $user->getName(),
+        'username' => $user->getUsername(),
+        'profileImageUrl' => $profileImageUrl,
+        'status' => $user->getStatus(),
+    );
+}
+
+header( 'Content-Type: application/json' );
+print json_encode( $objects );
+
+?>

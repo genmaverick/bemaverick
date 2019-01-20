@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stickerGroupSelectorId" id="1c9-yS-U1w" customClass="StickerGroupSelectorCollectionViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="436" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="436" height="206"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnc-CK-qKa">
+                        <rect key="frame" x="0.0" y="0.0" width="436" height="206"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NuE-x8-CjF">
+                                <rect key="frame" x="11" y="9" width="414" height="188"/>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locked_bubble" translatesAutoresizingMaskIntoConstraints="NO" id="BBM-9B-WBT" userLabel="Lock Image">
+                                <rect key="frame" x="405" y="177" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="pAh-wh-BHY"/>
+                                    <constraint firstAttribute="height" constant="20" id="z8k-4b-nJR"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="NuE-x8-CjF" secondAttribute="bottom" constant="9" id="GyS-xd-0c9"/>
+                            <constraint firstItem="NuE-x8-CjF" firstAttribute="trailing" secondItem="BBM-9B-WBT" secondAttribute="trailing" id="KB3-q5-aYh"/>
+                            <constraint firstItem="NuE-x8-CjF" firstAttribute="bottom" secondItem="BBM-9B-WBT" secondAttribute="bottom" id="RYo-HT-J38"/>
+                            <constraint firstItem="NuE-x8-CjF" firstAttribute="top" secondItem="Qnc-CK-qKa" secondAttribute="top" constant="9" id="Uv1-yY-3SF"/>
+                            <constraint firstItem="NuE-x8-CjF" firstAttribute="leading" secondItem="Qnc-CK-qKa" secondAttribute="leading" constant="11" id="aYP-rc-IZg"/>
+                            <constraint firstAttribute="trailing" secondItem="NuE-x8-CjF" secondAttribute="trailing" constant="11" id="fh3-zQ-UHG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Qnc-CK-qKa" secondAttribute="bottom" id="4gm-o0-RxV"/>
+                <constraint firstItem="Qnc-CK-qKa" firstAttribute="leading" secondItem="1c9-yS-U1w" secondAttribute="leading" id="HhH-2a-xT3"/>
+                <constraint firstAttribute="trailing" secondItem="Qnc-CK-qKa" secondAttribute="trailing" id="fqg-Lf-26o"/>
+                <constraint firstItem="Qnc-CK-qKa" firstAttribute="top" secondItem="1c9-yS-U1w" secondAttribute="top" id="xck-Mp-9Dq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="YwE-GL-euF"/>
+            <size key="customSize" width="436" height="206"/>
+            <connections>
+                <outlet property="containerView" destination="Qnc-CK-qKa" id="mmw-u4-Uca"/>
+                <outlet property="coverImage" destination="NuE-x8-CjF" id="dut-zh-nEM"/>
+                <outlet property="lockImage" destination="BBM-9B-WBT" id="ULv-7s-wqP"/>
+            </connections>
+            <point key="canvasLocation" x="-179" y="428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="locked_bubble" width="58" height="58"/>
+    </resources>
+</document>

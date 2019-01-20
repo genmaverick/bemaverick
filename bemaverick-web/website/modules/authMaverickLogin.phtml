@@ -1,0 +1,77 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$input = $this->input;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+// module stuff
+$moduleClassPrefix = 'auth-login';
+$typeClassPrefix = 'login-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( 'MAVERICK LOG IN' )
+    )
+);
+
+// body content
+$bodyContent = array();
+
+$maverickLoginConfirmUrl = $this->url( 'authMaverickLoginConfirm' );
+$forgotPasswordUrl = $this->url( 'authPasswordForgot' );
+
+$formItems = array();
+$formItems['emailAddress'] = $formatFormBootstrap->getUsername( $input->username, '', array('attributes' => array('placeholder' => 'Username') ), array('text' => '') );
+$formItems['password'] = $formatFormBootstrap->getPassword($input->getUnescaped( 'password' ), '', array('attributes' => array('placeholder' => 'Password') ), array('text' => ''));
+
+$buttons = array(
+    'login'=> array(
+        'text' => $translator->_( 'Login' ),
+        'type' => 'submit',
+        'style' => 'primary',
+    )
+);
+
+$options = $formatUtil->getSetting( 'button-options' );
+$options['postContent'] = '
+    <div class="additional-actions">
+        <a href="'.$forgotPasswordUrl.'" class="forgot" data-transition-type="from-left">'.$translator->_( 'FORGOT PASSWORD?' ).'</a>
+    </div>
+';
+
+$formItems['buttons'] = $formatFormBootstrap->getButtons( $buttons, $options );
+
+$unAssociatedErrors = $this->render( 'unAssociatedErrors.phtml' );
+
+$bodyContent[] = '
+    '.$unAssociatedErrors.'
+    <form action="'.$maverickLoginConfirmUrl.'" method="POST">
+        '.$formatFormBootstrap->getList( $formItems ).'
+    </form>
+';
+
+// print module
+print $formatModule->getBasicLoginModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

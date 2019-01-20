@@ -1,0 +1,56 @@
+<?php
+$formatUtil = $this->formatUtil();
+$translator = $this->translator;
+
+
+
+print '
+    <div class="home-hero edger-reset">
+
+        <div class="home-hero__sections">
+            <div class="home-hero__links">
+                <a href="'.$this->url( 'authLogin' ).'">'.$translator->_( 'Log in' ).'</a>
+                <a href="'.$this->url( 'authRegisterParent' ).'">'.$translator->_( 'Create an account' ).'</a>
+            </div>
+            <div class="home-hero__section--maverick home-hero__section home-hero__section--text">
+                <div class="home-hero__title">
+                    Do your thing on mobile
+                </div>
+                <div class="home-hero__description">
+                    Mauris sit amet enim eu lectus malesuada egestas. Sed vehicula sit amet magna id ultrices. Ut tellus sapien, rutrum vitae convallis at, fermentum eget nisl.
+                </div>
+                <div class="home-hero__cta">
+                    <a href="#" class="home-hero__cta-link home-hero__cta-link--app-store" title="Download on the app store">
+                        <img class="home-hero__cta-image" src="'.$this->url('imageStatic', array( 'imageName' => 'download-on-app-store.svg' ) ).'">
+                    </a>
+                </div>
+                <div class="home-hero__logo">
+                    '.$formatUtil->getSvg( 'logo' ).'
+                </div>
+            </div>
+
+            <div class="home-hero__section--app home-hero__section">
+                <div class="home-hero__phone">
+                    <div class="home-hero__phone-video-wrap">
+                        <video class="home-hero__phone-video" playsinline="" autoplay="" muted="" loop="" poster="https://thumbs.gfycat.com/FlakyCriminalHatchetfish-poster.jpg">
+                            <source type="video/webm" src="https://zippy.gfycat.com/FlakyCriminalHatchetfish.webm">
+                            <source type="video/mp4" src="https://zippy.gfycat.com/FlakyCriminalHatchetfish.mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <div class="home-hero__section--parents home-hero__section home-hero__section--text">
+                <div class="home-hero__title">
+                    Do your thing on the web
+                </div>
+                <div class="home-hero__description">
+                    Mauris sit amet enim eu lectus malesuada egestas. Sed vehicula sit amet magna id ultrices. Ut tellus sapien, rutrum vitae convallis at, fermentum eget nisl.
+                </div>
+                <div class="home-hero__cta">
+                    <a href="#" class="app-store" title="Download on the app store"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+?>

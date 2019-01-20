@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8m9-Uj-MVB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Inactive User View Controller-->
+        <scene sceneID="LM5-b4-t0D">
+            <objects>
+                <viewController storyboardIdentifier="InactiveUserViewControllerId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8m9-Uj-MVB" customClass="InactiveUserViewController" customModule="Maverick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="09X-ZL-sXn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_portrait_background" translatesAutoresizingMaskIntoConstraints="NO" id="mHV-L0-tlY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kbY-jz-LBE">
+                                <rect key="frame" x="40" y="200" width="295" height="68"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKU-y4-tKa">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Barlow" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFM-ZG-sI0">
+                                        <rect key="frame" x="0.0" y="44" width="295" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Barlow" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="PGb-r6-4FW">
+                                <rect key="frame" x="40" y="328" width="295" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE6-Sh-JAy" customClass="CTAButton" customModule="Maverick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="q20-ol-Dv6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Barlow" pointSize="15"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="ctaPressed:" destination="8m9-Uj-MVB" eventType="touchUpInside" id="LA3-3f-8FO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fua-VC-Gij" customClass="CTAButton" customModule="Maverick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="84" width="295" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Skd-SE-fBQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Barlow" pointSize="15"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="subCtaPressed:" destination="8m9-Uj-MVB" eventType="touchUpInside" id="E3j-sF-wXG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="kbY-jz-LBE" firstAttribute="top" secondItem="QtH-ri-9Lg" secondAttribute="top" constant="180" id="9Ch-cl-Nvw"/>
+                            <constraint firstAttribute="bottom" secondItem="mHV-L0-tlY" secondAttribute="bottom" id="Abk-Rf-bni"/>
+                            <constraint firstItem="QtH-ri-9Lg" firstAttribute="trailing" secondItem="kbY-jz-LBE" secondAttribute="trailing" constant="40" id="Cdc-Cv-0Pq"/>
+                            <constraint firstItem="PGb-r6-4FW" firstAttribute="trailing" secondItem="kbY-jz-LBE" secondAttribute="trailing" id="Sa7-Pm-del"/>
+                            <constraint firstItem="mHV-L0-tlY" firstAttribute="leading" secondItem="09X-ZL-sXn" secondAttribute="leading" id="Tiq-iZ-01K"/>
+                            <constraint firstItem="mHV-L0-tlY" firstAttribute="top" secondItem="09X-ZL-sXn" secondAttribute="top" id="f4h-pI-4dg"/>
+                            <constraint firstItem="kbY-jz-LBE" firstAttribute="leading" secondItem="QtH-ri-9Lg" secondAttribute="leading" constant="40" id="fK7-fD-pkg"/>
+                            <constraint firstItem="PGb-r6-4FW" firstAttribute="leading" secondItem="kbY-jz-LBE" secondAttribute="leading" id="fMU-81-c1S"/>
+                            <constraint firstItem="PGb-r6-4FW" firstAttribute="top" secondItem="kbY-jz-LBE" secondAttribute="bottom" constant="60" id="ooA-Jm-r1Q"/>
+                            <constraint firstItem="QtH-ri-9Lg" firstAttribute="trailing" secondItem="mHV-L0-tlY" secondAttribute="trailing" id="vib-qZ-3ec"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QtH-ri-9Lg"/>
+                    </view>
+                    <connections>
+                        <outlet property="ctaButton" destination="cE6-Sh-JAy" id="awl-sq-PlE"/>
+                        <outlet property="descriptionLabel" destination="mFM-ZG-sI0" id="SMs-uV-f9i"/>
+                        <outlet property="subCtaButton" destination="fua-VC-Gij" id="Yk2-Gh-gKO"/>
+                        <outlet property="titleLabel" destination="LKU-y4-tKa" id="aB9-eu-wSX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NSa-8H-evI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="231" y="-343"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch_portrait_background" width="838" height="1445"/>
+    </resources>
+</document>

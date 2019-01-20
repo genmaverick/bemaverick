@@ -1,0 +1,22 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-1:415196061258:dev_elasticencoder_pipeline:da0cda35-d434-4880-88bc-c4eb0c52987c",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "f5ddb043-a6a5-5ea2-b141-e303e7aee439",
+        "TopicArn": "arn:aws:sns:us-east-1:415196061258:dev_elasticencoder_pipeline",
+        "Subject": "Amazon Elastic Transcoder has finished transcoding job 1522941633277-7l9yl9.",
+        "Message": "{\n  \"state\" : \"COMPLETED\",\n  \"version\" : \"2012-09-25\",\n  \"jobId\" : \"1524269166242-pvcpv5\",\n  \"pipelineId\" : \"1520280703621-mlywxt\",\n  \"input\" : {\n    \"key\" : \"response-3e517762-3f48-45cf-95ae-8bc667e6dc8b-55d679f1c0da32e4d9586008abbde351.mp4\",\n    \"frameRate\" : \"auto\",\n    \"resolution\" : \"auto\",\n    \"aspectRatio\" : \"auto\",\n    \"interlaced\" : \"auto\",\n    \"container\" : \"auto\"\n  },\n  \"inputCount\" : 1,\n  \"outputs\" : [ {\n    \"id\" : \"1\",\n    \"presetId\" : \"1508785183480-kw5qwt\",\n    \"key\" : \"response-3e517762-3f48-45cf-95ae-8bc667e6dc8b-55d679f1c0da32e4d9586008abbde351.mp4\",\n    \"thumbnailPattern\" : \"response-3e517762-3f48-45cf-95ae-8bc667e6dc8b-55d679f1c0da32e4d9586008abbde351-thumbnail-{count}\",\n    \"status\" : \"Complete\",\n    \"duration\" : 6,\n    \"width\" : 432,\n    \"height\" : 768\n  } ]\n}",
+        "Timestamp": "2018-04-05T15:20:43.559Z",
+        "SignatureVersion": "1",
+        "Signature": "SNediiP1v2Qz+Z1gVX/giZx5ymFXXK6UrLCSN/J4+P55JnyxDiDH0Hil48TNPq+MB78+PR8A3iCeZvP/gQ2YimKWg2XaS7pPBp+2LOuvo55tKKJrYl/hVo6f3aiz5bfGswbvPYtacPkohFMgbYlZAp1FBSm5yN/45ojLjm/Z4HWi9dV9CQMk7xbMecoSYgG6E9fi0pktW0TVg5z/2ay8VPTyN5/hr2tG5t38pXBzsuaLQayk+oeC3s71TLOXjZFEqbU//S1MTile7AxgzMdBXAExRZ0PcXQCFxQou6GTXGJyWellPAOXjF4obstc4YZpWEQ1myn5l1RSer1V4uWQRw==",
+        "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-433026a4050d206028891664da859041.pem",
+        "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:415196061258:dev_elasticencoder_pipeline:da0cda35-d434-4880-88bc-c4eb0c52987c",
+        "MessageAttributes": {}
+      }
+    }
+  ]
+}

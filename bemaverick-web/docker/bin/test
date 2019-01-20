@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# OSX Compatibility - proper readlink
+function readlink() {
+  DIR=$(echo "${1%/*}")
+  (cd "$DIR" && echo "$(pwd -P)")
+}
+
+# Make sure a proper username is passed
+if [ -z "$1" ]
+  then
+    echo "No username passed"
+    exit 1
+fi
+
+# Start a new container
+docker run \
+-it \
+-v `readlink ../../../`:/home/$1/dev/ \
+-e USER=$1 \
+slytrunk/bemaverick-web \
+/home/$1/dev/bemaverick-web/docker/bootstrap/bootstrap-test

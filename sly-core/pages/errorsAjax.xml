@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>errorsAjax</name>
+    <type>errors</type>
+    <subType>error</subType>
+    <template>template_json.phtml</template>
+    <title>
+        <text>Error</text>
+    </title>
+    <includes>
+        <primary>
+            <file>errors.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

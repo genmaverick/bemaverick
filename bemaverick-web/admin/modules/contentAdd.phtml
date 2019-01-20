@@ -1,0 +1,31 @@
+<?php
+$input = $this->input;
+$formatFormBootstrap = $this->formatFormBootstrap2(); /* @var BeMaverick_View_Helper_FormatFormBootstrap2 $formatFormBootstrap*/
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getContentType( $input->contentType, null );
+$formItems[] = $formatFormBootstrap->getMentor( $input->mentorId, null );
+$formItems[] = $formatFormBootstrap->getContentTitle( $input->getUnescaped( 'contentTitle' ), null );
+$formItems[] = $formatFormBootstrap->getContentDescription( $input->getUnescaped( 'contentDescription' ), null );
+$formItems[] = $formatFormBootstrap->getContentStatus( $input->contentStatus, null );
+$formItems[] = $formatFormBootstrap->getTagNames( $input->tagNames, null );
+
+$inputSettings = array(
+    'value' => $input->file,
+    'name' => 'file',
+);
+$labelSettings = array(
+    'text' => 'Video / Image',
+);
+    $formItems[] = $formatFormBootstrap->getFileUpload( $inputSettings, $labelSettings );
+$formItems[] = $formatFormBootstrap->getImageFileUpload( $input->coverImage, 'coverImage', 'Cover Image' );
+$formItems[] = $formatFormBootstrap->getButton( array( 'text' => 'Submit', 'style' => 'btn btn-primary' ) );
+?>
+
+<h1 class="page-header">Add Content</h1>
+
+<form method="post" action="<?php print $this->url( 'contentAddConfirm' ); ?>" enctype="multipart/form-data">
+    <div class="bd">
+        <?php print $formatFormBootstrap->getList( $formItems ); ?>
+    </div>
+</form>

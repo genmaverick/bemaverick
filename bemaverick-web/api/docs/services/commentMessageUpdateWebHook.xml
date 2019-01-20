@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Comments Message Update Webhook</name>
+    <description>This is the webhook listener to receive message updates.</description>
+    <uri>/comment/messageupdatewebhook</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>EventType</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>onMessageUpdated</examples>
+            <description>Event type</description>
+        </param>
+        <param>
+            <name>MessageSid</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>MS625c31c4c55848028fd10619189bc181</examples>
+            <description>Unique message id</description>
+        </param>
+        <param>
+            <name>ChannelSid</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>CH625c31c4c55848028fd10619189bc181</examples>
+            <description>Unique channel id</description>
+        </param>
+        <param>
+            <name>Body</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>This is text message</examples>
+            <description>Message text</description>
+        </param>
+        <param>
+            <name>Attributes</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>{'isInappropriate': 'true'}</examples>
+            <description>Message meta data</description>
+        </param>
+        <param>
+            <name>From</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>GK</examples>
+            <description>Author of the message</description>
+        </param>
+        <param>
+            <name>From</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>GK</examples>
+            <description>Author of the message</description>
+        </param>
+        <param>
+            <name>ModifiedBy</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>GK</examples>
+            <description>The identity of the user that updated the message</description>
+        </param>
+        <param>
+            <name>DateCreated</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>2018-01-22 16:58:02 UTC</examples>
+            <description>The timestamp of message creation</description>
+        </param>
+        <param>
+            <name>DateUpdated</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>2018-01-22 16:58:02 UTC</examples>
+            <description>The timestamp of update of the message</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/comment/messageupdatewebhook?appKey=test_key&EventType=onMessageUpdated"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

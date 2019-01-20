@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>internalError</name>
+    <type>errors</type>
+    <subType>internal-error</subType>
+    <title>
+        <text>Internal Error</text>
+    </title>
+    <includes>
+        <primary>
+            <file>internalErrorWeb.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

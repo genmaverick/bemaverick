@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Deactivate Account</name>
+    <description>Deactivate the user's account</description>
+    <uri>/user/deactivateaccount</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>deactivateAction</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>0 or 1</examples>
+            <description>status to deactivate and reactivate account</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/deactivateaccount?deactivateAction=1" \
+  --data "appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

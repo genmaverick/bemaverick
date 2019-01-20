@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Auth Twitter Login</name>
+    <service_name>authTwitterLogin</service_name>
+    <description>Login to get login user basic info and access token to be used for future calls using Twitter login</description>
+    <uri>/auth/twitterlogin</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>twitterAccessToken</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>xyz</examples>
+            <description>Twitter's user access token</description>
+        </param>
+        <param>
+            <name>twitterAccessTokenSecret</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>xyz</examples>
+            <description>Twitter's user access token secret</description>
+        </param>
+        <param>
+            <name>username</name>
+            <required>yes - if new user</required>
+            <default></default>
+            <format>string</format>
+            <examples>testkid</examples>
+            <description>The kid's username.</description>
+        </param>
+        <param>
+            <name>birthdate</name>
+            <required>yes - if new user</required>
+            <default></default>
+            <format>YYYY-MM-DD</format>
+            <examples>2005-05-23</examples>
+            <description>The kid's birthdate.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/auth/twitterlogin?appKey=test_key&twitterAccessToken=test&twitterAccessTokenSecret=blah&username=testuser&birthdate=2000-04-23" \
+  --include
+ ]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0ZXN0X2tleSIsImV4cCI6MTQ4ODk2MzEzNCwic3ViIjoiMTQifQ.Zi7wW4pgmQm56JWvCwsthkjJE7LZlu4dJKwdv2g2Ogw",
+  "expires_in": "86400",
+  "token_type": "bearer",
+  "scope": null,
+  "refresh_token": "fa5256ca8f1b88522ba1e34a0792ee05236427a3"
+}
+]]></example_json_response>
+
+</docs>

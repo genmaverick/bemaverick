@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Flag</name>
+    <description>Flag a user</description>
+    <uri>/user/flag</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>userId</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 542</examples>
+            <description>The user id</description>
+        </param>
+        <param>
+            <name>reason</name>
+            <required>no</required>
+            <default></default>
+            <format>String</format>
+            <examples>Inappropriate content</examples>
+            <description>reason for flagging</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/flag" \
+  --data "userId=1&appKey=test_key&reason=Inappropriate content"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+]]>
+    </example_json_response>
+
+</docs>

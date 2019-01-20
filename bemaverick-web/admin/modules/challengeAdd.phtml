@@ -1,0 +1,40 @@
+<?php
+
+$input = $this->input;
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getMentor( $input->mentorId, null );
+$formItems[] = $formatFormBootstrap->getUserAutocomplete( null, null, '', "search" );
+$formItems[] = $formatFormBootstrap->getChallengeTitle( $input->getUnescaped( 'challengeTitle' ), null );
+$formItems[] = $formatFormBootstrap->getChallengeDescription( $input->getUnescaped( 'challengeDescription' ), null );
+$formItems[] = $formatFormBootstrap->getChallengeLinkUrl( $input->getUnescaped( 'challengeLinkUrl' ), null );
+$formItems[] = $formatFormBootstrap->getChallengeStatus( $input->challengeStatus, null );
+$formItems[] = $formatFormBootstrap->getHideFromStreams( $input->hideFromStreams, 0 );
+$formItems[] = $formatFormBootstrap->getStartTime( $input->startTime, date("Y-m-d"), 'America/Los_Angeles' );
+$formItems[] = $formatFormBootstrap->getEndTime( $input->endTime, '2050-01-01', 'America/Los_Angeles' );
+$formItems[] = $formatFormBootstrap->getTagNames( $input->tagNames, null );
+$formItems[] = $formatFormBootstrap->getChallengeType( $input->challengeType, BeMaverick_Challenge::CHALLENGE_TYPE_VIDEO );
+$formItems[] = $formatFormBootstrap->getImageFileUpload( $input->cardImage, 'cardImage', 'Card Image' );
+
+// Video challenge media
+$formItems[] = array('title' => '<hr /><h3>Video Challenge</h3>', 'itemAttributes' => array( 'class' => null) );
+$formItems[] = $formatFormBootstrap->getVideoFileUpload();
+$formItems[] = $formatFormBootstrap->getImageFileUpload( $input->mainImage, 'mainImage', 'Main Image' );
+
+// Image challenge media
+$formItems[] = array('title' => '<hr /><h3>Image Challenge</h3>', 'itemAttributes' => array( 'class' => null) );
+$formItems[] = $formatFormBootstrap->getImageFileUpload( $input->image, 'image', 'Challenge Image' );
+
+// Action buttons
+$formItems[] = array( 'title' => '<hr />', 'itemAttributes' => array( 'class' => null) );
+$formItems[] = $formatFormBootstrap->getButton( array( 'text' => 'Submit', 'style' => 'btn btn-primary' ) );
+?>
+
+<h1 class="page-header">Add Challenge</h1>
+
+<form method="post" action="<?php print $this->url( 'challengeAddConfirm' ); ?>" enctype="multipart/form-data">
+    <div class="bd">
+        <?php print $formatFormBootstrap->getList( $formItems ); ?>
+    </div>
+</form>

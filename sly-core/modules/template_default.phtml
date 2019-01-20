@@ -1,0 +1,292 @@
+<?php
+$pageConfig = $this->pageConfig;
+
+$pageHeadingString = '';
+
+if ( $pageConfig->useTitlePrefix() ) {
+    $documentTitleString = $pageConfig->getTitlePrefix().$pageConfig->getTitlePrefixDelimiter().$pageConfig->getTitle();
+} else {
+    $documentTitleString = $pageConfig->getTitle();
+}
+
+if ( $pageConfig->useTitleHeading() ) {
+    $pageHeadingTag = $pageConfig->getTitleHeadingTag();
+    $pageHeadingString  = "<$pageHeadingTag>".$pageConfig->getTitle()."</$pageHeadingTag>\n";
+}
+
+$this->pageHeadingString = $pageHeadingString;
+$this->pageHeadingWritten = false;
+
+$layouts = array(
+    'default' => array(
+        'id' => 'doc',
+        'class' => 'g-b',
+        'cols' => 2,       
+    ),
+    'full-1column' => array(
+        'id' => 'doc',
+        'class' => 'g-a',
+        'cols' => 1,       
+    ),
+    'full-2column' => array(
+        'id' => 'doc',
+        'class' => 'g-d',
+        'cols' => 2,
+    ),
+    'full-3column' => array(
+        'id' => 'doc',
+        'class' => 'g-c',
+        'cols' => 3,
+    ),  
+    'popup-1column' => array(
+        'id' => 'doc',
+        'class' => 'g-e',
+        'cols' => 1,
+    ),          
+); 
+
+//if ( !$this->network->isKontend() ) {
+//    $layouts['default']['cols'] = 3;
+//}
+
+
+if ( isset( $layouts[$pageConfig->getLayout()] ) ) {
+    $curLayout = $layouts[$pageConfig->getLayout()];
+}
+else {
+    $curLayout = $layouts['default'];
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en-us" id="template">
+<head>
+    <title><?php echo $documentTitleString ?></title>
+    <meta charset="utf-8">
+    <?php 
+    $metaFiles = $pageConfig->getMetaFiles();
+    if ( $metaFiles ) {        
+        foreach( $metaFiles as $file ) {
+            print $this->render( $file );
+        }
+    } 
+    ?>
+    <?php if ( $pageConfig->hasCssPrintFiles() ) { ?>
+    <link rel="stylesheet" media="print" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssPrintFiles() ) ?>" />
+    <?php } ?>   
+    <?php if ( $pageConfig->hasCssDefaultFiles() ) { ?>   
+        
+    <link rel="stylesheet" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssDefaultFiles() ) ?>" />
+    <?php } ?>    
+    <?php if ( $pageConfig->hasCssFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssFiles() ) ?>" />
+    <?php } ?>
+ 
+    <?php if ( $pageConfig->hasJsDefaultFiles() ) { ?>    
+    <script type="text/javascript" src="<?php print $this->combineJS( $pageConfig->getJsDefaultFiles() ) ?>"></script>
+    <?php } ?>     
+    <?php if ( $pageConfig->hasJsFiles() ) { ?>    
+    <script type="text/javascript" src="<?php print $this->combineJS( $pageConfig->getJsFiles() ) ?>"></script>
+    <?php } ?>    
+</head>
+<body id="<?php echo $pageConfig->getName() ?>Page" class="noJs yui-skin-sam <?php echo $curLayout['class'] ?>">
+
+<script>
+YAHOO.util.Event.onAvailable('<?php echo $pageConfig->getName() ?>Page', function(){YAHOO.util.Dom.removeClass(this,'noJs')});
+</script>
+
+
+<div id="<?php echo $curLayout['id'] ?>">
+    <?php if ( $pageConfig->hasHeaderFiles() ) { ?>
+    <div id="hd">
+        <?php
+        foreach( $pageConfig->getHeaderFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasPrimaryFiles() ||
+               $pageConfig->hasSecondaryFiles() ||
+               $pageConfig->hasTertiaryFiles() ) { ?>
+    <div id="bd">
+        <?php
+            if ( $pageConfig->useGlobalForm() ) {
+                $formAttributes = array();
+                foreach( $pageConfig->getFormAttributes as $key => $value ) {
+                    $formAttributes[]= $key.'="'.$value.'"';
+                }
+                echo '<form '.implode( ' ', $formAttributes).'>';
+            }
+        ?>
+
+        <?php if ( !$this->pageHeadingWritten ) { echo $pageHeadingString; } ?>
+        
+        <?php if($curLayout['cols'] == '1') { ?>
+            
+            <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+            <div id="primary">
+                <?php
+                foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+            <div id="secondary">
+                <?php
+                foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+
+        <?php } else if($curLayout['cols'] == '2') { ?>
+
+            <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+            <div id="primary">
+                <?php
+                foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+            <div id="secondary">
+                <?php
+                foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+         
+        <?php } else if($curLayout['cols'] == '3') { ?>
+            <div id="priSecWrap">
+                <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+                <div id="primary">
+                    <?php
+                    foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+                <?php } ?> 
+                <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+                <div id="secondary">
+                    <?php
+                    foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+                <?php } ?>                    
+            </div>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                   print $this->render( $file );
+                }
+                ?>
+            </div> 
+            <?php } ?>                                         
+
+        <?php } ?>
+        <?php if ( $pageConfig->useGlobalForm() ) { echo '</form>'; } ?>
+
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasFooterFiles() ) { ?>
+    <div id="ft">
+        <?php
+        foreach( $pageConfig->getFooterFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+</div>
+<script type="text/javascript">
+    
+    Sly.template.init = function () {
+        <?php
+            
+        foreach( $pageConfig->getJsInitCommands() as $command ) {
+	        $this->AddItem( 'jsInit', $command );
+        }
+        
+        $jsInit = $this->getItem( 'jsInit' );            
+        if ( $jsInit ) {
+            foreach( $jsInit as $js ) {
+                print 'var a = function(){'; 
+                print ' try {';
+                print $js;
+                print "} catch (err) {consoleLog('initErrorCatch:'+err.message);return false}";
+                print "};\n";
+                print "a();\n";                
+            }           
+            echo "\n";
+        }
+        if ($this->loginUser) {
+	        $loginUserId = $this->loginUser->getId();          
+        
+        } else {
+	        $loginUserId = 'null';
+        }
+
+           
+        ?>        
+        Sly.template.loginUserId = "<?php print $loginUserId ?>";
+        Sly.template.containerJsFile = '<?php echo $this->combineJS( array('container.js') ) ?>';
+        Sly.template.NETWORK = '<?php echo ""//$this->network->getName() ?>';
+               
+    }
+    
+    
+    
+    YAHOO.util.Event.onAvailable( '<?php echo $curLayout['id']?>', Sly.template.init );
+
+</script>
+
+<?php
+$pageTracking = $pageConfig->getPageTracking();
+if ( isset( $pageTracking['googleAnalytics'] ) ) {
+?>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+            var pageTracker = _gat._getTracker( "<?php print $pageTracking['googleAnalytics']['ua'] ?>");
+            pageTracker._trackPageview( '<?php print $pageConfig->getName() ?>' );
+        }
+        catch(err) {
+        }
+    </script>
+<?php } ?>
+
+</body>
+</html>

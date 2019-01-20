@@ -1,0 +1,22 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-1:415196061258:dev_elasticencoder_pipeline:da0cda35-d434-4880-88bc-c4eb0c52987c",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "f5ddb043-a6a5-5ea2-b141-e303e7aee439",
+        "TopicArn": "arn:aws:sns:us-east-1:415196061258:dev_elasticencoder_pipeline",
+        "Subject": "Amazon Elastic Transcoder has finished transcoding job 1522941633277-7l9yl9.",
+        "Message": "{\n  \"state\" : \"COMPLETED\",\n  \"version\" : \"2012-09-25\",\n  \"jobId\" : \"1522941633277-7l9yl9\",\n  \"pipelineId\" : \"1520280703621-mlywxt\",\n  \"input\" : {\n    \"key\" : \"response-13-f4885cd937e88f80fe65a1a88226b545.mp4\"\n  },\n  \"inputCount\" : 1,\n  \"outputKeyPrefix\" : \"response-13-f4885cd937e88f80fe65a1a88226b545/\",\n  \"outputs\" : [ {\n    \"id\" : \"1\",\n    \"presetId\" : \"1351620000001-200071\",\n    \"key\" : \"hlsAudio/06f8f795a28a650d431f51e6890ae01d3bc39f26bf6517f183d490fe42103651\",\n    \"segmentDuration\" : 2.0,\n    \"status\" : \"Complete\",\n    \"duration\" : 6\n  }, {\n    \"id\" : \"2\",\n    \"presetId\" : \"1351620000001-200050\",\n    \"key\" : \"hls0400k/06f8f795a28a650d431f51e6890ae01d3bc39f26bf6517f183d490fe42103651\",\n    \"segmentDuration\" : 2.0,\n    \"status\" : \"Complete\",\n    \"statusDetail\" : \"Some individual segment files for this output have a higher bit rate than the average bit rate of the transcoded media. Playlists including this output will record a higher bit rate than the rate specified by the preset.\",\n    \"duration\" : 6,\n    \"width\" : 162,\n    \"height\" : 288\n  }, {\n    \"id\" : \"3\",\n    \"presetId\" : \"1351620000001-200030\",\n    \"key\" : \"hls1000k/06f8f795a28a650d431f51e6890ae01d3bc39f26bf6517f183d490fe42103651\",\n    \"segmentDuration\" : 2.0,\n    \"status\" : \"Complete\",\n    \"statusDetail\" : \"Some individual segment files for this output have a higher bit rate than the average bit rate of the transcoded media. Playlists including this output will record a higher bit rate than the rate specified by the preset.\",\n    \"duration\" : 6,\n    \"width\" : 242,\n    \"height\" : 432\n  } ],\n  \"playlists\" : [ {\n    \"name\" : \"hls_response-13-f4885cd937e88f80fe65a1a88226b545\",\n    \"format\" : \"HLSv3\",\n    \"outputKeys\" : [ \"hlsAudio/06f8f795a28a650d431f51e6890ae01d3bc39f26bf6517f183d490fe42103651\", \"hls0400k/06f8f795a28a650d431f51e6890ae01d3bc39f26bf6517f183d490fe42103651\", \"hls1000k/06f8f795a28a650d431f51e6890ae01d3bc39f26bf6517f183d490fe42103651\" ],\n    \"status\" : \"Complete\"\n  } ]\n}",
+        "Timestamp": "2018-04-05T15:20:43.559Z",
+        "SignatureVersion": "1",
+        "Signature": "SNediiP1v2Qz+Z1gVX/giZx5ymFXXK6UrLCSN/J4+P55JnyxDiDH0Hil48TNPq+MB78+PR8A3iCeZvP/gQ2YimKWg2XaS7pPBp+2LOuvo55tKKJrYl/hVo6f3aiz5bfGswbvPYtacPkohFMgbYlZAp1FBSm5yN/45ojLjm/Z4HWi9dV9CQMk7xbMecoSYgG6E9fi0pktW0TVg5z/2ay8VPTyN5/hr2tG5t38pXBzsuaLQayk+oeC3s71TLOXjZFEqbU//S1MTile7AxgzMdBXAExRZ0PcXQCFxQou6GTXGJyWellPAOXjF4obstc4YZpWEQ1myn5l1RSer1V4uWQRw==",
+        "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-433026a4050d206028891664da859041.pem",
+        "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:415196061258:dev_elasticencoder_pipeline:da0cda35-d434-4880-88bc-c4eb0c52987c",
+        "MessageAttributes": {}
+      }
+    }
+  ]
+}

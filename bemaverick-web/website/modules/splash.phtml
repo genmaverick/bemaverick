@@ -1,0 +1,52 @@
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<!-- start -->
+<?php
+$pageConfig = $this->pageConfig;
+$cssIncludes = array();
+$files = $pageConfig->getCssFiles();
+$cssIncludes[] ='<style id="critical-css">';
+if ( $files ) {
+    $cssIncludes[] = str_replace( "\n", " ", $this->mergeFiles( 'css', $files, true ) );
+}
+$cssIncludes[] = '</style>';
+print  join( '', $cssIncludes );
+?>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400" rel="stylesheet">
+<div class="mav-splash">
+    <div class="mav-splash-content">
+        <div class="mav-splash-content__wrapper">
+            <div class="mav-splash-content__logo">
+                <div class="mav-splash-content__logo-image">
+                </div>
+            </div>
+            <div class="mav-splash-content__description-text">
+                A creator network for a new generation of innovators, artists, and entrepreneurs — a generation of girls and young women whose spirit, vision, and energy will change the world.
+            </div>
+            <form class="mav-splash-content__form" action="//bemaverick.us16.list-manage.com/subscribe/post?u=6513073419a1bdfdc96136f2e&id=9df74e716d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                    <div class="mc-field-group lead" style="background-color:#fff;">
+                        <input type="email" style="width: 93%;" placeholder="Email address" name="EMAIL" class="required email"  id="mce-EMAIL">
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response"  id="mce-error-response" style="display:none"></div>
+                        <div class="response"  id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_6513073419a1bdfdc96136f2e_9df74e716d" tabindex="-1" value="">
+                    </div>
+                    <input type="submit" value="Join the movement" name="subscribe" id="mc-embedded-subscribe" class="btn">
+                </div>
+            </form>
+            <div class="mav-splash-content__instagram">
+                Launching Spring 2018
+                <a class="mav-splash-content__instagram-link" href="https://www.instagram.com/genmaverick/" target="_blank" rel="noopener">Follow on Instagram</a>
+            </div>
+            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='BIRTHDAY';ftypes[3]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+        </div>
+    </div>
+    <div class="mav-splash-image">
+        <div class="mav-splash-image__careers">Careers at Maverick</div>>
+    </div>
+</div>
+<!-- end -->
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>authAccountVerifyConfirm</name>
+    <title>
+        <text>Verify Account</text>
+    </title>
+    <type>auth</type>
+    <subType>auth-account-verify-confirm</subType>
+    <includes>
+        <primary append="true">
+            <file>authAccountVerifyConfirm.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

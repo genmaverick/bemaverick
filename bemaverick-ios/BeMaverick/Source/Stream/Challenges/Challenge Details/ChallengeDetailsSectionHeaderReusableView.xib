@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChallengeDetailsSectionHeaderReusableViewId" id="JLx-Sg-tNQ" customClass="ChallengeDetailsSectionHeaderReusableView" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Responses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MV-Z0-VYf">
+                    <rect key="frame" x="10" y="0.0" width="365" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="7MV-Z0-VYf" firstAttribute="leading" secondItem="4cr-Nm-OyH" secondAttribute="leading" constant="10" id="EZ9-lC-tCC"/>
+                <constraint firstItem="4cr-Nm-OyH" firstAttribute="trailing" secondItem="7MV-Z0-VYf" secondAttribute="trailing" id="Z0Z-4I-jcl"/>
+                <constraint firstItem="7MV-Z0-VYf" firstAttribute="top" secondItem="4cr-Nm-OyH" secondAttribute="top" id="mCB-MU-COz"/>
+                <constraint firstItem="4cr-Nm-OyH" firstAttribute="bottom" secondItem="7MV-Z0-VYf" secondAttribute="bottom" id="teD-Ws-OLe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="4cr-Nm-OyH"/>
+            <connections>
+                <outlet property="label" destination="7MV-Z0-VYf" id="kEm-04-ysu"/>
+                <outlet property="labelLeadingEdge" destination="EZ9-lC-tCC" id="W1v-oa-Iuz"/>
+            </connections>
+        </collectionReusableView>
+    </objects>
+</document>

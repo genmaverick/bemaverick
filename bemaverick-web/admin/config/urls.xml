@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urls>
+
+    <imageStatic>
+        <url>/cache/img/:imageName</url>
+        <params>
+            <param required="true" urlencode="false">imageName</param>
+        </params>
+    </imageStatic>
+
+    <cssStatic>
+        <url>/cache/css/:maxModTime/:cssFiles.css</url>
+        <params>
+            <param required="true" urlencode="false">maxModTime</param>
+            <param required="true" urlencode="false">cssFiles</param>
+        </params>
+    </cssStatic>
+
+    <jsStatic>
+        <url>/cache/js/:maxModTime/:jsFiles.js</url>
+        <params>
+           <param required="true" urlencode="false">maxModTime</param>
+           <param required="true" urlencode="false">jsFiles</param>
+        </params>
+    </jsStatic>
+
+    <fontStatic>
+        <url>/cache/fonts/:fontName</url>
+        <params>
+            <param required="true" urlencode="false">fontName</param>
+        </params>
+    </fontStatic>
+
+    <home>
+        <url>/</url>
+    </home>
+
+    <tools>
+        <url>/tools</url>
+    </tools>
+
+    <featuredResponsesEdit>
+        <url>/tools/featuredresponsesedit</url>
+    </featuredResponsesEdit>
+    <featuredResponsesEditConfirm>
+        <url>/tools/featuredresponseseditconfirm</url>
+    </featuredResponsesEditConfirm>
+
+    <featuredChallengesEdit>
+        <url>/tools/featuredchallengesedit</url>
+    </featuredChallengesEdit>
+    <featuredChallengesEditConfirm>
+        <url>/tools/featuredchallengeseditconfirm</url>
+    </featuredChallengesEditConfirm>
+
+    <featuredUsersEdit>
+        <url>/tools/featuredusersedit</url>
+    </featuredUsersEdit>
+    <featuredUsersEditConfirm>
+        <url>/tools/featureduserseditconfirm</url>
+    </featuredUsersEditConfirm>
+
+    <favoriteResponsesEdit>
+        <url>/tools/favoriteresponsesedit</url>
+    </favoriteResponsesEdit>
+    <favoriteResponsesEditConfirm>
+        <url>/tools/favoriteresponseseditconfirm</url>
+    </favoriteResponsesEditConfirm>
+
+    <profileCoverPresetImagesEdit>
+        <url>/tools/profilecoverpresetimagesedit</url>
+    </profileCoverPresetImagesEdit>
+    <profileCoverPresetImagesEditConfirm>
+        <url>/tools/profilecoverpresetimageseditconfirm</url>
+    </profileCoverPresetImagesEditConfirm>
+
+    <challenges>
+        <url>/challenges</url>
+    </challenges>
+    <challengeAdd>
+        <url>/challengeadd</url>
+    </challengeAdd>
+    <challengeAddConfirm>
+        <url>/challengeaddconfirm</url>
+    </challengeAddConfirm>
+    <challengeEdit>
+        <url>/challengeedit</url>
+    </challengeEdit>
+    <challengeEditConfirm>
+        <url>/challengeeditconfirm</url>
+    </challengeEditConfirm>
+
+    <streams>
+        <url>/streams</url>
+    </streams>
+    <streamsEditConfirm>
+        <url>/streams/streamsEditConfirm</url>
+    </streamsEditConfirm>
+    <streamsAdBlockEdit>
+        <url>/streams/streamsAdBlockEdit</url>
+    </streamsAdBlockEdit>
+    <streamsAdBlockEditConfirm>
+        <url>/streams/streamsAdBlockEditConfirm</url>
+    </streamsAdBlockEditConfirm>
+    <streamsAddStreamConfirm>
+        <url>/streams/streamsAddStreamConfirm</url>
+    </streamsAddStreamConfirm>
+    <streamsLatestResponsesEdit>
+        <url>/streams/latestResponsesEdit</url>
+    </streamsLatestResponsesEdit>
+    <streamsLatestResponsesEditConfirm>
+        <url>/streams/latestResponsesEditConfirm</url>
+    </streamsLatestResponsesEditConfirm>
+
+    <users>
+        <url>/users</url>
+    </users>
+    <userAdd>
+        <url>/useradd</url>
+    </userAdd>
+    <userAddConfirm>
+        <url>/useraddconfirm</url>
+    </userAddConfirm>
+    <userEdit>
+        <url>/useredit</url>
+    </userEdit>
+    <userEditConfirm>
+        <url>/usereditconfirm</url>
+    </userEditConfirm>
+
+    <responses>
+        <url>/responses</url>
+    </responses>
+    <responseAdd>
+        <url>/responseadd</url>
+    </responseAdd>
+    <responseAddConfirm>
+        <url>/responseaddconfirm</url>
+    </responseAddConfirm>
+    <responsesAdd>
+        <url>/responsesadd</url>
+    </responsesAdd>
+    <responsesAddConfirm>
+        <url>/responsesaddconfirm</url>
+    </responsesAddConfirm>
+    <responseEdit>
+        <url>/responseedit</url>
+    </responseEdit>
+    <responseEditConfirm>
+        <url>/responseeditconfirm</url>
+    </responseEditConfirm>
+
+    <users>
+        <url>/users</url>
+    </users>
+    <userAdd>
+        <url>/useradd</url>
+    </userAdd>
+    <userAddConfirm>
+        <url>/useraddconfirm</url>
+    </userAddConfirm>
+    <kidEdit>
+        <url>/useredit</url>
+    </kidEdit>
+    <kidEditConfirm>
+        <url>/usereditconfirm</url>
+    </kidEditConfirm>
+    <userDeleteConfirm>
+        <url>/userdeleteconfirm</url>
+    </userDeleteConfirm>
+    <kidRemoveImageConfirm>
+        <url>/userremoveimageconfirm</url>
+    </kidRemoveImageConfirm>
+
+    <parents>
+        <url>/parents</url>
+    </parents>
+    <parentEdit>
+        <url>/parentedit</url>
+    </parentEdit>
+    <parentEditConfirm>
+        <url>/parenteditconfirm</url>
+    </parentEditConfirm>
+
+    <contents>
+        <url>/contents</url>
+    </contents>
+    <contentAdd>
+        <url>/contentadd</url>
+    </contentAdd>
+    <contentAddConfirm>
+        <url>/contentaddconfirm</url>
+    </contentAddConfirm>
+    <contentEdit>
+        <url>/contentedit</url>
+    </contentEdit>
+    <contentEditConfirm>
+        <url>/contenteditconfirm</url>
+    </contentEditConfirm>
+
+    <postsBadgesEdit>
+        <url>/tools/postsbadgesedit</url>
+    </postsBadgesEdit>
+    <postBadgeEditConfirm>
+        <url>/tools/postbadgeeditconfirm</url>
+    </postBadgeEditConfirm>
+
+
+
+    <badges>
+        <url>/badges</url>
+    </badges>
+    <badgesEditConfirm>
+        <url>/badges/badgesEditConfirm</url>
+    </badgesEditConfirm>
+
+</urls>

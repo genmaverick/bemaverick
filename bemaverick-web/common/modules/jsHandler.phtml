@@ -1,0 +1,65 @@
+<?php
+$jsInit = $this->getItem( 'jsInit' );
+if ( !$jsInit ) {
+    $jsInit = array();
+}
+$googleAnalyticsId = $this->systemConfig->getSetting( 'GOOGLE_ANALYTICS_UA' );
+$goolgeOptimizeId = $this->systemConfig->getSetting( 'GOOGLE_OPTIMIZE_ID' );
+
+$waitForOptimize = $goolgeOptimizeId && $googleAnalyticsId ? true : false;
+?>
+<script>
+jQuery(document ).ready(function($) {
+    var checkForItemHeight = function(name){
+        if ( $( '#css-' + name ).height() ) {
+            $.event.trigger( 'css:loaded' );
+        } else {
+            setTimeout(function(){ checkForItemHeight(name) }, 50 );
+        }
+    };
+    var loadCSS = function(href, name) {
+        if (!(href.indexOf('http') === 0 || href.indexOf('//') === 0)) {
+            href = document.location.protocol + href;
+        }
+        var cssLink = $("<link rel='stylesheet' type='text/css' href='"+href+"'>");
+        $('body').append( '<div id="css-'+name+'" style="position:absolute;left:-9000px;height:0px;"></div>');
+        $('#critical-css').after(cssLink);
+        checkForItemHeight(name);
+    };
+    <?php
+    if ( $jsInit ) {
+        foreach( $jsInit as $js ) {
+            print '(function(){';
+            print ' try {';
+            print $js.';';
+            print "} catch (err) { console.log( err ); console.log('initErrorCatch:'+err.message);return false}";
+            print "}());\n";
+        }
+        echo "\n";
+    }
+    ?>
+});
+var checkCount = 0;
+var checkInitialized = false;
+var checkForJquery = function(){
+    if ( $.each <?php if( $waitForOptimize ) { ?> && ( (window.ga && window.ga.create) || checkCount > 50 ) <?php } ?> ) {
+        checkInitialized = true;
+        (function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document);
+    } else if ( !checkInitialized && ( bindReadyQ.length || readyQ.length ) ) {
+        checkCount++;
+        console.log('waiting');
+        setTimeout(function(){checkForJquery()}, 25);
+    }
+};
+checkForJquery();
+<?php if( $waitForOptimize ) { ?>
+window.optimizeCallback = function() {
+    if ( window.wsljquery ) {
+        console.log( "site:triggerOptimize" );
+        window.wsljquery.event.trigger("site:triggerOptimize");
+
+    }
+}
+<?php } ?>
+</script>
+

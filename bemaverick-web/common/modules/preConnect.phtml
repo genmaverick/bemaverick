@@ -1,0 +1,22 @@
+<?php
+$cdnHosts = $this->systemConfig->getSetting( 'SYSTEM_CDN_HOSTS' );
+$defaultProtocol = Sly_Url::getInstance()->getDefaultProtocol().'://';
+$domains = array(
+    'https://www.googletagservices.com',
+    'https://www.googleadservices.com',
+    'https://tpc.googlesyndication.com',
+    'https://www.google-analytics.com',
+);
+if ( $cdnHosts ) {
+    $domains = array_merge( $cdnHosts, $domains );
+}
+foreach( $domains as $domain ) {
+
+    if ( strpos( $domain, 'https://' ) !== 0 && strpos( $domain, 'http://' ) !== 0  ) {
+        $domain = $defaultProtocol.$domain;
+    }
+
+    print '<link href="'.$domain.'" rel="preconnect">
+';
+}
+?>

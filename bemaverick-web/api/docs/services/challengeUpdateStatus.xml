@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Update challenge status</name>
+    <description>Update challenge status after moderation</description>
+    <uri>/challenge/updatestatus</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>challengeId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>1234</examples>
+            <description>Response Id</description>
+        </param>
+        <param>
+            <name>moderationStatus</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>approve or replace or queue for approval or reject</examples>
+            <description>Moderation status</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/challenge/updatestatus?appKey=test_key&responseId=123&moderationStatys=approve"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

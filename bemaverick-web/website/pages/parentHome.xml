@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>parentHome</name>
+    <title>
+        <text>Parent Home</text>
+    </title>
+    <type>parents</type>
+    <subType>parent-home</subType>
+    <nav>
+        <primary>users</primary>
+    </nav>
+    <includes>
+        <primary append="true">
+            <file>parentHome.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

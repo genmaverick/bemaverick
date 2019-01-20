@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>cxhGiveaway</name>
+    <title>
+        <text>Chloe x Halle Giveaway</text>
+        <headingText>Chloe x Halle MaverickLive Twitter Sweepstakes</headingText>
+    </title>
+    <type>index</type>
+    <subType>privacy-policy</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>cxhGiveaway.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

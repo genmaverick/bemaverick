@@ -1,0 +1,47 @@
+<?php
+// globals
+$site = $this->site;
+
+// formatters
+$formatModule = $this->formatModule();
+
+// module stuff
+$moduleClassPrefix = 'auth-login';
+$typeClassPrefix = 'login-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+// header
+$headerContent = '<div class="error-header">OOPS!</div>';
+
+// body content/errors
+$bodyContent = array();
+$errors = $this->getErrorMessages();
+
+if (!$errors) {
+    $errors = 'Unknown error';
+}
+
+$bodyContent[] = '<div class="error-body-message">'.$errors.'</div>';
+
+$bodyContent[] = '
+    <div class="error-body-contact">
+        Please try again, and if you continue to encounter this issue, reach out to our support team so we can fix it: 
+        <a href="mailto:support@bemaverick.com">support@bemaverick.com</a>
+    </div>';
+
+// print module
+print $formatModule->getBasicLoginModule(
+    array(
+        'headerContent' => $headerContent,
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', array() )
+        )
+    )
+);
+?>

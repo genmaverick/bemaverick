@@ -1,0 +1,189 @@
+@import "variables.less";
+.global-hd {
+    .position-sticky();
+    top: 0;
+    z-index: 2;
+}
+
+.site-header {
+    background-color: @warm-grey-background-light;
+    position: relative;
+    .transition(transform .3s ease-in);
+    .link-item {
+        position: relative;
+        .flex-display();
+        .align-items(center);
+        + .link-item {
+            margin-left: 32px;
+        }
+        &.selected a {
+            color: @link-on-dark;
+        }
+    }
+    .link-item-divider {
+        font-size: 13px;
+        margin: 0 15px 0 15px;
+        line-height: 1.5;
+    }
+}
+.site-header {
+    color: @black;
+    text-transform: uppercase;
+}
+.site-header a {
+    color: @black;
+    text-transform: uppercase;
+}
+
+.site-header__content {
+    max-width: @max-content-width;
+    margin: 0 auto;
+    padding: 0 @gutter-phone-small;
+}
+// links when smaller breakpoint
+.site-header__links {
+    .flex-display();
+    .align-items(stretch);
+    //.site-text(small, normal);
+}
+.site-header__links--primary {
+    margin-left: auto;
+    display: none;
+}
+.site-header__links--action {
+    margin-left: auto;
+}
+
+.site-header__bd {
+    height: 60px;
+    .flex-display();
+    .align-items(center);
+    .justify-content(space-between);
+    .logo {
+        .flex-display();
+        .align-items(center);
+        .flex-direction(row);
+        line-height: 1;
+        .svgicon--logo-brandmark-1 {
+            display: block;
+            margin-left: 5px;
+            font-size: 40px;
+        }
+        .svgicon--logo-wordmark {
+            display: block;
+            margin-left: 5px;
+            font-size: 108px;
+            //.font-smoothing(on);
+        }
+    }
+    .menu-toggle {
+        margin-left: auto;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 16px;
+        margin-right: -16px;
+    }
+}
+// select menu for web
+// make account "button" look same as other header links
+#site-header__account button {
+    display: flex;
+    .align-items(center);
+    .flex-direction(row);
+    background-color: transparent;
+    border: none;
+    color: @white;
+    text-transform: uppercase;
+    font-family: @font-family-sans-serif;
+    .site-text(small, normal);
+    .svgicon--down-arrow {
+        margin-left: 3px;
+        font-size: 5px;
+    }
+}
+
+// desktop
+#site-header__account:hover #site-header__account-menu {
+    display: flex;
+}
+// touch screen
+#site-header__account button:focus {
+    outline: 0;
+}
+#site-header__account button:hover {
+    cursor: pointer;
+}
+#site-header__account-menu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 100px;
+    background-color: @white;
+    box-shadow: 0 3px 4px 0 fade(@black, 15%);
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        height: 25px;
+        width: 100%;
+        .text--size-tiny();
+        letter-spacing: 1px;
+        color: @dark-text;
+    }
+    a:hover {
+        background-color: @primary-teal;
+        color: @white;
+    }
+}
+
+@media (min-width: @break-phone-big-min) {
+    .site-header__content {
+        padding: 0 @gutter-phone-big;
+    }
+}
+@media (min-width: @break-tablet-min) {
+    .site-header__bd {
+        height: 60px;
+        .logo {
+            .svgicon--logo-brandmark-1 {
+                margin-left: 35px;
+                font-size: 40px;
+            }
+            .svgicon--logo-wordmark {
+                margin-left: 5px;
+                font-size: 100px;
+            }
+        }
+        .menu-toggle {
+            display: none;
+        }
+    }
+    .site-header__content {
+        padding: 0 @gutter-tablet;
+    }
+    .site-header__links {
+        .flex-display();
+        .align-items(stretch);
+        margin-right: 25px;
+        font-size: 16px;
+    }
+    .site-header__links--primary {
+        margin-left: auto;
+    }
+    .site-header__links--action {
+        margin-left: auto;
+    }
+    .site-header {
+        .link-item {
+            position: relative;
+            .flex-display();
+            .align-items(center);
+            + .link-item {
+                margin-left: 32px;
+            }
+            &.selected {
+            }
+        }
+    }
+}

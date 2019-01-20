@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>streams</name>
+    <nav>
+        <primary>streams</primary>
+    </nav>
+    <title>
+        <text>Streams</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>streams.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

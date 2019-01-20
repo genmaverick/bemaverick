@@ -1,0 +1,119 @@
+<?php
+$input = $this->input;
+$type = $this->input->type;
+
+$mergeFiles = new Sly_View_Helper_MergeFiles();
+$mergeFiles->setView($this);
+
+$systemConfig = Zend_Registry::get( 'systemConfig' );
+$htdocsCacheDir = $systemConfig->getHtdocsCacheDir();
+
+list($uri, $cacheFile) = $mergeFiles->getFullCachePath( $type,
+                                                        $htdocsCacheDir,
+                                                        $input->maxModTime,
+                                                        $input->files,
+                                                        $input->namespace );
+
+// set the proper content type
+$contentType = '';
+
+switch($type) {
+    case 'css':
+        $contentType = 'text/css';
+        break;
+    case 'js':
+        $contentType = 'application/x-javascript';
+        break;
+}
+
+/*  It's already been generated, just serve it. */
+if ( file_exists( $cacheFile ) ) {
+
+    // lets add the last modified
+    $lastModified = Sly_Date::formatDate( $input->maxModTime, 'D, d M Y H:i:s', 'UTC' ) . ' GMT';
+
+    // expires and cache-control will be done by apache with this content Type
+    header( "Content-Type: $contentType" );
+    header( "Last-Modified: $lastModified" );
+    
+    echo file_get_contents($cacheFile);
+    return;
+}
+
+/*  Generate the file and serve it. */
+
+switch($type) {
+    case 'css':
+        $searchDirs = $systemConfig->getCSSDirs();
+        $mergedCacheDir = "$htdocsCacheDir/css";
+        if ( $input->namespace ) {
+            $mergedCacheDir .= "/" . $input->namespace;
+        }
+        break;
+    case 'js':
+        $searchDirs = $systemConfig->getJSDirs();
+        $mergedCacheDir = "$htdocsCacheDir/js";                
+        break;
+}
+
+$decodedFiles = base64_decode(strtr($input->files, '-_,', '+/='));
+$files = explode(';', $decodedFiles);
+list($maxModTime, $fullPathFiles) = $mergeFiles->findFullFiles($files, $searchDirs);
+
+if ( ! file_exists( $cacheFile ) ) {
+    @mkdir( $mergedCacheDir, 0777, true );
+    @chmod( $mergedCacheDir, 0777 );
+}
+
+/*
+    There is a race condition here. Pushing new css and js files out to
+    the frontend machines takes some time. A page request may come into
+    a server and that page may reference the new css/js files. The browser will
+    request the new css/js file and it may hit a machine that does not
+    have the new source. In this case, the timestamp in the request will
+    be larger than the largest max modification timestamp found on disk.
+    If this is the case, we'll return the merged files but with a very
+    short TTL so that eventually the client will come back and request
+    the updated css file. If this happens, we should not save the file
+    to disk as the next time the request comes in, if it found the file
+    on disk it would serve it (and it would still be stale).
+*/
+
+$writeToDisk = true;
+
+if ($input->maxModTime > $maxModTime) {
+
+    error_log("MergeFiles: requested mod time {$input->maxModTime} is greater than the actual mod time found on disk {$maxModTime}. Serving stale content temporarily.");
+
+    $writeToDisk = false;
+
+    $ttl = 60;
+    if ( defined( 'SYSTEM_MERGE_FILES_MISS_TTL' ) ) {
+        $ttl = SYSTEM_MERGE_FILES_MISS_TTL;
+    }
+    
+    $expires = Sly_Date::formatDate( time()+$ttl, 'D, d M Y H:i:s', 'UTC' ) . ' GMT';
+
+    // overwrite apache's ttl
+    header( "Expires: $expires" );
+    header( "Cache-Control: max-age=$ttl" );
+}
+
+$combinedFiles = $mergeFiles->combineFiles( $fullPathFiles,
+                                            $cacheFile,
+                                            $type,
+                                            $writeToDisk);
+
+// send a 404 header if the maxModTime is 0, meaning we didn't find any files on disk
+if ( $maxModTime == 0 ) {
+    header("HTTP/1.0 404 Not Found");
+}
+
+$lastModified = Sly_Date::formatDate( $maxModTime, 'D, d M Y H:i:s', 'UTC' ) . ' GMT';
+
+header( "Content-Type: $contentType" );
+header( "Last-Modified: $lastModified" );
+
+echo $combinedFiles;
+
+?>

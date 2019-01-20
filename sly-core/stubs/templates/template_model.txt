@@ -1,0 +1,80 @@
+<?php
+
+require_once( __SLY_TEMPLATE_MODEL_REPOSITORY_UPPERCASE_NAME___COMMON_ROOT_DIR . '/lib/__SLY_TEMPLATE_MODEL_CLASS_PREFIX__/Da/__SLY_TEMPLATE_MODEL_NAME__.php' );
+
+class __SLY_TEMPLATE_MODEL_CLASS_PREFIX_____SLY_TEMPLATE_MODEL_NAME__
+{
+    /**
+     * @static
+     * @var array
+     * @access protected
+     */
+    protected static $_instance = array();
+
+    /**
+     * @var integer
+     * @access protected
+     */
+    protected $___SLY_TEMPLATE_MODEL_LOWERCASE_NAME__Id = null;
+
+    /**
+     * @var __SLY_TEMPLATE_MODEL_CLASS_PREFIX___Da___SLY_TEMPLATE_MODEL_NAME__
+     * @access protected
+     */
+    protected $_da__SLY_TEMPLATE_MODEL_NAME__;
+
+    /**
+     * Class constructor
+     *
+     * @param  integer
+     * @return void
+     */
+    public function __construct( $__SLY_TEMPLATE_MODEL_LOWERCASE_NAME__Id )
+    {
+        $this->___SLY_TEMPLATE_MODEL_LOWERCASE_NAME__Id = $__SLY_TEMPLATE_MODEL_LOWERCASE_NAME__Id;
+        $this->_da__SLY_TEMPLATE_MODEL_NAME__ = __SLY_TEMPLATE_MODEL_CLASS_PREFIX___Da___SLY_TEMPLATE_MODEL_NAME__::getInstance();
+    }
+
+    /**
+     * Get the toString function
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
+    /**
+     * Get the id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->___SLY_TEMPLATE_MODEL_LOWERCASE_NAME__Id;
+    }
+    __SLY_TEMPLATE_MODEL_FUNCTIONS__
+    /**
+     * Save the __SLY_TEMPLATE_MODEL_LOWERCASE_NAME__
+     *
+     * @return void
+     */
+    public function save()
+    {
+        $this->_da__SLY_TEMPLATE_MODEL_NAME__->save();
+    }
+
+    /**
+     * Delete the __SLY_TEMPLATE_MODEL_LOWERCASE_NAME__
+     *
+     * @return void
+     */
+    public function delete()
+    {
+        $this->_da__SLY_TEMPLATE_MODEL_NAME__->delete__SLY_TEMPLATE_MODEL_NAME__( $this->getId() );
+    }
+
+}
+
+?>

@@ -1,0 +1,135 @@
+.home-hero {
+  color: #ffffff;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#f47112), to(#e62767));
+  background-image: -webkit-linear-gradient(top, #f47112 0%, #e62767 100%);
+  background-image: -moz-linear-gradient(top, #f47112 0%, #e62767 100%);
+  background-image: linear-gradient(to bottom, #f47112 0%, #e62767 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff47112', endColorstr='#ffe62767', GradientType=0);
+}
+.home-hero__sections {
+  position: relative;
+  min-height: 664px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  align-items: stretch;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+.home-hero__links {
+  position: absolute;
+  right: 0;
+  top: 24px;
+  z-index: 3;
+}
+.home-hero__links a {
+  color: #ffffff;
+  display: inline-block;
+}
+.home-hero__links a + a {
+  position: relative;
+}
+.home-hero__links a + a:before {
+  content: "|";
+  display: inline-block;
+  padding-right: 16px;
+  margin-left: 16px;
+}
+.home-hero__section--app {
+  min-width: 400px;
+  padding-top: 96px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+}
+.home-hero__section--app .home-hero__phone {
+  width: 239px;
+  height: 480px;
+  margin: 0 auto;
+  background: url(https://i.imgur.com/XccgjcZ.png) no-repeat center center;
+  background-size: contain;
+  -webkit-filter: drop-shadow(0 26px 57px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 26px 57px rgba(0, 0, 0, 0.35));
+  position: relative;
+}
+.home-hero__section--app .home-hero__phone-video-wrap {
+  position: absolute;
+  top: 41px;
+  left: 7px;
+  background-color: pink;
+  width: 225px;
+  height: 384px;
+  overflow: hidden;
+  border-radius: 1.57px;
+}
+.home-hero__section--app .home-hero__phone-video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.home-hero__logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 96px;
+  line-height: 1;
+  white-space: nowrap;
+}
+.home-hero__logo .svg {
+  display: block;
+  width: 300px;
+  max-width: 100%;
+}
+.home-hero__logo .svg svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.home-hero__section--text {
+  padding-top: 240px;
+  max-width: 360px;
+  position: relative;
+}
+.home-hero__title {
+  font-size: 28px;
+  line-height: 1.14285714;
+  font-weight: 600;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.home-hero__description {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.home-hero__cta {
+  margin-top: 64px;
+}
+.home-hero__cta-link--app-store {
+  display: inline-block;
+}
+.home-hero__cta-link--app-store .home-hero__cta-image {
+  height: 48px;
+  width: auto;
+  display: inline-block;
+}
+.home-hero__section--mavericks {
+  margin-left: auto;
+}
+.home-hero__section--parents {
+  margin-right: auto;
+}

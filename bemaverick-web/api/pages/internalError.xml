@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>Internal Error</name>
+    <template>template_empty.phtml</template>
+    <includes>
+        <primary>
+            <file>internalError.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

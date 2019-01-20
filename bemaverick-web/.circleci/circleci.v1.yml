@@ -1,0 +1,36 @@
+machine:
+  pre:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
+  php:
+    version: 7.1.0
+  services:
+    - docker
+
+dependencies:
+  override:
+    - pwd
+    - git clone git@github.com:SlyTrunk/less.js-server.git ../less.js-server/
+    - git clone git@github.com:SlyTrunk/sly-core.git ../sly-core/
+    - git clone git@github.com:SlyTrunk/zend.git ../zend/
+    - curl -l -O https://getcomposer.org/download/1.5.2/composer.phar
+    - php composer.phar install
+    - cd docker/bin && ./build-image
+    - ln -s ~/ ~/dev
+
+test:
+  override:
+    - cd docker/bin && ./test test
+
+deployment:
+  master:
+    branch: [ master ]
+    commands:
+      - mkdir ~/bemaverick-web/packages/builds
+      - cd ~/bemaverick-web/packages && ./build_all_packages.sh
+      - cd ~/bemaverick-web/packages && php ./install_package.php --environment dev --code all
+  release:
+    branch: [ release ]
+    commands:
+      - mkdir ~/bemaverick-web/packages/builds
+      - cd ~/bemaverick-web/packages && ./build_all_packages.sh
+      - cd ~/bemaverick-web/packages && php ./install_package.php --environment production --code all

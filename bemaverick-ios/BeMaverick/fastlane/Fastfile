@@ -1,0 +1,169 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+
+
+
+
+default_platform(:ios)
+
+def get_dev_version_number
+  `/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' ../SupportingFiles/Info-development.plist`.strip
+end
+
+def get_dev_build_number
+  `/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' ../SupportingFiles/Info-development.plist`.strip
+end
+
+
+def get_prod_version_number
+  `/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' ../SupportingFiles/Info-production.plist`.strip
+end
+
+
+
+ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+
+platform :ios do
+  
+  lane :prod do |options|
+    desc "Push a new release build to the App Store"  
+
+      
+    versionNumber =  get_prod_version_number
+    bundleId = "com.bemaverick.bemaverick-ios"
+    notificationBundleId = bundleId+".notifications"
+    messagesBundleId = bundleId+".Messages"
+    
+    match(type:"appstore", app_identifier: [bundleId, notificationBundleId, messagesBundleId], force: true)
+    latestNumber = latest_testflight_build_number(
+      version: versionNumber,
+      app_identifier: bundleId
+      )
+    
+    finalNumber = latestNumber.to_i + 1
+    if options[:build]
+
+		finalNumber = options[:build]
+    	versionNumber = options[:build]
+    	
+    end
+    
+    increment_build_number({
+      build_number:  finalNumber.to_s
+    })
+
+    sh "bash log.sh"
+    build_app(workspace: "Maverick.xcworkspace", scheme: "Production")
+    if options[:store]
+      upload_to_app_store(
+        skip_metadata: true, skip_screenshots: true,
+        run_precheck_before_submit: false)
+    end
+
+    if options[:slack]
+      slack(
+
+        message: "We have shipped a Release Candidate to the App Store!",
+        channel: "#builds",
+        attachment_properties: { 
+          thumb_url: "https://s3.amazonaws.com/bemaverick-images/ItunesArtwork%402x.png",
+      
+           fields: [{
+      title: "Version",
+      value: versionNumber,
+      short: true
+    },{
+      title: "Build Number",
+      value: finalNumber,
+      short: true
+    }]
+
+  }
+
+        )
+    end
+  end
+  lane :dev do |options|
+    desc "Push a new dev build to the App Store"
+    
+    versionNumber =  get_dev_version_number
+    bundleId = "com.bemaverick.bemaverick-ios-dev"
+    latestNumber = latest_testflight_build_number(
+      version: versionNumber,
+      app_identifier: bundleId
+      )
+    
+    finalNumber = get_dev_build_number.to_i + 1
+    
+    increment_build_number()
+  sh "bash log.sh"
+  if options[:beta]
+    notificationBundleId = bundleId+".notifications"
+    messagesBundleId = bundleId+".Messages"
+    
+    
+    match(type:"adhoc", app_identifier: [bundleId, notificationBundleId, messagesBundleId], force: true)
+    
+    build_app(
+      workspace: "Maverick.xcworkspace", 
+      scheme: "Development",
+       export_method: "ad-hoc")
+     crashlytics(
+      notifications: options[:slack],
+
+      api_token: "ba53df55a24a2b039f0211875a6008b92d6b96f3",
+      build_secret: "d25122510761b537bd9d561bbd1bb39ac482bb45ecef4cd9393b693ce70522e3",
+      notes: File.read("gitLog.txt"),
+        emails: File.read("emails.csv")
+      )
+    else  
+
+build_app(
+      workspace: "Maverick.xcworkspace", 
+      scheme: "Development")
+      upload_to_app_store(
+        changelog:  File.read("gitLog.txt"),
+      app_identifier: bundleId,
+      run_precheck_before_submit: false,
+      skip_metadata: true, skip_screenshots: true)
+    end
+     
+
+    if options[:slack]
+       slack(
+      message: "Good Morning Maverick Team, I am your friendly automated build machine here to tell you that a new iOS Build has been created and you may IMMEDIATELY start testing it from Crashlytics Beta!
+
+Below you can find a list of everything that has been included in this build since yesterday:
+
+",
+      payload: {  # Optional, lets you specify any number of your own Slack attachments.
+          "In This Build" => File.read("gitLog.txt")
+      },
+      channel: "#builds",
+      default_payloads: [:git_branch],
+      attachment_properties: { 
+          thumb_url: "https://s3.amazonaws.com/bemaverick-images/ItunesArtwork%402x.png",
+        fields: [{
+      title: "Version",
+      value: versionNumber,
+      short: true
+    },{
+      title: "Build Number",
+      value: finalNumber,
+      short: true
+    }]
+      }
+
+      )
+     end
+  end
+end

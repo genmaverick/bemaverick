@@ -1,0 +1,148 @@
+<?php
+$input = $this->input;
+$site = $this->site;
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$userType = $input->userType;
+$userStatus = $input->userStatus;
+$query = $input->query ? trim( $input->query ) : null;
+$startAge = $input->startAge ? $input->startAge : null;
+$endAge = $input->endAge ? $input->endAge : null;
+$startRegisteredDate = $input->startRegisteredDate ? $input->startRegisteredDate : null;
+$endRegisteredDate = $input->endRegisteredDate ? $input->endRegisteredDate : null;
+$count = $input->count ? $input->count : 20;
+$offset = $input->offset ? $input->offset : 1;
+$sort = $input->sort ? $input->sort : 'id';
+$sortOrder = $input->sortOrder ? $input->sortOrder : 'desc';
+
+$filterBy = array(
+    'userType' => $userType,
+    'userStatus' => $userStatus,
+    'query' => $query,
+    'startAge' => $startAge,
+    'endAge' => $endAge,
+    'startRegisteredDate' => $startRegisteredDate,
+    'endRegisteredDate' => $endRegisteredDate,
+);
+
+$sortBy = array(
+    'sort' => $sort,
+    'sortOrder' => $sortOrder,
+);
+
+$users = $site->getUsers( $filterBy, $sortBy, $count, $offset-1 );
+$userCount = $site->getUserCount( $filterBy );
+
+// set the table data
+$columns = array( 'userId', 'userUsername', 'userType', 'userName', 'kidProfileImage', 'userAge',  'kidBio', 'userEmailAddress', 'userParentEmailAddress', 'userRegisteredTime', 'userStatus', 'userRevokedReason', 'kidAction' );
+
+$columnInfo = $this->getTableInfo()->getColumnInfo( $columns );
+
+// we want the next click to be reverse sort order
+$sortParams = array(
+    'userType' => $userType,
+    'userStatus' => $userStatus,
+    'query' => $query,
+    'startAge' => $startAge,
+    'endAge' => $endAge,
+    'startRegisteredDate' => $startRegisteredDate,
+    'endRegisteredDate' => $endRegisteredDate,
+    'sort' => '_sort_',
+    'sortOrder' => $sortOrder == 'desc' ? 'asc' : 'desc',
+);
+
+$tableInitVars = array(
+    'columns' => $columns,
+    'columnInfo' => $columnInfo,
+    'rowIdPrefix' => 'user',
+    'dontUseGroups' => true,
+    'sort' => array(
+        'url' => $this->url( 'users', $sortParams ),
+        'column' => 'user',
+        'value' => $sort,
+        'isDynamic' => true,
+    ),
+    'tableAttributes' => array( 'class' => 'table table-striped table-bordered' ),
+);
+
+$tableDataInput = array();
+
+$tableData = $this->getTableData( $users, $columns, $tableDataInput );
+
+$tableInitVars['rows'] = array_keys( $tableData );
+
+$table = $this->table( $tableData, $tableInitVars );
+
+// pagination params
+$paginationParams = array(
+    'userType' => $userType,
+    'userStatus' => $userStatus,
+    'query' => $query,
+    'startAge' => $startAge,
+    'endAge' => $endAge,
+    'startRegisteredDate' => $startRegisteredDate,
+    'endRegisteredDate' => $endRegisteredDate,
+    'sort' => $sort,
+    'sortOrder' => $sortOrder,
+);
+
+$paginationVars = array(
+    'offset' => $offset,
+    'urlIndex' => 'users',
+    'totalItems' => $userCount,
+    'perPage' => $count,
+    'itemType' => 'Mavericks',
+    'displayPrefix' => 'Displaying',
+    'of' => 'of',
+    'paginationParams' => $paginationParams,
+    'hideIfEmpty' => true,
+    'alwaysShowPrevNext' => true,
+    'labels' => array( '&laquo; Prev', 'Next &raquo;'),
+    'showItemCounts' => true,
+    'showPaginationIfOnePage' => false,
+    'listAttributes' => array(
+       'class' => 'pagination'
+    ),
+    'containerAttributes' => array(
+        'class' => 'pagination-wrap'
+    )
+);
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getUserType( $userType, null );
+$formItems[] = $formatFormBootstrap->getUserStatus( $userStatus, null );
+$formItems[] = $formatFormBootstrap->getQuery( $query, null );
+$formItems[] = $formatFormBootstrap->getStartAge( $startAge );
+$formItems[] = $formatFormBootstrap->getEndAge( $endAge );
+$formItems[] = $formatFormBootstrap->getStartRegisteredDate( $startRegisteredDate );
+$formItems[] = $formatFormBootstrap->getEndRegisteredDate( $endRegisteredDate );
+$formItems[] = $formatFormBootstrap->getButton( array( 'text' => 'Filter', 'style' => 'default' ) );
+?>
+
+<div class="page-header">
+    <h1 class="page-header-title">Users</h1>
+    <div class="actions-wrap">
+        <a href='<?php print $this->url( 'userAdd' ); ?>' class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp; Add New Maverick
+        </a>
+    </div>
+</div>
+
+<div class="button-bars">
+    <div class="button-bar--filter button-bar">
+        <form method="get" action="<?php print $this->url( 'users' ); ?>">
+            <div class="filter">
+                <?php print $formatFormBootstrap->getList( $formItems ); ?>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <?php print $table; ?>
+</div>
+
+<div class="pagination-bar">
+    <?php print $this->searchPagination( $paginationVars ); ?>
+</div>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>notfound</name>
+    <type>errors</type>
+    <subType>notfound</subType>
+    <template>template_json.phtml</template>
+    <title>
+        <text>Page Not Found</text>
+    </title>
+    <includes>
+        <primary>
+            <file>notfound.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

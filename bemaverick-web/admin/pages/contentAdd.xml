@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>contentAdd</name>
+    <title>
+        <text>Add Content</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>contentAdd.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

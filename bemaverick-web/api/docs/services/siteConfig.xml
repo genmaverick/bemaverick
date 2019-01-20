@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Config</name>
+    <description>Get the config for entire site</description>
+    <uri>/site/config</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/config?appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{"config":{"profileCoverPresetImageIds":[1,2,3,4,5],"profileCoverPresetImageUrls":{"1":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&icq=90&sig=b385089cb76764c649cf018594f125c3","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=200&y=200&icq=90&sig=4d15c988c0f4d07e1d9c2ff816230a3d","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=50&y=50&icq=90&sig=9d4051a542573b8919145a248acb5a24"},"2":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&icq=90&sig=b385089cb76764c649cf018594f125c3","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=200&y=200&icq=90&sig=4d15c988c0f4d07e1d9c2ff816230a3d","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=50&y=50&icq=90&sig=9d4051a542573b8919145a248acb5a24"},"3":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&icq=90&sig=b385089cb76764c649cf018594f125c3","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=200&y=200&icq=90&sig=4d15c988c0f4d07e1d9c2ff816230a3d","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=50&y=50&icq=90&sig=9d4051a542573b8919145a248acb5a24"},"4":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&icq=90&sig=b385089cb76764c649cf018594f125c3","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=200&y=200&icq=90&sig=4d15c988c0f4d07e1d9c2ff816230a3d","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=50&y=50&icq=90&sig=9d4051a542573b8919145a248acb5a24"},"5":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&icq=90&sig=b385089cb76764c649cf018594f125c3","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=200&y=200&icq=90&sig=4d15c988c0f4d07e1d9c2ff816230a3d","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=50&y=50&icq=90&sig=9d4051a542573b8919145a248acb5a24"}}}}
+]]></example_json_response>
+
+</docs>

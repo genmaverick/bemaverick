@@ -1,0 +1,66 @@
+<?php
+/*
+$input = $this->input;
+$translator = $this->translator;
+$site = $this->site;
+$offset = $input && $input->offset ? $input->offset : 1;
+$count = $input && $input->count ? $input->count : 25;
+
+$filterBy = null;
+$sortBy = null;
+
+$objects = $site->getObjects( $filterBy, $sortBy, $count, $offset-1 );
+$objectCount = $site->getObjectCount( $filterBy );
+
+$rows = array();
+$tableDataInput = array();
+$tableInitVars = array();
+$columns = array('objectId','objectAction');
+
+$columnInfo = $this->getTableInfo()->getColumnInfo($columns);
+$tableInitVars = array(
+    'columns' => $columns,
+    'columnInfo' => $columnInfo,
+    'rowIdPrefix' => 'object',
+    'dontUseGroups' => true
+);
+$tableData = $this->getTableData( $objects,
+                                  $tableInitVars['columns'],
+                                  $tableDataInput );
+$tableInitVars['rows'] = array_keys( $tableData );
+$table = $this->table( $tableData, $tableInitVars );
+
+//pagination
+$paginationParams = array();
+
+$paginationVars = array(
+    'offset' => $offset,
+    'urlIndex' => 'objects',
+    'totalItems' => $objectCount,
+    'perPage' => $count,
+    'itemType' => $translator->_('Objects'),
+    'displayPrefix' => $translator->_('Displaying'),
+    'of' => $translator->_('of'),
+    'paginationParams' => $paginationParams,
+    'hideIfEmpty' => true,
+    'alwaysShowPrevNext' => true,
+    'labels' => array( '&laquo; ' . $translator->_('Prev'), $translator->_('Next'). ' &raquo;'),
+    'showItemCounts' => true,
+    'showPaginationIfOnePage' => false
+);
+
+*/
+
+?>
+<div id="objects" class="mod">
+    <div class="content">
+        <div class="bd">
+            <?php
+                //print '<div class="tableWrap">';
+                //print $table;
+                //print '</div>';
+                //print $this->searchPagination($paginationVars);
+            ?>
+        </div>
+    </div>
+</div>

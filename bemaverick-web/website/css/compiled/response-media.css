@@ -1,0 +1,12 @@
+.response-media__media .show-badger + .video-wrap {
+  filter: alpha(opacity=35);
+  opacity: 0.35;
+}
+.response-media__media-text {
+  padding-top: 20px;
+}
+@media (min-width: 768px) {
+  .response-media__media-text {
+    padding-top: 0;
+  }
+}

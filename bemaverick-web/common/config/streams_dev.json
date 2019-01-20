@@ -1,0 +1,43 @@
+[
+    {
+        "index": 0,
+        "label": "Featured Challenges",
+        "headers": {
+          "Authorization": "__REQUIURED__"
+        },
+        "method": "get",
+        "url": {
+            "host": "api.bemaverick.com",
+            "pathname": "/v1/site/challenges",
+            "query": {
+                "appKey": "__REQUIURED__",
+                "count": 10,
+                "sort": "featuredAndStartTimestamp",
+                "featuredType": "maverick-stream"
+            }
+        },
+        "content": [ "challenge" ],
+        "responseVersion": "v1",
+        "streamType": "CHALLENGES"
+    },
+    {
+        "index": 1,
+        "label": "Featured Responses",
+        "headers": {
+          "Authorization": "__REQUIURED__"
+        },
+        "method": "get",
+        "url": {
+            "host": "api.bemaverick.com",
+            "pathname": "/v1/site/responses",
+            "query": {
+                "appKey": "__REQUIURED__",
+                "count": 10,
+                "sort": "featured"
+            }
+        },
+        "content": [ "response" ],
+        "responseVersion": "v1",
+        "streamType": "RESPONSES"
+    }
+]

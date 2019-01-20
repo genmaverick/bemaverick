@@ -1,0 +1,27 @@
+.challenge-media__challenge-add-response-cta {
+  position: absolute;
+  bottom: -15px;
+  z-index: 1;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+.challenge-media__challenge-add-response-cta .button {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.challenge-media__challenge-add-response-cta .button:hover {
+  color: #ffffff;
+}
+.challenge-media__media-content.has-cta + .challenge-media__media-text {
+  padding-top: 20px;
+}
+@media (min-width: 768px) {
+  .challenge-media__challenge-add-response-cta {
+    bottom: 30px;
+  }
+  .challenge-media__media-content.has-cta + .challenge-media__media-text {
+    padding-top: 0;
+  }
+}

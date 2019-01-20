@@ -1,0 +1,74 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$input = $this->input;
+$retry = $this->retry;
+
+// formatters
+$formatFormBootstrap = $this->formatFormBootstrap2();
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+
+// module stuff
+$moduleClassPrefix = 'coppa-verify';
+$typeClassPrefix = 'coppa-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( 'Step 2 of 3' )
+    )
+);
+
+// body content
+$bodyContent = array();
+
+$verifyMaverickStep3Url = $this->url( 'authParentVerifyMaverickStep3' );
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getConsentCollectInformation( $input->consentCollect );
+
+$buttons = array(
+    'signup'=> array(
+        'text' => 'Next',
+        'type' => 'submit',
+        'style' => 'primary-gradient',
+    )
+);
+$options = $formatUtil->getSetting( 'button-options' );
+$formItems['buttons'] = $formatFormBootstrap->getButtons( $buttons, $options );
+
+
+$bodyContent[] = '
+    <div class="pre-form-text">Good news: we’ve confirmed your identity, and you are now able to grant access to your Maverick.</div>
+    <form class="ignore" action="'.$verifyMaverickStep3Url.'" method="POST">
+        '.$formatFormBootstrap->getHiddenSimple( 'code', $input->code ).'
+        '.$formatFormBootstrap->getList( $formItems ).'
+    </form>
+';
+
+// using premade footer option to pass along info container content
+$footerContent[] = '<h1>Welcome to Maverick</h1>';
+
+// print module
+print $formatModule->getBasicCoppaModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'footerContent' => join( '', $footerContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>
+

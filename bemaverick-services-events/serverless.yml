@@ -1,0 +1,107 @@
+
+service: events-service
+
+# plugins:
+#   - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  # profile: sls
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'dev'}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "sqs:*"
+      Resource: "arn:aws:sqs:${self:provider.region}:${self:custom.account}:bemaverick-events-queue-${self:provider.stage}"
+    - Effect: "Allow"
+      Action:
+        - "sqs:ListQueues"
+      Resource: "arn:aws:sqs:${self:provider.region}:${self:custom.account}:*"
+    - Effect: "Allow"
+      Action:
+        - "sns:Publish"
+      Resource: "arn:aws:sns:${self:provider.region}:${self:custom.account}:bemaverick-events-topic-${self:provider.stage}"
+  environment:
+    NODE_ENV: ${self:provider.stage}
+    EVENTS_TOPIC_ARN:
+      "arn:aws:sns:${self:provider.region}:${self:custom.account}:bemaverick-events-topic-${self:provider.stage}"
+    EVENTS_QUEUE_ARN:
+      "arn:aws:sqs:${self:provider.region}:${self:custom.account}:bemaverick-events-queue-${self:provider.stage}"
+
+
+functions:
+  publish:
+    handler: src/publish.handler
+    events:
+      - http:
+          path: v1/publish
+          method: post
+  worker:
+    handler: src/worker.handler
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - EventsQueue
+              - Arn
+
+resources:
+  Resources:
+    EventsQueue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: bemaverick-events-queue-${self:provider.stage}
+
+    EventsQueuePolicy:
+      Type: "AWS::SQS::QueuePolicy"
+      DependsOn:
+        - EventsQueue
+        - EventsTopic
+      Properties:
+        PolicyDocument: 
+          Version: '2012-10-17'
+          # Id: arn:aws:sqs:${self:provider.region}:${self:custom.account}:bemaverick-events-queue-${self:provider.stage}/SQSDefaultPolicy
+          Statement:
+          - Effect: Allow
+            # Sid: SidEventsQueuePolicy-${self:provider.stage}
+            Principal: "*"
+            Action: SQS:SendMessage
+            Resource: arn:aws:sqs:${self:provider.region}:${self:custom.account}:bemaverick-events-queue-${self:provider.stage}
+            # Condition:
+              # ArnEquals:
+              #   aws:SourceArn: arn:aws:sns:${self:provider.region}:${self:custom.account}:bemaverick-events-topic-${self:provider.stage}
+        Queues:
+          - Ref: EventsQueue
+          # - arn:aws:sqs:${self:provider.region}:${self:custom.account}:bemaverick-events-queue-${self:provider.stage}
+          # - Fn::GetAtt:
+            #   - EventsQueue
+            #   - Arn
+
+    EventsTopic:
+      Type: "AWS::SNS::Topic"
+      DependsOn:
+        - EventsQueue
+      Properties:
+        TopicName: bemaverick-events-topic-${self:provider.stage}
+        Subscription:
+          - 
+            Endpoint: "arn:aws:sqs:${self:provider.region}:${self:custom.account}:bemaverick-events-queue-${self:provider.stage}"
+            Protocol: sqs
+          - 
+            Endpoint: "arn:aws:sqs:${self:provider.region}:${self:custom.account}:bemaverick-rules-events-queue-${self:provider.stage}"
+            Protocol: sqs
+
+  Outputs:
+    EventsTopicARN:
+      Value:
+        "Ref": EventsTopic
+      Export:
+        Name: EventsTopicARN-${self:provider.stage}
+        
+custom:
+  account: 415196061258
+  # dotenv:
+  #   path: ./.env/.${self:provider.stage}.env
+         

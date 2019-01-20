@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Make sure a proper username is passed
+if [ -z "$1" ]
+  then
+    echo "No username passed"
+    exit 1
+fi
+
+# Open a bash shell in the running container with the environment bootstrapped
+docker exec -i -t bemaverick-web /home/$1/dev/bemaverick-web/docker/bootstrap/bootstrap-shell

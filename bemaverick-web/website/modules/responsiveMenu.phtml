@@ -1,0 +1,50 @@
+<?php
+require_once (BEMAVERICK_COMMON_ROOT_DIR . '/helpers/MobileDetect.php');
+$detect = new Mobile_Detect;
+$pageConfig = $this->pageConfig;
+$links = $this->navLinks;
+$site = $this->site;
+
+$primaryNav = $pageConfig->getPrimaryNav();
+$content = array();
+$homeLink = $site->getUrl( 'home' );
+
+$content[] = $this->linkList(
+    $links,
+    array(
+        'selected' => $primaryNav,
+        'attributes' => array(
+            'class' => 'responsive-menu__links'
+        )
+    )
+);
+
+$menuClass = 'responsive-menu__contents';
+
+if ($detect->isiOS()) {
+    $menuClass .= ' responsive-menu__contents-ios';
+}
+
+print '
+    <div class="responsive-menu">
+        <div class="'.$menuClass.'">
+            <div class="responsive-menu__header">
+                <div class="toggle-responsive-menu svgicon--ex responsive-menu__close">
+                </div>
+                <a href="'.$homeLink.'">
+                    <div class="logo-container">
+                        <div class="toggle-responsive-menu svgicon--logo-brandmark-1" ></div>
+                        <div class="toggle-responsive-menu svgicon--logo-wordmark" ></div>
+                    </div>
+                </a>
+            </div>
+            <div class="responsive-menu__body toggle-responsive-menu">
+                '.join( '', $content ).'
+            </div>
+        </div>
+    </div>
+';
+?>
+
+
+

@@ -1,0 +1,18 @@
+<?php
+$pageConfig = $this->pageConfig;
+$jsUrls = array();
+
+$siteSpecific = $pageConfig->getJsDefaultFiles();
+if ( count( $siteSpecific ) ) {
+    $jsUrls[] = $this->mergeFiles( 'js', $siteSpecific );
+}
+$pageSpecific = $pageConfig->getJsFiles();
+if ( count( $pageSpecific ) ) {
+    $jsUrls[] = $this->mergeFiles( 'js', $pageSpecific );
+}
+
+foreach( $jsUrls as $jsUrl ) {
+    print '<link rel="preload" as="script" href="'.$jsUrl.'">';
+}
+$this->jsUrls = $jsUrls;
+?>

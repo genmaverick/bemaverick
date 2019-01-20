@@ -1,0 +1,61 @@
+<?php
+
+$httpHost = $this->systemConfig->getSetting( 'SYSTEM_HTTP_HOST' );
+$apiVersion = $this->systemConfig->getSetting( 'SYSTEM_API_VERSION' );
+
+?>
+
+<div id="docsHome" class="mod docs">
+    <div class="content">
+        <div class="bd">
+            <section>
+                <h3>Getting Started</h3>
+                <p>To get started, contact BeMaverick for access to APIs. You will need an App Key and App Secret also known as client_id and client_secret.</p>
+            </section>
+            <section>
+                <h3>Begin using APIs</h3>
+                <p>All the APIs available are listed to the left.  Click on an API to get more information.</p>
+                <p>The structure of the url you will need to make the HTTPS request should look like this:</p>
+                <code>Structure: https://&lt;host&gt;/&lt;apiVersion&gt;/&lt;uri&gt;</code><br/>
+                <code>Example: https://<?php print $httpHost ?>/<?php print $apiVersion ?>/site/sendfeedback</code>
+            </section>
+            <section>
+                <h3>Authorization</h3>
+                <p>All the APIs will need an authorization header with a proper OAuth 2.0 access token except for the OAUTH calls.</p>
+                <p>To obtain an access token, use the /oauth/token API using your Client Credentials given to you by BeMaverick.</p>
+                <p>The authorization header should look like <code>Authorization: Bearer accessTokenHere</code></p>
+            </section>
+            <section>
+                <h3>Service Errors</h3>
+                <h4>HTTP Response Codes</h4>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Status Code</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>200</td>
+                        <td>A 200 response code will be returned for successful requests</td>
+                    </tr>
+                    <tr>
+                        <td>400</td>
+                        <td>A 400 response code for errors along with a list of the errors</td>
+                    </tr>
+                    <tr>
+                        <td>500</td>
+                        <td>A 500 response code if there was an internal error on our side (no error message will be returned in this case)</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h4>Error Representaton</h4>
+                <p>In the case of a webservice error, a json response will be returned to the caller.  The representation can show multiple errors for the same call. Example error representation:</p>
+                <h4>JSON:</h4>
+                <pre>{"errors": [{"message":"You have entered an invalid email address."}]}</pre>
+                <section>
+        </div>
+    </div>
+</div>

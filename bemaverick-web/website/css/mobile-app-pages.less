@@ -1,0 +1,66 @@
+@import "variables.less";
+
+.mobile-app-pages {
+  .header {
+    .flex-display();
+    .align-items(center);
+    height: 50px;
+    background-color: @header-footer;
+    .logo {
+      .flex-display();
+      .align-items(center);
+      .flex-direction(row);
+      color: white;
+      .svgicon--logo-brandmark-1 {
+        margin: 0 0 0 15px;
+        font-size: 30px;
+      }
+      .svgicon--logo-wordmark {
+        margin: 0 0 0 8px;
+        font-size: 100px;
+      }
+    }
+  }
+  .title {
+    margin: 16px 0 16px 0;
+    text-align: center;
+    text-transform: uppercase;
+    .title--size-medium();
+    .text--weight-medium();
+    color: @black;
+  }
+  .body-text {
+    margin: 0 8vw 0 8vw;
+    font-size: 15px;
+    h1 {
+      margin: 16px 0 16px 0;
+      .title--size-small();
+      .text--weight-medium();
+      text-transform: uppercase;
+
+    }
+    h2 {
+      margin: 16px 0 16px 0;
+      .text--size-x-large();
+      .text--weight-semibold();
+      text-transform: uppercase;
+    }
+    p {
+      font-size: 15px;
+      font-weight: 300;
+      margin: 15px 0 15px 0;
+    }
+    strong {
+      .text--weight-semibold();
+    }
+    br {
+      margin: 0;
+      padding: 0;
+    }
+    .indent-block {
+      font-size: 15px;
+      display: block;
+      margin: 1em 0 1em 35px;
+    }
+  }
+}

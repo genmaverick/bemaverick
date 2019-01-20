@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    bootstrap="bootstrap.php"
+    stopOnFailure="false"
+    stopOnError="false">
+    <testsuites>
+        <testsuite name="api">
+            <directory suffix=".php">./api</directory>
+        </testsuite>
+        <testsuite name="common">
+            <directory suffix=".php">./common</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

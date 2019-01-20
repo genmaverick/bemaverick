@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>authParentVerifyMaverickConfirm</name>
+    <title>
+        <text>Verify Maverick</text>
+    </title>
+    <type>auth</type>
+    <subType>auth-parent-verify-mavericki-confirm</subType>
+    <includes>
+        <primary append="true">
+            <file>authParentVerifyMaverickConfirm.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

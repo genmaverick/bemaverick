@@ -1,0 +1,52 @@
+.activity-item {
+  cursor: default;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.activity-item__body {
+  margin-left: 16px;
+  margin-right: 16px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #2c2c2c;
+}
+.activity-item__body .time-since {
+  font-size: 13px;
+  line-height: 1.23076923;
+  color: #666666;
+}
+.activity-item__extra {
+  margin-left: auto;
+  position: relative;
+}
+.activity-item__image-wrap {
+  width: 48px;
+  height: 48px;
+}
+.activity-item--badged_response .badges {
+  position: absolute;
+  z-index: 1;
+  bottom: -2px;
+  left: -6px;
+}
+.activity-item--badged_response .maverick-badge {
+  -webkit-transform: scale(0.4);
+  -ms-transform: scale(0.4);
+  transform: scale(0.4);
+}
+@media (min-width: 480px) {
+  .activity-item__image-wrap {
+    width: 64px;
+    height: 64px;
+  }
+}

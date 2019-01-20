@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>bbGiveaway</name>
+    <title>
+        <text>Brooklyn Bailey Giveaway</text>
+        <headingText>Brooklyn and Bailey MaverickLive Instagram Sweepstakes</headingText>
+    </title>
+    <type>index</type>
+    <subType>privacy-policy</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>bbGiveaway.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

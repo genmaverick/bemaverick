@@ -1,0 +1,149 @@
+<?php
+$pageConfig = $this->pageConfig;
+$systemConfig = $this->systemConfig;
+$primaryNav = $pageConfig->getPrimaryNav();
+$pageType = $pageConfig->getType();
+$pageSubType = $pageConfig->getSubType();
+$subTypeClass = '';
+$input = $this->input;
+$isSlide = $input && $input->isSlide ? $input->isSlide : false;
+$layoutClasses = array(
+    'default' => 'layout-a',
+    '2-column' => 'layout-b'
+);
+
+$moduleClasses = array(
+    'type',
+    'not-inited',
+    'type-'.$pageType,
+);
+if ( $pageSubType ) {
+    $moduleClasses[] = 'subType-'.$pageSubType;
+}
+if ( $pageType && $pageSubType ) {
+    $moduleClasses[] = $pageType.'-'.$pageSubType;
+}
+
+$layoutClass = isset( $layoutClasses[$pageConfig->getLayout()] ) ? $layoutClasses[$pageConfig->getLayout()] : $layoutClasses['default'];
+$moduleClasses[] = $layoutClass;
+
+$popup = ($pageSubType && strpos( $pageSubType, '-popup' ) !== false ) ? true : false;
+
+//replace popup part
+$pageSubType = str_ireplace( '-popup', '', $pageSubType );
+
+//get the content
+$contentBlocks = array();
+
+
+$content = '';
+if ( $pageConfig->hasPrimaryFiles() ) {
+    foreach ( $pageConfig->getPrimaryFiles() as $file ) {
+        $content .= $this->render( $file );
+    }
+    $primaryWrapPieces = !$popup && !$this->contentSelector ? array( '<div id="primary" class="global-primary">', '</div>') : array( '', '' );
+    $contentBlocks[] = $primaryWrapPieces[0].$content.$primaryWrapPieces[1];
+
+}
+if ( $pageConfig->hasSecondaryFiles() ) {
+    $content = '<div id="secondary" class="global-secondary">';
+    foreach ( $pageConfig->getSecondaryFiles() as $file ) {
+        $content .= $this->render( $file );
+    }
+    $content .= '</div>';
+    $contentBlocks[] = $content;
+}
+
+if ( $pageConfig->hasTertiaryFiles() ) {
+    $content = '<div id="tertiary" class="global-tertiary">';
+    foreach ( $pageConfig->getTertiaryFiles() as $file ) {
+        $tertiaryContent .= $this->render( $file );
+    }
+    $content .= '</div>';
+    $contentBlocks[] = $content;
+}
+
+if ( count( $contentBlocks ) && !$popup && !$this->contentSelector ) {
+    array_unshift( $contentBlocks, '<div id="bd" class="global-bd">' );
+    $contentBlocks[] = '</div>';
+}
+
+if ( $pageConfig->hasHeaderFiles() && !$popup && !$this->contentSelector ) {
+    $content = '<div id="hd" class="global-hd">';
+    foreach ( $pageConfig->getHeaderFiles() as $file ) {
+        $content .= $this->render( $file );
+    }
+    $content .= '</div>';
+    array_unshift( $contentBlocks, $content );
+}
+
+$this->isPopup = $popup;
+$this->addItem( 'jsDynamicContent', $pageType, 'type' );
+$this->addItem( 'jsDynamicContent', $pageSubType, 'subType' );
+$this->addItem( 'jsDynamicContent', $popup, 'popup' );
+
+
+
+if ( $this->hideLiveStrip ) {
+    $moduleClasses[] = 'hide-live-strip';
+}
+
+
+$adSettings = $this->formatAd ? $this->formatAd()->getPageSettings() : null;
+if ( $adSettings && !$isSlide ) {
+    unset( $adSettings['slotName'] );
+    $this->addItem( 'jsDynamicContent', $adSettings, 'unicornSettings' );
+}
+
+$content = join( '', $contentBlocks );
+if ( !$popup ) {
+    //change page type if on some goofy page
+    if ( $input && $input->pageType ) {
+        $primaryNav = $input->pageType;
+    }
+    $this->addItem( 'jsDynamicContent', $primaryNav, 'primaryNav' );
+}
+if ( $isSlide || $this->historyReplace ) {
+    $this->addItem( 'jsDynamicContent', true, 'historyReplace' );
+}
+if ( $this->contentSelector ) {
+    $this->addItem( 'jsDynamicContent', $this->contentSelector, 'contentSelector' );
+    print $content;
+    return;
+}
+if ( $this->getItem( 'postInsertReplace' ) ) {
+    $this->addItem( 'jsDynamicContent', $this->getItem( 'postInsertReplace' ), 'postInsertReplace' );
+}
+if ( $this->getItem( 'multiReplace' ) ) {
+    $this->addItem( 'jsDynamicContent', $this->getItem( 'multiReplace' ), 'multiReplace' );
+    return;
+}
+
+if ( $popup ) {
+    $popupSettings = $this->getItem( 'popupSettings' ) ? $this->getItem( 'popupSettings' )  : array();
+    $popupSettings['type'] = isset( $popupSettings['type'] ) ? $popupSettings['type']  : $pageType;
+    $popupSettings['content'] = $content;
+    $content =  $this->formatUtil()->getPopupWrap( $popupSettings );
+    if ( $this->ajax ) {
+        print $content;
+        return;
+    }
+    $moduleClasses[] = 'init-popup';
+}
+
+if ( $this->transitionType ) {
+    $this->addItem( 'jsDynamicContent', $this->transitionType, 'transitionType' );
+    $moduleClasses[] = 'use-transition--'.$this->transitionType;
+
+}
+
+
+$typeClasses = $this->getItem( 'typeClasses' ) ? $this->getItem( 'typeClasses' )  : array();
+$moduleClasses = array_merge( $moduleClasses, $typeClasses );
+
+$content = '<div class="'.join( ' ', $moduleClasses ).'" data-type="'.$pageType.'" data-subtype="'.$pageSubType.'">'.$content.'</div>';
+
+
+print $content;
+
+?>

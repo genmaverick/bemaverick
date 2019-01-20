@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Badges</name>
+    <description>Get a list of badges</description>
+    <uri>/site/badges</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>status</name>
+            <required>no</required>
+            <default>active</default>
+            <format>string</format>
+            <examples>active</examples>
+            <description>enum: active | inactive | deleted | draft | any</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/badges?appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+    "badges": {
+        "2": {
+            "badgeId": "2",
+            "name": "Creative",
+            "status": "active",
+            "color": "#DD9933",
+            "sortOrder": "1",
+            "primaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-creative-primary.png",
+            "secondaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-creative-secondary.png"
+        },
+        "3": {
+            "badgeId": "3",
+            "name": "Unique",
+            "status": "active",
+            "color": "#5A175D",
+            "sortOrder": "2",
+            "primaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-unique-primary.png",
+            "secondaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-unique-secondary.png"
+        },
+        "4": {
+            "badgeId": "4",
+            "name": "Unstoppable",
+            "status": "active",
+            "color": "#186A88",
+            "sortOrder": "3",
+            "primaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-unstoppable-primary.png",
+            "secondaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-unstoppable-secondary.png"
+        },
+        "5": {
+            "badgeId": "5",
+            "name": "Funny",
+            "status": "active",
+            "color": "#379155",
+            "sortOrder": "4",
+            "primaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-funny-primary.png",
+            "secondaryImageUrl": "https://cdn.genmaverick.com/app/badges/badge-funny-secondary.png"
+        }
+    },
+    "site": {
+        "searchResults": {
+            "badges": {
+                "params": {
+                    "status": "active"
+                },
+                "badgeIds": [
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            }
+        }
+    }
+}
+]]></example_json_response>
+
+</docs>

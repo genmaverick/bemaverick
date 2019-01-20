@@ -1,0 +1,19 @@
+.parent-home-latest-resources__post-cards {
+  margin: 0 -8px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.parent-home-latest-resources__post-cards .post-card {
+  width: 50%;
+  position: relative;
+  margin-bottom: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+}

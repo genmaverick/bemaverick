@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>laurieGiveaway</name>
+    <title>
+        <text>Laurie Hernandez Giveaway</text>
+        <headingText>Laurie Hernandez MaverickLive Facebook Sweepstakes</headingText>
+    </title>
+    <type>index</type>
+    <subType>privacy-policy</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>laurieGiveaway.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

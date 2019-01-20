@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>splash</name>
+     <title>
+        <usePrefix>false</usePrefix>
+        <text>Splash</text>
+    </title>
+    <includes>
+        <cssDefault>
+        </cssDefault>
+        <css>
+            <file>yreset.css</file>
+            <file>splash.css</file>
+        </css>
+        <cssPrint>
+        </cssPrint>
+        <jsDefault>
+        </jsDefault>
+        <js>
+        </js>
+        <meta>
+        </meta>
+        <subHeader>
+        </subHeader>
+        <prePrimary>
+        </prePrimary>
+        <pageContent>
+            <file>splash.phtml</file>
+        </pageContent>
+        <primary>
+        </primary>
+        <secondary>
+        </secondary>
+        <tertiary>
+        </tertiary>
+        <header>
+        </header>
+        <footer>
+        </footer>
+        <postFooter>
+        </postFooter>
+    </includes>
+
+</pageConfig>

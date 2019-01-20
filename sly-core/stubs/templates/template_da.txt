@@ -1,0 +1,70 @@
+<?php
+
+require_once( SLY_ROOT_DIR . '/lib/Sly/Da.php' );
+
+class __SLY_TEMPLATE_DA_CLASS_NAME__ extends Sly_Da
+{
+
+    /**
+     * @static
+     * @var __SLY_TEMPLATE_DA_CLASS_NAME__
+     * @access protected
+     */    
+    protected static $_instance = null;
+
+    /**
+     * @var string
+     * @access protected
+     */
+    protected $_database = '__SLY_TEMPLATE_DA_DATABASE_NAME__';
+
+    /**
+     * @var string
+     * @access protected
+     */
+    protected $_table = '__SLY_TEMPLATE_DA_TABLE_NAME__';
+
+    /**
+     * @var array
+     * @access protected
+     */
+    protected $_primary = array( __SLY_TEMPLATE_DA_PRIMARY_KEY__ );
+
+    /**
+     * @var boolean
+     * @access protected
+     */
+    // protected $_rowCacheEnabled = true;
+
+    /**
+     * @var array
+     * @access protected
+     */
+    protected $_functions = array(
+__SLY_TEMPLATE_DA_FUNCTIONS__    );
+    
+    /**
+     * Retrieves the da instance.
+     *
+     * @return __SLY_TEMPLATE_DA_CLASS_NAME__
+     */
+    public function getInstance()
+    {
+        if (null === self::$_instance) {
+            self::$_instance = new self();
+        }
+
+        return self::$_instance;
+    }
+
+    /**
+     * Constructor to set tags
+     */
+    public function __construct()
+    {
+        $this->_tags = array( $this->_database.'.'.$this->_table );
+    }
+
+}
+
+?>

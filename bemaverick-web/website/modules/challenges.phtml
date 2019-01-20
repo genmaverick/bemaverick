@@ -1,0 +1,86 @@
+<?php
+$site = $this->site;
+$loginUser = $this->loginUser;
+$input = $this->input;
+$pageConfig = $this->pageConfig;
+$translator = $this->translator;
+
+$formatChallenge = $this->formatChallenge();
+
+$offset = $input->offset ? $input->offset : 0;
+$count = $input->count ? $input->count : 24;
+$startCount = $input->startCount ? $input->startCount : 0;
+
+$isPagination = $pageConfig->getName() == 'challengesAjax' ? true : false;
+
+if ( $startCount ) {
+    $paginationOffset = $startCount + 1;
+} else {
+    $paginationOffset = $offset;
+    $startCount = $count;
+}
+
+$filterBy = array(
+    'challengeStatus' => 'active',
+);
+
+$challengeCount = $site->getChallengeCount( $filterBy );
+
+// get challenge stream challenges
+$challenges = $site->getChallengeStreamChallenges($count, $offset);
+
+$returnType = $isPagination ? 'content' : 'module';
+
+$paginationConfig = array(
+    'urlIndex' => 'challenges',
+    'linkAttributes' => array(
+        'data-request-name' => 'challenges'
+    ),
+    'perPage' => $count,
+    'offset' => $paginationOffset > $challengeCount ? $challengeCount : $paginationOffset,
+    'totalItems' => $challengeCount,
+    'hideIfEmpty' => true,
+    'hideFirstLast' => true,
+    'itemType' => 'items',
+    'displayPrefix' => '',
+    'unsetIfDefault' => true,
+    'containerAttributes' => array(
+        'class' => 'pagination pagination--item pagination--see-more'
+    ),
+    'labels' => array(
+        '',
+        'Prev',
+        $translator->_( 'See More' ),
+        ''
+    )
+);
+
+$moduleConfig = array(
+    'title' => $translator->_( 'Challenges' ),
+    'returnType' => $returnType,
+    'includePagination' => true,
+    'paginationConfig' => $paginationConfig,
+    'previewConfig' => array(
+        'size' => 'medium',
+        'imageType' => 'main'
+    )
+);
+
+$challengePreviewsModule = $formatChallenge->getPreviewsModule( $challenges, $moduleConfig );
+
+if ( $isPagination ) {
+    $urlParams['startCount'] = $offset + $count - 1;
+    $this->browserHistoryUrl = $site->getUrl( 'challenges', $urlParams );
+    $this->noScroll = true;
+    $this->historyReplace = true;
+    $this->contentSelector = '.challenges .pagination';
+    print $challengePreviewsModule;
+    return;
+}
+
+print '
+    <div class="challenges previews-grid">
+        '.$challengePreviewsModule.'
+    </div>
+'
+?>

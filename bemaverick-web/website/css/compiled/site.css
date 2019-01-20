@@ -1,0 +1,349 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #ffffff;
+  color: #746f68;
+  font-family: "Barlow";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.14285714;
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+}
+body > iframe {
+  top: 0;
+}
+body.branch-banner-is-active {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+a {
+  color: #00b0ac;
+  text-decoration: none;
+}
+a:hover {
+  color: #00918e;
+}
+a:focus {
+  outline: none;
+}
+.link {
+  cursor: pointer;
+}
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.geotargetted {
+  display: none;
+}
+.type .global-bd {
+  background-color: #ffffff;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: opacity .01s ease-in, transform .3s ease-in;
+  transition: opacity .01s ease-in, transform .3s ease-in;
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+.type.not-inited .global-bd {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.global-ft {
+  position: relative;
+  z-index: 1;
+}
+.global-bd {
+  margin: 0 auto;
+  padding: 0 16px;
+  padding-bottom: 10px;
+}
+@media (min-width: 414px) {
+  .global-bd {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.only {
+  display: none;
+}
+.only--phone {
+  display: block;
+}
+.except {
+  display: block;
+}
+.except--phone {
+  display: none;
+}
+.status-message,
+.empty-message {
+  font-size: 36px;
+  line-height: 1.11111111;
+  font-weight: 600;
+  font-weight: 400;
+  font-style: italic;
+  color: #2d2d2d;
+}
+@media (min-width: 768px) {
+  .global-bd {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .only--phone {
+    display: none;
+  }
+  .only--tablet {
+    display: block;
+  }
+  .block-title {
+    margin: 0 0 10px 0;
+    height: 37px;
+  }
+  .block-title span {
+    font-size: 60px;
+  }
+  .except--phone {
+    display: block;
+  }
+  .except--tablet {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .only--tablet {
+    display: none;
+  }
+  .only--desktop {
+    display: block;
+  }
+  .except--tablet {
+    display: block;
+  }
+  .except--desktop {
+    display: none;
+  }
+}
+@media (min-width: 1200px) {
+  .only--desktop {
+    display: none;
+  }
+  .only--desktop-big {
+    display: block;
+  }
+  .except--desktop {
+    display: block;
+  }
+  .except--desktop-big {
+    display: none;
+  }
+}
+.only-platform {
+  display: none;
+}
+.not-mobile-detected .only-platform--non-mobile {
+  display: block;
+}
+.ios .only-platform--ios {
+  display: block;
+}
+.android .only-platform--android {
+  display: block;
+}
+.mobile-detected .only-platform--mobile {
+  display: block;
+}
+.google-analytics {
+  position: absolute;
+  left: -3000px;
+}
+.edger {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+.edger-reset {
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 414px) {
+  .edger {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  .edger-reset {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .edger {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+  .edger-reset {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+.proxy-img {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.proxy-img.loaded {
+  filter: alpha(opacity=99);
+  opacity: 0.99;
+}
+.full-page-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: top center;
+}
+.pixels {
+  position: absolute;
+  bottom: 0;
+  right: 100%;
+}
+.scrollbar-measure {
+  width: 100px;
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+}
+.transitioner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow: hidden;
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+}
+.transitioner.transitioner--from-left {
+  -webkit-transform: translate(-100%, 0);
+  -ms-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+}
+.transitioner.transitioner--from-right {
+  -webkit-transform: translate(100%, 0);
+  -ms-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+}
+.transitioner.added {
+  -webkit-transform: translate(0%, 0%);
+  -ms-transform: translate(0%, 0%);
+  transform: translate(0%, 0%);
+}
+.transitioner .global-hd {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.type.not-inited.use-transition--from-right .global-bd {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  z-index: 1;
+  -webkit-transform: translate(-100%, 0);
+  -ms-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+}
+.type.not-inited.use-transition--from-left .global-bd {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translate(100%, 0);
+  -ms-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+}
+.type.use-transition--from-left .global-bd,
+.type.use-transition--from-right .global-bd {
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translate(0%, 0%);
+  -ms-transform: translate(0%, 0%);
+  transform: translate(0%, 0%);
+  -webkit-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+}
+.footer {
+  margin: 48px 0 24px 0;
+}
+.unassociated-errors {
+  text-align: center;
+  margin: 24px 0;
+  color: #d0011b;
+  font-weight: 400;
+}
+.unassociated-errors p {
+  margin-bottom: 8px;
+}
+.unassociated-errors li {
+  margin-bottom: 8px;
+}
+.unassociated-errors li.last {
+  margin-bottom: 0;
+}
+[data-is-following="false"] .follow {
+  display: inherit;
+}
+[data-is-following="false"] .unfollow {
+  display: none;
+}
+[data-is-following="true"] .follow {
+  display: none;
+}
+[data-is-following="true"] .unfollow {
+  display: inherit;
+}
+.action-menu {
+  cursor: pointer;
+}
+.action-menu .action-menu-menu {
+  display: none;
+}
+.action-menu.click-hover .action-menu-menu {
+  display: block;
+}
+.flip-horizontal {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+.fade-out {
+  filter: alpha(opacity=0);
+  opacity: 0;
+  -webkit-transition: all 1s ease-in 3s;
+  transition: all 1s ease-in 3s;
+}
+.fade-out.trigger-transition {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}

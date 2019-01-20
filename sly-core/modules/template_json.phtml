@@ -1,0 +1,54 @@
+<?php
+/**
+ * To use this template <template> must be set to json_template.phtml in the page config.
+ * Only the <primary> includes will be used.
+ *
+ */
+//header('Content-type: application/json');
+require_once( 'Zend/Json.php' );
+
+$pageConfig = $this->pageConfig;
+
+$content = '';
+
+if ( $pageConfig->hasPrimaryFiles() ) {
+    foreach( $pageConfig->getPrimaryFiles() as $file ) {
+        $content .= $this->render( $file );
+    }
+}
+
+$js = null;
+$error = null;
+$jsContent = null;
+if ($this->getItem( 'jsDynamic' )) {
+    $js = implode(';',$this->getItem( 'jsDynamic' ) );
+}
+if ($this->getItem( 'jsDynamicError' )) {
+    $error = implode(',',$this->getItem( 'jsDynamicError' ) );
+}
+if ($this->getItem( 'jsDynamicContent' )) {
+    $jsContent = $this->getItem( 'jsDynamicContent' );
+}
+
+
+$allcontent = array( 
+    'content' => $content,
+    'js'      => 'function(){'.$js.'}',
+    'error'      => $error,  
+    
+);
+if ($jsContent ) {
+    if ( $this->network->isFacebook() && Zend_Registry::get( 'systemConfig' )->getSite() != 'facebook' ) {
+        $allcontent['jsContent'] = join(',',$jsContent);    
+    } else {
+        $allcontent['jsContent'] = '{'.Zend_Json::encode($jsContent).'}';
+    }
+} else {
+    $allcontent['jsContent'] = $jsContent;
+}
+
+$json = Zend_Json::encode($allcontent);
+
+echo $json;
+?>
+

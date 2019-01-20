@@ -1,0 +1,12 @@
+<?php
+if ( ! @$_REQUEST['confirmPage'] ) {
+    return;
+}
+
+print <<<EOS
+<br/><div class="alert alert-block alert-success">
+    Your changes have been successful.
+</div>
+EOS;
+
+?>

@@ -1,0 +1,6 @@
+{
+  "DEBUG_ENABLED": false,
+  "API_URL": "https://api.bemaverick.com",
+  "APP_KEY": "bemaverick_aws",
+  "ACCESS_TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiZW1hdmVyaWNrX2F3cyIsImV4cCI6MTU1NDUxNDQ0M30.kd5xgIxhbwkGg8M_9S2o4-bA_Cjapmw2FvS2MSQsKac"
+}

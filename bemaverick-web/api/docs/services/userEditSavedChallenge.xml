@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Edit Saved Challenge</name>
+    <description>Add or remove a saved challenge</description>
+    <uri>/user/editsavedchallenge</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>challengeId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>12</examples>
+            <description>The challenge id to add or remove</description>
+        </param>
+        <param>
+            <name>saveAction</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>add, remove</examples>
+            <description>The action to do for this user. Valid actions are: add, remove</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/editsavedchallenge" \
+  --data "challengeId=1&saveAction=add&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

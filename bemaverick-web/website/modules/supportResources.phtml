@@ -1,0 +1,17 @@
+<?php
+// globals
+$site = $this->site;
+
+// variables
+$posts = $site->getPosts(35,3 );
+
+// find privacy policy post (id 398)
+foreach ($posts as $post) {
+    $formatPost = $this->formatPost();
+    $postObj = $formatPost->getPostObject( null, $post );
+
+    if ($postObj->getId() == 499) {
+        print $postObj->getContent();
+    }
+}
+?>

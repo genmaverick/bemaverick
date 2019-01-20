@@ -1,0 +1,191 @@
+<?php
+$systemConfig = $this->systemConfig;
+$pageConfig = $this->pageConfig;
+$site = $this->site;
+
+$pageType = $pageConfig->getType();
+$pageSubType = $pageConfig->getSubType();
+
+$popup = ($pageSubType && strpos( $pageSubType, '-popup') !== false ) ? 'true' : 'false';
+$httpHost = $this->url( '', array(), false, $systemConfig->getHttpHost(), true, true);
+
+$pageSubType = str_ireplace( '-popup', '', $pageSubType ); //replace popup part
+$popupUrl = '';
+$browserHistoryUrl = '';
+
+//need a url to fire a popup after load
+if ( $this->popupUrl ) {
+    $popupUrl = $this->popupUrl;
+}
+
+if ( $this->browserHistoryUrl ) {
+    $browserHistoryUrl = $this->browserHistoryUrl;
+}
+
+
+
+$pageTrackingInfo = $this->formatPageTracking()->getTrackingInfo( $pageConfig );
+$pageTrackingInfo['isInitial'] = true;
+$this->pageTrackingInfo = $pageTrackingInfo;
+$pageTrackingObj = json_encode( $pageTrackingInfo );
+
+$pageVars = $this->getItem( 'pageVars' ) ?  $this->getItem( 'pageVars' ) : array();
+
+
+$cookieDomain = $systemConfig->getSetting( 'SYSTEM_COOKIE_DOMAIN' );
+$packageBuildVersion = $systemConfig->getSetting( 'SYSTEM_CHECK_PACKAGE_BUILD_VERSION' ) && $systemConfig->getPackageBuildVersion() ? $systemConfig->getPackageBuildVersion() : 0;
+$scrollLoadThreshold = $systemConfig->getSetting( 'SYSTEM_SCROLL_LOAD_THRESHOLD' ) ? $systemConfig->getSetting( 'SYSTEM_SCROLL_LOAD_THRESHOLD' ) : 0;
+
+$adsEnabled = $systemConfig->getSetting( 'SYSTEM_ADS_ENABLED' ) ? 'true' : 'false';
+$adsEnvironment = $systemConfig->getSetting( 'SYSTEM_ADS_ENVIRONMENT' )  ? $systemConfig->getSetting( 'SYSTEM_ADS_ENVIRONMENT' ) : 'test';
+
+if ( @$_REQUEST['adsEnabled'] == "false" ){
+    $adsEnabled = "false";
+}
+
+if ( @$_REQUEST['adEnvironment'] ){
+    $adsEnvironment = @$_REQUEST['adEnvironment'];
+}
+
+$extraJs = $this->getItem( 'extraJs' );
+$extraJs = $extraJs ? json_encode( $extraJs ) : json_encode( array() );
+$currentUrl = '"/"';
+if ( $this->currentUrl ) {
+    $currentUrl = '"'.$this->currentUrl.'"';
+}
+$noAds = $this->noAds ? 'true' : 'false';
+$adSelector = $this->adSelector ? $this->adSelector : '';
+$scrollToSelector = $this->scrollToSelector ? $this->scrollToSelector : '';
+
+$gtmId = $systemConfig->getSetting( 'GOOGLE_TAG_MANAGER_ID' ) ? $systemConfig->getSetting( 'GOOGLE_TAG_MANAGER_ID' ) : '';
+$environment = $systemConfig->getEnvironment();
+$debugMode = $environment != 'production' || ( @$_REQUEST['debug'] && @$_REQUEST['debug'] == 1 ) ? 'true' : 'false';
+
+$categorySlug = isset( $pageVars['categoryName'] ) ? $pageVars['categoryName'] : '';
+$categorySlug = strtolower( Sly_Util::filterString( $categorySlug ) );
+
+$facebookAppId = $systemConfig->getSetting( 'FACEBOOK_APP_ID' );
+$googleClientId = $systemConfig->getSetting( 'GOOGLE_WEB_CLIENT_ID' );
+$branchKey = $systemConfig->getSetting( 'MAVERICK_BRANCH_KEY' );
+$segmentKey = $systemConfig->getSetting( 'MAVERICK_SEGMENT_KEY' );
+$leanplumAppId = $systemConfig->getSetting( 'MAVERICK_LEANPLUM_APP_ID' );
+$leanplumClientKey = $systemConfig->getSetting( 'MAVERICK_LEANPLUM_CLIENT_KEY' );
+
+$sponsorName = isset( $pageVars['sponsorName'] ) ? $pageVars['sponsorName'] : '';
+$homeTab = isset( $pageVars['homeTab'] ) ? $pageVars['homeTab'] : 'wall';
+
+$preloadAdLibrary = $systemConfig->getSetting( 'SYSTEM_PRELOAD_AD_LIBRARY' ) ? 'true' : 'false';
+$allScreenDetails = $systemConfig->getSetting( 'SYSTEM_ALL_SCREEN_DETAILS' ) ? json_encode( $systemConfig->getSetting( 'SYSTEM_ALL_SCREEN_DETAILS' ) )  : '{}';
+
+$uploadFileSizeMax = $systemConfig->getSetting( 'SYSTEM_UPLOAD_FILE_SIZE_MAX_MB' ) ? $systemConfig->getSetting( 'SYSTEM_UPLOAD_FILE_SIZE_MAX_MB' ) : 'null';
+
+if ( @$_REQUEST['debug'] == 1 ) {
+    $environment = 'devel';
+}
+$formatUtil = $this->formatUtil();
+
+$userSetDataCookieUrl = $this->url( '/user/setdatacookie', array(), false, $systemConfig->getSetting( 'SYSTEM_CORE_WEBSITE_HTTP_HOST' ), true, true);
+
+$cookieSessionExpire = 4 * 24 * 60 * 60 * 1000; // 4 days
+$adRefresh = 3 * 60 * 1000; // 3 mintues
+$clearImg = $this->url( 'imageStatic', array( 'imageName' => 'placeholder-1x1.gif' ) );
+
+
+$uploadJs = $this->mergeFiles( 'js', array( 'external/rsvp.js', 'external/dropzone.js', 'external/frame-grab.js', 'external/croppie.js' ) );
+//$twilioJs = $this->mergeFiles( 'js', array( 'external/twilio-chat.js' ) );
+$twilioJs = "https://media.twiliocdn.com/sdk/js/chat/v2.2/twilio-chat.min.js";
+
+$config = <<<EOS
+{
+    'globals' : {
+        'httpHost' : '$httpHost',
+        'cookieDomain' : '$cookieDomain',
+        'cookieSessionExpire' : $cookieSessionExpire,
+        'packageBuildVersion' : '$packageBuildVersion',
+        'scrollLoadThreshold' : $scrollLoadThreshold,
+        'unicornsEnabled' : $adsEnabled,
+        'unicornsEnvironment' : '$adsEnvironment',
+        'unicornsLiveRefresh' : $adRefresh,
+        'gtmId' : '$gtmId',
+        'facebookAppId' : '$facebookAppId',
+        'googleClientId': '$googleClientId',
+        'branchKey': '$branchKey',
+        'segmentKey': '$segmentKey',
+        'leanplumAppId': '$leanplumAppId',
+        'leanplumClientKey': '$leanplumClientKey',
+        'debugMode' : $debugMode,
+        'environment' : '$environment',
+        'clearImg' : '$clearImg',
+        'initTimeout' : 200,
+        'uploadFileSizeMax' : $uploadFileSizeMax,
+        'externalJs' : {
+            upload: "$uploadJs",
+            twilio: "$twilioJs"
+        }
+    },
+    'containers' : {
+        'main' : 'body',
+        'content' : '#main',
+        'popup' : '#popup'
+    },
+    'init' : {
+        'type' : '$pageType',
+        'subType' : '$pageSubType',
+        'popup' : $popup,
+        'popupUrl' : '$popupUrl',
+        'browserHistoryUrl' : '$browserHistoryUrl',
+        'noScroll': true,
+        'noAds' : $noAds,
+        'pageTracking' : $pageTrackingObj,
+        'extraJs' : $extraJs,
+        'currentUrl' : $currentUrl,
+        'unicornSelector' : '$adSelector',
+        'scrollToSelector' : '$scrollToSelector'
+    },
+    'controllers' : {
+        'base' : function( obj, site, $ ) {
+            window.ST.lib.Util.init( site, $ );
+            window.ST.lib.Unicorns.init( site, $ );
+            window.ST.lib.Images.init( site, $ );
+            window.ST.lib.Carousels.init( site, $ );
+            window.MAV.lib.Videos.init( site, $ );
+            window.MAV.lib.Badgers.init( site, $ );
+            window.MAV.lib.Comments.init( site, $ );
+            window.MAV.lib.BranchConfig.init( site, $ );
+            window.MAV.lib.SegmentConfig.init( site, $ );
+            window.MAV.lib.LeanplumConfig.init( site, $ );
+        },
+        'challenges' : function(obj,site, $) {
+            if (obj) {
+                window.MAV.controllers.Challenges.init( site, $ );
+                site.insertContent( obj, 'challenges:init');
+            }
+        },
+        'responses' : function(obj,site, $) {
+            if (obj) {
+                window.MAV.controllers.Responses.init( site, $ );
+                site.insertContent( obj, 'responses:init');
+            }
+        },
+        'users' : function(obj,site, $) {
+            if (obj) {
+                window.MAV.controllers.Users.init( site, $ );
+                site.insertContent( obj, 'users:init');
+            }
+        },
+        'default' : function(obj,site, $) {
+            if (obj) {
+                site.insertContent( obj, 'site:finishInit');
+            }
+        }
+    }
+}
+EOS;
+$this->AddItem( 'jsInit', '
+    var JQ = jQuery.noConflict();
+    var site = new window.ST.lib.Site( JQ,'.$config.' ); window.mysite = site;
+    window.STCONFIG = site.config;
+');
+
+
+?>

@@ -1,0 +1,177 @@
+@import "variables.less";
+.video-module {
+    .video {
+        position: relative;
+        background-color: @black;
+    }
+    .video-wrap {
+        .opacity(1);
+        .transition(opacity .2s ease-in);
+        padding-top: (100%/3) * 4;
+    }
+    .video-text__status {
+        background-color: @white;
+    }
+
+    .challenge-status {
+        padding: 16px;
+        .flex-display();
+        .justify-content(space-between);
+        .time-left {
+            &:before {
+                content: "\e92b";
+                font-family: "svgicon";
+                font-size: 24px;
+                color: @primary-ruby;
+                margin-right: 8px;
+                display: inline-block;
+            }
+            .flex-display();
+            .align-items(center);
+            .time-left__item {
+                .flex-display();
+                .align-items(baseline);
+                + .time-left__item {
+                    margin-left: 8px;
+                }
+            }
+            .time-left__item-value {
+                .site-text(x-medium, semibold);
+                color: @dark-text-2;
+                &:after {
+                    content: "ello";
+                    .site-text(small,semibold);
+                    color: @dark-text-3;
+                }
+            }
+            .time-left__item-value--d {
+                &:after {
+                    content: "d";
+                }
+            }
+            .time-left__item-value--h {
+                &:after {
+                    content: "hrs";
+                }
+            }
+            .time-left__item-value--m {
+                &:after {
+                    content: "min";
+                }
+            }
+            .time-left__item-value--s {
+                &:after {
+                    content: "sec";
+                }
+            }
+            .time-left__item-label {
+                display: none;
+                .site-text(small,semibold);
+                color: @dark-text-3;
+            }
+        }
+    }
+    .tags {
+        margin-top: 4px;
+        .site-text(medium);
+        .flex-display();
+        .flex-wrap(wrap);
+        .tag + .tag {
+            margin-left: 8px;
+        }
+    }
+    .comments {
+        padding: 24px 16px 24px 16px;
+        max-height: 300px;
+        overflow-y: auto;
+        .one-comment {
+            margin: 15px 10% 15px 10px;
+            .text--size-medium();
+            a {
+                margin-right: 5px;
+                color: @black;
+                .text--weight-semibold();
+            }
+        }
+    }
+
+    .video-description {
+        .flex-display();
+        padding: 16px;
+        .justify-content(space-between);
+        .profile-image {
+            min-width: 64px;
+            margin-right: 16px;
+        }
+        .text-wrap {
+            .site-text(x-medium);
+            width: 100%;
+        }
+        .display-name {
+            .text--weight-semibold();
+            color: @black;
+            &:hover {
+                color: @link-on-light-hover;
+            }
+        }
+        border-bottom: 1px solid @border-color;
+    }
+    max-width: @max-content-width;
+    margin: 0 auto;
+}
+.video-module__hd {
+    a {
+        color: @white;
+        &:hover {
+            color: @white;
+        }
+    }
+}
+.video-module__bd {
+    .edger();
+}
+.video-module__hd-content {
+    background-color: @black;
+    color: @white;
+    .site-title(medium);
+    .font-smoothing(on);
+    .flex-display();
+    .text--weight-semibold();
+    .align-items(center);
+    height: 50px;
+    text-transform: uppercase;
+}
+.video-module__bd {
+    .video {
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+        position: relative;
+    }
+    .video-text {
+        width: 100%;
+        background-color: @white;
+        overflow-y: hidden;
+    }
+    .join-module {
+        width: 100%;
+    }
+}
+
+@media (min-width: @break-tablet-min) {
+    .video-module__bd-content {
+        .flex-display();
+        .justify-content(stretch);
+        .video-text {
+            overflow-y: auto;
+            .video-text__status {
+                .position-sticky();
+                top: 0;
+            }
+            .comments {
+                overflow-y: visible;
+                max-height: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Send Feedback</name>
+    <description>Send feedback to us</description>
+    <uri>/site/sendfeedback</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>emailAddress</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>shawn@slytrunk.com</examples>
+            <description>The email address</description>
+        </param>
+        <param>
+            <name>message</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>This is my message</examples>
+            <description>The message</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/sendfeedback" \
+  --data "emailAddress=shawn@slytrunk.com&message=Thisismymessage&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{"status":"success"}
+]]></example_json_response>
+
+</docs>

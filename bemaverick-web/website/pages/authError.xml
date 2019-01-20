@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>authError</name>
+    <title>
+        <text>Error</text>
+    </title>
+    <type>auth</type>
+    <subType>error-popup</subType>
+    <includes>
+        <primary append="true">
+            <file>authError.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

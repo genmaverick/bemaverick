@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>internalErrorAjax</name>
+    <type>errors</type>
+    <subType>internal-error</subType>
+    <template>template_json.phtml</template>
+    <title>
+        <text>Internal Error</text>
+    </title>
+    <includes>
+        <primary>
+            <file>internalError.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

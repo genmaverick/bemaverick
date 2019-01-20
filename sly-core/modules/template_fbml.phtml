@@ -1,0 +1,251 @@
+<?php
+$app = $this->app;
+$pageConfig = $this->pageConfig;
+$systemConfig = Zend_Registry::get( 'systemConfig' );
+$httpHost = $systemConfig->getHttpHost();
+
+if ( $pageConfig->useTitlePrefix() ) {
+    $documentTitleString = $pageConfig->getTitlePrefix().$pageConfig->getTitlePrefixDelimiter().$pageConfig->getTitle();
+} else {
+    $documentTitleString = $pageConfig->getTitle();
+}
+$pageHeadingString = '';
+if ( $pageConfig->useTitleHeading() ) {
+    $pageHeadingTag = $pageConfig->getTitleHeadingTag();
+    $pageHeadingString  = "<$pageHeadingTag>".$pageConfig->getTitle()."</$pageHeadingTag>\n";
+}
+
+$this->pageHeadingString = $pageHeadingString;
+$this->pageHeadingWritten = false;
+
+$layouts = array(
+    'default' => array(
+        'id' => 'doc',
+        'class' => 'g-d',
+        'cols' => 1,       
+    ),
+    'full-1column' => array(
+        'id' => 'doc',
+        'class' => 'g-a',
+        'cols' => 1,       
+    ),
+    'full-2column' => array(
+        'id' => 'doc',
+        'class' => 'g-b',
+        'cols' => 2,
+    ),
+    'full-3column' => array(
+        'id' => 'doc',
+        'class' => 'g-c',
+        'cols' => 3,
+    ),    
+);
+
+if ( isset( $layouts[$pageConfig->getLayout()] ) ) {
+    $curLayout = $layouts[$pageConfig->getLayout()];
+}
+else {
+    $curLayout = $layouts['default'];
+}
+
+?>
+    <?php if ( $pageConfig->hasCssDefaultFiles() ) { ?>   
+    <link rel="stylesheet" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssDefaultFiles() ) ?>" />
+    <?php } ?>    
+    <?php if ( $pageConfig->hasCssFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssFiles() ) ?>" />
+    <?php } ?>
+    <?php if ( $pageConfig->hasJsDefaultFiles() ) { ?>    
+    <script type="text/javascript" src="<?php print $this->combineJS( $pageConfig->getJsDefaultFiles() ) ?>"></script>
+    <?php } ?>     
+    <?php if ( $pageConfig->hasJsFiles() ) { ?>    
+    <script type="text/javascript" src="<?php print $this->combineJS( $pageConfig->getJsFiles() ) ?>"></script>
+    <?php } ?> 
+<div id="<?php echo $pageConfig->getName() ?>Page">
+<fb:title><?php echo $documentTitleString; ?></fb:title>
+<div id="<?php echo $curLayout['id'] ?>" class="<?php echo $curLayout['class'] ?>">
+    <?php if ( $pageConfig->hasHeaderFiles() ) { ?>
+    <div id="hd">
+        <?php
+        foreach( $pageConfig->getHeaderFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasPrimaryFiles() ||
+               $pageConfig->hasSecondaryFiles() ||
+               $pageConfig->hasTertiaryFiles() ) { ?>
+    <div id="bd">
+        <?php
+            if ( $pageConfig->useGlobalForm() ) {
+                $formAttributes = array();
+                foreach( $pageConfig->getFormAttributes as $key => $value ) {
+                    $formAttributes[]= $key.'="'.$value.'"';
+                }
+                echo '<form '.implode( ' ', $formAttributes).'>';
+            }
+        ?>
+        <?php if($curLayout['cols'] == '1') { ?>
+            
+            <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+            <div id="primary">
+                <?php
+                foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+            <div id="secondary">
+                <?php
+                foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+
+        <?php } else if($curLayout['cols'] == '2') { ?>
+
+            <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+            <div id="primary">
+                <?php
+                foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+            <div id="secondary">
+                <?php
+                foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+         
+        <?php } else if($curLayout['cols'] == '3') { ?>
+            <div id="priSecWrap">
+                <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+                <div id="primary">
+                    <?php
+                    foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+                <?php } ?> 
+                <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+                <div id="secondary">
+                    <?php
+                    foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+                <?php } ?>                    
+            </div>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                   print $this->render( $file );
+                }
+                ?>
+            </div> 
+            <?php } ?>                                         
+
+        <?php } ?>
+        <?php if ( $pageConfig->useGlobalForm() ) { echo '</form>'; } ?>
+
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasFooterFiles() ) { ?>
+    <div id="ft">
+        <?php
+        foreach( $pageConfig->getFooterFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+</div>
+</div>
+<?php if ( $pageConfig->getName() != 'indexTabProfile') { ?>
+<script type="text/javascript">
+    
+    SlyTemplateInit = function () {
+
+        <?php
+            
+        foreach( $pageConfig->getJsInitCommands() as $command ) {
+	        $this->AddItem( 'jsInit', $command );
+        }
+        
+        $jsInit = $this->getItem( 'jsInit' );            
+        if ( $jsInit ) {
+            foreach( $jsInit as $js ) {
+                print 'var a = function(){'; 
+                print ' try {';
+                print $js;
+                print "} catch (err) {return false;}";
+                print "};\n";
+                print "a();\n";                
+            }           
+            echo "\n";
+        }
+        if ($this->loginUser) {
+	        $loginUserId = $this->loginUser->getId();          
+        
+        } else {
+	        $loginUserId = 'null';
+        }
+
+        ?>        
+    }
+    
+    //SlyAppId = 'app<?php //print $app->getId() ?>';
+    //SlyAppRootUrl = '<?php //print $app->getUrl() ?>';
+    //SlyDynamicUrl = 'http://<?php //print $app->getCallbackHttpHost() ?>';    
+    //SlyAppName = '<?php //print $app->getCanvasPageUri() ?>';        
+
+    checkAvailable = function(){
+        
+        if (document.getElementById('doc')) {            
+            SlyTemplateInit();
+        } else {            
+            setTimeout( function(){
+                checkAvailable()
+            }, 200);
+        }
+    }
+    setTimeout( function(){
+        checkAvailable()
+    }, 100);
+    //checkAvailable();
+
+</script>
+
+<?php } ?>

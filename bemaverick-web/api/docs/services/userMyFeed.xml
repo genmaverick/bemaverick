@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User My Feed</name>
+    <description>Get the list of responses and challenges based on the login user's following activity. This is their My Feed feed.</description>
+    <uri>/user/myfeed</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>count</name>
+            <required>no</required>
+            <default>10</default>
+            <format>integer</format>
+            <examples>10, 25, 50</examples>
+            <description>Return the number of responses</description>
+        </param>
+        <param>
+            <name>offset</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>10</examples>
+            <description>Start with the offset for list of responses. 0 based.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/myfeed" \
+  --data "userId=1&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response></example_json_response>
+
+</docs>

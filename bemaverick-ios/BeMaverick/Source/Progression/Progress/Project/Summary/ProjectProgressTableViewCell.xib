@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ProjectProgressViewId" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProjectProgressViewId" rowHeight="213" id="A61-Ue-NwT" customClass="ProjectProgressTableViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="213"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A61-Ue-NwT" id="8RU-JW-9Vr">
+                <rect key="frame" x="0.0" y="0.0" width="379" height="212.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdb-2t-nvt">
+                        <rect key="frame" x="36" y="0.0" width="307" height="212.5"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="q24-kE-5ar">
+                                <rect key="frame" x="0.0" y="0.0" width="307" height="44"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-e3-iGZ" customClass="MaverickSegmentedControl" customModule="Maverick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="307" height="45"/>
+                                        <segments>
+                                            <segment title="IN PROGRESS"/>
+                                            <segment title="COMPLETED"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentValueChanged:" destination="A61-Ue-NwT" eventType="valueChanged" id="k8y-3o-J0v"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="fW6-e3-iGZ" firstAttribute="top" secondItem="q24-kE-5ar" secondAttribute="top" id="7Id-B6-0po"/>
+                                    <constraint firstAttribute="height" constant="44" id="BXE-72-hiX"/>
+                                    <constraint firstAttribute="bottom" secondItem="fW6-e3-iGZ" secondAttribute="bottom" id="IFV-Re-PoM"/>
+                                    <constraint firstItem="fW6-e3-iGZ" firstAttribute="height" secondItem="q24-kE-5ar" secondAttribute="height" id="JbM-kP-Lze"/>
+                                    <constraint firstAttribute="trailing" secondItem="fW6-e3-iGZ" secondAttribute="trailing" id="KBF-sf-XDi"/>
+                                    <constraint firstItem="fW6-e3-iGZ" firstAttribute="width" relation="greaterThanOrEqual" secondItem="q24-kE-5ar" secondAttribute="width" id="Z41-RD-cGg"/>
+                                    <constraint firstItem="fW6-e3-iGZ" firstAttribute="leading" secondItem="q24-kE-5ar" secondAttribute="leading" id="ety-MY-pUi"/>
+                                </constraints>
+                            </scrollView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="t9r-RM-XSX">
+                                <rect key="frame" x="0.0" y="44" width="307" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voS-qq-Oby">
+                                        <rect key="frame" x="0.0" y="0.0" width="307" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="hbk-DJ-aXE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="10"/>
+                                        <color key="tintColor" red="0.035294117647058823" green="0.5490196078431373" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="See All"/>
+                                        <connections>
+                                            <action selector="seeMoreButtonTapped:" destination="A61-Ue-NwT" eventType="touchUpInside" id="6js-JC-OIC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="t9r-RM-XSX" firstAttribute="top" secondItem="q24-kE-5ar" secondAttribute="bottom" id="1Ie-1g-KPS"/>
+                            <constraint firstItem="t9r-RM-XSX" firstAttribute="leading" secondItem="Vdb-2t-nvt" secondAttribute="leading" id="B2i-cg-eMK"/>
+                            <constraint firstAttribute="bottom" secondItem="t9r-RM-XSX" secondAttribute="bottom" priority="999" id="GsM-1U-jHj"/>
+                            <constraint firstItem="q24-kE-5ar" firstAttribute="top" secondItem="Vdb-2t-nvt" secondAttribute="top" id="XOz-dY-KBP"/>
+                            <constraint firstItem="q24-kE-5ar" firstAttribute="leading" secondItem="Vdb-2t-nvt" secondAttribute="leading" id="hl3-61-1P5"/>
+                            <constraint firstAttribute="trailing" secondItem="t9r-RM-XSX" secondAttribute="trailing" id="kQz-ac-L3u"/>
+                            <constraint firstAttribute="trailing" secondItem="q24-kE-5ar" secondAttribute="trailing" id="y4o-iJ-XVj"/>
+                        </constraints>
+                    </view>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Pgf-yS-4LI">
+                        <rect key="frame" x="171" y="88" width="37" height="37"/>
+                        <color key="color" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </activityIndicatorView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Pgf-yS-4LI" firstAttribute="centerY" secondItem="Vdb-2t-nvt" secondAttribute="centerY" id="eze-UZ-wE6"/>
+                    <constraint firstItem="Pgf-yS-4LI" firstAttribute="centerX" secondItem="Vdb-2t-nvt" secondAttribute="centerX" id="gY0-Ih-XTK"/>
+                    <constraint firstItem="Vdb-2t-nvt" firstAttribute="top" secondItem="8RU-JW-9Vr" secondAttribute="top" id="gdN-9N-1XW"/>
+                    <constraint firstAttribute="trailing" secondItem="Vdb-2t-nvt" secondAttribute="trailing" constant="36" id="hWw-Yh-PcE"/>
+                    <constraint firstItem="Pgf-yS-4LI" firstAttribute="centerY" secondItem="8RU-JW-9Vr" secondAttribute="centerY" id="jig-Q0-Uh2"/>
+                    <constraint firstItem="Vdb-2t-nvt" firstAttribute="leading" secondItem="8RU-JW-9Vr" secondAttribute="leading" constant="36" id="jrY-2t-Ahg"/>
+                    <constraint firstAttribute="bottom" secondItem="Vdb-2t-nvt" secondAttribute="bottom" priority="999" constant="33" id="qHj-o2-dyF"/>
+                    <constraint firstItem="Pgf-yS-4LI" firstAttribute="centerX" secondItem="8RU-JW-9Vr" secondAttribute="centerX" id="tKK-B0-7XZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="activityIndicator" destination="Pgf-yS-4LI" id="5Ob-8P-9D4"/>
+                <outlet property="containerView" destination="Vdb-2t-nvt" id="ep3-26-JGf"/>
+                <outlet property="itemStackView" destination="t9r-RM-XSX" id="HHd-3L-hA2"/>
+                <outlet property="seeMoreButton" destination="voS-qq-Oby" id="Vhc-fq-eRH"/>
+                <outlet property="segmentControl" destination="fW6-e3-iGZ" id="1Mm-Kb-xpJ"/>
+            </connections>
+            <point key="canvasLocation" x="135.19999999999999" y="-370.16491754122939"/>
+        </tableViewCell>
+    </objects>
+</document>

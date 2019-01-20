@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>objectAdd</name>
+    <nav>
+        <primary>_primary_nav_</primary>
+        <secondary>objects</secondary>
+    </nav>
+    <type>object</type>
+    <subType>edit</subType>
+    <title>
+        <text>Add Object</text>
+    </title>
+    <includes>
+        <pageContent append="true">
+            <file>objectAdd.phtml</file>
+        </pageContent>
+    </includes>
+</pageConfig>

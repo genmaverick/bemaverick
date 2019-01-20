@@ -1,0 +1,21 @@
+.response-video-cont {
+  width: 20%;
+  padding: 5px;
+}
+.test-cont {
+  display: flex;
+  flex-wrap: wrap;
+}
+.challenge-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+.title-small {
+  font-size: 18px;
+  font-weight: bold;
+}
+.body-cont {
+  width: 80%;
+  display: flex;
+  border: 2px solid blue;
+}

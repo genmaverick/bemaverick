@@ -1,0 +1,115 @@
+@import "variables.less";
+.home-hero {
+    color: @white;
+    #gradient > .vertical( @poppy-gradient, @cerise-gradient );
+}
+.home-hero__sections {
+    position: relative;
+    min-height: 664px;
+    .font-smoothing(on);
+    .flex-display();
+    .align-items(stretch);
+    .justify-content(space-between);
+    margin: 0 auto;
+
+    max-width: @max-content-width;
+}
+.home-hero__links {
+    position: absolute;
+    right: 0;
+    top: 24px;
+    z-index: 3;
+    a {
+        color: @white;
+        display: inline-block;
+    }
+    a + a {
+        position: relative;
+        &:before {
+            content: "|";
+            display: inline-block;
+            padding-right: 16px;
+            margin-left: 16px;
+        }
+    }
+}
+.home-hero__section--app {
+    min-width: 400px;
+    padding-top: 96px;
+    .flex-display();
+    .home-hero__phone {
+        width: 239px;
+        height: 480px;
+        margin: 0 auto;
+        background: url(https://i.imgur.com/XccgjcZ.png) no-repeat center center;
+        background-size: contain;
+        -webkit-filter: drop-shadow(0 26px 57px fade(@black, 35%));
+        filter: drop-shadow(0 26px 57px fade(@black, 35%));
+        position: relative;
+    }
+    .home-hero__phone-video-wrap {
+        position: absolute;
+
+        top: 41px;
+        left: 7px;
+        background-color: pink;
+        width: 225px;
+        height: 384px;
+        overflow: hidden;
+        border-radius: 1.57px;
+    }
+    .home-hero__phone-video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.home-hero__logo {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 96px;
+    line-height: 1;
+    white-space: nowrap;
+    .svg {
+        display: block;
+        width: 300px;
+        max-width: 100%;
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}
+.home-hero__section--text {
+    padding-top: 240px;
+    max-width: 360px;
+    position: relative;
+}
+.home-hero__title {
+    .site-title(medium);
+    .text--weight-normal();
+    margin-bottom: 24px;
+}
+.home-hero__description {
+    .site-text(x-medium);
+}
+.home-hero__cta {
+    margin-top: 64px;
+}
+.home-hero__cta-link--app-store {
+    display: inline-block;
+    .home-hero__cta-image {
+        height: 48px;
+        width: auto;
+        display: inline-block;
+    }
+}
+.home-hero__section--mavericks {
+    margin-left: auto;
+}
+.home-hero__section--parents {
+    margin-right: auto;
+}

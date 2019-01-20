@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>page-name</name>
+    <template>template_grid.phtml</template>
+    <layout>default</layout>
+    <gridId>full-1column</gridId>
+
+    <!--
+        The title will be used for both the window title(<title>)
+        and the heading that describes the page(H1).
+        The prefix is used only for the window title and only when 'usePrefix' is set to true.
+        window title can be 'prefix.delimiter.text' when usePrefix is true else window title is just 'text'
+    -->
+    <title>
+        <usePrefix>true</usePrefix>
+        <printHeading>true</printHeading>
+        <headingTag>h1</headingTag>        
+        <prefixDelimiter> - </prefixDelimiter>
+        <prefix>__SLY_SITE_NAME__</prefix>
+        <headingText>__SLY_SITE_NAME__</headingText>
+    </title>
+
+    <!--
+        js init stuff here. add <command></command> inside the jsInit tag
+        to add commands
+    -->
+    <jsInit append="true">
+    </jsInit>
+
+    <!--
+        default behavior is to overwrite the default config.
+        if the 'append' attribute is set to be 'true' it will
+        append to the default config file.
+        This is useful for using global css and js files that get included on every page
+    -->
+
+    <includes>
+        <cssDefault>
+            <file>bootstrap.css</file>
+            <file>bootstrap-responsive.css</file>
+            <file>grid.css</file>
+            <file>skin.css</file>
+        </cssDefault>
+        <css>
+        </css>
+        <cssPrint>
+        </cssPrint>
+        <jsDefault>
+            <file>jquery191.js</file>
+            <file>bootstrap-collapse.js</file>
+        </jsDefault>
+        <js>
+        </js>        
+        <meta>
+        </meta>
+        <subHeader>
+        </subHeader>
+        <footer>
+            <file>footer.phtml</file>
+        </footer>
+        <prePrimary>
+        </prePrimary>
+        <pageContent>
+        </pageContent>  
+        <header>
+            <file>header.phtml</file>
+        </header>     
+        <primary>
+        </primary>   
+        <secondary>
+        </secondary>
+        <tertiary>
+        </tertiary>
+
+        <grids>
+            <grid id="full-1column" type="fixed">
+                <row>
+                    <unit width="1-1" id="featured" wrapContent="true"></unit>
+                </row>
+                <row>
+                    <unit width="1-1" id="primary"></unit>
+                </row>
+                <row>
+                    <unit width="1-1" id="secondary"></unit>
+                </row>
+            </grid>
+        </grids>
+
+    </includes>
+    <!--
+        this form will span everything within the bd div
+        which includes primary, secondary and tertiary sections
+    -->
+    <form>
+        <use>false</use>
+        <attributes>
+            <action>/</action>
+            <method>POST</method>
+            <id>global-form</id>
+            <name>global-form</name>
+        </attributes>
+    </form>
+</pageConfig>

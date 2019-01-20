@@ -1,0 +1,29 @@
+.pagination--see-more {
+  width: 100%;
+}
+.pagination--see-more li,
+.pagination--see-more .paginationLabel {
+  display: none;
+}
+.pagination--see-more li.next {
+  display: block;
+  text-align: center;
+}
+.pagination--see-more li.next span {
+  display: none;
+}
+.pagination--see-more li.next a {
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px 30px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #00b0ac;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.pagination--see-more li.next a:hover {
+  color: #00b0ac;
+}

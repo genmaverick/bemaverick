@@ -1,0 +1,15 @@
+<?php
+// globals
+$site = $this->site;
+
+//formatters
+$formatPost = $this->formatPost();
+
+// get copyright page (id 14)
+$page = $site->getPost(14, 'pages');
+
+$postObj = $formatPost->getPostObject( null, $page );
+
+print $postObj->getContent();
+
+?>

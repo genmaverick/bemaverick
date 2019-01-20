@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>error</name>
+    <type>errors</type>
+    <subType>error</subType>
+    <title>
+        <text>Error</text>
+    </title>
+    <includes>
+        <primary>
+            <file>errorsWeb.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

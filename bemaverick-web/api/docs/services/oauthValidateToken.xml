@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>OAuth Validate Token</name>
+    <service_name>oauthValidateToken</service_name>
+    <description>To validate a token and see the payload, if valid.</description>
+    <method>GET</method>
+    <uri>/oauth/validate</uri>
+    <parameters>
+        <param>
+            <name>client_id</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your client id</description>
+        </param>
+        <param>
+            <name>token</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0ZXN0X2tleSIsImV4cCI6MTQ4ODk2Mjg0MH0.RETf-dSqzTjGs7HyD55W9FrrjoYguWHofF16I2lREkA</examples>
+            <description>The token to validate</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --url "<host>/v1/oauth/validate" \
+  --data "client_id=test_key&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0ZXN0X2tleSIsImV4cCI6MTQ4ODk2Mjg0MH0.RETf-dSqzTjGs7HyD55W9FrrjoYguWHofF16I2lREkA"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "valid": true,
+  "data": {
+    "iss": "test_key",
+    "exp": 1488962840
+  }
+}
+]]></example_json_response>
+
+</docs>

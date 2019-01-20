@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>oauthAuthorize</name>
+    <type>oauth</type>
+    <subType></subType>
+    <template>template_empty.phtml</template>
+    <title>
+        <text>Authorize</text>
+    </title>
+    <includes>
+        <primary>
+            <file>oauthAuthorize.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

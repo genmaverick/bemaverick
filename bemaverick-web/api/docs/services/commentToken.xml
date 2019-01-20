@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Comments Token</name>
+    <description>Generates the access token for accessing the comments third party provider</description>
+    <uri>/comment/token</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>deviceId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>70696ffc-fcf0-44c5-93f8-c8f2671a0e2e</examples>
+            <description>Device id of the client</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/comment/token?appKey=test_key&deviceId=70696ffc-fcf0-44c5-93f8-c8f2671a0e2e"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

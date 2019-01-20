@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>authRegisterParent</name>
+    <title>
+        <text>Register Parent</text>
+    </title>
+    <type>auth</type>
+    <subType>auth-register-parent</subType>
+    <includes>
+        <primary append="true">
+            <file>authRegisterParent.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

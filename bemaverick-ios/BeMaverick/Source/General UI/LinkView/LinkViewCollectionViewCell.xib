@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LinkViewCollectionViewCellId" id="oha-yH-rvE" customClass="LinkViewCollectionViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="278" height="295"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="278" height="295"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjS-fa-16v" customClass="LinkView" customModule="Maverick" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="278" height="289"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="IjS-fa-16v" firstAttribute="top" secondItem="oha-yH-rvE" secondAttribute="top" id="6iR-aY-FFU"/>
+                <constraint firstAttribute="bottom" secondItem="IjS-fa-16v" secondAttribute="bottom" constant="6" id="Loz-dv-zVG"/>
+                <constraint firstItem="IjS-fa-16v" firstAttribute="leading" secondItem="oha-yH-rvE" secondAttribute="leading" id="W1h-2T-SDN"/>
+                <constraint firstAttribute="trailing" secondItem="IjS-fa-16v" secondAttribute="trailing" id="XgT-0K-cNe"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Eiv-Qj-VY1"/>
+            <size key="customSize" width="278" height="295"/>
+            <connections>
+                <outlet property="linkView" destination="IjS-fa-16v" id="xVA-gk-fSU"/>
+            </connections>
+            <point key="canvasLocation" x="-171" y="124.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Auth Forgot Username</name>
+    <service_name>authForgotUsername</service_name>
+    <description>Send an email to the user with their username.</description>
+    <uri>/auth/forgotusername</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>emailAddress</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>test@test.com</examples>
+            <description>The user's email address. Either emailAddress OR parentEmailAddress is required.</description>
+        </param>
+        <param>
+            <name>parentEmailAddress</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>mydogrocks</examples>
+            <description>The parent's email address. Either emailAddress OR parentEmailAddress is required.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/auth/forgotusername" \
+  --data "emailAddress=test@test.com&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

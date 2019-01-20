@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MaverickActionSheetVC" customModule="Maverick" customModuleProvider="target">
+            <connections>
+                <outlet property="titleLabel" destination="X98-Im-xCI" id="WtI-Ua-TtI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLe-9o-0Tk" userLabel="Title Bar">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dVt-Mo-ne4">
+                            <rect key="frame" x="24" y="8" width="335" height="34"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="X98-Im-xCI" userLabel="Title">
+                                    <rect key="frame" x="0.0" y="4.5" width="307" height="25"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u06-ZN-htL">
+                                    <rect key="frame" x="315" y="7" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="b44-ni-VqK"/>
+                                        <constraint firstAttribute="width" constant="20" id="vKU-Ko-UaZ"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="close_purple"/>
+                                    <connections>
+                                        <action selector="didPressCloseButton:" destination="-1" eventType="touchUpInside" id="QQB-zU-Ons"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="dVt-Mo-ne4" secondAttribute="bottom" constant="8" id="45G-km-fdf"/>
+                        <constraint firstItem="dVt-Mo-ne4" firstAttribute="leading" secondItem="wLe-9o-0Tk" secondAttribute="leading" constant="24" id="B1G-XM-LQt"/>
+                        <constraint firstAttribute="trailing" secondItem="dVt-Mo-ne4" secondAttribute="trailing" constant="16" id="Of6-xi-0py"/>
+                        <constraint firstItem="dVt-Mo-ne4" firstAttribute="top" secondItem="wLe-9o-0Tk" secondAttribute="top" constant="8" id="fwF-4B-4ox"/>
+                        <constraint firstAttribute="height" constant="50" id="pLi-RG-UFC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="wLe-9o-0Tk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="G99-fR-ydi"/>
+                <constraint firstItem="wLe-9o-0Tk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kQW-ME-u44"/>
+                <constraint firstItem="wLe-9o-0Tk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wgT-89-Ljw"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close_purple" width="14" height="14"/>
+    </resources>
+</document>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>challengeAddResponseConfirm</name>
+    <title>
+        <text>:challengeTitle by :challengeUserName</text>
+    </title>
+    <type>challenges</type>
+    <subType>challenge-add-response-confirm-popup</subType>
+    <nav>
+        <primary>challenges</primary>
+    </nav>
+    <includes>
+        <primary append="true">
+            <file>challengeAddResponseConfirm.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

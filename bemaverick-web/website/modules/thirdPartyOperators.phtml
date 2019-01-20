@@ -1,0 +1,15 @@
+<?php
+// globals
+$site = $this->site;
+
+//formatters
+$formatPost = $this->formatPost();
+
+// get third party operators page (id 63)
+$page = $site->getPost(63, 'pages');
+
+$postObj = $formatPost->getPostObject( null, $page );
+
+print $postObj->getContent();
+
+?>

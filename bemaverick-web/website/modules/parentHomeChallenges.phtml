@@ -1,0 +1,63 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$input = $this->input;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+$formatUser = $this->formatUser();
+$formatActivity = $this->formatActivity();
+$formatChallenge = $this->formatChallenge();
+
+// module stuff
+$moduleClassPrefix = 'parent-home-challenges';
+$typeClassPrefix = 'mini-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = array();
+$headerContent[] = $formatModule->getTitleBar(
+    array(
+        'classPrefixes' => $classPrefixes,
+        'title' => $translator->_( 'Challenges' ),
+        'titleLink' => $this->url( 'challenges' ),
+        'moreTitle' => $translator->_( 'See all' ),
+        'moreTitleLink' => $this->url( 'challenges' ),
+    )
+);
+
+$challenges = $site->getChallenges( array(), array('sort' => 'id', 'sortOrder' => 'desc'), 10, 0 );
+$html = array();
+
+foreach ( $challenges as $challenge ) {
+    $html[] =  $formatChallenge->getPreview( $challenge );
+}
+
+//// body content
+$bodyContent = array();
+$bodyContent[] = '
+    <div class="challenge-previews">
+        '.implode( $html ).'
+    </div>
+';
+
+// print module
+print $formatModule->getMiniModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

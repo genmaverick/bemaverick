@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urls>
+
+    <imageStatic>
+        <url cdn="true" isSecure="true">/cache/img/:imageName</url>
+        <params>
+            <param required="true" urlencode="false">imageName</param>
+        </params>
+    </imageStatic>
+
+    <cssStatic>
+        <url cdn="true" isSecure="true">/cache/css/:maxModTime/:cssFiles.css</url>
+        <params>
+            <param required="true" urlencode="false">maxModTime</param>
+            <param required="true" urlencode="false">cssFiles</param>
+        </params>
+    </cssStatic>
+
+    <jsStatic>
+        <url cdn="true" isSecure="true">/cache/js/:maxModTime/:jsFiles.js</url>
+        <params>
+           <param required="true" urlencode="false">maxModTime</param>
+           <param required="true" urlencode="false">jsFiles</param>
+        </params>
+    </jsStatic>
+
+    <fontStatic>
+        <url cdn="true" isSecure="true">/cache/fonts/:fontName</url>
+        <params>
+            <param required="true" urlencode="false">fontName</param>
+        </params>
+    </fontStatic>
+
+    <home>
+        <url>/</url>
+    </home>
+
+    <parentHome>
+        <url>/family-home</url>
+    </parentHome>
+
+    <maverickHome>
+        <url>/maverick-home</url>
+    </maverickHome>
+
+    <tempHome>
+        <url>/temp-home</url>
+    </tempHome>
+
+    <contactUs>
+        <url>/contact-us</url>
+    </contactUs>
+
+    <communityGuidelines>
+        <url>/community-guidelines</url>
+    </communityGuidelines>
+
+    <copyright>
+        <url>/copyright</url>
+    </copyright>
+
+    <faq>
+        <url>/faq</url>
+    </faq>
+
+    <privacyPolicy>
+        <url>/privacy</url>
+    </privacyPolicy>
+
+    <supportResources>
+        <url>/support-resources</url>
+    </supportResources>
+
+    <termsOfService>
+        <url>/terms-of-service</url>
+    </termsOfService>
+
+    <posts>
+        <url>/posts</url>
+    </posts>
+
+    <post>
+        <url>/posts/:postId</url>
+        <params>
+            <param required="true" urlencode="false">postId</param>
+        </params>
+    </post>
+
+    <authError>
+        <url>/auth/error</url>
+    </authError>
+
+    <authRegisterParent>
+        <url>/auth/register-family</url>
+    </authRegisterParent>
+    <authRegisterParentConfirm>
+        <url>/auth/register-family-confirm</url>
+    </authRegisterParentConfirm>
+
+    <authLogin>
+        <url>/auth/login</url>
+    </authLogin>
+    <authLoginConfirm>
+        <url>/auth/login-confirm</url>
+    </authLoginConfirm>
+
+    <authMaverickLogin>
+        <url>/auth/maverick-login</url>
+    </authMaverickLogin>
+    <authMaverickLoginConfirm>
+        <url>/auth/maverick-login-confirm</url>
+    </authMaverickLoginConfirm>
+
+    <authLogoutConfirm>
+        <url>/auth/logout-confirm</url>
+    </authLogoutConfirm>
+    <accountVerifyConfirm>
+        <url>/auth/account-verify-confirm</url>
+    </accountVerifyConfirm>
+
+    <authParentVerifyMaverickStep1>
+        <url>/auth/family-verify-maverick-step-1</url>
+    </authParentVerifyMaverickStep1>
+    <authParentVerifyMaverickStep2>
+        <url>/auth/family-verify-maverick-step-2</url>
+    </authParentVerifyMaverickStep2>
+    <authParentVerifyMaverickStep3>
+        <url>/auth/family-verify-maverick-step-3</url>
+    </authParentVerifyMaverickStep3>
+    <authParentVerifyMaverickConfirm>
+        <url>/auth/family-verify-maverick-confirm</url>
+    </authParentVerifyMaverickConfirm>
+
+    <authPasswordForgot>
+        <url>/auth/password-forgot</url>
+    </authPasswordForgot>
+    <authPasswordForgotConfirm>
+        <url>/auth/password-forgot-confirm</url>
+    </authPasswordForgotConfirm>
+
+    <authPasswordReset>
+        <url>/auth/password-reset</url>
+    </authPasswordReset>
+    <authPasswordResetConfirm>
+        <url>/auth/password-reset-confirm</url>
+    </authPasswordResetConfirm>
+
+    <challenges>
+        <url>/challenges</url>
+    </challenges>
+
+    <challenge>
+        <url>/challenges/:challengeId/</url>
+        <params>
+            <param required="true" urlencode="false">challengeId</param>
+        </params>
+    </challenge>
+
+    <challengeAddResponse>
+        <url>/challenges/:challengeId/add-response</url>
+        <params>
+            <param required="true" urlencode="false">challengeId</param>
+        </params>
+    </challengeAddResponse>
+    <challengeAddResponseConfirm>
+        <url>/challenges/:challengeId/add-response-confirm</url>
+        <params>
+            <param required="true" urlencode="false">challengeId</param>
+        </params>
+    </challengeAddResponseConfirm>
+
+    <response>
+        <url>/responses/:responseId/</url>
+        <params>
+            <param required="true" urlencode="false">responseId</param>
+        </params>
+    </response>
+
+    <responseEditBadgeConfirm>
+        <url>/responses/:responseId/edit-badge-confirm</url>
+        <params>
+            <param required="true" urlencode="false">responseId</param>
+        </params>
+    </responseEditBadgeConfirm>
+
+    <responseStatusEdit>
+        <url>/responses/:responseId/status-edit</url>
+        <params>
+            <param required="true" urlencode="false">responseId</param>
+        </params>
+    </responseStatusEdit>
+
+    <responseStatusEditConfirm>
+        <url>/responses/:responseId/status-edit-confirm</url>
+        <params>
+            <param required="true" urlencode="false">responseId</param>
+        </params>
+    </responseStatusEditConfirm>
+
+    <responseFlag>
+        <url>/responses/:responseId/flag</url>
+        <params>
+            <param required="true" urlencode="false">responseId</param>
+        </params>
+    </responseFlag>
+
+    <responseFlagConfirm>
+        <url>/responses/:responseId/flag-confirm</url>
+        <params>
+            <param required="true" urlencode="false">responseId</param>
+        </params>
+    </responseFlagConfirm>
+
+    <user>
+        <url>/users/:userId/</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </user>
+
+    <userResponses>
+        <url>/users/:userId/responses</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userResponses>
+
+    <userActivity>
+        <url>/users/:userId/activity</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userActivity>
+
+    <userChallenges>
+        <url>/users/:userId/challenges</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userChallenges>
+
+    <userBadged>
+        <url>/users/:userId/badged</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userBadged>
+
+    <userCover>
+        <url>/users/:userId/cover</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userCover>
+
+    <userCoverConfirm>
+        <url>/users/:userId/cover-confirm</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userCoverConfirm>
+
+    <userSaved>
+        <url>/users/:userId/saved</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userSaved>
+
+    <userFollowers>
+        <url>/users/:userId/followers</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userFollowers>
+
+    <userFollowing>
+        <url>/users/:userId/following</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userFollowing>
+
+    <userSettings>
+        <url>/users/:userId/settings</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userSettings>
+
+    <userDeactivateEdit>
+        <url>/users/:userId/deactivate-edit</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userDeactivateEdit>
+    <userDeactivateEditConfirm>
+        <url>/users/:userId/deactivate-edit-confirm</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userDeactivateEditConfirm>
+    <userNotificationsEdit>
+        <url>/users/:userId/notifications-edit</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userNotificationsEdit>
+    <userNotificationsEditConfirm>
+        <url>/users/:userId/notifications-edit-confirm</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userNotificationsEditConfirm>
+    <userPasswordEdit>
+        <url>/users/:userId/password-edit</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userPasswordEdit>
+    <userPasswordEditConfirm>
+        <url>/users/:userId/password-edit-confirm</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userPasswordEditConfirm>
+
+    <userProfileEdit>
+        <url>/users/:userId/profile-edit</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userProfileEdit>
+    <userProfileEditConfirm>
+        <url>/users/:userId/profile-edit-confirm</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userProfileEditConfirm>
+
+    <userRevokeAccess>
+        <url>/users/:userId/revoke-access</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userRevokeAccess>
+    <userReinstateAccess>
+        <url>/users/:userId/reinstate-access</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userReinstateAccess>
+
+    <userEditFollowingConfirm>
+        <url>/users/:userId/edit-following-confirm</url>
+        <params>
+            <param required="true" urlencode="false">userId</param>
+        </params>
+    </userEditFollowingConfirm>
+
+    <userFollow>
+        <url>/users/follow</url>
+    </userFollow>
+
+    <userUnfollow>
+        <url>/users/unfollow</url>
+    </userUnfollow>
+
+</urls>

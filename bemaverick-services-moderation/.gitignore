@@ -1,0 +1,17 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Environment variables
+.env
+
+# IDEA folders
+.vscode
+../.DS_Store
+.DS_Store
+
+# webpack folders
+.webpack

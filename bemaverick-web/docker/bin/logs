@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Tail container logs
+docker logs -f bemaverick-web

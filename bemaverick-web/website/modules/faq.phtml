@@ -1,0 +1,15 @@
+<?php
+// globals
+$site = $this->site;
+
+//formatters
+$formatPost = $this->formatPost();
+
+// get faq page (id 10)
+$page = $site->getPost(10, 'pages');
+
+$postObj = $formatPost->getPostObject( null, $page );
+
+print $postObj->getContent();
+
+?>

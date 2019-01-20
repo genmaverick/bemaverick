@@ -1,0 +1,33 @@
+<?php
+$input = $this->input;
+$site = $this->site;
+$response = $this->response;
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getResponseStatus( $input->responseStatus, 'active' );
+$formItems[] = $formatFormBootstrap->getHideFromStreams( $input->hideFromStreams, 0 );
+$formItems[] = $formatFormBootstrap->getPostType( $input->postType, BeMaverick_Response::POST_TYPE_RESPONSE );
+$formItems[] = $formatFormBootstrap->getResponseType( $input->responseType, BeMaverick_Response::RESPONSE_TYPE_VIDEO );
+$formItems[] = $formatFormBootstrap->getUsername( $input->username, null );
+$formItems[] = $formatFormBootstrap->getChallengeId( $input->challengeId, null, "medium" );
+$formItems[] = $formatFormBootstrap->getTagNames( $input->tagNames, null );
+$formItems[] = $formatFormBootstrap->getDescription( $input->description, null );
+
+// file upload
+$inputSettings = array( 'name' => "file" );
+$labelSettings = array( 'text' => 'File Upload' );
+$formItems['file'] = $formatFormBootstrap->getFileUpload( $inputSettings, $labelSettings );
+
+// Save Button
+$formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => '<span class="glyphicon glyphicon-floppy-disk"></span>&nbsp; Save', 'style' => 'btn btn-success' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+
+?>
+
+<h1 class="page-header">Add Post</h1>
+
+<form method="post" action="<?php print $this->url( 'responseAddConfirm' ); ?>" enctype="multipart/form-data">
+    <div class="bd">
+        <?php print $formatFormBootstrap->getList( $formItems ); ?>
+    </div>
+</form>

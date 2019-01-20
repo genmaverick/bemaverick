@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>featuredResponsesEdit</name>
+    <nav>
+        <primary>streams</primary>
+    </nav>
+    <title>
+        <text>Edit Featured Responses</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>featuredResponsesEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

@@ -1,0 +1,45 @@
+<?php
+// globals
+$site = $this->site;
+
+// formatters
+$formatModule = $this->formatModule();
+
+// module stuff
+$moduleClassPrefix = 'auth-login';
+$typeClassPrefix = 'login-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+// header
+$headerContent = array();
+$headerContent[] = '<div class="error-header">OOPS!</div>';
+$headerContent[] = '
+    <div class="error-sub-header">
+        We can’t seem to find the page you are looking for.
+    </div>';
+
+// body content/errors
+$bodyContent = array();
+
+$bodyContent[] = '
+    <div class="error-body-contact">
+       The URL may be misspelled or the page you’re looking for is no longer available.
+       <br><br><a href="/">Go Home</a>
+    </div>';
+
+// print module
+print $formatModule->getBasicLoginModule(
+    array(
+        'headerContent' => join('',$headerContent),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', array() )
+        )
+    )
+);
+?>

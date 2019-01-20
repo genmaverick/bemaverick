@@ -1,0 +1,39 @@
+<?php
+
+$input = $this->input;
+$site = $this->site;
+$query = $input->query;
+
+$filterBy = array(
+    'query' => $query,
+    'status' => 'published',
+);
+
+$challenges = $site->getChallenges( $filterBy, null, 50, 0 );
+$objects = array();
+
+
+
+foreach ( $challenges as $challenge ) {
+
+    $user = $challenge->getUser();
+    $startTime = $challenge->getStartTime();
+
+    $searchText = $challenge->getTitle(). ' - '.$user->getUsername(). ' - ID: '.$challenge->getId(). ' - '.$startTime;
+
+    $objects[] = array(
+        'type' => 'challenge',
+        'id' => $challenge->getId(),
+        'searchText' => $searchText,
+        'challengeTitle' =>  $challenge->getTitle(),
+        'username' => $user->getUsername(),
+        'status' => $challenge->getStatus(),
+        'mainImageUrl' => $challenge->getMainImageUrl( 60, 108 ),
+        'originalImageUrl' => $challenge->getMainImageUrl()
+    );
+}
+
+header( 'Content-Type: application/json' );
+print json_encode( $objects );
+
+?>

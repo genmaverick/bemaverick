@@ -1,0 +1,6 @@
+{
+  "DEBUG_ENABLED": true,
+  "AWS_LAMBDA_API_KEY": "0mbh8CXZZyWwYYGXbiDvuXka5HnAELNN",
+  "API_URL": "https://dev-api.bemaverick.com",
+  "DYNAMO_DB_TABLE_NAME": "notifications"
+}

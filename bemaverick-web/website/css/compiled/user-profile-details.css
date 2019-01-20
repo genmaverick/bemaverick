@@ -1,0 +1,83 @@
+.user-profile-details--challenges .content-module__bd-content,
+.user-profile-details--badged .content-module__bd-content,
+.user-profile-details--saved .content-module__bd-content,
+.user-profile-details--responses .content-module__bd-content {
+  max-width: 1200px;
+}
+.user-profile-details--challenges .mini-module__hd,
+.user-profile-details--badged .mini-module__hd,
+.user-profile-details--saved .mini-module__hd,
+.user-profile-details--responses .mini-module__hd {
+  display: none;
+}
+.user-profile-details .empty-message {
+  text-align: center;
+  max-width: 360px;
+  margin: 40px auto;
+}
+.user-profile-details__hd {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background-color: #f4e9ea;
+  position: relative;
+  margin-left: -16px;
+  margin-right: -16px;
+}
+@media (min-width: 414px) {
+  .user-profile-details__hd {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}
+@media (min-width: 768px) {
+  .user-profile-details__hd {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+}
+.user-profile-details .challenge-previews,
+.user-profile-details .response-previews {
+  margin-top: 8px;
+}
+.user-profile-details__activity {
+  margin-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 414px) {
+  .user-profile-details__activity {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .user-profile-details__activity {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+.user-profile-details__challenges {
+  margin-top: 16px;
+}
+.user-profile-details__challenges .challenge-preview {
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.user-profile-details__challenges .challenges-content {
+  margin: 0 -8px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.is-kid-profile .user-profile-details--maverick-tabs {
+  display: none;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>eventSplash</name>
+    <title>
+        <usePrefix>true</usePrefix>
+        <prefixDelimiter> | </prefixDelimiter>
+        <text>Terms of Service and Privacy Policy</text>
+        <prefix>Maverick</prefix>
+    </title>
+    <includes>
+        <cssDefault>
+        </cssDefault>
+        <css>
+            <file>yreset.css</file>
+            <file>mobile-app-pages.css</file>
+        </css>
+        <cssPrint>
+        </cssPrint>
+        <meta>
+            <file>meta.phtml</file>
+            <file>cssIncludes.phtml</file>
+        </meta>
+        <subHeader>
+        </subHeader>
+        <prePrimary>
+        </prePrimary>
+        <pageContent>
+            <file>termsOfServiceAndPrivacyPolicy.phtml</file>
+        </pageContent>
+        <primary>
+        </primary>
+        <secondary>
+        </secondary>
+        <tertiary>
+        </tertiary>
+        <header>
+        </header>
+        <footer>
+        </footer>
+        <postFooter>
+        </postFooter>
+    </includes>
+</pageConfig>

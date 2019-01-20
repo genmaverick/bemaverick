@@ -1,0 +1,140 @@
+<?php
+$input = $this->input;
+$site = $this->site;
+$formatFormBootstrap = $this->formatFormBootstrap2(); /* @var BeMaverick_View_Helper_FormatFormBootstrap2 $formatFormBootstrap*/
+
+$contentType = $input->contentType;
+$contentStatus = $input->contentStatus;
+$username = $input->username;
+$query = $input->getUnescaped( 'query' );
+$count = $input->count ? $input->count : 20;
+$offset = $input->offset ? $input->offset : 1;
+$sort = $input->sort ? $input->sort : 'createdTimestamp';
+$sortOrder = $input->sortOrder ? $input->sortOrder : 'desc';
+
+$userId = null;
+if ( $username ) {
+    $user = $site->getUserByUsername( $input->username );
+
+    $userId = $user ? $user->getId() : -1;
+}
+
+
+$filterBy = array(
+    'contentStatus' => $contentStatus,
+    'contentType' => $contentType,
+    'query' => $query,
+    'userId' => $userId,
+);
+
+$contents = $site->getContents( $filterBy, null, $count, $offset-1 );
+$contentCount = $site->getContentCount( $filterBy );
+
+// set the table data
+$columns = array( 'contentId', 'contentStatus', 'contentType', 'contentVideoThumbnail', 'contentUsername', 'contentTitle', 'contentAction' );
+
+$columnInfo = $this->getTableInfo()->getColumnInfo( $columns );
+
+// we want the next click to be reverse sort order
+$sortParams = array(
+    'contentType' => $contentType,
+    'contentStatus' => $contentStatus,
+    'query' => $query,
+    'sort' => '_sort_',
+    'sortOrder' => $sortOrder == 'desc' ? 'asc' : 'desc',
+);
+
+$tableInitVars = array(
+    'columns' => $columns,
+    'columnInfo' => $columnInfo,
+    'rowIdPrefix' => 'content',
+    'dontUseGroups' => true,
+    'sort' => array(
+        'url' => $this->url( 'contents', $sortParams ),
+        'column' => 'content',
+        'value' => $sort,
+        'isDynamic' => true,
+    ),
+    'tableAttributes' => array( 'class' => 'table table-striped table-bordered' ),
+);
+
+$tableDataInput = array();
+
+$tableData = $this->getTableData( $contents, $columns, $tableDataInput );
+
+$tableInitVars['rows'] = array_keys( $tableData );
+
+$table = $this->table( $tableData, $tableInitVars );
+
+// pagination params
+$paginationParams = array(
+    'contentType' => $contentType,
+    'query' => $query,
+    'sort' => $sort,
+    'sortOrder' => $sortOrder,
+);
+
+$paginationVars = array(
+    'offset' => $offset,
+    'urlIndex' => 'contents',
+    'totalItems' => $contentCount,
+    'perPage' => $count,
+    'itemType' => 'Contents',
+    'displayPrefix' => 'Displaying',
+    'of' => 'of',
+    'paginationParams' => $paginationParams,
+    'hideIfEmpty' => true,
+    'alwaysShowPrevNext' => true,
+    'labels' => array( '&laquo; Prev', 'Next &raquo;'),
+    'showItemCounts' => true,
+    'showPaginationIfOnePage' => false,
+    'listAttributes' => array(
+       'class' => 'pagination'
+    ),
+    'containerAttributes' => array(
+        'class' => 'pagination-wrap'
+    )
+);
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getContentType( $contentType, null );
+$formItems[] = $formatFormBootstrap->getContentStatus( $contentStatus, null );
+$inputSettings = array(
+    'isRequired' => false
+);
+
+$optionSettings = array(
+    'attributes' => array(
+        'class' => 'form-item--large',
+    ),
+);
+$formItems[] = $formatFormBootstrap->getUsername( $username, null, $inputSettings, null, $optionSettings );
+$formItems[] = $formatFormBootstrap->getQuery( $query, null );
+$formItems[] = $formatFormBootstrap->getButton( array( 'text' => 'Filter', 'style' => 'default' ) );
+?>
+
+<h1 class="page-header">Contents</h1>
+
+<div class="button-bars">
+    <div class="button-bar--action button-bar">
+        <form method="get" action="<?php print $this->url( 'contentAdd' ); ?>">
+            <button type="submit" class="btn btn-success">Add New Content</button>
+        </form>
+    </div>
+    <div class="button-bar--filter button-bar">
+        <form method="get" action="<?php print $this->url( 'contents' ); ?>">
+            <div class="filter">
+                <?php print $formatFormBootstrap->getList( $formItems ); ?>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <?php print $table; ?>
+</div>
+
+<div class="pagination-bar">
+    <?php print $this->searchPagination( $paginationVars ); ?>
+</div>
+

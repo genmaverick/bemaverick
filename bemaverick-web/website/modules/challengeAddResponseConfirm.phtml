@@ -1,0 +1,32 @@
+<?php
+$challenge = $this->challenge;
+$input = $this->input;
+$response = $this->response;
+$translator = $this->translator;
+
+// $response = $this->site->getResponse( 15 );
+
+$formatFormBootstrap2 = $this->formatFormBootstrap2();
+
+
+$this->AddItem( 'popupSettings', "full", 'type' );
+$this->AddItem( 'popupSettings', $challenge->getTitle(), 'title' );
+
+$formItems = array();
+
+$responseLink = $response ? '<a href="'.$response->getUrl( 'response' ).'">'.$translator->_( 'View response' ).'</a>' : '';
+
+print '
+    <div class="challenge-add-response challenge-add-response--confirm">
+        <div class="challenge-add-response__content">
+            <div class="challenge-add-response__body">
+                <div class="challenge-add-response__confirm-text">
+                    <p>'.$translator->_( 'Success!' ).'</p>
+                    <p>'.$translator->_( 'Your response has been posted.' ).'</p>
+                    <p>'.$responseLink.'</p>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+?>

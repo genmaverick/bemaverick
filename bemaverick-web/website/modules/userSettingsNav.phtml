@@ -1,0 +1,71 @@
+<?php
+// glabals
+$pageConfig = $this->pageConfig;
+$user = $this->user;
+$translator = $this->translator;
+
+// variables
+$secondaryNav = $pageConfig->getSecondaryNav();
+$userType = $user->getUserType();
+
+$links = array(
+    'password' => array(
+        'title' => $translator->_( 'Change Password' ),
+        'link' => $user->getUrl( 'userSettings' ),
+        'itemAttributes' => array(
+            'class' => 'user-settings-nav__item'
+        )
+    ),
+);
+
+// if user is parent, or is kid over 13
+//if ( $userType == BeMaverick_User::USER_TYPE_PARENT || ($userType == BeMaverick_User::USER_TYPE_KID && $user->getAge() >= 13 ) ) {
+if ( $userType == BeMaverick_User::USER_TYPE_PARENT ) {
+    $links['notifications'] = array(
+        'title' => $translator->_('Notifications'),
+        'link' => $user->getUrl('userNotificationsEdit'),
+        'itemAttributes' => array(
+            'class' => 'user-settings-nav__item'
+        )
+    );
+}
+
+// if user is kid, any age
+if ( $userType == BeMaverick_User::USER_TYPE_KID ) {
+    $links['deactivate'] = array(
+        'title' => $translator->_( 'Account Status' ),
+        'link' => $user->getUrl( 'userDeactivateEdit' ),
+        'itemAttributes' => array(
+            'class' => 'user-settings-nav__item'
+        )
+    );
+}
+
+$links['logout'] = array(
+    'title' => $translator->_( 'Log Out' ),
+    'link' => $user->getUrl( 'authLogoutConfirm' ),
+    'itemAttributes' => array(
+        'class' => 'user-settings-nav__item'
+    )
+);
+
+
+if ( ! $links ) {
+    return;
+}
+
+print '
+    <div class="user-settings-nav">
+        <h4 class="user-settings-nav__title">'.$translator->_( 'Settings' ).'</h4>
+        '.$this->linkList(
+            $links,
+            array(
+                'selected' => $secondaryNav,
+                'attributes' => array(
+                    'class' => 'user-settings-nav__items'
+                )
+            )
+        ).'
+    </div>
+';
+?>

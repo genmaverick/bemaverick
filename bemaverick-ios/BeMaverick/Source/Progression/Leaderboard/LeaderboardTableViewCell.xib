@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LeaderboardTableViewCellId" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaderboardTableViewCellId" rowHeight="230" id="ADL-dM-iQB" customClass="LeaderboardTableViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ADL-dM-iQB" id="Kdo-iU-9it">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CoU-mM-wxx">
+                        <rect key="frame" x="36" y="0.0" width="303" height="172"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="DgI-FI-j2K">
+                                <rect key="frame" x="0.0" y="0.0" width="303" height="44"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8ll-W4-r2c" customClass="MaverickSegmentedControl" customModule="Maverick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="45"/>
+                                        <segments>
+                                            <segment title="IN PROGRESS"/>
+                                            <segment title="COMPLETED"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentValueChanged:" destination="ADL-dM-iQB" eventType="valueChanged" id="V6p-O2-7JE"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8ll-W4-r2c" firstAttribute="width" relation="greaterThanOrEqual" secondItem="DgI-FI-j2K" secondAttribute="width" id="5pf-rq-nWG"/>
+                                    <constraint firstItem="8ll-W4-r2c" firstAttribute="height" secondItem="DgI-FI-j2K" secondAttribute="height" id="Aku-a2-Pxz"/>
+                                    <constraint firstItem="8ll-W4-r2c" firstAttribute="leading" secondItem="DgI-FI-j2K" secondAttribute="leading" id="CYp-CS-nQf"/>
+                                    <constraint firstAttribute="trailing" secondItem="8ll-W4-r2c" secondAttribute="trailing" id="I7J-KR-Axw"/>
+                                    <constraint firstItem="8ll-W4-r2c" firstAttribute="top" secondItem="DgI-FI-j2K" secondAttribute="top" id="WcE-RT-eoJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="8ll-W4-r2c" secondAttribute="bottom" id="vKc-7g-jdD"/>
+                                    <constraint firstAttribute="height" constant="44" id="xu2-em-LdO"/>
+                                </constraints>
+                            </scrollView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="dP8-Fg-Sru">
+                                <rect key="frame" x="0.0" y="44" width="303" height="128"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4B-Oz-2R7" customClass="ProjectVerticalProgressItem" customModule="Maverick" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" placeholder="YES" id="GvJ-7e-qZ2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="jg4-Y2-Nio"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dP8-Fg-Sru" firstAttribute="top" secondItem="DgI-FI-j2K" secondAttribute="bottom" id="AWZ-p3-HrW"/>
+                            <constraint firstAttribute="trailing" secondItem="dP8-Fg-Sru" secondAttribute="trailing" id="Da0-6G-Gku"/>
+                            <constraint firstItem="DgI-FI-j2K" firstAttribute="leading" secondItem="CoU-mM-wxx" secondAttribute="leading" id="NL1-CW-D2G"/>
+                            <constraint firstAttribute="bottom" secondItem="dP8-Fg-Sru" secondAttribute="bottom" id="XrL-lh-i3H"/>
+                            <constraint firstAttribute="trailing" secondItem="DgI-FI-j2K" secondAttribute="trailing" id="fTk-TA-I2j"/>
+                            <constraint firstItem="DgI-FI-j2K" firstAttribute="top" secondItem="CoU-mM-wxx" secondAttribute="top" id="gDI-az-vz6"/>
+                            <constraint firstItem="dP8-Fg-Sru" firstAttribute="leading" secondItem="CoU-mM-wxx" secondAttribute="leading" id="gvd-BD-F0J"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="CoU-mM-wxx" firstAttribute="leading" secondItem="Kdo-iU-9it" secondAttribute="leading" constant="36" id="7E7-k0-bKt"/>
+                    <constraint firstItem="CoU-mM-wxx" firstAttribute="top" secondItem="Kdo-iU-9it" secondAttribute="top" id="DWj-Xw-1el"/>
+                    <constraint firstAttribute="bottom" secondItem="CoU-mM-wxx" secondAttribute="bottom" priority="999" constant="33" id="O61-JC-NNK"/>
+                    <constraint firstAttribute="trailing" secondItem="CoU-mM-wxx" secondAttribute="trailing" constant="36" id="VjP-G1-mhi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="CoU-mM-wxx" id="h7L-5m-2s1"/>
+                <outlet property="itemStackView" destination="dP8-Fg-Sru" id="A9U-mf-kBN"/>
+                <outlet property="segmentControl" destination="8ll-W4-r2c" id="Jp8-5l-ylc"/>
+            </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="132.23388305847078"/>
+        </tableViewCell>
+    </objects>
+</document>

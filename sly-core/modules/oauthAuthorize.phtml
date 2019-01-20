@@ -1,0 +1,38 @@
+<?php
+
+/* @var Sly_OAuth_ClientInterface $client */
+$client = $this->client;
+$clientName = $client->getName();
+$clientLogo = $client->getLogoUrl();
+
+/* @var Sly_OAuth_UserInterface $user */
+$user = $this->user;
+$userName = $user->getName();
+
+?>
+
+<div id="authorize" class="mod generic">
+<form method="post">
+    <fieldset>
+        <legend>Authorize</legend>
+        <?php if ( $clientLogo ): ?>
+            <p>
+                <img src="<?= $clientLogo ?> "/>
+            </p>
+        <?php endif; ?>
+        <p>
+            Hello <?= $userName ?>,
+            <br/><br/>
+            <strong><?= $clientName ?></strong> would like to access site on your behalf.</label>
+        </p>
+        <p>
+            Do you authorize?
+        </p>
+        <p>
+            <input type="submit" name="authorized" value="yes">
+            <input type="hidden" name="response_type" value="code"/>
+        </p>
+        <p>
+    </fieldset>
+</form>
+</div>

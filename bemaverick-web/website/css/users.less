@@ -1,0 +1,21 @@
+@import "variables.less";
+.popup-wrap--users {
+}
+.users {
+    .user-row {
+        .flex-display();
+        .align-items(center);
+        margin-bottom: 16px;
+        .profile-image {
+            margin-right: 8px;
+        }
+        .username {
+            .site-text(large,semibold);
+            color: @dark-text;
+        }
+    }
+    .empty-message {
+        text-align: center;
+        margin: 48px 0 96px 0;
+    }
+}

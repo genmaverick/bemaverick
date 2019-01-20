@@ -1,0 +1,30 @@
+service: video-service
+
+functions:
+  dispatcher:
+      handler: src/encoderSNSHandler.main
+      events:
+        - sns:
+            arn: arn:aws:sns:us-east-1:415196061258:dev_elasticencoder_pipeline
+plugins:
+  - serverless-webpack
+
+# Configuration for serverless-webpack
+# Enable auto-packing of external modules
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  defaultStage: dev
+  currentStage: ${opt:stage, self:custom.defaultStage} # 'dev' is default unless overriden by --stage flag
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: ${self:custom.currentStage}
+  environment:
+      DEBUG_ENABLED: ${file(./config.${self:custom.currentStage}.json):DEBUG_ENABLED}
+      API_URL: ${file(./config.${self:custom.currentStage}.json):API_URL}
+      APP_KEY: ${file(./config.${self:custom.currentStage}.json):APP_KEY}
+      ACCESS_TOKEN: ${file(./config.${self:custom.currentStage}.json):ACCESS_TOKEN}
+  region: us-east-1

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>favoriteResponsesEdit</name>
+    <nav>
+        <primary>tools</primary>
+    </nav>
+    <title>
+        <text>Edit Favorite Responses</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>favoriteResponsesEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

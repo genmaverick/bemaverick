@@ -1,0 +1,172 @@
+service: comment-service
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  
+  environment:
+    # MONGO_USERNAME: maverick-services
+    # MONGO_PASSWORD: jbsmO8OKtz5nmo3B
+    # MONGO_HOST: maverick-services-dev-shard-00-00-vdx0u.mongodb.net:27017,maverick-services-dev-shard-00-01-vdx0u.mongodb.net:27017,maverick-services-dev-shard-00-02-vdx0u.mongodb.net
+    # MONGO_DB_NAME: comment
+    # API_URL: https://dev-api.bemaverick.com
+    # API_KEY: bemaverick_ios
+    # AWS_LAMBDA_API_KEY: 0mbh8CXZZyWwYYGXbiDvuXka5HnAELNN
+    NODE_ENV: ${self:provider.stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "sns:Publish"
+      Resource: "arn:aws:sns:${self:provider.region}:${self:custom.accountId}:bemaverick-events-topic-${self:provider.stage}"
+
+functions:
+  createComment:
+    handler: src/handler.createComment
+    events:
+      - http:
+          path: /
+          method: post
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+              allowCredentials: false  
+
+  updateComment:
+    handler: src/handler.updateComment
+    events:
+      - http:
+          path: /{id}
+          method: put
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false
+
+  deleteComment:
+    handler: src/handler.deleteComment
+    events:
+      - http:
+          path: /{id}
+          method: delete
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false
+
+  deleteComments:
+    handler: src/handler.deleteComments
+    events:
+      - http:
+          path: /
+          method: delete
+          cors: true
+
+  flagComment:
+    handler: src/handler.flagComment
+    events:
+      - http:
+          path: /{id}/flag
+          method: post
+          cors: true
+
+  getComment:
+    handler: src/handler.getComment
+    events:
+      - http:
+          path: /{id}
+          method: get
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false 
+
+  listComments:
+    handler: src/handler.listComments
+    events:
+      - http:
+          path: /
+          method: get
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false  
+    
+
+  deleteMentions:
+    handler: src/handler.deleteMentions
+    events:
+      - http:
+          path: /mentions
+          method: delete
+          cors: true
+
+  cleanspeakWebhook:
+    handler: src/handler.cleanspeakWebhook
+    events:
+      - http:
+          path: /cleanspeak-webhook
+          method: post
+          cors: true
+
+  importTwilio:
+    handler: src/handler.importTwilio
+    timeout: 30 # optional, in seconds, default is 6
+    events:
+      - http:
+          path: /migrate
+          method: get
+          cors: true
+
+  migrateCron:
+    handler: src/handler.importTwilio
+    timeout: 300 # optional, in seconds, default is 6
+    events:
+      - schedule:
+          rate: rate(5 minutes)
+          enabled: false
+
+custom:
+  accountId: 415196061258
+  dotenv:
+    # path: ./.env
+    path: ./.env/.${self:provider.stage}.env

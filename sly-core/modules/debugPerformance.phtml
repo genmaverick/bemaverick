@@ -1,0 +1,127 @@
+<?php
+$systemConfig = Zend_Registry::get( 'systemConfig' );
+
+if ( (SYSTEM_DEBUG_MODE || @$_REQUEST['debug'] == 1) &&
+     ! $systemConfig->isProduction() ) {
+
+    /*
+     * this is breaking the JSON requests being made. comment out this block
+     * if you need debug info for JSON request.  otherwise, lets not include
+     * the debug info for response utilizing the json or api template.
+     */
+    $pageConfig = Zend_Registry::get( 'pageConfig' );
+    $pageConfigTemplate = $pageConfig->getTemplate();
+    if ( $pageConfigTemplate != 'template_default.phtml' ) {
+        return;
+    }
+
+    // db variables
+    $dbAdapter = Zend_Registry::get( 'dbAdapter' );
+    $dbAdapterMulti = Zend_Registry::get( 'dbAdapterMulti' );
+    $cache = Zend_Registry::get( 'cache' );
+
+    print <<<EOL
+<style>
+.debug-area { width: 915px; margin: 0 auto; background-color: #eee; border: 3px solid #364c88; padding: 10px 30px 30px 30px; }
+    .debug-area h1 { color:#364c88; font-size: 28px; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; }
+    .debug-area h2 { color:#364c88; font-size: 22px; font-weight: bold; margin: 20px 0 10px 0; }
+    .debug-area h3 { color:#364c88; font-size: 16px; font-weight: bold; margin: 0px 0 3px 0; }
+    .debug-area div { margin: 0 0 10px 0; }
+    .debug-area p { margin: 0 0 5px 0; border-bottom: 1px dotted #999; padding: 0 0 5px 0; }
+    .debug-area strong { font-weight: bold; }
+    .debug-area ul { margin-bottom: 10px; }
+        .debug-area ul li { list-style-type: disc; list-style-position: inside; }
+</style>
+<div class="debug-area">
+    <h1>Debug Information</h1>
+    <div>
+        <h2>Page processing and load times</h2>
+        <ul>
+            <li title="microtime() placed at top of full.php">PHP microtime start: $start</li>
+            <li title="microtime() placed at bottom of full.php">PHP microtime end: $end</li>
+            <li title="Difference between microtime() start and end times">PHP microtime diff: <strong>$diff</strong>  microseconds</li>
+        </ul>
+        <ul>
+            <li title="FF.constants.RENDER_START placed at top of HTML">HTML render start: <span id="debug-html-render-start"></span></li>
+            <li title="FF.constants.RENDER_END placed at bottom of HTML">HTML render end: <span id="debug-html-render-end"></span></li>
+            <li title="Difference between HTML render start and end times">HTML render diff: <strong id="debug-html-render-diff"></strong> seconds</li>
+        </ul>
+        <ul>
+            <li title="Difference of Date objects placed at top and bottom of YUI callback">YUI diff: <strong id="debug-yui-diff"></strong> seconds</li>
+        </ul>
+        <ul>
+            <li title="Difference of render start and window onload event">Load time: <strong id="debug-load-time"></strong> seconds</li>
+            <li title="Total number of DOM nodes (document.getElementsByTagName('*').length)">Total DOM nodes: <strong id="debug-dom-nodes"></strong></li>
+        </ul>
+    </div>
+    <div>
+        <h2>Database</h2>
+EOL;
+    // query counts
+    print "<ul><li>Query count total: <b>" . ( $dbAdapter->_queryCount + $dbAdapterMulti->_queryCount ) . '</b></li>' .
+          "<li>nfl_fantasy_full: " . $dbAdapter->_queryCount .  '</li>' .
+          "<li>nfl_fantasy_full_leagues: " . $dbAdapterMulti->_queryCount . "</li></ul>";
+          
+    // query times      
+    print "<ul><li>Query time total: <b>" . ( $dbAdapter->_queryTime + $dbAdapterMulti->_queryTime ) .  '</b></li>' .
+          "<li>nfl_fantasy_full: " . $dbAdapter->_queryTime . '</li>' .
+          "<li>nfl_fantasy_full_leagues: " . $dbAdapterMulti->_queryTime . "</li></ul>\n";
+          
+    print "<h3>nfl_fantasy_full queries:</h3>";
+    foreach($dbAdapter->_queries as $q) {
+        echo '<p>' . $q . '</p>';
+    }
+
+    print "<h3>nfl_fantasy_full_leagues queries:</h3>\n";
+    foreach($dbAdapterMulti->_queries as $q) {
+        echo '<p>' . $q . '</p>';
+    }
+
+    // debug queries further
+    if ( $dbAdapter->_queryStack > 0 ) {
+        $queryData = print_r( $dbAdapter->_queryStack, true );
+        file_put_contents( SYSTEM_ROOT_DIR . "/tmp/query_stack_debug.txt", $queryData );
+    }
+
+    print "<h2>Memcache</h2><h3>Request count: " . count( $cache->_requests ) . "<h3>\n";
+    print "<h3>Total request size:</b> $cache->_requestSize <h3>\n";
+    print "<h3>Requests:</h3>\n";
+    foreach($cache->_requests as $q) {
+        echo '<p>' . $q . '</p>';
+    }
+
+    // debug requests further
+    $requestData = print_r( $cache->_requestStack, true );
+    file_put_contents( SYSTEM_ROOT_DIR . "/tmp/request_stack_debug.txt", $requestData );
+
+    print <<<EOL
+    </div>
+</div>
+<script>
+YUI().use('node', function (Y) {
+
+    Y.one('#debug-html-render-start').setContent(FF.constants.RENDER_START.getTime());
+    Y.one('#debug-html-render-end').setContent(FF.constants.RENDER_END.getTime());
+    var renderDiff = ( (FF.constants.RENDER_END.getTime() - FF.constants.RENDER_START.getTime()) / 1000);
+    Y.one('#debug-html-render-diff').setContent(renderDiff);
+
+    try {
+        var yuiDiff = ( (FF.constants.YUI_END.getTime() - FF.constants.YUI_START.getTime()) ) / 1000;
+        Y.one('#debug-yui-diff').setContent(yuiDiff);
+    } catch (e) {
+        console.log("yuiDiff threw an error, ", e);
+    }
+
+    window.onload = new function () {
+        FF.constants.WINDOW_ONLOAD = new Date();
+        var loadTime = ( (FF.constants.WINDOW_ONLOAD.getTime() - FF.constants.RENDER_START.getTime()) ) / 1000 ;
+        Y.one('#debug-load-time').setContent(loadTime);
+        Y.one('#debug-dom-nodes').setContent(document.getElementsByTagName('*').length);
+    }
+
+});
+</script>
+EOL;
+}
+
+?>

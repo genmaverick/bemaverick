@@ -1,0 +1,11 @@
+<?php
+
+$openGraphTags = isset($this->openGraph) ? $this->openGraph : array();
+
+foreach ($openGraphTags as $property => $content) {
+    echo "<meta ";
+    echo "property=\"$property\""." ";
+    echo "content=\"$content\"";
+    echo " />\n";
+}
+?>

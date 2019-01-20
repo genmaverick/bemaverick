@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Delete Follower</name>
+    <description>Delete a follower for the user</description>
+    <uri>/user/deletefollower</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>followerUserId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>12</examples>
+            <description>The follower user id to delete</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/deletefollower" \
+  --data "followerUserId=73&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

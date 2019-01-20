@@ -1,0 +1,28 @@
+#!/bin/bash
+
+export SLYTRUNK_ENV='slytrunk_local'
+export PROJECT_ROOT=/home/$USER/dev/bemaverick-web
+
+# Restart local MySQL
+service mysql restart
+
+# Restart local Redis
+service redis-server restart
+
+# Restart local Apache
+service apache2 restart
+
+# Start local LESS Server
+nohup node /home/$USER/dev/less.js-server/lessServer.js > /dev/null &
+
+# Compile LESS file(s) for initial sync
+touch /home/$USER/dev/bemaverick-web/admin/css/admin.less
+
+# Run Migrations
+cd $PROJECT_ROOT/database/config
+cd $PROJECT_ROOT
+ln -sf $PROJECT_ROOT/vendor/robmorgan/phinx/bin/phinx /bin/phinx
+phinx migrate -c database/bemaverick/phinx.php
+
+# Tail Apache error log
+tail -f /var/log/apache2/error.log

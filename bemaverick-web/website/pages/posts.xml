@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>posts</name>
+    <title>
+        <text>Parental Resources</text>
+    </title>
+    <type>posts</type>
+    <subType>index</subType>
+    <nav>
+        <primary>posts</primary>
+    </nav>
+    <includes>
+        <primary append="true">
+            <file>posts.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

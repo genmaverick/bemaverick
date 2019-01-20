@@ -1,0 +1,596 @@
+@import "variables.less";
+
+@bg-color: #00B0AC;
+
+body.branch-banner-is-active {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.mav-splash__sections {
+  position: relative;
+  width: calc(~"100vw" - @gutter-phone-small);
+  margin-left: calc(@gutter-phone-small * -1);
+}
+
+.mav-splash {
+  background-color: @bg-color;
+  font-family: @font-family-base;
+}
+
+.mav-splash-header {
+  .flex-display();
+  .align-items(center);
+  position: relative;
+  height: 58px;
+  background-color: black;
+  color: white;
+  .logo {
+    margin: 0 auto 0 15px;
+    height: 38px;
+  }
+  .header-nav {
+    margin: 0 15px 0 auto;
+    a {
+      font-weight: 300;
+      color: white;
+      text-decoration: none;
+    }
+    a:visited {
+      color: white;
+    }
+  }
+}
+
+.mav-splash-content {
+  overflow: hidden;
+  position: relative;
+  height: calc(~"100vh - 58px");
+  background-image: url(@mav-live-bg);
+  background-repeat: repeat;
+  background-size: 70px 70px;
+  .banner-tablet-red-tablet { display: none; }
+  .banner-tablet-red-desktop { display: none; }
+  .image-cont {
+    position: relative;
+    height: 55%;
+    .camera-mobile {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+
+    }
+    .banner-mobile {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      top: 10px;
+      width: 90%;
+    }
+  }
+  .camera-tablet {
+    display: none;
+  }
+  .banner-tablet-black {
+    display: none;
+  }
+  .banner-tablet-red {
+    display: none;
+  }
+  .parent-banner-tablet {
+    display: none;
+  }
+  .countdown-container {
+    .flex-display();
+    .align-items(center);
+    .flex-direction(column);
+    .justify-content(space-around);
+    height: 45%;
+    .launch-text {
+      padding: 10px 18px 10px 18px;
+      font-size: 7vw;
+      background-color: white;
+      color: @primary-teal;
+      .text--weight-bold();
+    }
+    .launch-count {
+      .flex-display();
+      .align-items(center);
+      .flex-direction(row);
+      .justify-content(space-around);
+      width: 100%;
+      .cube-container {
+        position: relative;
+        width: 25vw;
+        height: 25vw;
+        .white-cube {
+          .flex-display();
+          .align-items(center);
+          .flex-direction(column);
+          .justify-content(center);
+          position: absolute;
+          height: 87%;
+          width: 87%;
+          background-color: white;
+          color: @primary-teal;
+            .num {
+              font-size: 12vw;
+              .text--weight-bold();
+            }
+            .num-text {
+              font-size: 4vw;
+              .text--weight-normal();
+            }
+        }
+        .black-cube {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          height: 87%;
+          width: 87%;
+          background-color: black;
+        }
+      }
+    }
+    .launch-date {
+      margin-bottom: 15px;
+      color: black;
+      font-size: 11vw;
+      .text--weight-bold();
+    }
+    .app-store {
+      display: none;
+    }
+  }
+  .sign-up-container-desktop {
+    display: none;
+  }
+}
+
+.mav-splash-footer {
+  .flex-display();
+  .flex-direction(column);
+  .align-items(center);
+  .justify-content(space-between);
+  position: relative;
+  height: 600px;
+  background-color: black;
+  .sign-up-container {
+    .flex-display();
+    .align-items(center);
+    .flex-direction(column);
+    .justify-content(center);
+    color: white;
+    height: 200px;
+    .input-container {
+      .flex-display();
+      .align-items(center);
+      .flex-direction(column);
+      .mc-field-group {
+        color: white;
+        width: 280px;
+      }
+    }
+    .form-title {
+      font-size: 28px;
+    }
+    form {
+      text-align: center;
+    }
+    input[type=email] {
+      position: relative;
+      margin-top: 10px;
+      padding: 0 3px 0 3px;
+      width: 280px;
+      height: 35px;
+    }
+    input[type=email]:focus {
+      outline: none;
+    }
+    input[type=submit] {
+      position: relative;
+      margin-top: 15px;
+      padding: 10px 35px 10px 35px;
+      border: none;
+      border-radius: 9px;
+      background-color: @primary-ruby;
+      color: white;
+      font-size: 20px;
+      font-weight: 300;
+      cursor: pointer;
+    }
+  }
+  .parent-banner-mobile {
+    width: 100%;
+  }
+  .app-store-mobile {
+    position: relative;
+  }
+  .nav-links {
+    .flex-display();
+    .align-items(center);
+    .flex-direction(column);
+    .justify-content(center);
+    width: 100%;
+    .instagram-logo {
+      width: 40px;
+    }
+    a {
+      padding-top: 10px;
+      color: @link-on-dark;
+      text-decoration: none;
+      font-weight: 300;
+    }
+  }
+  .copy-text {
+    margin-bottom: 25px;
+    font-size: 13px;
+    font-weight: 300;
+    color: lightgrey;;
+  }
+}
+.mav-splash-footer-desktop { display: none; }
+
+
+// tablet
+@media (min-width: 500px) {
+  .mav-splash__sections {
+    position: relative;
+    width: calc(~"100vw" - 5px);
+    margin-left: calc(@gutter-tablet * -1);
+  }
+  .mav-splash-header {
+    height: 85px;
+    .logo {
+      margin: 0 auto 0 25px;
+      height: 50px;
+    }
+    .header-nav {
+      margin: 0 25px 0 auto;
+      a {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .mav-splash-content {
+    height: 600px;
+    .image-cont {
+      .camera-mobile { display: none; }
+      .banner-mobile { display: none; }
+    }
+    .camera-tablet {
+      display: block;
+      position: absolute;
+      width: 65%;
+      bottom: -10px;
+      right: 0;
+    }
+    .banner-tablet-black {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      left: 20px;
+      top: 2vh;
+      width: 60%;
+    }
+    .banner-tablet-red-desktop { display: none; }
+    .banner-tablet-red-tablet {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      top: 5vh;
+      width: 75%;
+    }
+    .parent-banner-tablet {
+      display: block;
+      position: absolute;
+      bottom: 50px;
+      width: 44vw;
+      z-index: 1;
+    }
+    .countdown-container {
+      position: absolute;
+      top: 180px;
+      left: 40px;
+      width: 40%;
+      height: 300px;
+      .launch-text {
+        padding: 10px 18px 10px 18px;
+        font-size: 4vw;
+      }
+      .launch-count {
+        width: 100%;
+        .cube-container {
+          position: relative;
+          width: 100px;
+          height: 100px;
+          .white-cube {
+            .num {
+              font-size: 47px;
+              margin-bottom: -5px;
+            }
+            .num-text {
+              font-size: 16px;
+            }
+          }
+          .black-cube {
+            height: 87%;
+            width: 87%;
+            background-color: black;
+          }
+        }
+      }
+      .launch-date {
+        margin-left: -15vw;
+        font-size: 5vw;
+      }
+      .app-store {
+        display: none;
+      }
+    }
+    .sign-up-container-desktop {
+      display: none;
+    }
+  }
+
+  .mav-splash-footer {
+    height: 500px;
+    .sign-up-container {
+      height: 200px;
+      .form-title {
+        margin-top: 50px;
+        font-size: 3.5vw;
+      }
+      form {
+        text-align: center;
+      }
+      input[type=email] {
+        margin-top: 15px;
+        width: 280px;
+        height: 35px;
+      }
+      input[type=submit] {
+        margin-top: 25px;
+        padding: 10px 35px 10px 35px;
+        font-size: 2.5vw;
+        cursor: pointer;
+      }
+    }
+    .parent-banner-mobile {
+      display: none;
+    }
+    .app-store-mobile {
+      position: relative;
+      margin-top: 20px;
+    }
+    .nav-links {
+      .instagram-logo {
+        width: 40px;
+      }
+      a {
+        padding-top: 10px;
+        font-size: 16px;
+        color: @link-on-dark;
+        text-decoration: none;
+        font-weight: 300;
+      }
+    }
+    .copy-text {
+      margin: 15px 0 35px 0;
+      font-size: 12px;
+    }
+  }
+  .mav-splash-footer-desktop { display: none; }
+}
+
+// between phone and tablet
+@media (min-width: 750px) {
+  .mav-splash__sections {
+    position: relative;
+    width: calc(~"100vw" - 6px);
+    margin-left: calc(@gutter-tablet * -1);
+  }
+  .mav-splash-content {
+    .banner-tablet-red-desktop {
+      display: none;
+    }
+    .banner-tablet-red-tablet {
+      top: 10vh;
+      width: 60%;
+    }
+  }
+}
+
+// desktop
+@media (min-width: @break-desktop-min) {
+  .mav-splash {
+    height: 100vh;
+  }
+  .mav-splash-header {
+    .logo {
+      margin: 0 auto 0 30px;
+    }
+    .header-nav {
+      margin: 0 30px 0 auto;
+      a {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .mav-splash-content {
+    height: calc(~"100vh - 175px");
+    .image-cont {
+      .camera-mobile { display: none; }
+      .banner-mobile { display: none; }
+    }
+    .camera-tablet {
+      display: block;
+      width: auto;
+      height: 65vh;
+      bottom: -10px;
+      right: 0;
+    }
+    .banner-tablet-black {
+      display: block;
+      z-index: 1;
+      left: 2vw;
+      top: 2vh;
+      width: auto;
+      height: 19vh;
+    }
+    .banner-tablet-red-tablet { display: none; }
+    .banner-tablet-red-desktop {
+      display: block;
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      top: 5vh;
+      width: auto;
+      height: 20vh;
+    }
+    .parent-banner-tablet {
+      display: block;
+      position: absolute;
+      bottom: 50px;
+      right: -1px;
+      width: auto;
+      height: 6.5vh;
+    }
+    .countdown-container {
+      position: absolute;
+      top: 21vh;
+      left: 4vw;
+      width: 40%;
+      height: 40vh;
+      .launch-text {
+        padding: 10px 20px 10px 20px;
+        font-size: 4vh;
+      }
+      .launch-count {
+        width: 100%;
+        .cube-container {
+          position: relative;
+          width: 11vw;
+          height: 11vw;
+          max-width: 20vh;
+          max-height: 20vh;
+          .white-cube {
+            .num {
+              font-size: 4vw;
+              margin-bottom: 0px;
+            }
+            .num-text {
+              font-size: 16px;
+              .text--weight-medium();
+            }
+          }
+          .black-cube {
+            height: 87%;
+            width: 87%;
+            background-color: black;
+          }
+        }
+      }
+      .launch-date {
+        margin-left: 0;
+        font-size: 5vh;
+        font-weight: 800;
+      }
+      .app-store {
+        cursor: pointer;
+        margin-top: -2.5vh;
+        display: flex;
+        z-index: 10;
+      }
+    }
+  }
+
+  .mav-splash-footer {
+    display: block;
+    position: absolute;
+    left: 5vw;
+    top: 66vh;
+    color: white;
+    height: auto;
+    background-color: transparent;
+    .sign-up-container {
+      .flex-display();
+      .align-items(flex-start);
+      .flex-direction(column);
+      .justify-content(center);
+      color: white;
+      height: auto;
+      .input-container {
+        .flex-display();
+        .align-items(flex-start);
+        .flex-direction(row);
+        .mc-field-group {
+          color: white;
+          width: 22vw;
+        }
+      }
+      .form-title {
+        font-size: 2vw;
+      }
+      input[type=email] {
+        position: relative;
+        margin: 7px 0 0 -5px;
+        padding: 0 3px 0 3px;
+        width: 1vw;
+        height: 35px;
+      }
+      input[type=submit] {
+        position: relative;
+        margin: 6px 0 0 5px;
+        padding: 8px 30px 8px 35px;
+        border: none;
+        border-radius: 9px;
+        background-color: @primary-ruby;
+        color: white;
+        font-size: 20px;
+        font-weight: 300;
+        cursor: pointer;
+      }
+    }
+    .parent-banner-mobile { display: none; }
+    .app-store-mobile { display: none }
+    .nav-links { display: none; }
+    .copy-text { display: none; }
+  }
+  .mav-splash-footer-desktop {
+    .flex-display();
+    .justify-content(space-between);
+    .flex-direction(row);
+    position: relative;
+    height: 90px;
+    background-color: black;
+    .nav-links {
+      width: 60%;
+      position: relative;
+      .flex-display();
+      .align-items(center);
+      .flex-direction(row);
+      color: white;
+      .instagram-logo {
+        height: 50px;
+      }
+      a {
+        padding: 0 15px 0 15px;
+        color: @link-on-dark;
+        text-decoration: none;
+      }
+    }
+    .copy-text {
+      .flex-display();
+      .align-items(center);
+      .flex-direction(row);
+      margin-right: 30px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: lightgrey;
+    }
+  }
+}

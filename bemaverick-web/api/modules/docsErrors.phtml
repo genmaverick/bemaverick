@@ -1,0 +1,15 @@
+<?php
+$errors = $this->getErrorMessages();
+if (!$errors) {
+    return;
+}
+?>
+<div id="errors" class="mod alert alert-error alert-block">
+    <div class="content">
+        <div class="bd">
+            <?php
+            print $errors
+            ?>
+        </div>
+    </div>
+</div>

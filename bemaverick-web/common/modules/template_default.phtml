@@ -1,0 +1,77 @@
+<?php
+require_once( SLY_ROOT_DIR . '/lib/Sly/Minify/CSS.php' );
+$pageConfig = $this->pageConfig;
+$systemConfig = $this->systemConfig;
+$documentTitleString = $this->formatPageTitle()->getDocumentTitle( $pageConfig );
+
+$this->adOrdValue = time();
+$this->noScriptIdCount = $this->systemConfig->getSetting( 'SYSTEM_INCLUDE_NOSCRIPT_IMAGES' ) ? 1 : 0;
+$this->isSiteResponsive = $this->systemConfig->getSetting( 'SYSTEM_IS_SITE_RESPONSIVE' );
+// template classes
+$htmlClasses = array();
+$htmlClasses[] = $pageConfig->getType() == 'index' ? ' page-type--index' : '  page-type--not-index';
+$bodyClasses = array();
+?>
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="ie ie6 lte10 lte9 lte8 lte7<?php join( ' ', $htmlClasses ); ?>"><![endif]-->
+<!--[if IE 7 ]><html lang="en" class="ie ie7 lte10 lte9 lte8 lte7 gt6<<?php join( ' ', $htmlClasses ); ?>"><![endif]-->
+<!--[if IE 8 ]><html lang="en" class="ie ie8 lte10 lte9 lte8 gt6 gt7<?php join( ' ', $htmlClasses ); ?>"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie ie9 lte10 lte9 gt6 gt7 gt8<?php join( ' ', $htmlClasses ); ?>"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="<?php join( ' ', $htmlClasses ); ?>"><!--<![endif]-->
+<head>
+<title><?php echo html_entity_decode( $documentTitleString ) ?></title>
+<meta charset="utf-8">
+<?php
+
+$metaFiles = $pageConfig->getMetaFiles();
+foreach ( $metaFiles as $file ) {
+    print $this->render( $file );
+}
+
+// get all the includes we might need
+// page content
+$pageContentIncludes = array();
+$pageContentFiles = $pageConfig->getPageContentFiles();
+foreach ( $pageContentFiles as $file ) {
+    $pageContentIncludes[] = $this->render( $file );
+}
+$pageContent = '<div id="main" class="global-main">'.join( '', $pageContentIncludes ).'</div>';
+
+// footer
+$footerFiles = $pageConfig->getFooterFiles();
+$footerContentIncludes = array();
+foreach ( $footerFiles as $file ) {
+    $includeContent = $this->render( $file );
+    if ( $includeContent ) {
+        $footerContentIncludes[] = $includeContent;
+    }
+}
+$footerContent = count( $footerContentIncludes ) ? '<div id="ft" class="global-ft">'.join( '', $footerContentIncludes ).'</div>' : '';
+
+// post footer
+$postFooterFiles = $pageConfig->getPostFooterFiles();
+$postFooterContentIncludes = array();
+foreach ( $postFooterFiles as $file ) {
+    $includeContent = $this->render( $file );
+    if ( $includeContent ) {
+        $postFooterContentIncludes[] = $includeContent;
+    }
+}
+$postFooterContent = join( '', $postFooterContentIncludes );
+
+// get all the subHeader includes - these will be put at the end of the meta section
+$subHeaderFiles = $pageConfig->getSubHeaderFiles();
+$subHeaderIncludes = array();
+foreach ( $subHeaderFiles as $file ) {
+    print $this->render( $file );
+}
+?>
+</head>
+<body id="<?php echo $pageConfig->getName() ?>Page" class="<?php print join( ' ', $bodyClasses ); ?>">
+    <?php print $pageContent; ?>
+    <?php print $footerContent; ?>
+    <?php print $postFooterContent; ?>
+</body>
+</html>
+<!-- <?php print date( 'Y-m-d H:i:s' ); ?> -->
+<!-- <?php print $this->systemConfig->getShortServerName() ?> -->

@@ -1,0 +1,56 @@
+.button {
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  font-weight: 700;
+  border-radius: 24px;
+  border: 1px solid transparent;
+  display: block;
+  padding: 10px 16px;
+  text-align: center;
+  position: relative;
+  font-family: "Barlow";
+  cursor: pointer;
+}
+.button:focus {
+  outline: 0;
+}
+.button--primary {
+  background-color: #00b0ac;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button--primary:focus {
+  opacity: 0.25;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.button--primary-gradient {
+  background-color: #00b0ac;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button--primary-gradient:hover {
+  color: #ffffff;
+}
+.button--primary-gradient:focus {
+  opacity: 0.25;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.button-bar {
+  margin: 24px 0;
+}
+.button-bar .button {
+  display: inline-block;
+}
+.button-bar .button + .button {
+  margin-left: 8px;
+}
+.button-stack {
+  margin: 24px 0;
+}
+.button-stack .button + .button {
+  margin-top: 8px;
+}

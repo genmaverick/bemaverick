@@ -1,0 +1,89 @@
+.home-actions {
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: #f1f0f0;
+  position: relative;
+}
+@media (min-width: 414px) {
+  .home-actions {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .home-actions {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+.home-actions:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  pointer-events: none;
+  background: url(<?php print $this->view->url('imageStatic', array( 'imageName' => 'paint-grey-10.png' )); ?>) repeat-x;
+  transform: scaleY(-1);
+  bottom: auto;
+  top: -5px;
+}
+.home-actions__content {
+  margin: 0 auto;
+  max-width: 1280px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.home-actions__sections {
+  min-height: 400px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+.home-actions__section {
+  padding: 0 80px;
+  min-width: 360px;
+  position: relative;
+}
+.home-actions__title {
+  font-size: 24px;
+  line-height: 1.33333333;
+  font-weight: 600;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.home-actions__cta .button {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  line-height: 1;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.home-actions__section--register:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0px;
+  width: 1px;
+  background-color: #c7c5c3;
+}

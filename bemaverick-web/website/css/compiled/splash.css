@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+}
+.title_outer {
+  display: none;
+}
+.mav-splash {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+}
+.mav-splash .mav-splash-content {
+  height: 100vh;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#e62767), to(#f47112));
+  background-image: -webkit-linear-gradient(top, #e62767 0%, #f47112 100%);
+  background-image: -moz-linear-gradient(top, #e62767 0%, #f47112 100%);
+  background-image: linear-gradient(to bottom, #e62767 0%, #f47112 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe62767', endColorstr='#fff47112', GradientType=0);
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+.mav-splash .mav-splash-content__wrapper {
+  max-width: 500px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+.mav-splash .mav-splash-image {
+  height: 50vh;
+  background: url("https://bemaverick.com/splash-images/splash-photo.jpg") no-repeat center bottom;
+  background-size: cover;
+  position: relative;
+}
+.mav-splash .mav-splash-image__careers {
+  background: url("https://bemaverick.com/splash-images/m-logo-white@2x.png") no-repeat center center;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-indent: -9000px;
+  overflow: hidden;
+  z-index: 1;
+}
+.mav-splash .mav-splash-content__logo {
+  max-width: 80%;
+  margin: 0 auto 40px auto;
+}
+.mav-splash .mav-splash-content__logo .mav-splash-content__logo-image {
+  padding-top: 55%;
+  background: url("https://bemaverick.com/splash-images/asset-1@2x.png") no-repeat;
+  background-size: contain;
+}
+.mav-splash .mav-splash-content__description-text {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.mav-splash .mav-splash-content__form {
+  margin: 0 auto;
+}
+.mav-splash .mav-splash-content__form input[type="email"] {
+  padding: 10px 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+  text-align: center;
+  border: 0;
+  width: 100% !important;
+  border-radius: 0;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000000;
+}
+.mav-splash .mav-splash-content__form #mce-success-response {
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  color: #ffffff;
+}
+.mav-splash .mav-splash-content__form .mce_inline_error,
+.mav-splash .mav-splash-content__form #mce-error-response {
+  font-size: 14px;
+  text-align: center;
+  padding: 5px;
+  color: #ffffff;
+}
+.mav-splash .mav-splash-content__form .mce_inline_error a,
+.mav-splash .mav-splash-content__form #mce-error-response a {
+  color: #ffffff;
+}
+.mav-splash .mav-splash-content__form input[type="submit"] {
+  width: 100% !important;
+  border-radius: 0;
+  margin-top: 20px;
+  display: block;
+  border: 2px solid #ffffff;
+  background: transparent;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1;
+  font-size: 20px;
+  padding: 10px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.mav-splash .mav-splash-content__form .mc-field-group.lead {
+  background-color: transparent !important;
+}
+.mav-splash .mav-splash-content__instagram {
+  margin: 40px auto 20px auto;
+  text-align: center;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+.mav-splash .mav-splash-content__instagram a {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url("https://bemaverick.com/splash-images/asset-2@2x.png") no-repeat center center;
+  background-size: contain;
+  margin: 20px auto;
+  text-indent: -9000px;
+  overflow: hidden;
+  text-align: left;
+}
+@media (min-width: 420px) {
+  .mav-splash .mav-splash-content__description-text {
+    font-size: 20px;
+  }
+  .mav-splash .mav-splash-content__logo {
+    max-width: 65%;
+  }
+}
+@media (min-width: 768px) {
+  .mav-splash {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    background-image: -webkit-gradient(linear, left 0%, left 100%, from(#e62767), to(#f47112));
+    background-image: -webkit-linear-gradient(top, #e62767 0%, #f47112 100%);
+    background-image: -moz-linear-gradient(top, #e62767 0%, #f47112 100%);
+    background-image: linear-gradient(to bottom, #e62767 0%, #f47112 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe62767', endColorstr='#fff47112', GradientType=0);
+  }
+  .mav-splash .mav-splash-content {
+    background: none;
+  }
+  .mav-splash .mav-splash-content,
+  .mav-splash .mav-splash-image {
+    height: auto;
+    width: 50%;
+  }
+  .mav-splash .mav-splash-image {
+    height: 100vh;
+  }
+}

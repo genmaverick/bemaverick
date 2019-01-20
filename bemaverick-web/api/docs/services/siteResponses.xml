@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Responses</name>
+    <description>Get a list of all responses</description>
+    <uri>/site/responses</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>filter</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>featured, userFollowers</examples>
+            <description>Return responses filtered. Valid filter options are: featured, userFollowers, userFollowing</description>
+        </param>
+        <param>
+            <name>userId</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>3213</examples>
+            <description>Return responses filtered by the user</description>
+        </param>
+        <param>
+            <name>challengeId</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>32</examples>
+            <description>Return responses filtered by the challenge</description>
+        </param>
+        <param>
+            <name>sort</name>
+            <required>no</required>
+            <default>createdTimestamp</default>
+            <format>string</format>
+            <examples>createdTimestamp, numBadges</examples>
+            <description>Return responses sorted. Valid sort options are: createdTimestamp, numBadges, challengeResponses, featured</description>
+        </param>
+        <param>
+            <name>sortOrder</name>
+            <required>no</required>
+            <default>desc</default>
+            <format>string</format>
+            <examples>asc, desc</examples>
+            <description>The order in which the responses will be sorted. Valid sortOrder options are: asc, desc</description>
+        </param>
+        <param>
+            <name>count</name>
+            <required>no</required>
+            <default>25</default>
+            <format>integer</format>
+            <examples>25, 50</examples>
+            <description>Return the number of challenges</description>
+        </param>
+        <param>
+            <name>offset</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>10</examples>
+            <description>Start with the offset for list of challenges. 0 based.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/responses?appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

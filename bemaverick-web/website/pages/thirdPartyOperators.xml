@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>thirdsPartyOperators</name>
+    <title>
+        <text>Third Party Operators</text>
+        <headingText>Third Party Operators</headingText>
+    </title>
+    <type>index</type>
+    <subType>thirdPartyOperators</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>thirdPartyOperators.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

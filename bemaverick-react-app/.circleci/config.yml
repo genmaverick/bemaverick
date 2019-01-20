@@ -1,0 +1,227 @@
+# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: docker:17.05.0-ce-git
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              awscli==1.11.76
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /caches/app.tar
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build --cache-from=app -t app .
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app.tar app
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app.tar
+#      - run:
+#          name: Run tests
+#          command: |
+#            docker-compose -f ./docker-compose.yml up
+      - run:
+          name: Push application Docker image from master branch
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              login="$(aws ecr get-login)"
+              ${login}
+              DOCKER_IMAGE='bemaverick-webapp'
+              # Login to AWS
+              aws configure set region $AWS_DEFAULT_REGION
+              $(aws ecr get-login)
+              # Tag and push docker image
+              docker tag app $ECR_ENDPOINT/$DOCKER_IMAGE:dev-$CIRCLE_SHA1
+              docker push $ECR_ENDPOINT/$DOCKER_IMAGE:dev-$CIRCLE_SHA1
+            fi
+      - run:
+          name: Push application Docker image from release branch
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "release" ]; then
+              login="$(aws ecr get-login)"
+              ${login}
+              DOCKER_IMAGE='bemaverick-webapp'
+              # Login to AWS
+              aws configure set region $AWS_DEFAULT_REGION
+              $(aws ecr get-login)
+              # Tag and push docker image
+              docker tag app $ECR_ENDPOINT/$DOCKER_IMAGE:prod-$CIRCLE_SHA1
+              docker push $ECR_ENDPOINT/$DOCKER_IMAGE:$prod-CIRCLE_SHA1
+            fi
+  deploy-dev:
+    docker:
+      # specify the version you desire here
+      - image: docker:17.05.0-ce-git
+    working_directory: ~/repo
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              awscli==1.11.76
+      - run:
+          name: Deploy to development ECS
+          command: |
+            login="$(aws ecr get-login)"
+            ${login}
+            CLUSTER='dev-ecs-cluster-bemaverick-webapp'
+            FAMILY='bemaverick-webapp'
+            DOCKER_IMAGE='bemaverick-webapp'
+            TASKNAME='bemaverick-webapp'
+            SERVICE='dev-bemaverick-webapp'
+            # Login to AWS
+            aws configure set region $AWS_DEFAULT_REGION
+            $(aws ecr get-login)
+            # Create task for docker deploy
+            task_template='[
+              {
+                "name": "%s",
+                "image": "%s/%s:dev-%s",
+                "essential": true,
+                "memoryReservation": 1000,
+                "portMappings": [
+                  {
+                    "containerPort": 3000,
+                    "hostPort": 0
+                  }
+                ],
+                "environment" : [
+                    {"name" : "NODE_ENV", "value" : "development" },
+                    {"name" : "MAVERICK_API_CLIENT_ID", "value" : "%s"},
+                    {"name" : "MAVERICK_API_CLIENT_SECRET", "value" : "%s"},
+                    {"name" : "MAVERICK_API_APP_KEY", "value" : "%s"},
+                    {"name" : "MAVERICK_API_URL", "value" : "%s"},
+                    {"name" : "MAVERICK_CMS_URL", "value" : "%s"},
+                    {"name" : "MAVERICK_AWS_IMAGES_URL", "value" : "%s"},
+                    {"name" : "MAVERICK_SEGMENT_KEY", "value" : "%s"},
+                    {"name" : "MAVERICK_BRANCH_KEY", "value" : "%s"},
+                    {"name" : "GOOGLE_SITE_VERIFICATION", "value" : "%s"},
+                    {"name" : "MAVERICK_LEANPLUM_APP_ID", "value" : "%s"},
+                    {"name" : "MAVERICK_LEANPLUM_CLIENT_KEY", "value" : "%s"},
+                    {"name" : "MAVERICK_BASE_URL", "value" : "https://dev.genmaverick.com"}
+                ]
+              }
+            ]'
+            echo "$task_template"
+            task_def=$(printf "$task_template" $TASKNAME $ECR_ENDPOINT $DOCKER_IMAGE $CIRCLE_SHA1 $DEV_MAVERICK_API_CLIENT_ID $DEV_MAVERICK_API_CLIENT_SECRET $DEV_MAVERICK_API_APP_KEY $DEV_MAVERICK_API_URL $DEV_MAVERICK_CMS_URL $DEV_MAVERICK_AWS_IMAGES_URL $DEV_MAVERICK_SEGMENT_KEY $DEV_MAVERICK_BRANCH_KEY $DEV_GOOGLE_SITE_VERIFICATION $DEV_MAVERICK_LEANPLUM_APP_ID $DEV_MAVERICK_LEANPLUM_CLIENT_KEY $MAVERICK_BASE_URL)
+            # Register task definition
+            json=$(aws ecs register-task-definition --container-definitions "$task_def" --family "$FAMILY")
+            # Grab revision # using regular bash and grep
+            revision=$(echo "$json" | grep -o '"revision": [0-9]*' | grep -Eo '[0-9]+')
+            # Deploy revision
+            aws ecs update-service --cluster "$CLUSTER" --service "$SERVICE" --desired-count 2 --task-definition "$TASKNAME":"$revision"
+            return 0
+  deploy-prod:
+    docker:
+      # specify the version you desire here
+      - image: docker:17.05.0-ce-git
+    working_directory: ~/repo
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              awscli==1.11.76
+      - run:
+          name: Deploy to poduction ECS
+          command: |
+            login="$(aws ecr get-login)"
+            ${login}
+            CLUSTER='prod-ecs-cluster-bemaverick-webapp'
+            FAMILY='bemaverick-webapp'
+            DOCKER_IMAGE='bemaverick-webapp'
+            TASKNAME='bemaverick-webapp'
+            SERVICE='prod-bemaverick-webapp'
+            # Login to AWS
+            aws configure set region $AWS_DEFAULT_REGION
+            $(aws ecr get-login)
+            # Create task for docker deploy
+            task_template='[
+              {
+                "name": "%s",
+                "image": "%s/%s:prod-%s",
+                "essential": true,
+                "memoryReservation": 1000,
+                "portMappings": [
+                  {
+                    "containerPort": 3000,
+                    "hostPort": 0
+                  }
+                ],
+                "environment" : [
+                    {"name" : "NODE_ENV", "value" : "production" },
+                    {"name" : "MAVERICK_API_CLIENT_ID", "value" : "%s"},
+                    {"name" : "MAVERICK_API_CLIENT_SECRET", "value" : "%s"},
+                    {"name" : "MAVERICK_API_APP_KEY", "value" : "%s"},
+                    {"name" : "MAVERICK_API_URL", "value" : "%s"},
+                    {"name" : "MAVERICK_CMS_URL", "value" : "%s"},
+                    {"name" : "MAVERICK_AWS_IMAGES_URL", "value" : "%s"},
+                    {"name" : "MAVERICK_SEGMENT_KEY", "value" : "%s"},
+                    {"name" : "MAVERICK_BRANCH_KEY", "value" : "%s"},
+                    {"name" : "GOOGLE_SITE_VERIFICATION", "value" : "%s"},
+                    {"name" : "MAVERICK_LEANPLUM_APP_ID", "value" : "%s"},
+                    {"name" : "MAVERICK_LEANPLUM_CLIENT_KEY", "value" : "%s"},
+                    {"name" : "MAVERICK_BASE_URL", "value" : "https://www.genmaverick.com"}
+                ]
+              }
+            ]'
+            echo "$task_template"
+            task_def=$(printf "$task_template" $TASKNAME $ECR_ENDPOINT $DOCKER_IMAGE $CIRCLE_SHA1 $PROD_MAVERICK_API_CLIENT_ID $PROD_MAVERICK_API_CLIENT_SECRET $PROD_MAVERICK_API_APP_KEY $PROD_MAVERICK_API_URL $PROD_MAVERICK_CMS_URL $PROD_MAVERICK_AWS_IMAGES_URL $PROD_MAVERICK_SEGMENT_KEY $PROD_MAVERICK_BRANCH_KEY $PROD_GOOGLE_SITE_VERIFICATION $PROD_MAVERICK_LEANPLUM_APP_ID $PROD_MAVERICK_LEANPLUM_CLIENT_KEY $MAVERICK_BASE_URL)
+            # Register task definition
+            json=$(aws ecs register-task-definition --container-definitions "$task_def" --family "$FAMILY")
+            # Grab revision # using regular bash and grep
+            revision=$(echo "$json" | grep -o '"revision": [0-9]*' | grep -Eo '[0-9]+')
+            # Deploy revision
+            aws ecs update-service --cluster "$CLUSTER" --service "$SERVICE" --desired-count 2 --task-definition "$TASKNAME":"$revision"
+            return 0
+workflows:
+  version: 2
+  build-n-deploy:
+    jobs:
+      - build
+      - deploy-dev:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
+      - deploy-prod:
+          filters:
+            branches:
+              only: release
+          requires:
+            - build

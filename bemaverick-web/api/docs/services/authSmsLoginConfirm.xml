@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Auth SMS Login Confirm</name>
+    <service_name>authSmsLoginConfirm</service_name>
+    <description>Login from an SMS code and phone number</description>
+    <uri>/auth/smsloginconfirm</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>phoneNumber</name>
+            <required>yes</required>
+            <default></default>
+            <format>+1NNNNNNNNNN</format>
+            <examples>+13105552038</examples>
+            <description>The phone number</description>
+        </param>
+        <param>
+            <name>code</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1192</examples>
+            <description>The code to verify</description>
+        </param>
+        <param>
+            <name>username</name>
+            <required>yes - if new user</required>
+            <default></default>
+            <format>string</format>
+            <examples>testkid</examples>
+            <description>The kid's username</description>
+        </param>
+        <param>
+            <name>birthdate</name>
+            <required>yes - if new user</required>
+            <default></default>
+            <format>YYYY-MM-DD</format>
+            <examples>2005-05-23</examples>
+            <description>The kid's birthdate</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/auth/smsloginconfirm?appKey=test_key&phoneNumber=+155555555555&code=1192"
+ ]]></example_curl>
+
+    <example_json_response><![CDATA[
+]]></example_json_response>
+
+</docs>

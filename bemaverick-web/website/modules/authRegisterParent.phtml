@@ -1,0 +1,71 @@
+<?php
+// globals
+$input = $this->input;
+$translator = $this->translator;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+// module stuff
+$moduleClassPrefix = 'coppa-verify';
+$typeClassPrefix = 'coppa-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( 'Verify Existing Maverick' )
+    )
+);
+
+// body content
+$bodyContent = array();
+$registerParentConfirmUrl = $this->url( 'authRegisterParentConfirm' );
+
+$formItems = array();
+$formItems['emailAddress'] = $formatFormBootstrap->getEmailAddress( $input->getUnescaped( 'emailAddress' ), '', array('attributes' => array('placeholder' => 'Enter your email address') ), array('text' => '') );
+
+$buttons = array(
+    'signup'=> array(
+        'text' => $translator->_( 'Sign Up' ),
+        'type' => 'submit',
+        'style' => 'primary-gradient',
+    )
+);
+$options = $formatUtil->getSetting( 'button-options' );
+$formItems['buttons'] = $formatFormBootstrap->getButtons( $buttons, $options );
+
+$bodyContent[] = '
+    <form action="'.$registerParentConfirmUrl.'" method="POST">
+        '.$formatFormBootstrap->getList( $formItems ).'
+    </form>
+';
+
+// using premade footer option to pass along info container content
+$footerContent[] = '<h1>Welcome to Maverick</h1>';
+
+// print module
+print $formatModule->getBasicCoppaModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'footerContent' => join( '', $footerContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>
+
+
+
+

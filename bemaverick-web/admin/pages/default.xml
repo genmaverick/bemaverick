@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>page-name</name>
+    <template>template_grid.phtml</template>
+    <templateAjax>template_json.phtml</templateAjax>
+    <layout>default</layout>
+    <gridId>full-2column</gridId>
+
+    <!--
+        The title will be used for both the window title(<title>)
+        and the heading that describes the page(H1).
+        The prefix is used only for the window title and only when 'usePrefix' is set to true.
+        window title can be 'prefix.delimiter.text' when usePrefix is true else window title is just 'text'
+    -->
+    <title>
+        <usePrefix>true</usePrefix>
+        <printHeading>true</printHeading>
+        <headingTag>h1</headingTag>
+        <prefixDelimiter> - </prefixDelimiter>
+        <prefix>Be Maverick</prefix>
+        <headingText>Be Maverick</headingText>
+    </title>
+
+    <!--
+        js init stuff here. add <command></command> inside the jsInit tag
+        to add commands
+    -->
+    <jsInit append="true">
+    </jsInit>
+
+    <!--
+        default behavior is to overwrite the default config.
+        if the 'append' attribute is set to be 'true' it will
+        append to the default config file.
+        This is useful for using global css and js files that get included on every page
+    -->
+
+    <includes>
+        <cssDefault>
+            <file>base.css</file>
+            <file>admin.css</file>
+            <file>auto-complete.css</file>
+            <file>dragula.css</file>
+        </cssDefault>
+        <css>
+        </css>
+        <cssPrint>
+        </cssPrint>
+        <jsDefault>
+            <file>external/jquery.js</file>
+            <file>external/jquery-ui.js</file>
+            <file>external/browser.js</file>
+            <file>external/auto-complete.js</file>
+            <file>external/dragula.js</file>
+            <file>external/bootstrap.js</file>
+            <file>form-helpers.js</file>
+        </jsDefault>
+        <js>
+        </js>
+        <meta>
+        </meta>
+        <subHeader>
+        </subHeader>
+        <footer>
+        </footer>
+        <prePrimary>
+        </prePrimary>
+        <header>
+            <file>header.phtml</file>
+        </header>
+        <primary>
+            <file>errors.phtml</file>
+            <file>confirmMessage.phtml</file>
+        </primary>
+        <secondary>
+            <file>nav.phtml</file>
+        </secondary>
+        <tertiary>
+        </tertiary>
+
+        <grids>
+            <grid id="full-1column" type="fluid">
+                <row>
+                    <unit width="1-1" id="featured" wrapContent="true"></unit>
+                </row>
+                <row>
+                    <unit width="1-1" id="primary"></unit>
+                </row>
+                <row>
+                    <unit width="1-1" id="secondary"></unit>
+                </row>
+            </grid>
+            <grid id="full-2column" type="fixed">
+                <row>
+                    <unit width="1-1" id="featured"></unit>
+                </row>
+                <row>
+                    <unit width="1-4" id="primary"></unit>
+                    <unit width="3-4" id="secondary"></unit>
+                </row>
+            </grid>
+        </grids>
+
+    </includes>
+
+</pageConfig>

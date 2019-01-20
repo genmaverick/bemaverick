@@ -1,0 +1,28 @@
+//
+//  ProgressionResponse.swift
+//  Maverick
+//
+//  Created by Garrett Fritz on 9/13/18.
+//  Copyright © 2018 BeMaverick. All rights reserved.
+//
+
+import Foundation
+import ObjectMapper
+
+public struct ProgressionResponse : Mappable {
+    
+    var progression :    Progression?
+    
+    
+    public init?(map: Map) {
+        
+        
+    }
+    
+    mutating public func mapping(map: Map) {
+        
+        progression            <- map["progression"]
+        
+    }
+    
+}

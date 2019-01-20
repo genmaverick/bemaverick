@@ -1,0 +1,112 @@
+<?php
+// globals
+$translator = $this->translator;
+$user = $this->user;
+$input = $this->input;
+$loginUser = $this->loginUser;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+$formatFormBootstrap2 = $this->formatFormBootstrap2();
+
+// variables
+$formItems = array();
+$accountOptions = array(
+    'status' => array( 'text' => '<span class="checkbox__text">I would like my account to be active.</span>', 'value' => 'status' ),
+);
+
+$userAccount = array();
+if ( $user->getStatus() == 'active' ) {
+    $userAccount[] = 'status';
+    $descriptionText = '
+    Your account is currently active. 
+    If you deactivate your account, your content will no longer be viewable on the platform, but will not be deleted completely.
+    You can change your account back to active and retrieve your content at any time.';
+} else {
+    $descriptionText = '
+    Your account is currently inactive. 
+    If you reactivate your account, your content will be visible on the platform once again.';
+}
+
+$formItems['account'] = $formatFormBootstrap2->getCheckboxes(
+    array(
+        'items' => $accountOptions,
+        'values' => $input->account,
+        'defaultValues' => $userAccount,
+        'name' => 'account[]'
+    )
+);
+// button
+$buttonOptions = $formatUtil->getSetting( 'button-options' );
+$formItems[] = $formatFormBootstrap2->getButtons(
+    array(
+        array(
+            'type' => 'submit',
+            'text' => $translator->_( 'Save' ),
+            'style' => 'primary',
+        )
+    ),
+    $buttonOptions
+);
+
+// module stuff
+$moduleClassPrefix = 'user-notifications-edit';
+$typeClassPrefix = 'user-settings-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+// header content
+$headerContent = array();
+$headerContent[] = '
+    <h1 class="'.join( ' ', $formatModule->getPrefixedClasses( 'title', $classPrefixes ) ).'">
+        '.$translator->_( 'Account Status' ).'
+    </h1>
+';
+
+$bodyContent = array();
+if ( $input->confirmMessage ) {
+    $bodyContent[] = '
+        <div class="confirm-message fade-out trigger-transition">
+            '.$translator->_( 'Your changes have been saved' ).'
+        </div>
+    ';
+}
+// body content
+$bodyContent[] = $this->render( 'unAssociatedErrors.phtml' );
+
+
+$bodyContent[] =
+    $descriptionText.
+    '<form action="'.$user->getUrl( 'userDeactivateEditConfirm' ).'" method="post">
+        '.$formatFormBootstrap2->getList( $formItems ).'
+        '.$formatFormBootstrap2->getHiddenSimple( 'accessToken', $loginUser->getOAuthAccessToken() ).'
+    </form>
+';
+
+// print module
+print $formatModule->getModule(
+    array(
+        'header' => array(
+            'content' => '
+                <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'hd-content', $classPrefixes ) ).'">
+                    '.join( '', $headerContent ).'
+                </div>
+            ',
+        ),
+        'body' => array(
+            'content' => '
+                <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'bd-content', $classPrefixes ) ).'">
+                    '.join( '', $bodyContent ).'
+                </div>
+            ',
+        ),
+        'classPrefixes' => $classPrefixes,
+    )
+);
+
+
+?>

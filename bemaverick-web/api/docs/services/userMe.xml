@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Me</name>
+    <description>Get the details of the logged in user</description>
+    <uri>/user/me</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>basic</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>0 or 1</examples>
+            <description>use null or 0 for large, extended user details and 1 for basic user details</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/me" \
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

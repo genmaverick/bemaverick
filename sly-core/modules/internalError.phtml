@@ -1,0 +1,20 @@
+<div id="internalError" class="mod generic">
+    <div class="content">
+        <div class="hd">
+            <h4>Internal Error</h4>
+        </div>
+        <div class="bd">
+            <p>There was an internal error. Please try your request again.</p>
+            <?php
+            if ( ! $this->systemConfig->isProduction() && $this->exceptions ) {
+                print '<font color="red"><pre>'."\n\n";
+                print "You are seeing this because you are not on a production server\n\n";
+                foreach( $this->exceptions as $exception ) {
+                    print "$exception\n";
+                }
+                print '</pre></font>';
+            }
+            ?>
+        </div>
+    </div>
+</div>

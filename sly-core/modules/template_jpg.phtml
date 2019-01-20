@@ -1,0 +1,9 @@
+<?php
+$pageConfig = $this->pageConfig;
+
+header( 'Content-Type: image/jpeg' );
+
+foreach( $pageConfig->getPrimaryFiles() as $file ) {
+    print $this->render( $file );
+}
+?>

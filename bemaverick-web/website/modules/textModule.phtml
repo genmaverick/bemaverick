@@ -1,0 +1,54 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$pageConfig = $this->pageConfig;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+
+// module stuff
+$moduleClassPrefix = 'text-module';
+$typeClassPrefix = 'basic-module';
+$pageName = $pageConfig->getName();
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix,
+    $pageConfig->getSubType()
+);
+
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( $pageConfig->getTitleHeadingText() )
+    )
+);
+
+// body content
+$bodyContent = array();
+
+if ( $pageConfig->hasRailFiles() ) {
+    $includes = $pageConfig->getRailFiles();
+    foreach( $includes as $include ) {
+        $bodyContent[] = $this->render( $include );
+    }
+}
+
+
+// print module
+print $formatModule->getBasicModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

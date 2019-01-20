@@ -1,0 +1,95 @@
+<?php
+$site = $this->site;
+$pageConfig = $this->pageConfig;
+
+$pageHeadingString = '';
+
+if ( $pageConfig->useTitlePrefix() ) {
+    $documentTitleString = $pageConfig->getTitle().$pageConfig->getTitlePrefixDelimiter().$pageConfig->getTitlePrefix();
+} else {
+    $documentTitleString = $pageConfig->getTitle();
+}
+$siteLanguage = 'en';
+
+if ( $pageConfig->useTitleHeading() ) {
+    $pageHeadingTag = $pageConfig->getTitleHeadingTag();
+    $pageHeadingString  = "<$pageHeadingTag>".$pageConfig->getTitle()."</$pageHeadingTag>\n";
+}
+
+$this->pageHeadingString = $pageHeadingString;
+$this->pageHeadingWritten = false;
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title><?php echo $documentTitleString ?></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    -->
+    <?php
+    $metaFiles = $pageConfig->getMetaFiles();
+    if ( $metaFiles ) {
+        foreach( $metaFiles as $file ) {
+            print $this->render( $file );
+        }
+    }
+    ?>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <?php if ( $pageConfig->hasJsDefaultFiles() ) { ?>
+    <script src="<?php print $this->mergeFiles( 'js', $pageConfig->getJsDefaultFiles() ); ?>"></script>
+    <?php } ?>
+    <?php if ( $pageConfig->hasCssDefaultFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->mergeFiles('css', $pageConfig->getCssDefaultFiles() ) ?>" />
+    <?php } ?>
+    <?php if ( $pageConfig->hasCssFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->mergeFiles('css', $pageConfig->getCssFiles() ) ?>" />
+    <?php } ?>
+
+</head>
+<body>
+
+        <?php
+        foreach( @$pageConfig->getHeaderFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <?php
+                    foreach( @$pageConfig->getSecondaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+                
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <?php
+                    foreach( @$pageConfig->getPrimaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        foreach( @$pageConfig->getFooterFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+
+</body>
+</html>

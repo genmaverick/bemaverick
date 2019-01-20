@@ -1,0 +1,125 @@
+<?php
+$apiVersion = $this->systemConfig->getSetting( 'SYSTEM_API_VERSION' );
+
+$items = array();
+$items['home'] = array( 'link' => $this->url( "/$apiVersion/docs"), 'title' => 'Home' );
+
+$items['oauth'] = array( 'title' => 'OAuth', 'itemAttributes' => array('class' => 'nav-header') );
+$items['oauthTokenClientCredentials'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=oauthTokenClientCredentials"), 'title' => '/oauth/token - <font size="-2">Grant: Client Credentials</font>' );
+$items['oauthTokenPassword'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=oauthTokenPassword"), 'title' => '/oauth/token - <font size="-2">Grant: Password</font>' );
+$items['oauthTokenRefreshToken'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=oauthTokenRefreshToken"), 'title' => '/oauth/token - <font size="-2">Grant: Refresh Token</font>' );
+$items['oauthValidateToken'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=oauthValidateToken"), 'title' => '/oauth/validate' );
+
+$items['auth'] = array( 'title' => 'Auth', 'itemAttributes' => array('class' => 'nav-header') );
+$items['authRegisterKid'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authRegisterKid"), 'title' => '/auth/registerkid' );
+$items['authRegisterParent'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authRegisterParent"), 'title' => '/auth/registerparent' );
+$items['authForgotUsername'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authForgotUsername"), 'title' => '/auth/forgotusername' );
+$items['authForgotPassword'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authForgotPassword"), 'title' => '/auth/forgotpassword' );
+$items['authResetPassword'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authResetPassword"), 'title' => '/auth/resetpassword' );
+$items['authvalidateUserName'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authValidateUserName"), 'title' => '/auth/validateusername' );
+$items['authFacebookLogin'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authFacebookLogin"), 'title' => '/auth/facebooklogin' );
+$items['authTwitterLogin'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authTwitterLogin"), 'title' => '/auth/twitterlogin' );
+$items['authSmsLoginRequest'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authSmsLoginRequest"), 'title' => '/auth/smsloginrequest' );
+$items['authSmsLoginConfirm'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authSmsLoginConfirm"), 'title' => '/auth/smsloginconfirm' );
+$items['authSmsVerifyCode'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=authSmsVerifyCode"), 'title' => '/auth/smsverifycode' );
+
+$items['challenge'] = array( 'title' => 'Challenge', 'itemAttributes' => array('class' => 'nav-header') );
+$items['challengeDetails'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=challengeDetails" ), 'title' => '/challenge/details' );
+$items['challengeResponses'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=challengeResponses"), 'title' => '/challenge/responses' );
+$items['challengeAddResponse'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=challengeAddResponse"), 'title' => '/challenge/addresponse' );
+$items['challengeAdd'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=challengeAdd" ), 'title' => '/challenge/add' );
+$items['challengeEdit'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=challengeEdit"), 'title' => '/challenge/edit' );
+$items['challengeDelete'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=challengeDelete"), 'title' => '/challenge/delete' );
+$items['challengeUpdateStatus'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=challengeUpdateStatus" ), 'title' => '/challenge/updatestatus' );
+
+$items['response'] = array( 'title' => 'Response', 'itemAttributes' => array('class' => 'nav-header') );
+$items['responseAdd'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseAdd" ), 'title' => '/response/add' );
+$items['responseDetails'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseDetails" ), 'title' => '/response/details' );
+$items['responseBadgeUsers'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseBadgeUsers"), 'title' => '/response/badgeusers' );
+$items['responseAddBadge'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseAddBadge"), 'title' => '/response/addbadge' );
+$items['responseDeleteBadge'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseDeleteBadge"), 'title' => '/response/deletebadge' );
+$items['responseDelete'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseDelete"), 'title' => '/response/delete' );
+$items['responseShare'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseShare"), 'title' => '/response/share' );
+$items['responseFlag'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseFlag"), 'title' => '/response/flag' );
+$items['responseFavorite'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseFavorite"), 'title' => '/response/favorite' );
+$items['responseUpdateStatus'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseUpdateStatus" ), 'title' => '/response/updatestatus' );
+$items['responseUpdateTranscription'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=responseupdateTranscription" ), 'title' => '/response/updatetranscription' );
+
+$items['content'] = array( 'title' => 'Content', 'itemAttributes' => array('class' => 'nav-header') );
+$items['contentDetails'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=contentDetails" ), 'title' => '/content/details' );
+$items['contentAdd'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=contentAdd" ), 'title' => '/content/add' );
+$items['contentBadgeUsers'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=contentBadgeUsers"), 'title' => '/content/badgeusers' );
+$items['contentAddBadge'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=contentAddBadge"), 'title' => '/content/addbadge' );
+$items['contentDeleteBadge'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=contentDeleteBadge"), 'title' => '/content/deletebadge' );
+$items['contentDelete'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=contentDelete"), 'title' => '/content/delete' );
+
+
+$items['site'] = array( 'title' => 'Site', 'itemAttributes' => array( 'class' => 'nav-header' ) );
+$items['siteBadges'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteBadges" ), 'title' => '/site/badges' );
+$items['siteConfig'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteConfig" ), 'title' => '/site/config' );
+$items['siteChallenges'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteChallenges" ), 'title' => '/site/challenges' );
+$items['siteContents'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteContents" ), 'title' => '/site/contents' );
+$items['siteImage'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteImage" ), 'title' => '/site/image' );
+$items['siteResponses'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteResponses" ), 'title' => '/site/responses' );
+$items['siteUpdateVideoStatus'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteUpdateVideoStatus" ), 'title' => '/site/siteupdatevideostatus' );
+$items['siteSendFeedback'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteSendFeedback" ), 'title' => '/site/sendfeedback' );
+$items['siteTags'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteTags" ), 'title' => '/site/tags' );
+$items['siteUsers'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteUsers" ), 'title' => '/site/users' );
+$items['siteChallengeStream'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteChallengeStream" ), 'title' => '/site/challengestream' );
+$items['siteMaverickStream'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteMaverickStream" ), 'title' => '/site/maverickstream' );
+$items['siteStreams'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=siteStreams" ), 'title' => '/site/streams' );
+
+$items['user'] = array( 'title' => 'User', 'itemAttributes' => array('class' => 'nav-header') );
+$items['userMe'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userMe"), 'title' => '/user/me' );
+$items['userDetails'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userDetails"), 'title' => '/user/details' );
+$items['userMyFeed'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userMyFeed"), 'title' => '/user/myfeed' );
+$items['userResponseFeed'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userResponseFeed"), 'title' => '/user/responsefeed' );
+$items['userResponses'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userResponses"), 'title' => '/user/responses' );
+$items['userBadgedResponses'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userBadgedResponses"), 'title' => '/user/badgedresponses' );
+$items['userBadged'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userBadged"), 'title' => '/user/badged' );
+$items['userSavedChallenges'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userSavedChallenges"), 'title' => '/user/savedchallenges' );
+$items['userEditSavedChallenge'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userEditSavedChallenge"), 'title' => '/user/editsavedchallenge' );
+$items['userContents'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userContents"), 'title' => '/user/contents' );
+$items['userSavedContents'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userSavedContents"), 'title' => '/user/savedcontents' );
+$items['userEditSavedContent'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userEditSavedContent"), 'title' => '/user/editsavedcontent' );
+$items['userFollowers'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userFollowers"), 'title' => '/user/followers' );
+$items['userEditFollowing'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userEditFollowing"), 'title' => '/user/editfollowing' );
+$items['userDeleteFollower'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userDeleteFollower"), 'title' => '/user/deletefollower' );
+$items['userEditProfile'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userEditProfile"), 'title' => '/user/editprofile' );
+$items['userEditPassword'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userEditPassword"), 'title' => '/user/editpassword' );
+$items['userDeactivateAccount'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userDeactivateAccount"), 'title' => '/user/deactivateaccount' );
+$items['userAvatar'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userAvatar"), 'title' => '/user/avatar.jpg' );
+$items['userNotifications'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userNotifications"), 'title' => '/user/notifications' );
+$items['userFlag'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userFlag"), 'title' => '/user/flag' );
+$items['userFindMyFriends'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userFindMyFriends"), 'title' => '/user/findmyfriends' );
+$items['userInviteMyFriends'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=userInviteMyFriends"), 'title' => '/user/invitemyfriends' );
+
+$items['comment'] = array( 'title' => 'Comments', 'itemAttributes' => array( 'class' => 'nav-header' ) );
+$items['commentToken'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=commentToken" ), 'title' => '/comment/token' );
+$items['commentMessageUpdateWebHook'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=commentMessageUpdateWebHook" ), 'title' => '/comment/messageupdatewebhook' );
+
+$items['coppa'] = array( 'title' => 'COPPA', 'itemAttributes' => array( 'class' => 'nav-header' ) );
+$items['verifyParent'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=coppaVerifyParent" ), 'title' => '/coppa/verifyparent' );
+$items['editVPCStatus'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=coppaEditVPCStatus" ), 'title' => '/coppa/editvpcstatus' );
+
+$items['moderation'] = array( 'title' => 'Moderation', 'itemAttributes' => array( 'class' => 'nav-header' ) );
+$items['responseWebhook'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=moderationResponseWebhook" ), 'title' => '/moderation/responsewebhook' );
+$items['userWebhook'] = array( 'link' => $this->url( "/$apiVersion/docs/service?serviceName=moderationUserWebhook" ), 'title' => '/moderation/userwebhook' );
+
+$list = $this->linkList( $items, array( 'attributes' => array('class' => 'nav nav-list')));
+
+print <<<HTML
+<div id="nav" class="mod"> 
+    <div class="content">
+        <div class="hd"></div>
+        <div class="bd">
+            <div class="well">
+                {$list}
+            </div>
+        </div>
+        <div class="ft"></div>
+    </div>
+</div>
+HTML;
+
+?>

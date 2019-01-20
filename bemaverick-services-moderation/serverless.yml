@@ -1,0 +1,46 @@
+service: moderation-service
+
+functions:
+  text:
+      handler: src/moderateText.main
+      events:
+        - http:
+            path: text
+            method: post
+            cors: true
+  dispatcher:
+        handler: src/moderateSNSHandler.main
+        events:
+          - sns:
+              arn: arn:aws:sns:us-east-1:415196061258:dev_moderation
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+# Configuration for serverless-webpack
+# Enable auto-packing of external modules
+custom:
+  dotenv:
+    # path: ./.env
+    path: ./.env/.${self:custom.currentStage}.env
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  defaultStage: dev
+  currentStage: ${opt:stage, self:custom.defaultStage} # 'dev' is default unless overriden by --stage flag
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${self:custom.currentStage}
+  environment:
+      ENV: ${self:custom.currentStage}
+  region: us-east-1
+  timeout: 30
+
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: ${self:custom.currentStage}-${self:service}

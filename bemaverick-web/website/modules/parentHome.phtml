@@ -1,0 +1,21 @@
+<?php
+$site = $this->site;
+$loginUser = $this->loginUser;
+$formatPost = $this->formatPost();
+
+$kids = $loginUser->getKids();
+
+$contents = array(
+    $this->render( 'parentHomeMavericks.phtml' ),
+    $this->render( 'parentHomeLatestActivity.phtml' ),
+    $formatPost->getPostPreviewModule(4),
+    $this->render( 'parentHomeChallenges.phtml' ),
+);
+
+print '
+    <div class="parent-home page-wrapper">
+        '.join( '', $contents ).'
+    </div>
+'
+
+?>

@@ -1,0 +1,82 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// globals
+$post = $this->post;
+$site = $this->site;
+
+// formatter
+$formatPost = $this->formatPost();
+
+//variables
+$postObj = $formatPost->getPostObject( null, $post );
+
+// header / featured image
+$headerContent = array();
+
+if ( $postObj->getFeaturedMedia() ) {
+    $featuredMedia = $postObj->getFeaturedMedia();
+    if ( $featuredMedia->getFull()) {
+        $headerContent[] = '
+            <div class="post__featured-image" style="background-image: url('.$featuredMedia->getFull()->getSourceUrl().');"></div>
+        ';
+    }
+}
+
+// body
+$bodyContent = array();
+$dateObj = date_create($postObj->getDate());
+$date = date_format($dateObj,"F j, Y g:i a");
+
+// post heading
+$bodyContent[] = '
+    <div class="post-heading">
+        <div class="post__title">'.$postObj->getTitle().'</div>
+        <div class="post__author">By '.($postObj->getAuthor())->getName().'</div>
+        <div class="post__date">'.$date.'</div>
+    </div>
+';
+
+// post text
+$bodyContent[] = '
+    <div class="post__text">
+        '.nl2br($postObj->getContent()).'
+    </div>
+';
+
+// footer / more articles
+$footerContent = array();
+
+$cards = array();
+$posts = $site->getPosts( 2, BeMaverick_WordPress::CATEGORY_PARENTAL_RESOURCES );
+if ( $posts ) {
+    foreach ( $posts as $post ) {
+
+        $postObj = $formatPost->getPostObject( null, $post );
+
+        if ( !$postObj ) {
+            continue;
+        }
+        $card = $formatPost->getCard(
+            $postObj,
+            array(
+                'imageName' => 'mediumLarge'
+            )
+        );
+        if ( $card ) {
+            $cards[] = '<div class="post__footer-card">'.$card.'</div>';
+        }
+    }
+}
+
+// footer / more posts
+$footerContent[] = $formatPost->getPostPreviewModule(2);
+
+//// print content
+print implode($headerContent).
+    '<div class="post__page-content">'
+    . implode($bodyContent)
+    . implode($footerContent)
+    .'</div>';
+?>

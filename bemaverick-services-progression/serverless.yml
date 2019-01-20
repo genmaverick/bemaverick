@@ -1,0 +1,238 @@
+service: progression-service
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: ${self:provider.stage}
+
+functions:
+  # Levels
+  createLevel:
+    handler: src/handler.createLevel
+    events:
+      - http:
+          path: /levels
+          method: post
+          cors: true
+  listLevels:
+    handler: src/handler.listLevels
+    events:
+      - http:
+          path: /levels
+          method: get
+          cors: true
+  getLevel:
+    handler: src/handler.getLevel
+    events:
+      - http:
+          path: /levels/{id}
+          method: get
+          cors: true
+  updateLevel:
+    handler: src/handler.updateLevel
+    events:
+      - http:
+          path: /levels/{id}
+          method: put
+          cors: true
+  deleteLevel:
+    handler: src/handler.deleteLevel
+    events:
+      - http:
+          path: /levels/{id}
+          method: delete
+          cors: true
+
+  # Projects
+  createProject:
+    handler: src/handler.createProject
+    events:
+      - http:
+          path: /projects
+          method: post
+          cors: true
+  listProjects:
+    handler: src/handler.listProjects
+    events:
+      - http:
+          path: /projects
+          method: get
+          cors: true
+  getProject:
+    handler: src/handler.getProject
+    events:
+      - http:
+          path: /projects/{id}
+          method: get
+          cors: true
+  updateProject:
+    handler: src/handler.updateProject
+    events:
+      - http:
+          path: /projects/{id}
+          method: put
+          cors: true
+  deleteProject:
+    handler: src/handler.deleteProject
+    events:
+      - http:
+          path: /projects/{id}
+          method: delete
+          cors: true
+
+  # Rewards
+  createReward:
+    handler: src/handler.createReward
+    events:
+      - http:
+          path: /rewards
+          method: post
+          cors: true
+  listRewards:
+    handler: src/handler.listRewards
+    events:
+      - http:
+          path: /rewards
+          method: get
+          cors: true
+  getReward:
+    handler: src/handler.getReward
+    events:
+      - http:
+          path: /rewards/{id}
+          method: get
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false
+  updateReward:
+    handler: src/handler.updateReward
+    events:
+      - http:
+          path: /rewards/{id}
+          method: put
+          cors: true
+  deleteReward:
+    handler: src/handler.deleteReward
+    events:
+      - http:
+          path: /rewards/{id}
+          method: delete
+          cors: true
+
+  # Tasks
+  createTask:
+    handler: src/handler.createTask
+    events:
+      - http:
+          path: /tasks
+          method: post
+          cors: true
+  listTasks:
+    handler: src/handler.listTasks
+    events:
+      - http:
+          path: /tasks
+          method: get
+          cors: true
+  getTask:
+    handler: src/handler.getTask
+    events:
+      - http:
+          path: /tasks/{id}
+          method: get
+          cors: true
+  updateTask:
+    handler: src/handler.updateTask
+    events:
+      - http:
+          path: /tasks/{id}
+          method: put
+          cors: true
+  deleteTask:
+    handler: src/handler.deleteTask
+    events:
+      - http:
+          path: /tasks/{id}
+          method: delete
+          cors: true
+
+  # Users
+  getUser:
+    handler: src/handler.getUser
+    timeout: 60 # optional, in seconds, default is 6
+    events:
+      - http:
+          path: /users/{id}
+          method: get
+          cors: true
+
+  # Rules
+  rulesEventsWorker:
+    handler: src/api/rules/eventsWorker.handler
+    timeout: 60 # optional, in seconds, default is 6
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - RulesEventsQueue
+              - Arn
+            # arn:aws:sqs:${self:custom.defaultRegion}:${self:custom.accountId}:bemaverick-rules-events-queue-${self:provider.stage}
+            # TODO: Debug dependency or race condition that causes this lambda even
+            #   to unlink from the SQS queue
+
+custom:
+  dotenv:
+    path: ./.env/.${self:provider.stage}.env
+  accountId: 415196061258
+  defaultRegion: us-east-1
+  # changeContentArn:
+  #   dev: arn:aws:sns:us-east-1:415196061258:dev_change_content
+  #   prod: arn:aws:sns:us-east-1:415196061258:prod_change_content
+
+
+resources:
+  Resources:
+    RulesEventsQueue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: bemaverick-rules-events-queue-${self:provider.stage}
+
+    RulesEventsQueuePolicy:
+      Type: "AWS::SQS::QueuePolicy"
+      DependsOn:
+        - RulesEventsQueue
+      Properties:
+        PolicyDocument: 
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Principal: "*"
+            Action: SQS:SendMessage
+            Resource: arn:aws:sqs:us-east-1:415196061258:bemaverick-rules-events-queue-${self:provider.stage}
+            Condition:
+              ArnEquals:
+                aws:SourceArn: arn:aws:sns:us-east-1:415196061258:bemaverick-events-topic-${self:provider.stage}
+        Queues:
+          - Ref: RulesEventsQueue
+  Outputs:
+    RulesEventsQueueArn:
+      Value:
+        Fn::GetAtt:
+          - RulesEventsQueue
+          - Arn
+      Export:
+        Name: RulesEventsQueueArn-${self:provider.stage}

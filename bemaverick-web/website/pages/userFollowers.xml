@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>userFollowers</name>
+    <title>
+        <text>Followers</text>
+    </title>
+    <type>users</type>
+    <subType>user-followers-popup</subType>
+    <includes>
+        <primary append="true">
+            <file>userFollowers.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShareDeleteEditCustomActionSheetItem" customModule="Maverick" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="hrw-yW-uDp">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="181"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="editChallenge" translatesAutoresizingMaskIntoConstraints="NO" id="1sM-MT-gf9" userLabel="EditIcon">
+                    <rect key="frame" x="11" y="24" width="26" height="26"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="H0R-iL-2bu"/>
+                        <constraint firstAttribute="height" constant="26" id="sdW-bc-X0G"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Challenge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYc-LL-btf">
+                    <rect key="frame" x="53" y="23" width="138" height="28"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCG-qW-Mg5" userLabel="EditButton">
+                    <rect key="frame" x="37" y="24" width="316" height="26"/>
+                    <connections>
+                        <action selector="didPressEditButton:" destination="-1" eventType="touchUpInside" id="wce-cH-ZHT"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareResponse" translatesAutoresizingMaskIntoConstraints="NO" id="6Bt-7E-lLs" userLabel="ShareIcon">
+                    <rect key="frame" x="11" y="74" width="26" height="26"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="fSn-9w-lF5"/>
+                        <constraint firstAttribute="width" constant="26" id="ryx-vN-Qfq"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Challenge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBg-o2-H6s">
+                    <rect key="frame" x="53" y="73" width="155.5" height="28"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0P-BN-ydQ" userLabel="ShareButton">
+                    <rect key="frame" x="0.0" y="74" width="353" height="26"/>
+                    <connections>
+                        <action selector="didPressShareButton:" destination="-1" eventType="touchUpInside" id="Lue-y1-c9D"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="Ume-xU-Xw5" userLabel="DeleteIcon">
+                    <rect key="frame" x="11" y="124" width="26" height="26"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="11p-kC-kOt"/>
+                        <constraint firstAttribute="width" constant="26" id="BiN-8e-qSI"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Challenge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CjL-LW-ZSQ">
+                    <rect key="frame" x="53" y="123" width="163" height="28"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4BD-H9-Mrp" userLabel="DeleteButton">
+                    <rect key="frame" x="0.0" y="124" width="353" height="26"/>
+                    <connections>
+                        <action selector="didPressDeleteButton:" destination="-1" eventType="touchUpInside" id="tqZ-q8-MiS"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1sM-MT-gf9" firstAttribute="top" secondItem="wWl-1e-RIt" secondAttribute="top" constant="24" id="0v3-A5-Fgi"/>
+                <constraint firstItem="Q0P-BN-ydQ" firstAttribute="centerY" secondItem="6Bt-7E-lLs" secondAttribute="centerY" id="4GB-QL-dzu"/>
+                <constraint firstItem="TYc-LL-btf" firstAttribute="leading" secondItem="1sM-MT-gf9" secondAttribute="trailing" constant="16" id="7Mr-qr-IyN"/>
+                <constraint firstItem="6Bt-7E-lLs" firstAttribute="leading" secondItem="wWl-1e-RIt" secondAttribute="leading" constant="11" id="E8y-OV-bfz"/>
+                <constraint firstAttribute="trailing" secondItem="4BD-H9-Mrp" secondAttribute="trailing" constant="-30" id="EZX-Qp-e7x"/>
+                <constraint firstItem="nCG-qW-Mg5" firstAttribute="height" secondItem="1sM-MT-gf9" secondAttribute="height" id="GuR-qP-J9o"/>
+                <constraint firstItem="TYc-LL-btf" firstAttribute="centerY" secondItem="1sM-MT-gf9" secondAttribute="centerY" id="LdF-WP-XiX"/>
+                <constraint firstItem="6Bt-7E-lLs" firstAttribute="top" secondItem="1sM-MT-gf9" secondAttribute="bottom" constant="24" id="Mpg-aW-uxb"/>
+                <constraint firstItem="Ume-xU-Xw5" firstAttribute="leading" secondItem="wWl-1e-RIt" secondAttribute="leading" constant="11" id="NT2-H9-mTe"/>
+                <constraint firstItem="4BD-H9-Mrp" firstAttribute="centerY" secondItem="Ume-xU-Xw5" secondAttribute="centerY" id="SOx-4Z-tiY"/>
+                <constraint firstItem="Q0P-BN-ydQ" firstAttribute="height" secondItem="6Bt-7E-lLs" secondAttribute="height" id="VCq-BH-FUh"/>
+                <constraint firstItem="hBg-o2-H6s" firstAttribute="centerY" secondItem="6Bt-7E-lLs" secondAttribute="centerY" id="WlB-lM-rWU"/>
+                <constraint firstItem="hBg-o2-H6s" firstAttribute="leading" secondItem="6Bt-7E-lLs" secondAttribute="trailing" constant="16" id="WxA-S3-azG"/>
+                <constraint firstItem="1sM-MT-gf9" firstAttribute="leading" secondItem="wWl-1e-RIt" secondAttribute="leading" constant="11" id="YUr-dy-22d"/>
+                <constraint firstItem="wWl-1e-RIt" firstAttribute="trailing" secondItem="Q0P-BN-ydQ" secondAttribute="trailing" constant="-30" id="Z8U-Df-f3N"/>
+                <constraint firstItem="wWl-1e-RIt" firstAttribute="trailing" secondItem="nCG-qW-Mg5" secondAttribute="trailing" constant="-30" id="dp9-6M-gxq"/>
+                <constraint firstItem="Ume-xU-Xw5" firstAttribute="top" secondItem="6Bt-7E-lLs" secondAttribute="bottom" constant="24" id="m3a-ku-u2P"/>
+                <constraint firstItem="nCG-qW-Mg5" firstAttribute="centerY" secondItem="1sM-MT-gf9" secondAttribute="centerY" id="oOT-f5-h6g"/>
+                <constraint firstItem="4BD-H9-Mrp" firstAttribute="height" secondItem="Ume-xU-Xw5" secondAttribute="height" id="oY7-vA-VPv"/>
+                <constraint firstItem="CjL-LW-ZSQ" firstAttribute="leading" secondItem="Ume-xU-Xw5" secondAttribute="trailing" constant="16" id="r4u-vP-5cK"/>
+                <constraint firstItem="nCG-qW-Mg5" firstAttribute="leading" secondItem="1sM-MT-gf9" secondAttribute="trailing" id="sz3-Wb-5al"/>
+                <constraint firstItem="Q0P-BN-ydQ" firstAttribute="leading" secondItem="wWl-1e-RIt" secondAttribute="leading" id="tJ2-6Q-Bhe"/>
+                <constraint firstItem="4BD-H9-Mrp" firstAttribute="leading" secondItem="hrw-yW-uDp" secondAttribute="leading" id="tQG-0k-k3V"/>
+                <constraint firstItem="CjL-LW-ZSQ" firstAttribute="centerY" secondItem="Ume-xU-Xw5" secondAttribute="centerY" id="zo7-W7-d2b"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="wWl-1e-RIt"/>
+            <point key="canvasLocation" x="12.5" y="-468.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="delete" width="22" height="28"/>
+        <image name="editChallenge" width="27" height="27"/>
+        <image name="shareResponse" width="21" height="27"/>
+    </resources>
+</document>

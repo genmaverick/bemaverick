@@ -1,0 +1,77 @@
+<?php
+// todo: add in pagination
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$loginUser = $this->loginUser;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatPost = $this->formatPost();
+
+// variables
+
+// module stuff
+$moduleClassPrefix = 'posts-list';
+$typeClassPrefix = 'mini-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = array();
+$headerContent[] = $formatModule->getTitleBar(
+    array(
+        'classPrefixes' => $classPrefixes,
+        'title' => $translator->_( 'Parental Resources' ),
+        'titleTag' => 'h1'
+    )
+);
+
+// body content
+$cards = array();
+$posts = $site->getPosts( 20, BeMaverick_WordPress::CATEGORY_PARENTAL_RESOURCES );
+if ( $posts ) {
+    foreach ( $posts as $post ) {
+
+        $postObj = $formatPost->getPostObject( null, $post );
+
+        if ( !$postObj ) {
+            continue;
+        }
+        $card = $formatPost->getCard(
+            $postObj,
+            array(
+                'imageName' => 'mediumLarge'
+            )
+        );
+        if ( $card ) {
+            $cards[] = $card;
+        }
+    }
+}
+// body content
+$bodyContent = array();
+$bodyContent[] = '
+    <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'post-cards', $classPrefixes ) ).' post-cards">
+    ' .join( '', $cards ). '
+    </div>
+';
+
+
+// print module
+print $formatModule->getMiniModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Challenge</name>
+    <description>Get challenge details for a given challenge id</description>
+    <uri>/challenge/details</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>challengeId</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 542</examples>
+            <description>The challenge id</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/challenge/details?appKey=test_key&challengeId=1"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

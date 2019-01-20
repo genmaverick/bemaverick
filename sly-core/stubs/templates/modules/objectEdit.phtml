@@ -1,0 +1,19 @@
+<?php
+$input = $this->input;
+$formatForm = $this->formatForm();
+$formatObject = $this->formatObject();
+$cancelUrl = $this->url('objects');
+$object = $this->object;
+$formItems = $formatObject->getEditFormItems($object,$input,$cancelUrl);
+$formAction = $object->getUrl('objectEditConfirm');
+
+?>
+<div id="objectEdit" class="mod object-edit">
+    <div class="content">
+        <form action="<?php print $formAction; ?>" method="post">
+        <div class="bd">
+            <?php print $formatForm->getList($formItems); ?>
+        </div>
+        </form>
+    </div>
+</div>

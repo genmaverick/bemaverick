@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>postsBadges</name>
+    <title>
+        <text>Badge Posts</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>postsBadgesEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

@@ -1,0 +1,41 @@
+service: transcription-service
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  environment:
+    # MONGO_USERNAME: maverick-services
+    # MONGO_PASSWORD: jbsmO8OKtz5nmo3B
+    # MONGO_HOST: maverick-services-dev-shard-00-00-vdx0u.mongodb.net:27017,maverick-services-dev-shard-00-01-vdx0u.mongodb.net:27017,maverick-services-dev-shard-00-02-vdx0u.mongodb.net
+    # MONGO_DB_NAME: comment
+    # API_URL: https://dev-api.bemaverick.com
+    # API_KEY: bemaverick_ios
+    # AWS_LAMBDA_API_KEY: 0mbh8CXZZyWwYYGXbiDvuXka5HnAELNN
+    NODE_ENV: ${self:provider.stage}
+
+functions:
+  startTranscriptionJob:
+    handler: src/handler.startTranscriptionJob
+    events:
+      - http:
+          path: /{uuid}
+          method: post
+          cors: true
+
+  transcribeCron:
+    handler: src/handler.transcribeCron
+    timeout: 300 # optional, in seconds, default is 6
+    events:
+      - schedule:
+          rate: rate(5 minutes)
+          enabled: true
+
+custom:
+  dotenv:
+    # path: ./.env
+    path: ./.env/.${self:provider.stage}.env

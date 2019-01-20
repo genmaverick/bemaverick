@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="HorizontalUserListTableViewCellID" rowHeight="326" id="0Cp-Gu-llw" customClass="HorizontalUserListTableViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="512" height="344"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Cp-Gu-llw" id="Ahl-Lu-IEs">
+                <rect key="frame" x="0.0" y="0.0" width="512" height="343.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="GRc-lV-EOz">
+                        <rect key="frame" x="0.0" y="0.0" width="512" height="333.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6O-jA-r5S">
+                                <rect key="frame" x="0.0" y="0.0" width="512" height="60"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Find Mavericks" translatesAutoresizingMaskIntoConstraints="NO" id="ZMC-DL-omX">
+                                        <rect key="frame" x="5" y="5" width="502" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="i5G-k9-1bR"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="0Cp-Gu-llw" id="3at-NJ-PNT"/>
+                                        </connections>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ZMC-DL-omX" firstAttribute="top" secondItem="u6O-jA-r5S" secondAttribute="top" constant="5" id="0l5-QP-OXM"/>
+                                    <constraint firstItem="ZMC-DL-omX" firstAttribute="leading" secondItem="u6O-jA-r5S" secondAttribute="leading" constant="5" id="Vi9-1l-doH"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZMC-DL-omX" secondAttribute="trailing" constant="5" id="gw6-G2-WeG"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZMC-DL-omX" secondAttribute="bottom" constant="5" id="t5k-g9-Wfv"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="nFe-o7-KgO">
+                                <rect key="frame" x="0.0" y="60" width="512" height="173.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="753" text="     Check out these fellow Mavericks:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkK-g4-gSK" userLabel="Check out these Mavericks">
+                                        <rect key="frame" x="20" y="0.0" width="482" height="173.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fkK-g4-gSK" firstAttribute="leading" secondItem="nFe-o7-KgO" secondAttribute="leading" constant="20" id="0tl-tl-QiW"/>
+                                    <constraint firstItem="fkK-g4-gSK" firstAttribute="top" secondItem="nFe-o7-KgO" secondAttribute="top" id="122-OT-QMT"/>
+                                    <constraint firstAttribute="trailing" secondItem="fkK-g4-gSK" secondAttribute="trailing" constant="10" id="B7S-tF-l0C"/>
+                                    <constraint firstAttribute="bottom" secondItem="fkK-g4-gSK" secondAttribute="bottom" id="EYj-lu-dLY"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6Gg-ne-xyZ">
+                                <rect key="frame" x="0.0" y="233.5" width="512" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="QPG-I2-Het"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="ogV-z1-mhL">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6Gg-ne-xyZ" secondAttribute="trailing" id="Ftd-xa-xdt"/>
+                            <constraint firstAttribute="trailing" secondItem="nFe-o7-KgO" secondAttribute="trailing" id="a7p-yA-UYK"/>
+                            <constraint firstAttribute="trailing" secondItem="u6O-jA-r5S" secondAttribute="trailing" id="heQ-BD-aCL"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="GRc-lV-EOz" secondAttribute="trailing" id="BG3-KR-Jwr"/>
+                    <constraint firstAttribute="bottom" secondItem="GRc-lV-EOz" secondAttribute="bottom" constant="10" id="Qx8-u1-DyB"/>
+                    <constraint firstItem="GRc-lV-EOz" firstAttribute="leading" secondItem="Ahl-Lu-IEs" secondAttribute="leading" id="Y41-dk-fCt"/>
+                    <constraint firstItem="GRc-lV-EOz" firstAttribute="top" secondItem="Ahl-Lu-IEs" secondAttribute="top" id="e9v-cg-Q4b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionView" destination="6Gg-ne-xyZ" id="M48-qv-ADT"/>
+                <outlet property="label" destination="fkK-g4-gSK" id="jWp-af-qyL"/>
+                <outlet property="searchBar" destination="ZMC-DL-omX" id="qWh-Uq-Wwd"/>
+                <outlet property="userHeaderContainer" destination="nFe-o7-KgO" id="Uoo-YZ-IeE"/>
+            </connections>
+            <point key="canvasLocation" x="356" y="56"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>termsOfService</name>
+    <title>
+        <text>Terms of Service</text>
+        <headingText>Maverick Terms of Service</headingText>
+    </title>
+    <type>index</type>
+    <subType>terms-of-service</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>termsOfService.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

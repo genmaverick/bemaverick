@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+
+    <INPUT_INVALID_USERNAME>Your username must be at least 4 characters. Valid characters are A-Z a-z 0-9 . _ -</INPUT_INVALID_USERNAME>
+    <INPUT_INVALID_EMAIL_ADDRESS>Please enter a valid email address.</INPUT_INVALID_EMAIL_ADDRESS>
+    <INPUT_INVALID_PARENT_EMAIL_ADDRESS>Please enter a valid email address.</INPUT_INVALID_PARENT_EMAIL_ADDRESS>
+    <INPUT_INVALID_PASSWORD>Your password must be at least 6 characters.</INPUT_INVALID_PASSWORD>
+    <INPUT_INVALID_NEW_PASSWORD>Your password must be at least 6 characters.</INPUT_INVALID_NEW_PASSWORD>
+    <INPUT_INVALID_PHONE_NUMBER>Please enter a valid phone number.</INPUT_INVALID_PHONE_NUMBER>
+
+    <PARENT_EMAIL_ADDRESS_MUST_BE_GIVEN>You must provide a family member email address.</PARENT_EMAIL_ADDRESS_MUST_BE_GIVEN>
+    <PARENT_EMAIL_ADDRESS_DOES_NOT_EXIST>The parent email address does not exist.</PARENT_EMAIL_ADDRESS_DOES_NOT_EXIST>
+    <USERNAME_IS_NOT_AVAILABLE>Oh, no! This username is taken. Please try another.</USERNAME_IS_NOT_AVAILABLE>
+    <USERNAME_IS_INAPPROPRIATE>This username is not allowed. Please try another.</USERNAME_IS_INAPPROPRIATE>
+    <EMAIL_ADDRESS_IS_NOT_AVAILABLE>Whoops, someone already snapped up that email address.</EMAIL_ADDRESS_IS_NOT_AVAILABLE>
+    <EMAIL_ADDRESS_IS_NOT_AVAILABLE_PARENT>The parent email address is already in use by a Maverick.</EMAIL_ADDRESS_IS_NOT_AVAILABLE_PARENT>
+    <USER_DOES_NOT_EXIST>This username does not exist.</USER_DOES_NOT_EXIST>
+    <USER_DOES_NOT_HAVE_PERMISSIONS_TO_FAVORITE_RESPONSE>This user doesn't have the permission to favorite this response.</USER_DOES_NOT_HAVE_PERMISSIONS_TO_FAVORITE_RESPONSE>
+    <USER_DOES_NOT_HAVE_PERMISSIONS_TO_CREATE_CONTENT>Oops.You don't have permission to add content to your profile</USER_DOES_NOT_HAVE_PERMISSIONS_TO_CREATE_CONTENT>
+    <USER_DOES_NOT_HAVE_PERMISSIONS_TO_DELETE_CONTENT>You don't have permission to delete this content</USER_DOES_NOT_HAVE_PERMISSIONS_TO_DELETE_CONTENT>
+    <USER_MUST_BE_TEEN_TO_USE_SOCIAL_LOGIN>Since you're under 13, you can't make an account this way. Please create a username and password instead.</USER_MUST_BE_TEEN_TO_USE_SOCIAL_LOGIN>
+    <PARENT_NOT_ALLOWED_TO_USE_SOCIAL_LOGIN>Parent and guardian Facebook login is not supported at this time. Please create a username and password instead.</PARENT_NOT_ALLOWED_TO_USE_SOCIAL_LOGIN>
+    <OAUTH_INVALID_USERNAME_AND_PASSWORD_COMBINATION>Oops, looks like your username and/or password is incorrect</OAUTH_INVALID_USERNAME_AND_PASSWORD_COMBINATION>
+</strings>

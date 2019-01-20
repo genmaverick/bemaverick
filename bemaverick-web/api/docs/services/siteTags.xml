@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Tags</name>
+    <description>Get a list of tags</description>
+    <uri>/site/tags</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>query</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>art</examples>
+            <description>If given, it will return list of tags that start with query</description>
+        </param>
+        <param>
+            <name>count</name>
+            <required>no</required>
+            <default>10</default>
+            <format>integer</format>
+            <examples>25, 50</examples>
+            <description>Return the number of tags</description>
+        </param>
+        <param>
+            <name>offset</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>10</examples>
+            <description>Start with the offset for list of tags. 0 based.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/tags?query=art&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

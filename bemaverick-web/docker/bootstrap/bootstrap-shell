@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Setup Phinx
+cd /home/$USER/dev/bemaverick-web/database
+export PROJECT_ROOT=`cd .. && pwd` && cd ..
+cd $PROJECT_ROOT/database/config
+cd $PROJECT_ROOT
+ln -sf $PROJECT_ROOT/vendor/robmorgan/phinx/bin/phinx /bin/phinx
+
+# Start shell
+/bin/bash

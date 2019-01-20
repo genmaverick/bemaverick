@@ -1,0 +1,135 @@
+<?php
+$input = $this->input;
+$site = $this->site;
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$challengeStatus = $input->challengeStatus;
+$query = $input->getUnescaped( 'query' );
+$count = $input->count ? $input->count : 20;
+$offset = $input->offset ? $input->offset : 1;
+$sort = $input->sort ? $input->sort : 'id';
+$sortOrder = $input->sortOrder ? $input->sortOrder : 'desc';
+
+$filterBy = array(
+    'challengeStatus' => $challengeStatus,
+    'query' => $query,
+);
+
+$sortBy = array(
+    'sort' => $sort,
+    'sortOrder' => $sortOrder,
+);
+
+$challenges = $site->getChallenges( $filterBy, $sortBy, $count, $offset-1 );
+$challengeCount = $site->getChallengeCount( $filterBy );
+
+// set the table data
+$columns = array(
+    'challengeId',
+    'challengeStatus',
+    'challengeType',
+    'challengeMainImage',
+    'challengeCardImage',
+    'challengeTitle',
+    'challengeUserUsername',
+    'challengeStartTime',
+    'challengeEndTime',
+    'challengeAction'
+);
+
+$columnInfo = $this->getTableInfo()->getColumnInfo( $columns );
+
+// we want the next click to be reverse sort order
+$sortParams = array(
+    'challengeStatus' => $challengeStatus,
+    'query' => $query,
+    'sort' => '_sort_',
+    'sortOrder' => $sortOrder == 'desc' ? 'asc' : 'desc',
+);
+
+$tableInitVars = array(
+    'columns' => $columns,
+    'columnInfo' => $columnInfo,
+    'rowIdPrefix' => 'challenge',
+    'dontUseGroups' => true,
+    'sort' => array(
+        'url' => $this->url( 'challenges', $sortParams ),
+        'column' => 'challenge',
+        'value' => $sort,
+        'isDynamic' => true,
+    ),
+    'tableAttributes' => array( 'class' => 'table table-striped table-bordered' ),
+);
+
+$tableDataInput = array();
+
+$tableData = $this->getTableData( $challenges, $columns, $tableDataInput );
+
+$tableInitVars['rows'] = array_keys( $tableData );
+
+$table = $this->table( $tableData, $tableInitVars );
+
+// pagination params
+$paginationParams = array(
+    'challengeStatus' => $challengeStatus,
+    'query' => $query,
+    'sort' => $sort,
+    'sortOrder' => $sortOrder,
+);
+
+$paginationVars = array(
+    'offset' => $offset,
+    'urlIndex' => 'challenges',
+    'totalItems' => $challengeCount,
+    'perPage' => $count,
+    'itemType' => 'Challenges',
+    'displayPrefix' => 'Displaying',
+    'of' => 'of',
+    'paginationParams' => $paginationParams,
+    'hideIfEmpty' => true,
+    'alwaysShowPrevNext' => true,
+    'labels' => array( '&laquo; Prev', 'Next &raquo;'),
+    'showItemCounts' => true,
+    'showPaginationIfOnePage' => false,
+    'listAttributes' => array(
+       'class' => 'pagination'
+    ),
+    'containerAttributes' => array(
+        'class' => 'pagination-wrap'
+    )
+);
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getChallengeStatus( $challengeStatus, null );
+$formItems[] = $formatFormBootstrap->getQuery( $query, null );
+$formItems[] = $formatFormBootstrap->getButton( array( 'text' => 'Filter', 'style' => 'default' ) );
+?>
+
+
+<div class="page-header">
+    <h1 class="page-header-title">Challenges</h1>
+    <div class="actions-wrap">
+        <a href='<?php print $this->url( 'challengeAdd' ); ?>' class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp; Add New Challenge
+        </a>
+    </div>
+</div>
+
+<div class="button-bars">
+    <div class="button-bar--filter button-bar">
+        <form method="get" action="<?php print $this->url( 'challenges' ); ?>">
+            <div class="filter">
+                <?php print $formatFormBootstrap->getList( $formItems ); ?>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <?php print $table; ?>
+</div>
+
+<div class="pagination-bar">
+    <?php print $this->searchPagination( $paginationVars ); ?>
+</div>
+

@@ -1,0 +1,9 @@
+<?php
+$errors = $this->getErrorMessages( array(), '', false );
+if (!$errors) {
+    return;
+}
+?>
+<div class="unassociated-errors">
+    <?php print $errors; ?>
+</div>

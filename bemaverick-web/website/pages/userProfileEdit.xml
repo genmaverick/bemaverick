@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>userProfileEdit</name>
+    <title>
+        <text>Edit Profile</text>
+    </title>
+    <type>users</type>
+    <subType>user-profile-edit-popup</subType>
+    <includes>
+        <primary append="true">
+            <file>userProfileEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

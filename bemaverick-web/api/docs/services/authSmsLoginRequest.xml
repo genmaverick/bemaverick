@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Auth SMS Login Request</name>
+    <service_name>authSmsLoginRequest</service_name>
+    <description>Request a code via SMS to be able to login</description>
+    <uri>/auth/smsloginrequest</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>phoneNumber</name>
+            <required>yes</required>
+            <default></default>
+            <format>+1NNNNNNNNNN</format>
+            <examples>+13105552038</examples>
+            <description>The phone number</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/auth/smsloginrequest?appKey=test_key&phoneNumber=+155555555555" \
+  --include
+ ]]></example_curl>
+
+    <example_json_response><![CDATA[
+]]></example_json_response>
+
+</docs>

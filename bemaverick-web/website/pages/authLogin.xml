@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>authLogin</name>
+    <title>
+        <text>Parent Log in</text>
+    </title>
+    <type>auth</type>
+    <subType>auth-login</subType>
+    <nav>
+        <primary>login</primary>
+    </nav>
+    <includes>
+        <primary append="true">
+            <file>authLogin.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

@@ -1,0 +1,27 @@
+# PHP Storm
+.idea
+
+# VS Code
+.vscode
+
+# Composer
+vendor
+
+# Emacs
+.*~
+
+# Sly Trunk
+defines.php
+databases.php
+paths.php
+settings.php
+cache
+
+#builds
+packages/builds
+
+# Mac
+.DS_Store
+
+# local override
+common/config/databases_slytrunk_local.override.php

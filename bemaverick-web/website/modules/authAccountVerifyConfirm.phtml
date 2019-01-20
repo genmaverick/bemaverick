@@ -1,0 +1,53 @@
+<?php
+// globals
+$translator = $this->translator;
+
+// formatters
+$formatModule = $this->formatModule();
+
+// module stuff
+$moduleClassPrefix = 'auth-account-verify-confirm';
+$typeClassPrefix = 'basic-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( 'Verify Account' )
+    )
+);
+
+// body content
+$bodyContent = array();
+
+$bodyContent[] = '
+    <div class="confirm-message">
+        <p>
+            '.$translator->_( 'Your account has been verified.' ).'
+        </p>
+    </div>
+    <div class="confirm-actions">
+        <a href="'.$this->url( 'home' ).'">
+            '.$translator->_( 'Home' ).'
+        </a>
+    </div>
+';
+
+// print module
+print $formatModule->getBasicModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

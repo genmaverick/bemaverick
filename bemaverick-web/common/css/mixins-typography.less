@@ -1,0 +1,122 @@
+@import "site-colors.less";
+.title--size-large() {
+    font-size: 36px;
+    line-height: 40/36;
+    font-weight: 600;
+}
+.title--size-medium() {
+    font-size: 28px;
+    line-height: 32/28;
+    font-weight: 600;
+}
+.title--size-small() {
+    font-size: 24px;
+    line-height: 32/24;
+    font-weight: 600;
+}
+.site-title( @size ) when( @size = large ) {
+    .title--size-large();
+}
+.site-title( @size ) when( @size = medium ) {
+    .title--size-medium();
+}
+.site-title( @size ) when( @size = small ) {
+    .title--size-small();
+}
+.site-title() {
+    .title--size-medium();
+}
+
+.text--size-x-large() {
+    font-size: 20px;
+    line-height: 24/20;
+}
+.text--size-large() {
+    font-size: 18px;
+    line-height: 24/18;
+}
+.text--size-x-medium() {
+    font-size: 16px;
+    line-height: 24/16;
+}
+.text--size-medium() {
+    font-size: 14px;
+    line-height: 16/14;
+}
+.text--size-small() {
+    font-size: 13px;
+    line-height: 16/13;
+}
+.text--size-tiny() {
+    font-size: 10px;
+    line-height: 12/9;
+}
+
+.text--weight-normal() {
+    font-weight: 400;
+}
+.text--weight-medium() {
+    font-weight: 500;
+}
+.text--weight-semibold() {
+    font-weight: 600;
+}
+.text--weight-bold() {
+    font-weight: 700;
+}
+.text--type-default() {
+    color: @grey-100;
+}
+.text--type-muted() {
+    color: @grey-60;
+}
+.text--type-extra() {
+    color: @grey-120;
+}
+.text--type-link() {
+    color: @trinidad;
+}
+.text--type-link-hover() {
+    color: darken(@trinidad, 6%);
+}
+.site-text( @size: medium; @weight: normal; @type: default) when( @size = x-large ) {
+    .text--size-x-large();
+}
+.site-text( @size: medium; @weight: normal; @type: default ) when( @size = large ) {
+    .text--size-large();
+}
+.site-text( @size: medium; @weight: normal; @type: default ) when( @size = x-medium ) {
+    .text--size-x-medium();
+}
+.site-text( @size: medium; @weight: normal; @type: default ) when( @size = medium ) {
+    .text--size-medium();
+}
+.site-text( @size: medium; @weight: normal; @type: default) when( @size = small ) {
+    .text--size-small();
+}
+.site-text( @size: medium; @weight: normal; @type: default) when( @size = tiny ) {
+    .text--size-tiny();
+}
+
+.site-text( @size: medium; @weight: normal; @type: default ) when( @weight = normal ) {
+    .text--weight-normal();
+}
+.site-text( @size: medium; @weight: normal; @type: default) when( @weight = medium ) {
+    .text--weight-medium();
+}
+.site-text( @size: medium; @weight: normal; @type: default ) when( @weight = semibold ) {
+    .text--weight-semibold();
+}
+.site-text( @size: medium; @weight: normal; @type: default ) when( @weight = bold ) {
+    .text--weight-bold();
+}
+
+.site-text( @size: medium; @weight: normal; @type: default ) when( @type = muted ) {
+    .text--type-muted();
+}
+.site-text( @size: medium; @weight: normal; @type: default ) when( @type = link ) {
+    .text--type-link();
+}
+.site-text( @size: medium; @weight: normal; @type: default ) when( @type = extra ) {
+    .text--type-extra();
+}

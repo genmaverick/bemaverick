@@ -1,0 +1,60 @@
+@import "variables.less";
+
+.user-profile-details--challenges,
+.user-profile-details--badged,
+.user-profile-details--saved,
+.user-profile-details--responses {
+    .content-module__bd-content {
+        max-width: 1200px;
+    }
+    .mini-module__hd {
+        display: none;
+    }
+}
+.user-profile-details {
+    .empty-message {
+        text-align: center;
+        max-width: 360px;
+        margin: 40px auto;
+    }
+}
+.user-profile-details__hd {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    background-color: @pink-background-light;
+    position: relative;
+    .edger();
+}
+
+.user-profile-details {
+    .challenge-previews,
+    .response-previews {
+        margin-top: 8px;
+    }
+}
+.user-profile-details__activity {
+    margin-top: 16px;
+    .gutter-padding();
+}
+
+.user-profile-details__challenges {
+    margin-top: 16px;
+    .challenge-preview {
+        width: 100%;
+        position: relative;
+        margin-bottom: 16px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .challenges-content {
+        margin: 0 -8px;
+        .flex-display();
+        .flex-wrap(wrap);
+    }
+}
+
+.is-kid-profile {
+    .user-profile-details--maverick-tabs {
+        display: none;
+    }
+}

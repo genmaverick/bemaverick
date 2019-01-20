@@ -1,0 +1,69 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+
+//variables
+$youtubeImg = $this->url( "imageStatic", array( "imageName" => "social-icon-youtube.png") );
+$instagramImg = $this->url( "imageStatic", array( "imageName" => "social-icon-instagram.png") );
+$facebookImg = $this->url( "imageStatic", array( "imageName" => "social-icon-facebook.png") );
+$twitterImg = $this->url( "imageStatic", array( "imageName" => "social-icon-twitter.png") );
+
+$linksColumnOne = array(
+    'faq' => array(
+        'title' => $translator->_( 'FAQs' ),
+        'link' => '/faq/'
+    ),
+    'tos' => array(
+        'title' => $translator->_( 'Terms of Service' ),
+        'link' => '/terms-of-service/'
+    ),
+    'privacyPolicy' => array(
+        'title' => $translator->_( 'Privacy Policy' ),
+        'link' => '/privacy-policy/'
+    ),
+);
+
+$linksColumnTwo = array(
+    'contactUs' => array(
+        'title' => $translator->_( 'Contact Us' ),
+        'link' => '/contact/'
+    ),
+    'copyright' => array(
+        'title' => $translator->_( 'Copyright' ),
+        'link' => '/copyright/'
+    ),
+);
+
+print '
+    <div class="site-footer">
+        <div class="link-container">
+            '.$this->linkList( $linksColumnOne ).'
+        </div>
+        <div class="link-container">
+            '.$this->linkList( $linksColumnTwo ).'
+        </div>
+        <div class="empty-container">
+        </div>
+        <div class="social-icon-container">
+            <div><a href="https://www.youtube.com/c/GenMaverick">
+                <div class="svgicon--youtube"></div>
+            </a></div>
+            <div><a href="https://www.instagram.com/genmaverick/">
+                <div class="svgicon--instagram"></div>
+            </a></div>
+            <div><a href="https://www.facebook.com/genmaverick">
+                <div class="svgicon--facebook"></div>
+            </a></div>
+            <div><a href="https://twitter.com/genmaverick">
+                <div class="svgicon--twitter"></div>
+            </a></div>
+        </div>
+    </div>
+';
+
+?>
+
+
+
+

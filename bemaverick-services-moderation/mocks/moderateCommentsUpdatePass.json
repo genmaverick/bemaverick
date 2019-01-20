@@ -1,0 +1,9 @@
+{
+  "queryStringParameters": {
+    "EventType" : "onMessageUpdate",
+    "ChannelSid": "challenge_1",
+    "MessageSid": "IM82978489276340dd851eedd1800f7aac",
+    "Body":"test123",
+    "Attributes":"{\"report\":\"inappropriate2 \",\"uuid\":\"f6d3df91-ed4b-48ad-810f-05a367d328c2\"}"
+  }
+}

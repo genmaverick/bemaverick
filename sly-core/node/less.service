@@ -1,0 +1,12 @@
+[Unit]
+Description=Less compiler server
+After=network.target
+
+[Service]
+PIDFile=/run/less.pid
+ExecStart=/usr/bin/node /home/alpha/dev/sly-core/node/lessServer.js
+WorkingDirectory=/home/alpha
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

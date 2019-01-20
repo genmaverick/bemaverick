@@ -1,0 +1,71 @@
+<?php
+// todo: add in pagination
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$loginUser = $this->loginUser;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatChallenge = $this->formatChallenge();
+
+// variables
+
+// module stuff
+$moduleClassPrefix = 'challenges-list';
+$typeClassPrefix = 'mini-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = array();
+$headerContent[] = $formatModule->getTitleBar(
+    array(
+        'classPrefixes' => $classPrefixes,
+        'title' => $translator->_( 'Challenges' ),
+        'titleTag' => 'h1'
+    )
+);
+
+// body content
+$cards = array();
+$filterBy = array(
+    'status' => 'active'
+);
+$challenges = $site->getChallenges( $filterBy, array(), 20, 0 );
+
+$challengePreviews = array();
+
+$challengeConfig = array(
+    'imageType' => 'card'
+);
+
+foreach( $challenges as $challenge ) {
+    $challengePreviews[] = $formatChallenge->getPreview( $challenge );
+}
+// body content
+$bodyContent = array();
+$bodyContent[] = '
+    <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'challenge-previews', $classPrefixes ) ).' challenge-previews">
+    ' .join( '', $challengePreviews ). '
+    </div>
+';
+
+
+// print module
+print $formatModule->getMiniModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

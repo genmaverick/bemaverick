@@ -1,0 +1,10 @@
+module.exports.getComment = require('./api/getComment');
+module.exports.listComments = require('./api/listComments');
+module.exports.createComment = require('./api/createComment');
+module.exports.deleteComment = require('./api/deleteComment');
+module.exports.deleteComments = require('./api/deleteComments');
+module.exports.updateComment = require('./api/updateComment');
+module.exports.flagComment = require('./api/flagComment');
+module.exports.deleteMentions = require('./api/deleteMentions');
+module.exports.cleanspeakWebhook = require('./api/cleanspeakWebhook');
+module.exports.importTwilio = require('./cron/importTwilio');

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Italic.ttf">
+            <string>OpenSans-Italic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CreateContentCollectionViewCellId" reuseIdentifier="CreateContentCollectionViewCellId" id="TsH-r6-gT8" userLabel="CreateContentCollectionViewCell" customClass="CreateContentCollectionViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="313" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="313" height="272"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0p7-eW-NH4">
+                        <rect key="frame" x="0.0" y="0.0" width="313" height="272"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="L4s-aE-Roc">
+                        <rect key="frame" x="103" y="84.5" width="107.5" height="104"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new post" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="zst-RN-uHc">
+                                <rect key="frame" x="0.0" y="0.0" width="107.5" height="22"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="respond" translatesAutoresizingMaskIntoConstraints="NO" id="dU3-Yg-NoA">
+                                <rect key="frame" x="22" y="40" width="64" height="64"/>
+                            </imageView>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybH-o3-07V">
+                        <rect key="frame" x="0.0" y="0.0" width="313" height="272"/>
+                        <connections>
+                            <action selector="cellTapped:" destination="TsH-r6-gT8" eventType="touchUpInside" id="rIO-i8-ZD9"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="L4s-aE-Roc" firstAttribute="centerX" secondItem="EzZ-kt-uxg" secondAttribute="centerX" id="1h3-zp-KNz"/>
+                <constraint firstItem="ybH-o3-07V" firstAttribute="leading" secondItem="TsH-r6-gT8" secondAttribute="leading" id="2fQ-8A-Ou6"/>
+                <constraint firstItem="0p7-eW-NH4" firstAttribute="top" secondItem="TsH-r6-gT8" secondAttribute="top" id="Ism-ce-ljJ"/>
+                <constraint firstAttribute="trailing" secondItem="0p7-eW-NH4" secondAttribute="trailing" id="Od7-Wk-aIz"/>
+                <constraint firstAttribute="bottom" secondItem="ybH-o3-07V" secondAttribute="bottom" id="Wah-yT-VfY"/>
+                <constraint firstItem="ybH-o3-07V" firstAttribute="top" secondItem="TsH-r6-gT8" secondAttribute="top" id="ZGy-KU-2Un"/>
+                <constraint firstItem="0p7-eW-NH4" firstAttribute="leading" secondItem="TsH-r6-gT8" secondAttribute="leading" id="bPT-CK-49C"/>
+                <constraint firstItem="L4s-aE-Roc" firstAttribute="centerY" secondItem="EzZ-kt-uxg" secondAttribute="centerY" id="dJ0-h7-lQi"/>
+                <constraint firstItem="EzZ-kt-uxg" firstAttribute="trailing" secondItem="ybH-o3-07V" secondAttribute="trailing" id="haO-WO-NYO"/>
+                <constraint firstAttribute="bottom" secondItem="0p7-eW-NH4" secondAttribute="bottom" id="xbW-RW-3Mh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="EzZ-kt-uxg"/>
+            <size key="customSize" width="313" height="272"/>
+            <connections>
+                <outlet property="container" destination="0p7-eW-NH4" id="Pj8-be-dEd"/>
+                <outlet property="image" destination="dU3-Yg-NoA" id="Yfl-zM-YKS"/>
+                <outlet property="imageView" destination="dU3-Yg-NoA" id="16j-0k-Dv2"/>
+                <outlet property="text" destination="zst-RN-uHc" id="6AW-G7-NAF"/>
+            </connections>
+            <point key="canvasLocation" x="74.5" y="-601"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="respond" width="64" height="64"/>
+    </resources>
+</document>

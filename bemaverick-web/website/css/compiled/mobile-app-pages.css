@@ -1,0 +1,82 @@
+.mobile-app-pages .header {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  height: 50px;
+  background-color: #2c2c2c;
+}
+.mobile-app-pages .header .logo {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  color: white;
+}
+.mobile-app-pages .header .logo .svgicon--logo-brandmark-1 {
+  margin: 0 0 0 15px;
+  font-size: 30px;
+}
+.mobile-app-pages .header .logo .svgicon--logo-wordmark {
+  margin: 0 0 0 8px;
+  font-size: 100px;
+}
+.mobile-app-pages .title {
+  margin: 16px 0 16px 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 28px;
+  line-height: 1.14285714;
+  font-weight: 600;
+  font-weight: 500;
+  color: #000000;
+}
+.mobile-app-pages .body-text {
+  margin: 0 8vw 0 8vw;
+  font-size: 15px;
+}
+.mobile-app-pages .body-text h1 {
+  margin: 16px 0 16px 0;
+  font-size: 24px;
+  line-height: 1.33333333;
+  font-weight: 600;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.mobile-app-pages .body-text h2 {
+  margin: 16px 0 16px 0;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.mobile-app-pages .body-text p {
+  font-size: 15px;
+  font-weight: 300;
+  margin: 15px 0 15px 0;
+}
+.mobile-app-pages .body-text strong {
+  font-weight: 600;
+}
+.mobile-app-pages .body-text br {
+  margin: 0;
+  padding: 0;
+}
+.mobile-app-pages .body-text .indent-block {
+  display: block;
+  margin: 1em 0 1em 35px;
+}

@@ -1,0 +1,69 @@
+<?php
+// globals
+$loginUser = $this->loginUser;
+$response = $this->response;
+$input = $this->input;
+$translator = $this->translator;
+$pageConfig = $this->pageConfig;
+
+// formatters
+$formatResponse = $this->formatResponse();
+$formatChallenge = $this->formatChallenge();
+
+$challenge = $response->getChallenge();
+$pageName = $pageConfig->getName();
+$isPagination = $pageName == 'responseAjax' ? true : false;
+$offset = $input->offset ? $input->offset : 1;
+$count = $input->count ? $input->count : 12;
+
+
+$videoModuleConfig = array(
+    'autoplay' => true
+);
+$responseMediaModule = $formatResponse->getResponseMediaModule( $response, $videoModuleConfig );
+
+$responsesModuleConfig = array(
+    'includePagination' => true,
+    'paginationConfig' => array(
+        'urlIndex' => 'response',
+        'paginationParams' => array(
+            'responseId' => $response->getId()
+        ),
+        'linkAttributes' => array(
+            'data-request-name' => 'response'
+        )
+    ),
+    'previewsType' => 'full',
+    'title' => $translator->_( 'More responses' )
+);
+
+$urlParams = array();
+$responsesModuleConfig['count'] = $count;
+if ( $input->offset ) {
+    $responsesModuleConfig['offset'] = $input->offset;
+}
+if ( $isPagination ) {
+    $responsesModuleConfig['returnType'] = 'content';
+}
+if ( $input->startCount ) {
+    $responsesModuleConfig['startCount'] = $input->startCount;
+}
+
+$responsesModule = $loginUser ? $formatChallenge->getResponsesModule( $challenge, $responsesModuleConfig ) : '';
+
+if ( $isPagination ) {
+    $urlParams['startCount'] = $offset + $count - 1;
+    $this->browserHistoryUrl = $response->getUrl( 'response', $urlParams );
+    $this->noScroll = true;
+    $this->historyReplace = true;
+    $this->contentSelector = '.response .pagination';
+    print $responsesModule;
+    return;
+}
+
+print '
+    <div class="response">
+        '.$responseMediaModule.'
+        '.$responsesModule.'
+    </div>
+';

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Make sure a proper username is passed
+if [ -z "$1" ]
+  then
+    echo "No username passed"
+    exit 1
+fi
+
+# Restart the existing docker container
+docker restart bemaverick-web
+docker exec -i -d -t bemaverick-web /bin/bash -c "export USER=$1 && sh /home/$1/dev/bemaverick-web/docker/bootstrap/bootstrap-restart"

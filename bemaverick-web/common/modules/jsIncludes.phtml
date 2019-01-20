@@ -1,0 +1,10 @@
+<?php
+$jsUrls = $this->jsUrls ? $this->jsUrls : array();
+
+foreach( $jsUrls as $jsUrl ) {
+    print '<script src="'.$jsUrl.'" async></script>'."\n";
+}
+
+// include ads
+print '<script src="https://www.googletagservices.com/tag/js/gpt.js" async></script>';
+?>

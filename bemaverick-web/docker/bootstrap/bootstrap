@@ -1,0 +1,57 @@
+#!/bin/bash
+
+export LOCAL_HOSTNAME='local.com'
+
+# Extract local DB creds
+export LOCAL_DB_USERNAME=`awk '/username/{print $NF}' /home/$USER/dev/bemaverick-web/common/config/databases_${SLYTRUNK_ENV}.php | head -c -3 | cut -c 2-`
+export LOCAL_DB_PASSWORD=`awk '/password/{print $NF}' /home/$USER/dev/bemaverick-web/common/config/databases_${SLYTRUNK_ENV}.php | head -c -3 | cut -c 2-`
+export LOCAL_DB_DATABASE=`awk '/dbname/{print $NF}' /home/$USER/dev/bemaverick-web/common/config/databases_${SLYTRUNK_ENV}.php | head -c -3 | cut -c 2-`
+export LOCAL_DB_HOST=`awk '/host/{print $NF}' /home/$USER/dev/bemaverick-web/common/config/databases_${SLYTRUNK_ENV}.php | head -c -3 | cut -c 2-`
+
+# Configure environment
+cd /home/$USER/dev/bemaverick-web
+find . -type f -name "defines_${SLYTRUNK_ENV}.php" -exec sh -c 'cd `dirname {}` && ln -fs defines_${SLYTRUNK_ENV}.php defines.php' \;
+find . -type f -name "paths_${SLYTRUNK_ENV}.php" -exec sh -c 'cd `dirname {}` && ln -fs paths_${SLYTRUNK_ENV}.php paths.php' \;
+find . -type f -name "databases_${SLYTRUNK_ENV}.php" -exec sh -c 'cd `dirname {}` && ln -fs databases_${SLYTRUNK_ENV}.php databases.php' \;
+find . -type f -name "settings_${SLYTRUNK_ENV}.php" -exec sh -c 'cd `dirname {}` && ln -fs settings_${SLYTRUNK_ENV}.php settings.php' \;
+find . -type d -name "htdocs" -exec sh -c 'cd `dirname {}` && mkdir htdocs/cache && chmod 777 htdocs/cache' \;
+
+# Extract assets dif
+export LOCAL_ASSETS_DIR=`awk '/SYSTEM_ASSETS_DIR/{print $NF}' /home/$USER/dev/bemaverick-web/common/config/settings_${SLYTRUNK_ENV}.php | head -c -3 | cut -c 2-`
+
+# Add assets dir
+mkdir -p $LOCAL_ASSETS_DIR
+chmod 777 -R $LOCAL_ASSETS_DIR
+
+# Configure Apache
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+-keyout /etc/apache2/ssl/star_dev_slytrunk_com.key \
+-out /etc/apache2/ssl/star_dev_slytrunk_com.crt \
+-subj "/C=US/ST=CA/L=LG/O=Dis/CN=${USER}-api-bemaverick.${LOCAL_HOSTNAME}"
+cp /etc/apache2/ssl/star_dev_slytrunk_com.crt /etc/apache2/ssl/AlphaSSLroot.crt
+cp admin/apache/* /etc/apache2/sites-enabled/
+cp api/apache/* /etc/apache2/sites-enabled/
+cp website/apache/* /etc/apache2/sites-enabled/
+touch /etc/apache2/macro_users.txt
+chmod 777 /etc/apache2/macro_users.txt
+chmod 777 /etc/apache2/apache2.conf
+printf "Use User $USER\n" >> /etc/apache2/macro_users.txt
+printf "\nServerName ${LOCAL_HOSTNAME}\n" >> /etc/apache2/apache2.conf
+printf "\n<Directory /home/>\nOrder deny,allow\nRequire all granted\n</Directory>\n" >> /etc/apache2/apache2.conf
+chmod 644 /etc/apache2/macro_users.txt
+chmod 644 /etc/apache2/apache2.conf
+
+# Configure hosts
+chmod 777 /etc/hosts
+printf "\n127.0.0.1 $USER-api-bemaverick.$LOCAL_HOSTNAME" >> /etc/hosts
+printf "\n127.0.0.1 $USER-admin-bemaverick.$LOCAL_HOSTNAME" >> /etc/hosts
+printf "\n127.0.0.1 $USER-website-bemaverick.$LOCAL_HOSTNAME" >> /etc/hosts
+chmod 644 /etc/hosts
+
+# Configure MySQL
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+service mysql restart
+mysql -u root -e "create database if not exists ${LOCAL_DB_DATABASE};";
+mysql -u root -e "create user if not exists '${LOCAL_DB_USERNAME}'@'%' identified by '${LOCAL_DB_PASSWORD}';";
+mysql -u root -e "grant all privileges on *.* to '${LOCAL_DB_USERNAME}'@'%' with grant option;";
+mysql -u root --database=$DB_DATABASE < /home/$USER/dev/bemaverick-web/docker/sql/base.sql

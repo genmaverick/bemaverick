@@ -1,0 +1,63 @@
+<?php
+$input = $this->input;
+$site = $this->site;
+$featuredType = 'maverick-user';
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$featuredUsers = $site->getFeaturedUsers( $featuredType );
+
+$hiddenFields = $formatFormBootstrap->getHiddenSimple( 'featuredType', $featuredType );
+
+// set the table data
+$columns = array(
+    'userIdWithHiddenInput',
+    'userUsername',
+    'userName',
+    'kidProfileImage',
+    'userAge',
+    'userType',
+    'userStatus',
+    'tableRowDelete'
+);
+
+$columnInfo = $this->getTableInfo()->getColumnInfo( $columns );
+
+$tableInitVars = array(
+    'columns' => $columns,
+    'columnInfo' => $columnInfo,
+    'rowIdPrefix' => 'user',
+    'dontUseGroups' => true,
+    'tableAttributes' => array( 'class' => 'table table-striped table-bordered' ),
+);
+
+$tableDataInput = array();
+
+$tableData = $this->getTableData( $featuredUsers, $columns, $tableDataInput );
+
+$tableInitVars['rows'] = array_keys( $tableData );
+
+$table = $this->table( $tableData, $tableInitVars );
+?>
+
+<h1 class="page-header">Edit Featured Mavericks</h1>
+
+<form method="get" action="<?php print $this->url( 'featuredUsersEditConfirm' ); ?>" >
+    <?php print $hiddenFields ?>
+    <div class="bd">
+        <?php
+        $formItems = array();
+        $formItems[] = $formatFormBootstrap->getUserAutocomplete( null, null, '', "insert" );
+        print $formatFormBootstrap->getList( $formItems );
+        ?>
+
+        <div class="table-responsive table-draggable">
+            <?php print $table; ?>
+        </div>
+
+        <?php
+        $formItems = array();
+        $formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => 'Submit', 'style' => 'btn btn-primary' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+        print $formatFormBootstrap->getList( $formItems );
+        ?>
+    </div>
+</form>

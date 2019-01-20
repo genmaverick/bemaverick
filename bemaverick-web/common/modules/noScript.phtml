@@ -1,0 +1,70 @@
+<?php
+$noScriptItems = $this->getItem( 'noScript' );
+$noScriptCssRules = $this->getItem( 'noScriptCssRules' );
+if ( !$noScriptItems ) {
+    $noScriptItems = array();
+}
+if ( !$noScriptCssRules ) {
+    $noScriptCssRules = array();
+}
+?>
+<noscript>
+<?php print join( '', $noScriptItems ); ?>
+<div class="no-js-banner">This site is best experienced with Javascript! Make sure to enable it in your browser.</div>
+<style>
+<?php print Sly_Minify_CSS::process(
+    '
+        .type.not-inited .global-bd {
+            filter: none;
+            opacity: 1;
+        }
+        .type.not-inited .global-hd {
+            filter: none;
+            opacity: 1;
+        }
+        .no-js-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: black;
+            z-index: 20000;
+            color: #fff;
+            text-align: center;
+        }
+        .global-main .popup-wrap {
+            display: block;
+        }
+        [id^="nsi"] {
+            opacity: 1;
+        }
+        .post-body .social-embed {
+            display: none;
+        }
+        .post-body .video-item {
+            display: none;
+        }
+        .proxy-img {
+            opacity:1;
+        }
+    '
+);
+print join( "\n", $noScriptCssRules );
+?>
+</style>
+</noscript>
+<!--[if lt IE 9]>
+<style>
+<?php print Sly_Minify_CSS::process(
+    '
+        .type.not-inited .global-bd {filter:none;opacity:1;}
+        .type.not-inited .global-hd {filter:none;opacity:1;}
+        .no-js-banner {  background:black; z-index:20000; color:#fff; text-align:center;}
+        .carousel .carousel-item-title-wrap .previous, .carousel .carousel-item-title-wrap .next {
+            pointer-events:auto;
+        }
+'
+);
+?>
+</style>
+<![endif]-->

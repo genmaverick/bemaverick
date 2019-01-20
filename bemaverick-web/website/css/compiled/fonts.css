@@ -1,0 +1,320 @@
+@font-face {
+  font-family: Systemic;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Segoe UI Light"), local("Ubuntu Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
+@font-face {
+  font-family: Systemic;
+  font-style: italic;
+  font-weight: 300;
+  src: local(".SFNSText-LightItalic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Light Italic"), local("Ubuntu Light Italic"), local("Roboto-LightItalic"), local("DroidSans"), local("Tahoma");
+}
+@font-face {
+  font-family: Systemic;
+  font-style: normal;
+  font-weight: 400;
+  src: local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
+}
+@font-face {
+  font-family: Systemic;
+  font-style: italic;
+  font-weight: 400;
+  src: local(".SFNSText-Italic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Italic"), local("Ubuntu Italic"), local("Roboto-Italic"), local("DroidSans"), local("Tahoma");
+}
+@font-face {
+  font-family: Systemic;
+  font-style: normal;
+  font-weight: 500;
+  src: local(".SFNSText-Medium"), local(".HelveticaNeueDeskInterface-MediumP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold"), local("Ubuntu Medium"), local("Roboto-Medium"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+@font-face {
+  font-family: Systemic;
+  font-style: italic;
+  font-weight: 500;
+  src: local(".SFNSText-MediumItalic"), local(".HelveticaNeueDeskInterface-MediumItalicP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold Italic"), local("Ubuntu Medium Italic"), local("Roboto-MediumItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+@font-face {
+  font-family: Systemic;
+  font-style: normal;
+  font-weight: 700;
+  src: local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+@font-face {
+  font-family: Systemic;
+  font-style: italic;
+  font-weight: 700;
+  src: local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+@font-face {
+  font-family: "svgicon";
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick.eot' ) );?>");
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick.eot' ) );?>#iefix") format("embedded-opentype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick.woff2' ) );?>") format("woff2"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick.woff' ) );?>") format("woff"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick.ttf' ) );?>") format("truetype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick.svg' ) );?>#maverick") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="svgicon--"],
+[class*=" svgicon--"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "svgicon" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.svgicon--twitter:before {
+  content: "\e906";
+}
+.svgicon--youtube:before {
+  content: "\e907";
+}
+.svgicon--instagram:before {
+  content: "\e908";
+}
+.svgicon--facebook:before {
+  content: "\e909";
+}
+.svgicon--ellipsis:before {
+  content: "\e916";
+}
+.svgicon--avatar:before {
+  content: "\e915";
+}
+.svgicon--ex:before {
+  content: "\e90a";
+}
+.svgicon--caret:before {
+  content: "\e90b";
+}
+.svgicon--profile:before {
+  content: "\e90c";
+}
+.svgicon--alert:before {
+  content: "\e90d";
+}
+.svgicon--search:before {
+  content: "\e90e";
+}
+.svgicon--streams:before {
+  content: "\e90f";
+}
+.svgicon--star:before {
+  content: "\e910";
+}
+.svgicon--report-circle:before {
+  content: "\e911";
+}
+.svgicon--link-circle:before {
+  content: "\e912";
+}
+.svgicon--badges:before {
+  content: "\e913";
+}
+.svgicon--trash-circle:before {
+  content: "\e914";
+}
+.svgicon--draft-circle:before {
+  content: "\e917";
+}
+.svgicon--saved:before {
+  content: "\e918";
+}
+.svgicon--comments-small:before {
+  content: "\e919";
+}
+.svgicon--time-remaining:before {
+  content: "\e91a";
+}
+.svgicon--play-circle:before {
+  content: "\e91b";
+}
+.svgicon--trash:before {
+  content: "\e91c";
+}
+.svgicon--report:before {
+  content: "\e91d";
+}
+.svgicon--comments:before {
+  content: "\e91e";
+}
+.svgicon--gear:before {
+  content: "\e91f";
+}
+.svgicon--logo-text:before {
+  content: "\e904";
+}
+.svgicon--logo-m:before {
+  content: "\e905";
+}
+.svgicon--paw:before {
+  content: "\e900";
+}
+.svgicon--wave:before {
+  content: "\e901";
+}
+.svgicon--bulb:before {
+  content: "\e902";
+}
+.svgicon--dna:before {
+  content: "\e903";
+}
+@font-face {
+  font-family: 'Barlow';
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-regular.eot' ) );?>");
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-regular.eot' ) );?>?#iefix") format("embedded-opentype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-regular.woff2' ) );?>") format("woff2"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-regular.woff' ) );?>") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Barlow';
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-italic.eot' ) );?>");
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-italic.eot' ) );?>?#iefix") format("embedded-opentype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-italic.woff2' ) );?>") format("woff2"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-italic.woff' ) );?>") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Barlow';
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-500.eot' ) );?>");
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-500.eot' ) );?>?#iefix") format("embedded-opentype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-500.woff2' ) );?>") format("woff2"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-500.woff' ) );?>") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Barlow';
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-600.eot' ) );?>");
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-600.eot' ) );?>?#iefix") format("embedded-opentype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-600.woff2' ) );?>") format("woff2"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-600.woff' ) );?>") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Barlow';
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-700.eot' ) );?>");
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-700.eot' ) );?>?#iefix") format("embedded-opentype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-700.woff2' ) );?>") format("woff2"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'barlow-v1-latin-700.woff' ) );?>") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "svgicon";
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick-icons.eot' ) );?>");
+  src: url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick-icons.eot' ) );?>#iefix") format("embedded-opentype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick-icons.woff' ) );?>") format("woff"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick-icons.ttf' ) );?>") format("truetype"), url("<?php print $this->view->url('fontStatic', array( 'fontName' => 'maverick-icons.svg' ) );?>#maverick") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="svgicon--"],
+[class*=" svgicon--"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "svgicon" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.svgicon--logo-primary:before {
+  content: "\e920";
+}
+.svgicon--logo-secondary:before {
+  content: "\e921";
+}
+.svgicon--logo-wordmark:before {
+  content: "\e922";
+}
+.svgicon--logo-brandmark-1:before {
+  content: "\e923";
+}
+.svgicon--logo-brandmark-2:before {
+  content: "\e924";
+}
+.svgicon--logo-brandmark-3:before {
+  content: "\e925";
+}
+.svgicon--badge-creative-small:before {
+  content: "\e926";
+}
+.svgicon--badge-daring-small:before {
+  content: "\e927";
+}
+.svgicon--badge-unique-small:before {
+  content: "\e928";
+}
+.svgicon--badge-unstoppable-small:before {
+  content: "\e929";
+}
+.svgicon--burst:before {
+  content: "\e92a";
+}
+.svgicon--clock:before {
+  content: "\e92b";
+}
+.svgicon--comment:before {
+  content: "\e92c";
+}
+.svgicon--dots:before {
+  content: "\e92d";
+}
+.svgicon--edit:before {
+  content: "\e92e";
+}
+.svgicon--favorite-catalyst:before {
+  content: "\e92f";
+}
+.svgicon--gear:before {
+  content: "\e930";
+}
+.svgicon--person-empty:before {
+  content: "\e931";
+}
+.svgicon--person-filled:before {
+  content: "\e932";
+}
+.svgicon--play:before {
+  content: "\e933";
+}
+.svgicon--report:before {
+  content: "\e934";
+}
+.svgicon--save:before {
+  content: "\e935";
+}
+.svgicon--saved:before {
+  content: "\e936";
+}
+.svgicon--share:before {
+  content: "\e937";
+}
+.svgicon--sound-off:before {
+  content: "\e938";
+}
+.svgicon--sound-on:before {
+  content: "\e939";
+}
+.svgicon--trash:before {
+  content: "\e93a";
+}
+.svgicon--profile-default:before {
+  content: "\e93b";
+}
+.svgicon--down-arrow:before {
+  content: "\e93c";
+}
+.svgicon--menu-bars:before {
+  content: "\e93d";
+}
+.svgicon--maverick-m-thin:before {
+  content: "\e93e";
+}
+.svgicon--toggle-on:before {
+  content: "\e93f";
+}
+.svgicon--toggle-off:before {
+  content: "\e940";
+}

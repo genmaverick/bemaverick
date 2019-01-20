@@ -1,0 +1,25 @@
+.users .user-row {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.users .user-row .profile-image {
+  margin-right: 8px;
+}
+.users .user-row .username {
+  font-size: 18px;
+  line-height: 1.33333333;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+.users .empty-message {
+  text-align: center;
+  margin: 48px 0 96px 0;
+}

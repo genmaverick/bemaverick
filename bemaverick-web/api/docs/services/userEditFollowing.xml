@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Edit Following</name>
+    <description>Add a new following user or unfollow a user</description>
+    <uri>/user/editfollowing</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>followingUserId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>12</examples>
+            <description>The following user id to either follow or unfollow</description>
+        </param>
+        <param>
+            <name>followingAction</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>follow, unfollow</examples>
+            <description>The action to do for this user. Valid actions are: follow, unfollow</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/editfollowing" \
+  --data "userId=1&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

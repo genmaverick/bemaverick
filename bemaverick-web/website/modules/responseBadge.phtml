@@ -1,0 +1,14 @@
+<?php
+$response = $this->response;
+$formatResponse = $this->formatResponse();
+$badger = $formatResponse->getBadger( $response, array( 'wrap' => false ) );
+$this->addItem( 'multiReplace',
+    array(
+        'html' => $badger,
+        'selector' => '.badger--response-'.$response->getId(). ' .badger__content'
+    )
+);
+$this->noHistory = true;
+$this->noScroll = true;
+$this->noPageTitle = true;
+?>

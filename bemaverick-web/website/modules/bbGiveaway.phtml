@@ -1,0 +1,15 @@
+<?php
+// globals
+$site = $this->site;
+
+//formatters
+$formatPost = $this->formatPost();
+
+// get bbGiveaway page (id 56)
+$page = $site->getPost(56, 'pages');
+
+$postObj = $formatPost->getPostObject( null, $page );
+
+print $postObj->getContent();
+
+?>

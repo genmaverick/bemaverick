@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>parents</name>
+    <title>
+        <text>Parents</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>parents.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

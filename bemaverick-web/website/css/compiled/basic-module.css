@@ -1,0 +1,215 @@
+.basic-module {
+  background-color: #ffffff;
+  margin: 0 -16px -35px -16px;
+  padding-bottom: 50px;
+}
+.basic-module .basic-module__hd {
+  padding-top: 20px;
+}
+.basic-module .basic-module__hd h1 {
+  margin: 16px 0 16px 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 28px;
+  line-height: 1.14285714;
+  font-weight: 600;
+  font-weight: 500;
+  color: #000000;
+}
+.basic-module .basic-module__bd {
+  max-width: 592px;
+  margin: 24px auto;
+  padding: 0 20px 0 20px;
+  font-size: 15px;
+  color: #000000;
+}
+.basic-module .basic-module__bd h1 {
+  margin: 16px 0 16px 0;
+  font-size: 24px;
+  line-height: 1.33333333;
+  font-weight: 600;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.basic-module .basic-module__bd h2 {
+  margin: 16px 0 16px 0;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.basic-module .basic-module__bd p {
+  font-size: 15px;
+  margin: 15px 0 15px 0;
+}
+.basic-module .basic-module__bd strong {
+  font-weight: 600;
+}
+.basic-module .basic-module__bd br {
+  margin: 0;
+  padding: 0;
+}
+.basic-module .basic-module__bd .indent-block {
+  display: block;
+  font-size: 15px;
+  margin: 1em 0 1em 35px;
+}
+.basic-module .basic-module__hd-content {
+  max-width: 592px;
+  margin: 0 auto;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+.basic-module .basic-module__hd-content .return-link__icon {
+  font-size: 20px;
+  color: #746f68;
+}
+.basic-module .errors {
+  text-align: center;
+}
+.basic-module .instructions {
+  margin: 24px 0 16px 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #beb5ab;
+}
+.basic-module .form-item-buttons .button {
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.basic-module a {
+  color: #00b0ac;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+.basic-module a:hover {
+  color: #00918e;
+}
+.basic-module a:focus {
+  outline: 1px dotted #00918e;
+}
+.basic-module .formItems {
+  margin-top: 24px;
+}
+.basic-module .additional-actions {
+  margin: 32px 0 72px 0;
+  padding: 0 16px;
+  text-align: center;
+}
+.basic-module .control-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 32px;
+}
+.basic-module .control-group input.form-control {
+  border: 1px solid #c7c5c3;
+  border-radius: 24px;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  padding: 11px 16px;
+}
+.basic-module .control-group input.form-control:focus {
+  z-index: 1;
+  outline: none !important;
+  border: 1px solid #003a49;
+}
+.basic-module .control-group .controls .error {
+  color: #d0011b;
+  font-size: 13px;
+  line-height: 1.23076923;
+  font-weight: 400;
+  margin: 4px 0 16px 0;
+}
+.basic-module .control-group .controls div.checkbox {
+  color: #003a49;
+  position: relative;
+  padding-left: 24px;
+}
+.basic-module .control-group .controls div.checkbox .checkbox {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+}
+.basic-module .control-group .control-label {
+  color: #003a49;
+  padding: 0;
+  margin-bottom: 4px;
+  display: block;
+}
+.basic-module .control-group.error .control-label {
+  color: #d0011b;
+}
+.basic-module .confirm-message {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #beb5ab;
+  text-align: center;
+}
+.basic-module .confirm-message strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  line-height: 1.33333333;
+  font-weight: 700;
+  color: #746f68;
+}
+.basic-module .basic-module__nav-list-item a {
+  padding: 16px 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 700;
+  color: #003a49;
+}
+.basic-module .basic-module__nav-list-item a:hover {
+  color: #001116;
+}
+.basic-module .basic-module__nav-list-item a .icon {
+  font-size: 16px;
+  color: #746f68;
+}
+@media (min-width: 768px) {
+  .basic-module {
+    margin: 0 -25px -35px -25px;
+    padding-bottom: 50px;
+  }
+  .basic-module .basic-module__hd {
+    top: 64px;
+  }
+  .basic-module .basic-module__bd {
+    padding: 0;
+  }
+}

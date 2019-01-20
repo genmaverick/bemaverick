@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>responseStatusEdit</name>
+    <type>responses</type>
+    <subType>response-status-edit-popup</subType>
+    <title>
+        <text></text>
+    </title>
+    <includes>
+        <primary>
+            <file>responseStatusEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

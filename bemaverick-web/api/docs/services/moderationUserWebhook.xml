@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Webhook</name>
+    <description>Receives the updates from the moderation tool for the users</description>
+    <uri>/moderation/userwebhook</uri>
+    <method>POST</method>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --url "<host>/v1/moderation/userwebhook"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

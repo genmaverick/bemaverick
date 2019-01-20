@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Parent Verification</name>
+    <description>This service will verify the identity of the parent </description>
+    <uri>/coppa/verifyparentAction</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>childUserId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>123</examples>
+            <description>Kid's user id</description>
+        </param>
+        <param>
+            <name>firstName</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>Barbara</examples>
+            <description>First name of the parent</description>
+        </param>
+        <param>
+            <name>lastName</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>Miller</examples>
+            <description>Last name of the parent</description>
+        </param>
+        <param>
+            <name>address</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>123 main street, Apt 456</examples>
+            <description>Street address of the parent</description>
+        </param>
+        <param>
+            <name>zipCode</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>06614</examples>
+            <description>Zip code of the parent</description>
+        </param>
+        <param>
+            <name>lastFourSSN</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>5698</examples>
+            <description>Last 4 SSN of the parent</description>
+        </param>
+        <param>
+            <name>retry</name>
+            <required>no</required>
+            <default>0</default>
+            <format>0 or 1</format>
+            <examples>1</examples>
+            <description>Flag to indicate the retry attempt.</description>
+        </param>
+        <param>
+            <name>testKey</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>general</examples>
+            <description>Test key to verify the parent in non-production environments.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/coppa/verifyparent" \
+  --data "firstName=barbara&lastName=miller&address=123 main street&zip=12345&ssn=5698&retry=0&appKey=test_key""
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>home</name>
+    <title>
+        <text>Home</text>
+    </title>
+    <type>index</type>
+    <subType>home</subType>
+    <includes>
+        <header>
+        </header>
+        <primary append="true">
+            <file>mavLiveSplash.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

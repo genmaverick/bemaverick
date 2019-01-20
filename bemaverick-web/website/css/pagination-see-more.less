@@ -1,0 +1,28 @@
+@import "variables.less";
+.pagination--see-more {
+    width: 100%;
+    li,
+    .paginationLabel {
+        display: none;
+    }
+
+    li.next {
+        display: block;
+        text-align: center;
+        span {
+            display: none;
+        }
+        a {
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 0 auto;
+            padding: 10px 30px;
+            .site-text(x-large,medium);
+            color: @link-on-dark;
+            .font-smoothing(on);
+            &:hover {
+                color: @link-on-dark-hover;
+            }
+        }
+    }
+}

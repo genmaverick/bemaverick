@@ -1,0 +1,15 @@
+<?php
+// globals
+$site = $this->site;
+
+//formatters
+$formatPost = $this->formatPost();
+
+// get terms of service page (id 6)
+$page = $site->getPost(6, 'pages');
+
+$postObj = $formatPost->getPostObject( null, $page );
+
+print $postObj->getContent();
+
+?>

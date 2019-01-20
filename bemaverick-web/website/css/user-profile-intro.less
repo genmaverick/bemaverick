@@ -1,0 +1,329 @@
+@import "variables.less";
+.user-profile-intro {
+    position: relative;
+}
+.user-profile-intro__hd {
+    padding-top: 70px;
+    position: relative;
+    .edger-reset();
+    max-height: 179px;
+    color: @white;
+    text-align: center;
+    a {
+        color: @white;
+        &:hover {
+            color: @white;
+        }
+    }
+}
+.user-profile-intro__username {
+    color: @dark-text;
+    .text--size-x-large();
+    text-transform: uppercase;
+    display: block;
+    z-index: 1;
+    position: relative;
+    margin-top: 5px;
+}
+.user-profile-intro__name {
+    .font-smoothing(on);
+    .text--size-medium();
+    display: block;
+    z-index: 1;
+    position: relative;
+    margin-top: 2px;
+}
+
+.user-profile-intro__bd {
+    text-align: center;
+    background-color: @white;
+    padding-top: 32px;
+    .edger-reset();
+    .info-container {
+        min-width: 100%;
+        position: relative;
+        z-index: 1;
+        .edger-reset();
+        .access-toggle-on {
+            .flex-display(flex);
+            .justify-content(center);
+            .align-items(center);
+            margin-top: 9px;
+            text-transform: uppercase;
+            color: @teal-bg;
+            button {
+                color: @teal-bg;
+                border: none;
+                cursor: pointer;
+            }
+            button:focus {
+                border: 1px dotted @primary-teal;
+                outline: 0;
+            }
+        }
+        .access-toggle-off {
+            .flex-display(flex);
+            .justify-content(center);
+            .align-items(center);
+            text-transform: uppercase;
+            margin-top: 9px;
+            color: @dark-text-3;
+            button {
+                color: @dark-text-3;
+                border: none;
+                cursor: pointer;
+            }
+            button:focus {
+                border: 1px dotted @primary-teal;
+                outline: 0;
+            }
+        }
+        // name-container to prevent interaction with kidselect menu hover
+        .name-container {
+            .flex-display(flex);
+            .justify-content(center);
+            .align-items(center);
+        }
+        .username-container {
+            .flex-display(flex);
+            .justify-content(center);
+            .align-items(center);
+            #kidselect-icon {
+                .flex-display(flex);
+                .align-items(flex-end);
+                margin: 6px 0 0 10px;
+                cursor: pointer;
+                .svgicon--person-empty {
+                    font-size: 15px;
+                }
+                .svgicon--down-arrow {
+                    font-size: 6px;
+                }
+            }
+            #kidselect-menu {
+                display: none;
+                z-index: 1;
+                position: absolute;
+                margin-left: 9px;
+                margin-top: 3px;
+                background-color: @grey-5;
+                box-shadow: 1px 4px 5px 1px fade(@black, 30%);
+                a {
+                    text-align: left;
+                    display: block;
+                    width: 100%;
+                    //padding: 5px;
+                    padding: 5px 30px 5px 10px;
+                    border: 0 none;
+                    cursor: pointer;
+                    .site-text(small,default);
+                    color: @dark-text-3;
+                    &:hover {
+                        background-color: @primary-teal;
+                        color: @white;
+                    }
+                }
+                &.is-shown {
+                    display: block;
+                }
+            }
+        }
+    }
+    .badge-container {
+        text-align: center;
+        background-color: @warm-grey-background-light;
+        padding-top:20px;
+        padding-bottom: 8px;
+        .powers-title {
+            position: relative;
+            width: 56px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            margin: -30px auto 5px auto;
+            color: @white;
+            background-color: @primary-ruby;
+            box-shadow: 0 2px 3px 0 fade(@black, 15%);
+            .text--size-tiny();
+            letter-spacing: 1px;
+        }
+        .edger-reset();
+    }
+}
+
+.user-profile-intro__profile-image {
+    box-shadow: 0 3px 4px 0 fade(@black, 15%);
+    margin: 0 auto;
+    .profile-image-proxy {
+        .opacity(1);
+    }
+}
+.user-profile-intro__edit-link {
+    background: @primary-teal;
+    border-radius: 50%;
+    font-size: 19px;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    margin-left: 25px;
+    z-index: 1;
+}
+.user-profile-intro__bio {
+    max-width: 360px;
+    .text--size-x-medium();
+    color: @dark-text-3;
+    text-align: center;
+    margin: 10px auto 8px auto;
+}
+.user-profile-intro__follow-stats {
+    text-align: center;
+    color: @dark-text-3;
+    .site-text(medium,normal);
+    margin: 16px 0 40px 0;
+    .label {
+        .text--type-default();
+        color: @link-on-light;
+    }
+    .delimiter {
+        margin: 0 18px;
+    }
+}
+.user-profile-intro__follow-cta {
+    margin: 10px 0 50px 0;
+    form {
+        width: 100%;
+        .flex-display();
+        .justify-content(center);
+    }
+    .button--follow {
+        width: 150px;
+    }
+}
+.user-profile-intro__badges {
+    max-width: 330px;
+    margin: 15px auto auto auto;
+    .flex-display();
+    flex-wrap: wrap;
+    .justify-content(space-between);
+    .align-items(center);
+    .maverick-badge {
+        img {
+            height:70px;
+            max-width: 80px;
+        }
+    }
+    .power-bar {
+        .flex-display(flex);
+        .flex-wrap(nowrap);
+        .justify-content(center);
+        flex-direction: row;
+        width: 100%;
+        margin-top: 10px;
+        .single-container {
+            //float: left;
+            margin-right: 2px;
+            .single {
+                width: 100%;
+                height: 5px;
+            }
+            .percent {
+                float: left;
+                .text--size-tiny();
+            }
+        }
+    }
+}
+
+.user-profile-intro__header-text-wrap {
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+}
+.user-profile-intro__profile-cover {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+
+    &.profile-cover--tint-default {
+        background-color: @primary-teal;
+        background-image: -moz-linear-gradient(left, @cover-gradient-teal1 20%, @cover-gradient-teal2 50%, @cover-gradient-teal1 90%); /* FF3.6-15 */
+        background-image: -webkit-linear-gradient(left, @cover-gradient-teal1 20%,@cover-gradient-teal2 50%,@cover-gradient-teal1 90%); /* Chrome10-25,Safari5.1-6 */
+        background-image: linear-gradient(to right, @cover-gradient-teal1 10%,@cover-gradient-teal2 50%,@cover-gradient-teal1 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    .profile-cover-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        .flex-display();
+        .justify-content(center);
+        .align-items(center);
+    }
+    .profile-cover-image-destination {
+        max-width: 100%;
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+    .edit-cover {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 11px;
+        text-transform: uppercase;
+        text-shadow: 0px 0px 6px rgba(75, 75, 75, 1);
+    }
+}
+
+// mentor profile styling
+.user-profile-intro.is-mentor-profile {
+
+    .badge-container {
+        display: none;
+    }
+    .user-profile-intro__hd {
+        background-image: -moz-linear-gradient(left, @cover-gradient-ruby1 20%, @cover-gradient-ruby2 50%, @cover-gradient-ruby1 90%); /* FF3.6-15 */
+        background-image: -webkit-linear-gradient(left, @cover-gradient-ruby1 20%,@cover-gradient-ruby2 50%,@cover-gradient-ruby1 90%); /* Chrome10-25,Safari5.1-6 */
+        background-image: linear-gradient(to right, @cover-gradient-ruby1 10%,@cover-gradient-ruby2 50%,@cover-gradient-ruby1 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    .user-profile-intro__bd {
+        padding-bottom: 10px;
+    }
+    .user-profile-intro__name {
+        color: @dark-text;
+        .text--size-x-large();
+        text-transform: uppercase;
+        display: block;
+        z-index: 1;
+        position: relative;
+        margin-top: 5px;
+    }
+}
+
+//large badge sizes
+@media (min-width: @break-tablet-min) {
+    .user-profile-intro__badges {
+        max-width: 450px;
+        .maverick-badge {
+            img {
+                height: 70px;
+                max-width: 90px;
+            }
+        }
+    }
+
+    .user-profile-intro__profile-cover {
+        .profile-cover-image {
+            .edit-cover {
+                position: absolute;
+                bottom: 10px;
+                right: 15px;
+            }
+        }
+    }
+}

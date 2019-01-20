@@ -1,0 +1,54 @@
+@import "variables.less";
+.parent-home-mavericks {
+}
+.parent-home-mavericks__maverick {
+    margin: 16px 0;
+    .flex-display();
+    .align-items(center);
+    .stats {
+        margin-left: auto;
+        .flex-display();
+    }
+    .profile-image {
+        min-width: 48px;
+    }
+    .name-wrap {
+        margin-left: 16px;
+    }
+    .username {
+        .site-text(x-medium,bold);
+    }
+    .name + .username {
+        .site-text(medium,normal,default);
+    }
+    .stat {
+        text-align: center;
+        .flex-display();
+        .flex-direction(column);
+        .value {
+            .flex-order(1);
+            .site-text(x-medium,bold,extra);
+        }
+        .label {
+            .flex-order(2);
+            .site-text(medium,normal);
+        }
+        + .stat {
+            margin-left: 24px;
+        }
+    }
+    .num-followers,
+    .num-following {
+        display: none;
+    }
+}
+@media (min-width: @break-good-size-min) {
+    .parent-home-mavericks__maverick {
+        .stat {
+            .flex-display();
+        }
+        .profile-image {
+            min-width: 64px;
+        }
+    }
+}

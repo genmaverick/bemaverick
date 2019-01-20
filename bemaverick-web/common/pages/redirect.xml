@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>redirect</name>
+    <type>errors</type>
+    <subType>redirect</subType>
+    <template>template_json.phtml</template>
+    <title>
+        <text>Redirect</text>
+    </title>
+    <gridId></gridId>
+    <includes>
+        <pageContent>
+        </pageContent>
+        <primary>
+        </primary>
+    </includes>
+</pageConfig>

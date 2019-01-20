@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeCoverPhotoActionSheetItem" customModule="Maverick" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="r1x-GT-OKK">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="4ng-m9-qJs" userLabel="Content Stack View">
+                    <rect key="frame" x="8" y="24" width="406" height="76"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8LG-47-hVr" userLabel="Create new cover">
+                            <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e5l-gg-x43" userLabel="Create new cover">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectCoverPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Gyn-Mx-vi3">
+                                            <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="26" id="c2n-y0-Pdd"/>
+                                                <constraint firstAttribute="width" constant="26" id="xlj-bk-oer"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PF-2L-Xhv">
+                                            <rect key="frame" x="42" y="0.0" width="364" height="26"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAJ-fe-nPH">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <connections>
+                                        <action selector="createNewCoverButtonPressed:" destination="-1" eventType="touchUpInside" id="44v-g5-zAg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="SAJ-fe-nPH" secondAttribute="bottom" id="12T-ce-qkV"/>
+                                <constraint firstItem="e5l-gg-x43" firstAttribute="leading" secondItem="8LG-47-hVr" secondAttribute="leading" id="2dd-w2-g1u"/>
+                                <constraint firstAttribute="trailing" secondItem="SAJ-fe-nPH" secondAttribute="trailing" id="9wb-70-ZSO"/>
+                                <constraint firstItem="e5l-gg-x43" firstAttribute="top" secondItem="8LG-47-hVr" secondAttribute="top" id="PVe-Ka-cF9"/>
+                                <constraint firstItem="SAJ-fe-nPH" firstAttribute="leading" secondItem="8LG-47-hVr" secondAttribute="leading" id="eQ6-rB-zcs"/>
+                                <constraint firstItem="SAJ-fe-nPH" firstAttribute="top" secondItem="8LG-47-hVr" secondAttribute="top" id="fCR-uj-bxC"/>
+                                <constraint firstAttribute="bottom" secondItem="e5l-gg-x43" secondAttribute="bottom" id="iVs-Xo-oZO"/>
+                                <constraint firstAttribute="trailing" secondItem="e5l-gg-x43" secondAttribute="trailing" id="kyb-62-h7b"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvV-Gd-VE3" userLabel="Select a Maverick cover">
+                            <rect key="frame" x="0.0" y="50" width="406" height="26"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HZO-d1-NFO" userLabel="Select a Maverick cover">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="library" translatesAutoresizingMaskIntoConstraints="NO" id="K5b-jv-oOi">
+                                            <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="26" id="jLl-to-e7q"/>
+                                                <constraint firstAttribute="height" constant="26" id="zMe-bJ-Gwo"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Maverick cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOO-oY-JxR">
+                                            <rect key="frame" x="42" y="0.0" width="364" height="26"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-g5-CBc">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <connections>
+                                        <action selector="selectMaverickCoverIconButton:" destination="-1" eventType="touchUpInside" id="vzG-DV-w9J"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="HZO-d1-NFO" secondAttribute="trailing" id="3pc-uD-aeQ"/>
+                                <constraint firstItem="HZO-d1-NFO" firstAttribute="leading" secondItem="MvV-Gd-VE3" secondAttribute="leading" id="5pg-fA-fQd"/>
+                                <constraint firstItem="dDt-g5-CBc" firstAttribute="leading" secondItem="MvV-Gd-VE3" secondAttribute="leading" id="926-J0-4gk"/>
+                                <constraint firstAttribute="bottom" secondItem="HZO-d1-NFO" secondAttribute="bottom" id="HzD-dG-8lk"/>
+                                <constraint firstItem="dDt-g5-CBc" firstAttribute="top" secondItem="MvV-Gd-VE3" secondAttribute="top" id="Tyu-WP-uVy"/>
+                                <constraint firstAttribute="bottom" secondItem="dDt-g5-CBc" secondAttribute="bottom" id="o2I-zZ-iyi"/>
+                                <constraint firstAttribute="trailing" secondItem="dDt-g5-CBc" secondAttribute="trailing" id="uXs-aR-8c9"/>
+                                <constraint firstItem="HZO-d1-NFO" firstAttribute="top" secondItem="MvV-Gd-VE3" secondAttribute="top" id="uZg-3a-Itc"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="4ng-m9-qJs" firstAttribute="leading" secondItem="KFm-1p-6pE" secondAttribute="leading" constant="8" id="Lis-GW-dFb"/>
+                <constraint firstItem="4ng-m9-qJs" firstAttribute="top" secondItem="KFm-1p-6pE" secondAttribute="top" constant="24" id="RZm-EN-Hak"/>
+                <constraint firstItem="KFm-1p-6pE" firstAttribute="trailing" secondItem="4ng-m9-qJs" secondAttribute="trailing" id="gro-CK-8Hc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="KFm-1p-6pE"/>
+            <point key="canvasLocation" x="6" y="-575"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="library" width="300" height="276"/>
+        <image name="selectCoverPhoto" width="279" height="240"/>
+    </resources>
+</document>

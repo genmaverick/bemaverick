@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>featuredChallengesEdit</name>
+    <nav>
+        <primary>streams</primary>
+    </nav>
+    <title>
+        <text>Edit Featured Challenges</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>featuredChallengesEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>faq</name>
+    <title>
+        <text>FAQ</text>
+        <headingText>FAQ</headingText>
+    </title>
+    <type>index</type>
+    <subType>faq</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>faq.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

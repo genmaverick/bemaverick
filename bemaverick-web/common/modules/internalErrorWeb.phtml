@@ -1,0 +1,54 @@
+<?php
+// globals
+$site = $this->site;
+
+// formatters
+$formatModule = $this->formatModule();
+
+// module stuff
+$moduleClassPrefix = 'auth-login';
+$typeClassPrefix = 'login-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+// header
+$headerContent = array();
+$headerContent[] = '<div class="error-header">OOPS!</div>';
+$headerContent[] = '
+    <div class="error-sub-header">
+        Internal System Error
+    </div>';
+
+// body content/errors
+$bodyContent = array();
+
+// if production error
+if ( ! $this->systemConfig->isProduction() && $this->exceptions ) {
+    $bodyContent[] = '
+    <div class="error-body-contact">
+        You are seeing this because you are not on a production server
+        <br>'.implode($exceptionArr).'
+    </div>';
+}
+
+$bodyContent[] = '
+    <div class="error-body-contact">
+        Please try again, and if you continue to encounter this issue, reach out to our support team so we can fix it: 
+        <a href="mailto:support@bemaverick.com">support@bemaverick.com</a>
+    </div>';
+
+// print module
+print $formatModule->getBasicLoginModule(
+    array(
+        'headerContent' => join('',$headerContent),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', array() )
+        )
+    )
+);
+?>

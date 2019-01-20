@@ -1,0 +1,81 @@
+<?php
+$site = $this->site;
+$pageConfig = $this->pageConfig;
+
+$pageHeadingString = '';
+
+if ( $pageConfig->useTitlePrefix() ) {
+    $documentTitleString = $pageConfig->getTitle().$pageConfig->getTitlePrefixDelimiter().$pageConfig->getTitlePrefix();
+} else {
+    $documentTitleString = $pageConfig->getTitle();
+}
+$siteLanguage = 'en';
+
+if ( $pageConfig->useTitleHeading() ) {
+    $pageHeadingTag = $pageConfig->getTitleHeadingTag();
+    $pageHeadingString  = "<$pageHeadingTag>".$pageConfig->getTitle()."</$pageHeadingTag>\n";
+}
+
+$this->pageHeadingString = $pageHeadingString;
+$this->pageHeadingWritten = false;
+
+$bodyCssClasses = array('noJs');
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><?php echo $documentTitleString ?></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <?php
+    $metaFiles = $pageConfig->getMetaFiles();
+    if ( $metaFiles ) {
+        foreach( $metaFiles as $file ) {
+            print $this->render( $file );
+        }
+    }
+    ?>
+    <?php if ( $pageConfig->hasCssDefaultFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->mergeFiles('css', $pageConfig->getCssDefaultFiles() ) ?>" />
+    <?php } ?>
+    <?php if ( $pageConfig->hasCssFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->mergeFiles('css', $pageConfig->getCssFiles() ) ?>" />
+    <?php } ?>
+</head>
+<body id="<?php echo $pageConfig->getName() ?>Page" class="<?php print implode(' ', $bodyCssClasses); ?>">
+
+<div id="doc">
+
+    <?php if ( $pageConfig->hasHeaderFiles() ) { ?>
+    <div id="hd">
+        <?php
+        foreach( $pageConfig->getHeaderFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+
+    <?php 
+    $grid = $pageConfig->getGrid();
+    if ( $grid ) { ?>
+    <div id="bd" class="gridId-<?php print $grid->getId(); ?>">
+        <?php print $this->formatTemplate()->getGrid($grid); ?>
+    </div>
+    <?php } ?>
+
+    <?php if ( $pageConfig->hasFooterFiles() ) { ?>
+    <div id="ft">
+        <?php
+        foreach( $pageConfig->getFooterFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+</div>
+<?php 
+    print $this->render('jsHandler.phtml');
+?>
+</body>
+</html>

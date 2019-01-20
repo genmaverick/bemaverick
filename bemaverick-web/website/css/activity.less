@@ -1,0 +1,45 @@
+@import "variables.less";
+.activity-item {
+    cursor: default;
+    .flex-display();
+    .align-items(center);
+    margin-bottom: 16px;
+    width: 100%;
+}
+.activity-item__body {
+    margin-left: 16px;
+    margin-right: 16px;
+    font-weight: 300;
+    .text--size-x-medium();
+    color: @text-dark;
+    .time-since {
+        .text--size-small();
+        color: @text-light;
+    }
+}
+.activity-item__extra {
+    margin-left: auto;
+    position: relative;
+}
+.activity-item__image-wrap {
+    width: 48px;
+    height: 48px;
+}
+.activity-item--badged_response {
+    .badges {
+        position: absolute;
+        z-index: 1;
+        bottom: -2px;
+        left: -6px;
+    }
+    .maverick-badge {
+        .scale(.4);
+    }
+}
+
+@media (min-width: @break-good-size-min) {
+    .activity-item__image-wrap {
+        width: 64px;
+        height: 64px;
+    }
+}

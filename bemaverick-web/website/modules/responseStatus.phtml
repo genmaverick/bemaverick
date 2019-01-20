@@ -1,0 +1,12 @@
+<?php
+$response = $this->response;
+$responseStatus = array(
+    'id' => $response->getId(),
+    'status' => $response->getStatus()
+);
+
+$this->addItem( 'jsDynamicContent', array( $responseStatus ), 'responseStatuses' );
+$this->noReplace = true;
+$this->noPageTitle = true;
+
+?>

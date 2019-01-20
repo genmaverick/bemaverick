@@ -1,0 +1,14 @@
+<?php
+$site = $this->site;
+$loginUser = $this->loginUser;
+
+$contents = array(
+    $this->render( 'postsList.phtml' ),
+);
+
+print '
+    <div class="posts page-wrapper">
+        '.join( '', $contents ).'
+    </div>
+'
+?>

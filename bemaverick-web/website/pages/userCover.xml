@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>userCover</name>
+    <title>
+        <text>Cover</text>
+    </title>
+    <type>users</type>
+    <subType>user-following-popup</subType>
+    <includes>
+        <primary append="true">
+            <file>userCover.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

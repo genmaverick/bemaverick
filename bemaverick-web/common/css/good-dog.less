@@ -1,0 +1,11 @@
+.font-face-good-dog(@family-name, @file-name, @font-weight, @font-style) {
+    @woff2: "<?php print $this->view->url('fontStatic', array( 'fontName' => '@{file-name}.woff2' ) );?>";
+    @woff: "<?php print $this->view->url('fontStatic', array( 'fontName' => '@{file-name}.woff' ) );?>";
+    font-family: @family-name;
+    src: url(@woff2) format("woff2"), url(@woff) format("woff");
+    font-weight: @font-weight;
+    font-style: @font-style;
+}
+@font-face {
+    .font-face-good-dog( 'GoodDog', 'GoodDog_New-webfont', 400, normal );
+}

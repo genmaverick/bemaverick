@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>communityGuidelines</name>
+    <title>
+        <text>Community Guidelines</text>
+        <headingText>Maverick Community Guidelines</headingText>
+    </title>
+    <type>index</type>
+    <subType>privacy-policy</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>communityGuidelines.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

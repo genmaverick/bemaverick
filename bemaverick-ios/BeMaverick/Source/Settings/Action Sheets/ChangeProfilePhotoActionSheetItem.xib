@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeProfilePhotoActionSheetItem" customModule="Maverick" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="b1S-Ph-HGK">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Wk7-9V-zBW" userLabel="Content Stack View">
+                    <rect key="frame" x="8" y="24" width="406" height="76"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9US-IB-gM0" userLabel="Create New Photo Container View">
+                            <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XCh-hp-sTL" userLabel="Create new photo stack">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectCoverPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="xAP-iV-VBl">
+                                            <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="26" id="RWM-QV-MQ1"/>
+                                                <constraint firstAttribute="height" constant="26" id="Xm8-dQ-rhj"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create new photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfl-dT-0gQ">
+                                            <rect key="frame" x="42" y="0.0" width="364" height="26"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1QA-e8-QdO">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <connections>
+                                        <action selector="editAvatarButtonPressed:" destination="-1" eventType="touchUpInside" id="EDa-dH-Bpc"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="1QA-e8-QdO" firstAttribute="top" secondItem="9US-IB-gM0" secondAttribute="top" id="51K-z5-zd8"/>
+                                <constraint firstItem="XCh-hp-sTL" firstAttribute="leading" secondItem="9US-IB-gM0" secondAttribute="leading" id="JBB-QM-wW5"/>
+                                <constraint firstAttribute="bottom" secondItem="1QA-e8-QdO" secondAttribute="bottom" id="JNP-cF-4Rh"/>
+                                <constraint firstItem="1QA-e8-QdO" firstAttribute="leading" secondItem="9US-IB-gM0" secondAttribute="leading" id="Y2F-TU-ULR"/>
+                                <constraint firstAttribute="trailing" secondItem="1QA-e8-QdO" secondAttribute="trailing" id="c9z-YP-hti"/>
+                                <constraint firstItem="XCh-hp-sTL" firstAttribute="top" secondItem="9US-IB-gM0" secondAttribute="top" id="exA-Ns-wGH"/>
+                                <constraint firstAttribute="bottom" secondItem="XCh-hp-sTL" secondAttribute="bottom" id="pGc-CU-m8s"/>
+                                <constraint firstAttribute="trailing" secondItem="XCh-hp-sTL" secondAttribute="trailing" id="tFq-iG-jiB"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcQ-Ii-FHA" userLabel="Remove Current Photo View">
+                            <rect key="frame" x="0.0" y="50" width="406" height="26"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PeK-w2-64H" userLabel="Remove current photo">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="removePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="fAn-wN-zwm">
+                                            <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="26" id="Ig8-B2-qfc"/>
+                                                <constraint firstAttribute="height" constant="26" id="c2w-34-qkk"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remove current photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbR-Le-CTg">
+                                            <rect key="frame" x="42" y="0.0" width="364" height="26"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcF-KP-AFT">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="26"/>
+                                    <connections>
+                                        <action selector="removeCurrentPhotoButtonPressed:" destination="-1" eventType="touchUpInside" id="Q10-Jt-b29"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="PeK-w2-64H" firstAttribute="top" secondItem="kcQ-Ii-FHA" secondAttribute="top" id="Llt-Uk-tVM"/>
+                                <constraint firstItem="PeK-w2-64H" firstAttribute="leading" secondItem="kcQ-Ii-FHA" secondAttribute="leading" id="MFb-dn-pYP"/>
+                                <constraint firstAttribute="bottom" secondItem="PeK-w2-64H" secondAttribute="bottom" id="ML5-Be-NvY"/>
+                                <constraint firstAttribute="trailing" secondItem="dcF-KP-AFT" secondAttribute="trailing" id="OAN-jN-edF"/>
+                                <constraint firstItem="dcF-KP-AFT" firstAttribute="leading" secondItem="kcQ-Ii-FHA" secondAttribute="leading" id="QUw-vr-R9B"/>
+                                <constraint firstItem="dcF-KP-AFT" firstAttribute="top" secondItem="kcQ-Ii-FHA" secondAttribute="top" id="fRv-CV-k7d"/>
+                                <constraint firstAttribute="bottom" secondItem="dcF-KP-AFT" secondAttribute="bottom" id="gAg-q5-nYX"/>
+                                <constraint firstAttribute="trailing" secondItem="PeK-w2-64H" secondAttribute="trailing" id="xcU-hd-Ehj"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="QfE-Fs-8BT" firstAttribute="trailing" secondItem="Wk7-9V-zBW" secondAttribute="trailing" id="aEg-qT-8aq"/>
+                <constraint firstItem="Wk7-9V-zBW" firstAttribute="leading" secondItem="QfE-Fs-8BT" secondAttribute="leading" constant="8" id="pMe-y8-bA6"/>
+                <constraint firstItem="Wk7-9V-zBW" firstAttribute="top" secondItem="QfE-Fs-8BT" secondAttribute="top" constant="24" id="vZW-94-027"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="QfE-Fs-8BT"/>
+            <point key="canvasLocation" x="-6" y="-341"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="removePhoto" width="285" height="252"/>
+        <image name="selectCoverPhoto" width="279" height="240"/>
+    </resources>
+</document>

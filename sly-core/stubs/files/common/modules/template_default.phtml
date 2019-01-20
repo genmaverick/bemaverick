@@ -1,0 +1,342 @@
+<?php
+$site = $this->site;
+$pageConfig = $this->pageConfig;
+
+$pageHeadingString = '';
+
+if ( $pageConfig->useTitlePrefix() ) {
+    $documentTitleString = $pageConfig->getTitle().$pageConfig->getTitlePrefixDelimiter().$pageConfig->getTitlePrefix();
+} else {
+    $documentTitleString = $pageConfig->getTitle();
+}
+$siteLanguage = 'en';
+
+if ( $pageConfig->useTitleHeading() ) {
+    $pageHeadingTag = $pageConfig->getTitleHeadingTag();
+    $pageHeadingString  = "<$pageHeadingTag>".$pageConfig->getTitle()."</$pageHeadingTag>\n";
+}
+
+$this->pageHeadingString = $pageHeadingString;
+$this->pageHeadingWritten = false;
+
+$layouts = array(
+    'default' => array(
+        'id' => 'doc',
+        'class' => 'g-b',
+        'cols' => 2,
+    ),
+    'full-1column' => array(
+        'id' => 'doc',
+        'class' => 'g-a',
+        'cols' => 1,
+    ),
+    'full-2column' => array(
+        'id' => 'doc',
+        'class' => 'g-d',
+        'cols' => 2,
+    ),
+    'full-3column' => array(
+        'id' => 'doc',
+        'class' => 'g-c',
+        'cols' => 3,
+    ),
+    'popup-1column' => array(
+        'id' => 'doc',
+        'class' => 'g-e',
+        'cols' => 1,
+    ),
+);
+
+if ( isset( $layouts[$pageConfig->getLayout()] ) ) {
+    $curLayout = $layouts[$pageConfig->getLayout()];
+}
+else {
+    $curLayout = $layouts['default'];
+}
+
+
+$bodyCssClasses = array('noJs',
+                        'yui-skin-sam',
+                        $curLayout['class'] );
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $siteLanguage; ?>" lang="<?php print $siteLanguage; ?>" id="template" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" > <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 gt6" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $siteLanguage; ?>" lang="<?php print $siteLanguage; ?>" id="template" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" > <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 gt6 gt7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $siteLanguage; ?>" lang="<?php print $siteLanguage; ?>" id="template" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" > <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 gt6 gt7 gt8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $siteLanguage; ?>" lang="<?php print $siteLanguage; ?>" id="template" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" > <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $siteLanguage; ?>" lang="<?php print $siteLanguage; ?>" id="template" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" > <!--<![endif]-->
+
+<head>
+    <title><?php echo $documentTitleString ?></title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <?php
+    $metaFiles = $pageConfig->getMetaFiles();
+    if ( $metaFiles ) {
+        foreach( $metaFiles as $file ) {
+            print $this->render( $file );
+        }
+    }
+    ?>
+    <?php if ( $pageConfig->hasCssPrintFiles() ) { ?>
+    <link rel="stylesheet" media="print" type="text/css" href="<?php print $this->mergeFiles('css', $pageConfig->getCssPrintFiles() ) ?>" />
+    <?php } ?>
+    <?php if ( $pageConfig->hasCssDefaultFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->mergeFiles('css', $pageConfig->getCssDefaultFiles() ) ?>" />
+    <?php } ?>
+    <?php if ( $pageConfig->hasCssFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->mergeFiles('css', $pageConfig->getCssFiles() ) ?>" />
+    <?php } ?>
+
+    <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+</head>
+<body id="<?php echo $pageConfig->getName() ?>Page" class="<?php print implode(' ', $bodyCssClasses); ?>" >
+<div id="fb-root"></div>
+
+<div id="<?php echo $curLayout['id'] ?>">
+    <?php if ( $pageConfig->hasHeaderFiles() ) { ?>
+    <div id="hd">
+        <?php
+        foreach( $pageConfig->getHeaderFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasPrimaryFiles() ||
+               $pageConfig->hasSecondaryFiles() ||
+               $pageConfig->hasTertiaryFiles() ) { ?>
+    <div id="bd">
+        <?php
+            if ( $pageConfig->useGlobalForm() ) {
+                $formAttributes = array();
+                foreach( $pageConfig->getFormAttributes as $key => $value ) {
+                    $formAttributes[]= $key.'="'.$value.'"';
+                }
+                echo '<form '.implode( ' ', $formAttributes).'>';
+            }
+        ?>
+
+        <?php if ( !$this->pageHeadingWritten ) { echo $pageHeadingString; } ?>
+
+        <?php if($curLayout['cols'] == '1') { ?>
+
+            <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+            <div id="primary">
+                <?php
+                foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+            <div id="secondary">
+                <?php
+                foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+
+        <?php } else if($curLayout['cols'] == '2') { ?>
+
+            <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+            <div id="primary">
+                <?php
+                foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+            <div id="secondary">
+                <?php
+                foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+
+        <?php } else if($curLayout['cols'] == '3') { ?>
+            <div id="priSecWrap">
+                <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+                <div id="primary">
+                    <?php
+                    foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+                <?php } ?>
+                <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+                <div id="secondary">
+                    <?php
+                    foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                        print $this->render( $file );
+                    }
+                    ?>
+                </div>
+                <?php } ?>
+            </div>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                   print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+
+        <?php } ?>
+        <?php if ( $pageConfig->useGlobalForm() ) { echo '</form>'; } ?>
+
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasFooterFiles() ) { ?>
+    <div id="ft">
+        <?php
+        foreach( $pageConfig->getFooterFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+</div>
+
+<?php
+
+    $this->AddItem('jsModules', 'node');
+    $this->AddItem('jsModules', 'plugin');
+
+    $this->AddItem('jsModules', 'base');
+    $this->AddItem('jsModules', 'io');
+    $this->AddItem('jsModules', 'util');
+    $this->AddItem('jsModules', 'json');
+    $this->AddItem('jsModules', 'cookie');
+
+    foreach( $pageConfig->getJsInitCommands() as $command ) {
+        $this->AddItem( 'jsInit', $command );
+    }
+
+    $jsModules = $this->getItem( 'jsModules' );
+    foreach($jsModules as $key => $module) {
+        $jsModules[$key] = '"'.$module.'"';
+    }
+    $jsInit = $this->getItem( 'jsInit' );
+
+    $jsModules = array_unique($jsModules);
+    sort($jsModules);
+?>
+
+<script type="text/javascript">
+
+YUI({
+    //combine: true,
+    timeout: 10000,
+            ignore: ['gaga-nav', 'gaga-facebook', 'gaga-poll', 'slynode', 'slyviewer', 'util', 'blog-post-add', 'page-body-editor', 'registration','registration2', 'gaga-trivia', 'gaga-optin', 'gaga-ask', 'gaga-toggle', 'sly-countdown', 'gaga-splash', 'gaga-embedded-content', 'gaga-overlay', 'sly-pickem-host' ],
+    //filter: 'debug',
+    modules:  {
+
+    <?php if ( $this->includeFacebook ) { ?>
+    facebook: {
+       fullpath:"http://connect.facebook.net/en_US/all.js"
+    },
+    <?php } ?>
+    <?php if ( $pageConfig->hasJsDefaultFiles() ) { ?>
+    siteSpecific: {
+        fullpath: "<?php print $this->mergeFiles('js', $pageConfig->getJsDefaultFiles() ) ?>"
+    }
+    <?php array_unshift($jsModules,'"siteSpecific"'); } ?>
+    <?php if ( $pageConfig->hasJsFiles() ) { ?>
+    <?php if ( $pageConfig->hasJsDefaultFiles() ) { ?>,<?php } ?>
+    pageSpecific: {
+       fullpath: "<?php print $this->mergeFiles('js', $pageConfig->getJsFiles() ) ?>"
+    }
+    <?php array_unshift($jsModules,'"pageSpecific"'); } ?>
+    }
+    }
+).use(<?php print join(',',$jsModules)?>, function(Y){
+
+    Y.on('available', function(){
+        Y.Get.PURGE_THRESH = 8;
+        Y.get(this).removeClass('noJs')},'#<?php echo $pageConfig->getName() ?>Page');
+        var init = function() {
+            <?php
+                if ( $jsInit ) {
+                    foreach( $jsInit as $js ) {
+                        print 'var a = function(){';
+                        print ' try {';
+                        print $js.';';
+                        print "} catch (err) {Y.log('initErrorCatch:'+err.message);return false}";
+                        print "};\n";
+                        print "a();\n";
+                    }
+                    echo "\n";
+                }
+           ?>
+       };
+
+       Y.on('domready', init);
+});
+</script>
+
+<?php
+$pageTracking = $pageConfig->getPageTracking();
+if ( isset( $pageTracking['googleAnalytics'] ) ) {
+?>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        try {
+<?php
+    for( $i=0; $i < count($pageTracking['googleAnalytics']['ua']); $i++ )
+    {
+            print "var pageTracker$i = _gat._getTracker( \"" . $pageTracking['googleAnalytics']['ua'][$i] . "\");\n";
+            print "pageTracker$i._trackPageview( '" . $this->systemConfig->getRequestUri() . "' );\n";
+    }
+?>
+        }
+        catch(err) {
+        }
+    </script>
+<?php } ?>
+
+</body>
+</html>

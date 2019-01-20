@@ -1,0 +1,64 @@
+<?php
+$response = $this->response;
+$translator = $this->translator;
+$loginUser = $this->loginUser;
+
+$formatModule = $this->formatModule();
+$classPrefixes = array(
+    'response-status-edit',
+    'basic-popup-module'
+);
+$classNames = array();
+$bodyContent = array();
+$title = 'Error';
+
+$accessToken = $loginUser->getOAuthAccessToken();
+
+$responseStatus = $response->getStatus();
+if ( $responseStatus != 'draft' && $responseStatus != 'deleted' ) {
+    if ( $responseStatus == 'active' ) {
+        $title = 'Disable Video';
+        $value = 'inactive';
+        $description = 'Switching this video off will disable it so it won’t be seen by other users.';
+        $cta = 'Disable';
+    } else {
+        $title = 'Enable Video';
+        $value = 'active';
+        $description = 'Switching this video on will enable it so it can be seen by other users.';
+        $cta = 'Enable';
+    }
+
+    $question = 'Are you sure you want to do that?';
+
+
+    $bodyContent[] = '
+        <p>'.$translator->_( $description ).'</p>
+        <p>'.$translator->_( $question ).'</p>
+        <form action="'.$response->getUrl( 'responseStatusEditConfirm' ).'" method="post" data-request-name="responseStatusEditConfirm">
+            <input type="hidden" name="responseStatus" value="'.$value.'">
+            <input type="hidden" name="accessToken" value="'.$accessToken.'">
+            <button type="submit" class="button">'.$translator->_( $cta ).'</button>
+        </form>
+    ';
+
+
+}
+
+print $formatModule->getModule(
+    array(
+        'body' => array(
+            'content' => '
+                <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'bd-content', $classPrefixes ) ).'">
+                    '.join( '', $bodyContent ).'
+                </div>
+            '
+        ),
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        ),
+        'classPrefixes' => $classPrefixes
+    )
+);
+$this->AddItem( 'popupSettings', $title, 'title' );
+$this->AddItem( 'popupSettings', 'basic', 'type' );
+?>

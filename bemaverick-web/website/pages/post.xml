@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>post</name>
+    <title>
+        <text>:postTitle</text>
+    </title>
+    <type>posts</type>
+    <subType>post</subType>
+    <nav>
+        <primary>posts</primary>
+    </nav>
+    <includes>
+        <primary append="true">
+            <file>post.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

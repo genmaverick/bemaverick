@@ -1,0 +1,117 @@
+.user-profile-edit form {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  align-items: stretch;
+}
+.user-profile-edit__upload {
+  flex: 1;
+  margin: 0 auto;
+}
+.user-profile-edit__upload .button {
+  font-weight: normal;
+}
+.user-profile-edit__fields {
+  flex: 1;
+}
+.user-profile-edit .control-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+  padding-top: 20px;
+}
+.user-profile-edit .control-group input.form-control,
+.user-profile-edit .control-group textarea.form-control {
+  border: none;
+  border-bottom: 1px solid #7b7b7b;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #000000;
+  padding: 8px 0;
+}
+.user-profile-edit .control-group input.form-control:focus,
+.user-profile-edit .control-group textarea.form-control:focus {
+  z-index: 1;
+  outline: none !important;
+  border-bottom-color: #00b0ac;
+}
+.user-profile-edit .control-group textarea.form-control {
+  min-height: 80px;
+}
+.user-profile-edit .control-group .controls .error {
+  color: #d0011b;
+  font-size: 13px;
+  line-height: 1.23076923;
+  font-weight: 400;
+  margin: 4px 0 16px 0;
+}
+.user-profile-edit .control-group .control-label {
+  position: absolute;
+  padding: 0;
+  white-space: nowrap;
+  display: block;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  color: #000000;
+  font-size: 13px;
+  line-height: 1.23076923;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: top 0.1s ease-in;
+  transition: top 0.1s ease-in;
+}
+.user-profile-edit .control-group.error .control-label {
+  color: #d0011b;
+}
+.user-profile-edit .control-group.error input.form-control,
+.user-profile-edit .control-group.error textarea.form-control {
+  border-bottom-color: #d0011b;
+}
+.user-profile-edit .control-group.empty:not(.active):not(.error) .control-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  line-height: 1;
+  font-weight: 400;
+}
+.user-profile-edit .form-actions .button {
+  min-width: 250px;
+  margin: 0 auto;
+}
+.user-profile-edit .profile-image {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.15);
+  margin: 0 auto 15px auto;
+}
+.user-profile-edit .dz-preview {
+  position: relative;
+  z-index: 1;
+}
+.user-profile-edit .dz-image {
+  height: 128px;
+}
+@media (min-width: 768px) {
+  .user-profile-edit form {
+    -webkit-flex-wrap: none;
+    -moz-flex-wrap: none;
+    -ms-flex-wrap: none;
+    flex-wrap: none;
+  }
+  .user-profile-edit__upload {
+    max-width: 250px;
+  }
+}

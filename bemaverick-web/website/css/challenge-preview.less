@@ -1,0 +1,42 @@
+@import "variables.less";
+.challenge-preview {
+    position: relative;
+}
+.challenge-preview__wrap {
+    padding-top: 125%;
+    position: relative;
+    background-color: @text-color;
+}
+.challenge-preview__content-wrap,
+.challenge-preview__image-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center top;
+}
+.challenge-preview__text-wrap {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    right: 0;
+    padding: 16px;
+    color: @white;
+    text-align: center;
+    .font-smoothing(on);
+}
+.challenge-preview__display-name {
+    .site-text(medium,bold);
+    text-transform: uppercase;
+}
+.challenge-preview__title {
+    .site-title(small);
+}
+.challenge-preview__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

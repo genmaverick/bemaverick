@@ -1,0 +1,7 @@
+{
+  "queryStringParameters": {
+    "EventType" : "onChannelUpdate",
+    "ChannelSid": "challenge_1",
+    "Attributes": "{\"firstComment\":\"First time \",\"firstCommentAuthor\":\"testkid100\",\"secondComment\":\"second time \",\"secondCommentAuthor\":\"testkid100\"}"
+  }
+}

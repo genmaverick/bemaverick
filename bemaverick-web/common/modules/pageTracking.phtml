@@ -1,0 +1,88 @@
+<?php
+// this will write out the initial gtm events before the opitmize stuff loads
+// this is duplicated in page-tracking.js for any subsequent events
+$pageTrackingInfo = $this->pageTrackingInfo;
+$gtmEvents = isset( $pageTrackingInfo['providers'] ) && isset( $pageTrackingInfo['providers']['gtm'] ) && isset( $pageTrackingInfo['providers']['gtm']['events'] ) ? $pageTrackingInfo['providers']['gtm']['events'] : null;
+if ( !$gtmEvents ) {
+    return;
+}
+?>
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayerByEvent = window.dataLayerByEvent || {};
+(function() {
+    var _getCookieAsJson = function(cname) {
+        var cookie = _getCookie(cname);
+        if (!cookie) {
+            return {};
+        }
+        var json = {};
+        var chunks = decodeURIComponent(cookie).split("&");
+        for (var i = 0; i < chunks.length; i++) {
+            var chunk = chunks[i].split("=");
+            json[chunk[0]] = chunk[1];
+        }
+        return json;
+    };
+    var _getCookie = function(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == " ")
+                c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+
+        return "";
+    };
+
+    var _getGender = function(obj) {
+        var gender = obj && obj["g"] ? obj["g"] : null;
+        if (gender && gender == "M") {
+            gender = "male";
+        } else if (gender) {
+            gender = "female";
+        }
+        return gender;
+    };
+    var auCookie = _getCookieAsJson("au");
+    var gender = _getGender(auCookie, null);
+    var userId = auCookie && auCookie["u"] ? auCookie["u"] : null;
+    var yearBorn = auCookie && auCookie["by"] ? auCookie["by"] : null;
+    var language = auCookie && auCookie["l"] ? auCookie["l"] : null;
+    var country = auCookie && auCookie["c"] ? auCookie["c"] : null;
+    var loggedIn = userId ? "true" : "false";
+    var userInfo = {
+        "user-logged-in": loggedIn
+    };
+
+    if (userId) {
+        userInfo["user-id"] = userId;
+    }
+    if (gender) {
+        userInfo["user-gender"] = gender;
+    }
+    if (yearBorn) {
+        userInfo["user-birth-year"] = yearBorn;
+    }
+    if (language) {
+        userInfo["user-language"] = language;
+    }
+    if (country) {
+        userInfo["user-country"] = country;
+    }
+
+    var loggedIn = userId ? "true" : "false";
+    var gtmEvents = <?php print json_encode( $gtmEvents ); ?>;
+    for (var i = 0; i < gtmEvents.length; i++) {
+        var gtmEvent = gtmEvents[i];
+        var dataLayerPayload = Object.assign({}, { event: gtmEvent.event }, gtmEvent.page, userInfo, gtmEvent.site);
+        var eventNameIndex = gtmEvent.event == "dataLayer-initialized" ? "global-virtual-pageview" : gtmEvent.event;
+        window.dataLayer.push(dataLayerPayload);
+        window.dataLayerByEvent[eventNameIndex] = dataLayerPayload;
+    }
+})();
+</script>
+
+

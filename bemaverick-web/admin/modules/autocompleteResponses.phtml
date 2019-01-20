@@ -1,0 +1,49 @@
+<?php
+
+$input = $this->input;
+$site = $this->site;
+$query = $input->query;
+
+$filterBy = array(
+    'query' => $query,
+    'postType' => array(
+        BeMaverick_Response::POST_TYPE_RESPONSE,
+        BeMaverick_Response::POST_TYPE_CONTENT
+    ),
+    'responseStatus' => 'active',
+);
+
+$responses = $site->getResponses( $filterBy, null, 50, 0 );
+$objects = array();
+
+foreach ( $responses as $response ) {
+    $challenge = $response->getChallenge();
+    $video = $response->getVideo();
+    $user = $response->getUser();
+    $createdTimestamp = $response->getCreatedTimestamp();
+
+    if ( $createdTimestamp ) {
+        $createdTimestamp = Sly_Date::formatDate( $createdTimestamp, 'SHORT_MONTH_DAY_YEAR_TIME_TZ' );
+    }
+
+    if ($challenge) {
+        $searchText = $challenge->getTitle(). ' - '.$user->getUsername(). ' - ID: '.$response->getId(). ' - '.$createdTimestamp;
+    } else {
+        $searchText = $user->getUsername(). ' - ID: '.$response->getId(). ' - '.$createdTimestamp;
+    }
+    $objects[] = array(
+        'type' => 'response',
+        'id' => $response->getId(),
+        'searchText' => $searchText,
+        'title' =>  $challenge ? $challenge->getTitle() : null,
+        'username' => $user->getUsername(),
+        'status' => $response->getStatus(),
+        'videoThumbnailUrl' => (!empty($video)) ? $video->getThumbnailUrl() : null,
+        'createdTimestamp' => $createdTimestamp
+    );
+}
+
+header( 'Content-Type: application/json' );
+print json_encode( $objects );
+
+?>

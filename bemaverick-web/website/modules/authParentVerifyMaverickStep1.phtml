@@ -1,0 +1,102 @@
+<?php
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$input = $this->input;
+$retry = $this->retry;
+
+// formatters
+$formatFormBootstrap = $this->formatFormBootstrap2();
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+
+// module stuff
+$moduleClassPrefix = 'coppa-verify';
+$typeClassPrefix = 'coppa-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( 'Step 1 of 3' )
+    )
+);
+
+// body content
+$bodyContent = array();
+$verifyMaverickStep2Url = $this->url( 'authParentVerifyMaverickStep2' );
+
+$formItems = array();
+$formItems['firstName'] = $formatFormBootstrap->getFirstName( $input->getUnescaped( 'firstName' ), '', array('attributes' => array('placeholder' => 'First name') ), array('text' => '') );
+$formItems['lastName'] = $formatFormBootstrap->getLastName( $input->getUnescaped( 'lastName' ), '', array('attributes' => array('placeholder' => 'Last name') ), array('text' => '') );
+$formItems['address'] = $formatFormBootstrap->getAddress( $input->getUnescaped( 'address' ), '', array('attributes' => array('placeholder' => 'House number') ), array('text' => '') );
+$formItems['zipCode'] = $formatFormBootstrap->getZipCode( $input->zipCode, '', array('attributes' => array('placeholder' => 'Zip code') ), array('text' => '') );
+$formItems['lastFourSSN'] = $formatFormBootstrap->getLastFourSSN( $input->lastFourSSN, '', array('attributes' => array('placeholder' => 'Last 4 SSN') ), array('text' => '') );
+
+////for testing without proper route to get to page
+//$formItems = array();
+//$formItems['firstName'] = $formatFormBootstrap->getFirstName( $input->firstname, '', array('attributes' => array('placeholder' => 'First name') ), array('text' => '') );
+//$formItems['lastName'] = $formatFormBootstrap->getLastName( $input->lastName, '', array('attributes' => array('placeholder' => 'Last name') ), array('text' => '') );
+//$formItems['address'] = $formatFormBootstrap->getAddress( $input->address, '', array('attributes' => array('placeholder' => 'Street address') ), array('text' => '') );
+//$formItems['zipCode'] = $formatFormBootstrap->getZipCode( $input->zipCode, '', array('attributes' => array('placeholder' => 'Zip code') ), array('text' => '') );
+//$formItems['lastFourSSN'] = $formatFormBootstrap->getLastFourSSN( $input->lastFourSSN, '', array('attributes' => array('placeholder' => 'Last 4 SSN') ), array('text' => '') );
+
+$buttons = array(
+    'signup'=> array(
+        'text' => 'Next',
+        'type' => 'submit',
+        'style' => 'primary-gradient',
+    )
+);
+$options = $formatUtil->getSetting( 'button-options' );
+$formItems['buttons'] = $formatFormBootstrap->getButtons( $buttons, $options );
+
+if ( $retry ) {
+    $bodyContent[] = '
+        <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'retry', $classPrefixes ) ).'">
+            '.$translator->_( 'Failed: Please re-enter this information.' ).'
+        </div>
+    ';
+}
+
+$bodyContent[] = '
+    <form class="ignore" action="'.$verifyMaverickStep2Url.'" method="POST">
+        '.$formatFormBootstrap->getHiddenSimple( 'code', $input->code ).'
+        '.( $retry ? $formatFormBootstrap->getHiddenSimple( 'retry', 1 ) : '' ).'
+        '.$formatFormBootstrap->getList( $formItems ).'
+    </form>
+';
+
+// using premade footer option to pass along info container content
+$footerContent[] = '
+<h1>Why do you need all this anyway?</h1>
+<p>
+Digital platforms like Maverick that offer interactive features for audiences under 13 must comply with the Children’s Online Privacy Protection Act (COPPA). A key part of of this is making sure that those under 13 have a parent or guardian\'s consent to use our app.
+</p>
+<p>
+To confirm you are indeed an adult (and the right adult) to provide consent, we ask for your full name, address, and the last four digits of your SSN. However, in partnership with a leading provider of real-time identity verifications, we delete the last four digits of your SSN from all databases immediately after the registration process is complete. 
+</p>
+';
+
+// print module
+print $formatModule->getBasicCoppaModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'footerContent' => join( '', $footerContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

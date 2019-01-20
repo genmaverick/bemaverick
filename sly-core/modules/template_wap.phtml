@@ -1,0 +1,187 @@
+<?php
+$pageConfig = $this->pageConfig;
+
+$pageHeadingString = '';
+
+$this->accessKey = 1;
+
+if ( $pageConfig->useTitlePrefix() ) {
+    $documentTitleString = $pageConfig->getTitlePrefix().$pageConfig->getTitlePrefixDelimiter().$pageConfig->getTitle();
+} else {
+    $documentTitleString = $pageConfig->getTitle();
+}
+
+if ( $pageConfig->useTitleHeading() ) {
+    $pageHeadingTag = $pageConfig->getTitleHeadingTag();
+    $pageHeadingString  = "<$pageHeadingTag>".$pageConfig->getTitle()."</$pageHeadingTag>\n";
+}
+
+$this->pageHeadingString = $pageHeadingString;
+$this->pageHeadingWritten = false;
+
+
+$layouts = array(
+    'default' => array(
+        'id' => 'doc',
+        'class' => 'g-a',
+        'cols' => 1,       
+    )    
+); 
+
+
+if ( isset( $layouts[$pageConfig->getLayout()] ) ) {
+    $curLayout = $layouts[$pageConfig->getLayout()];
+}
+else {
+    $curLayout = $layouts['default'];
+}
+
+?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" id="template">
+<head>
+    <title><?php echo $documentTitleString ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php 
+    $metaFiles = $pageConfig->getMetaFiles();
+    if ( $metaFiles ) {        
+        foreach( $metaFiles as $file ) {
+            print $this->render( $file );
+        }
+    } 
+    ?>
+
+    <?php if ( $pageConfig->hasCssPrintFiles() ) { ?>
+    <link rel="stylesheet" media="print" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssPrintFiles() ) ?>" />
+    <?php } ?>   
+    <?php if ( $pageConfig->hasCssDefaultFiles() ) { ?>   
+    <link rel="stylesheet" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssDefaultFiles() ) ?>" />
+    <?php } ?>    
+    <?php if ( $pageConfig->hasCssFiles() ) { ?>
+    <link rel="stylesheet" type="text/css" href="<?php print $this->combineCSS( $pageConfig->getCssFiles() ) ?>" />
+    <?php } ?>
+ 
+    <?php if ( $pageConfig->hasJsDefaultFiles() ) { ?>    
+    <script type="text/javascript" src="<?php print $this->combineJS( $pageConfig->getJsDefaultFiles() ) ?>"></script>
+    <?php } ?>     
+    <?php if ( $pageConfig->hasJsFiles() ) { ?>    
+    <script type="text/javascript" src="<?php print $this->combineJS( $pageConfig->getJsFiles() ) ?>"></script>
+    <?php } ?>    
+</head>
+<body id="<?php echo $pageConfig->getName() ?>Page" class="wap">
+
+<div id="<?php echo $curLayout['id'] ?>">
+    <?php if ( $pageConfig->hasHeaderFiles() ) { ?>
+    <div id="hd">
+        <?php
+        foreach( $pageConfig->getHeaderFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasPrimaryFiles() ||
+               $pageConfig->hasSecondaryFiles() ||
+               $pageConfig->hasTertiaryFiles() ) { ?>
+    <div id="bd">
+        <?php
+            if ( $pageConfig->useGlobalForm() ) {
+                $formAttributes = array();
+                foreach( $pageConfig->getFormAttributes as $key => $value ) {
+                    $formAttributes[]= $key.'="'.$value.'"';
+                }
+                echo '<form '.implode( ' ', $formAttributes).'>';
+            }
+        ?>
+
+        <?php if ( !$this->pageHeadingWritten ) { echo $pageHeadingString; } ?>
+        
+        <?php if($curLayout['cols'] == '1') { ?>
+            
+            <?php if ( $pageConfig->hasPrimaryFiles() ) { ?>
+            <div id="primary">
+                <?php
+                foreach( $pageConfig->getPrimaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasSecondaryFiles() ) { ?>
+            <div id="secondary">
+                <?php
+                foreach( $pageConfig->getSecondaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+            <?php if ( $pageConfig->hasTertiaryFiles() ) { ?>
+            <div id="tertiary">
+                <?php
+                foreach( $pageConfig->getTertiaryFiles() as $file ) {
+                    print $this->render( $file );
+                }
+                ?>
+            </div>
+            <?php } ?>
+
+        <?php } ?>
+        <?php if ( $pageConfig->useGlobalForm() ) { echo '</form>'; } ?>
+
+    </div>
+    <?php } ?>
+    <?php if ( $pageConfig->hasFooterFiles() ) { ?>
+    <div id="ft">
+        <?php
+        foreach( $pageConfig->getFooterFiles() as $file ) {
+            print $this->render( $file );
+        }
+        ?>
+    </div>
+    <?php } ?>
+</div>
+<script type="text/javascript">
+    
+    Sly.template.init = function () {
+        <?php
+            
+        foreach( $pageConfig->getJsInitCommands() as $command ) {
+	        $this->AddItem( 'jsInit', $command );
+        }
+        
+        $jsInit = $this->getItem( 'jsInit' );            
+        if ( $jsInit ) {
+            foreach( $jsInit as $js ) {
+                print 'var a = function(){'; 
+                print ' try {';
+                print $js;
+                print "} catch (err) {consoleLog('initErrorCatch:'+err.message);return false}";
+                print "};\n";
+                print "a();\n";                
+            }           
+            echo "\n";
+        }
+        if ($this->loginUser) {
+	        $loginUserId = $this->loginUser->getId();          
+        
+        } else {
+	        $loginUserId = 'null';
+        }
+
+           
+        ?>        
+        Sly.template.loginUserId = "<?php print $loginUserId ?>";
+        Sly.template.containerJsFile = '<?php echo $this->combineJS( array('container.js') ) ?>';
+        Sly.template.NETWORK = '<?php echo ""//$this->network->getName() ?>';
+               
+    }
+    
+    
+    
+    YAHOO.util.Event.onAvailable( '<?php echo $curLayout['id']?>', Sly.template.init );
+
+</script>
+</body>
+</html>

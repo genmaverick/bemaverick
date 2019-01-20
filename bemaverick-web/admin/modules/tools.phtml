@@ -1,0 +1,41 @@
+<?php
+$list = array(
+    // 'featuredResponses' =>  array(
+    //     'title' => 'Edit Featured Responses',
+    //     'link' => $this->url( 'featuredResponsesEdit' ),
+    // ),
+    'featuredChallenges' =>  array(
+        'title' => 'Edit Challenge Stream',
+        'link' => $this->url( 
+            'featuredChallengesEdit', 
+            array (
+                'featuredType' => 'challenge-stream',
+            )
+        ),
+    ),
+    'featuredUsers' =>  array(
+        'title' => 'Edit Featured Mavericks',
+        'link' => $this->url( 'featuredUsersEdit' ),
+    ),
+    'favoriteResponses' =>  array(
+        'title' => 'Edit Favorite Responses',
+        'link' => $this->url( 'favoriteResponsesEdit' ),
+    ),
+    'profileCoverPresetImagesEdit' =>  array(
+        'title' => 'Edit Profile Cover Preset Images',
+        'link' => $this->url( 'profileCoverPresetImagesEdit' ),
+    ),
+    'postsBadgesEdit' =>  array(
+        'title' => 'Badge Posts',
+        'link' => $this->url( 'postsBadgesEdit' ),
+    ),
+);
+?>
+
+
+
+<h1 class="page-header">Tools</h1>
+
+<?php
+print $this->linkList( $list );
+?>

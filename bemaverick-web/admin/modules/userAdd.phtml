@@ -1,0 +1,27 @@
+<?php
+$input = $this->input;
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$formItems = array();
+$formItems[] = $formatFormBootstrap->getUsername( $input->username, null );
+$formItems[] = $formatFormBootstrap->getMaverickType( $input->userType, null );
+$formItems[] = $formatFormBootstrap->getUserStatus( $input->userStatus, 'active' );
+$formItems[] = $formatFormBootstrap->getIsVerified( $input->isVerified, null );
+$formItems[] = $formatFormBootstrap->getFirstName( $input->getUnescaped( 'firstName' ), null );
+$formItems[] = $formatFormBootstrap->getLastName( $input->getUnescaped( 'lastName' ), null );
+$formItems[] = $formatFormBootstrap->getBirthdate( $input->birthdate, null );
+$formItems[] = $formatFormBootstrap->getEmailAddress( $input->emailAddress, null );
+$formItems[] = $formatFormBootstrap->getParentEmailAddress( $input->parentEmailAddress, null );
+$formItems[] = $formatFormBootstrap->getBio( $input->getUnescaped( 'bio' ), null );
+$formItems[] = $formatFormBootstrap->getPassword( $input->getUnescaped( 'password' ), null );
+$formItems[] = $formatFormBootstrap->getImageFileUpload( $input->profileImage, 'profileImage', 'Profile Image' );
+$formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => 'Submit', 'style' => 'btn btn-primary' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+?>
+
+<h1 class="page-header">Add Maverick</h1>
+
+<form method="post" action="<?php print $this->url( 'userAddConfirm' ); ?>">
+    <div class="bd">
+        <?php print $formatFormBootstrap->getList( $formItems ); ?>
+    </div>
+</form>

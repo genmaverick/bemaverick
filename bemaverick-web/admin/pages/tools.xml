@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>tools</name>
+    <nav>
+        <primary>tools</primary>
+    </nav>
+    <title>
+        <text>Tools</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>tools.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

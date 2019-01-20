@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>docsService</name>
+    <title>
+        <text>Service Detail</text>
+    </title>
+    <includes>
+        <secondary>
+            <file>docsService.phtml</file>
+        </secondary>
+    </includes>
+</pageConfig>

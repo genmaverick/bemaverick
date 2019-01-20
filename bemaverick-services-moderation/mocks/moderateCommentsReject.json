@@ -1,0 +1,8 @@
+{
+    "queryStringParameters": {
+        "EventType" : "onMessageSend",
+        "ChannelSid": "challenge_1",
+        "Body":"f***ccck",
+        "Attributes":"{\"uuid\":\"f6d3df91-ed4b-48ad-810f-05a367d328c2\"}"
+    }
+}

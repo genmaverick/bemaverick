@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Update video job status</name>
+    <description>Update a video object with playlist name and status</description>
+    <uri>/site/updatevideostatus</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>playlistname</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>55d679f1c0da32e4d9586008abbde351.m3u8</examples>
+            <description>Name of the HLS playlist</description>
+        </param>
+        <param>
+            <name>jobId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>1522941633277-7l9yl9</examples>
+            <description>Name of the HLS playlist</description>
+        </param>
+        <param>
+            <name>jobStatus</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>COMPLETED, ERROR</examples>
+            <description>Status of the AWS encoding job.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/video?appKey=test_key&jobId=1522941633277-7l9yl9&jobStatus=completed&playlistname=55d679f1c0da32e4d9586008abbde351.m3u8"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

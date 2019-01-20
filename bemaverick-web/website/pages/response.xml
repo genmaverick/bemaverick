@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>response</name>
+    <title>
+        <text>Response to :responseChallengeTitle by :responseUserUsername</text>
+    </title>
+    <type>responses</type>
+    <subType>response</subType>
+    <includes>
+        <primary append="true">
+            <file>response.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

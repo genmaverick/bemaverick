@@ -1,0 +1,90 @@
+<?php
+$site = $this->site;
+$translator = $this->translator;
+$user = $this->user;
+
+$title = $translator->_( "Edit Profile" );
+
+// formatters
+$formatUtil = $this->formatUtil();
+$formatUser = $this->formatUser();
+$formatFormBootstrap2 = $this->formatFormBootstrap2();
+
+$imgOptions = array(
+    'imageSize' => 'large',
+    'link' => false
+);
+
+$formItems = array();
+$formItems['firstName'] = $formatFormBootstrap2->getTextbox(
+    array(
+        'name' => 'firstName',
+        'value' => $user->getFirstName()
+    ),
+    array(
+        'text' => $translator->_( 'First Name' )
+    )
+);
+
+$formItems['lastName'] = $formatFormBootstrap2->getTextbox(
+    array(
+        'name' => 'lastName',
+        'value' => $user->getLastName()
+    ),
+    array(
+        'text' => $translator->_( 'Last Name' )
+    )
+);
+
+$formItems['bio'] = $formatFormBootstrap2->getTextbox(
+    array(
+        'name' => 'bio',
+        'value' => $user->getBio(),
+        'type' => 'textarea'
+    ),
+    array(
+        'text' => $translator->_( 'Bio' )
+    )
+);
+
+$formItems[] = $formatFormBootstrap2->getButtons(
+    array(
+        array(
+            'type' => 'submit',
+            'text' => $translator->_( 'Save' ),
+            'style' => 'primary'
+        )
+    ),
+    $formatUtil->getSetting( 'button-options' )
+);
+
+$profileImage = $user->getProfileImage();
+
+$content = '
+    <div class="user-profile-edit">
+        <form action="'.$user->getUrl( 'userProfileEditConfirm' ).'" method="post"
+            enctype="multipart/form-data" class="dropzone-form">
+            <div class="user-profile-edit__upload">
+                '.$formatUser->getProfileImage( $user, $imgOptions ).'
+                <div class="dropzone">
+                    <a class="button dz-message" data-dz-add>
+                        '.($profileImage ? 'Replace Photo' : 'Add Photo').'
+                    </a>
+                    <a class="button" style="display: '.($profileImage ? 'block' : 'none').'"
+                        data-dz-remove>Remove Photo</a>
+                </div>
+            </div>
+            <div class="user-profile-edit__fields">
+                '.$formatFormBootstrap2->getList( $formItems ).'
+                '.$formatFormBootstrap2->getHiddenSimple( 'accessToken', $user->getOAuthAccessToken() ).'
+            </div>
+        </form>
+    </div>
+';
+
+print $content;
+
+$this->AddItem( 'popupSettings', $title, 'title' );
+$this->AddItem( 'popupSettings', 'basic', 'type' );
+
+?>

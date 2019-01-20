@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Challenge Add Response</name>
+    <description>Add a new response for a challenge by the user</description>
+    <uri>/challenge/addresponse</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>challengeId</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 542</examples>
+            <description>The challenge id to get responses</description>
+        </param>
+        <param>
+            <name>responseType</name>
+            <required>yes</required>
+            <default>video</default>
+            <format>string</format>
+            <examples>video or image</examples>
+            <description>The response type which can be: video or image</description>
+        </param>
+        <param>
+            <name>filename</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>myresponse.mp4</examples>
+            <description>The name of the video or image file that got uploaded to S3</description>
+        </param>
+        <param>
+            <name>coverImageFileName</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>iOS_image_123132.jpeg</examples>
+            <description>The name of the cover image file that got uploaded to S3</description>
+        </param>
+        <param>
+            <name>width</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>600</examples>
+            <description>The width of the video or image</description>
+        </param>
+        <param>
+            <name>height</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>800</examples>
+            <description>The height of the video or image</description>
+        </param>
+        <param>
+            <name>tags</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>art,cool,thisisdope</examples>
+            <description>A comma delimited list of tags for this response</description>
+        </param>
+        <param>
+            <name>description</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>This is my response to the challenge</examples>
+            <description>Some text describing the response</description>
+        </param>
+        <param>
+            <name>coverImage - Deprecated</name>
+            <required>no</required>
+            <default></default>
+            <format>uploaded file</format>
+            <examples></examples>
+            <description>This should be the uploaded file as an image of type: png, jpg.</description>
+        </param>
+        <param>
+            <name>skipTwilio</name>
+            <required>no</required>
+            <default>0</default>
+            <format>0 or 1</format>
+            <examples>1</examples>
+            <description>This should skip creating a channel for each response.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/challenge/addresponse" \
+  --data "responseType=video&challengeId=1&filename=myresponse.mp4&tags=art,cool,thisisdope&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

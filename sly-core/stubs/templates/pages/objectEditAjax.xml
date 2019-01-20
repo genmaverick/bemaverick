@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>objectEditAjax</name>
+    <template>template_json.phtml</template>
+    <nav>
+        <primary>_primary_nav_</primary>
+        <secondary>objects</secondary>
+    </nav>
+    <type>object</type>
+    <subType>edit</subType>
+    <title>
+        <text>Edit Object</text>
+    </title>
+    <includes>
+        <pageContent append="true">
+            <file>objectEdit.phtml</file>
+        </pageContent>
+    </includes>
+</pageConfig>

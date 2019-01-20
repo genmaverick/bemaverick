@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>home</name>
+    <title>
+        <text>Admin Tools</text>
+        <usePrefix>false</usePrefix>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>home.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

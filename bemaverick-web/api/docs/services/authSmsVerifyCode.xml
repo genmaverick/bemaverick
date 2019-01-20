@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Auth SMS Verify Code</name>
+    <service_name>authSmsVerifyCode</service_name>
+    <description>Verify the SMS code for the given phone number</description>
+    <uri>/auth/smsverifycode</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>phoneNumber</name>
+            <required>yes</required>
+            <default></default>
+            <format>+1NNNNNNNNNN</format>
+            <examples>+13105552038</examples>
+            <description>The phone number</description>
+        </param>
+        <param>
+            <name>code</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1192</examples>
+            <description>The code to verify</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/auth/smsverifycode?appKey=test_key&phoneNumber=+155555555555&code=1192" \
+  --include
+ ]]></example_curl>
+
+    <example_json_response><![CDATA[
+]]></example_json_response>
+
+</docs>

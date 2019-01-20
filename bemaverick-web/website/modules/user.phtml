@@ -1,0 +1,80 @@
+<?php
+// globals
+$loginUser = $this->loginUser;
+$user = $this->user;
+$input = $this->input;
+$pageConfig = $this->pageConfig;
+
+if ( $loginUser ) {
+    $this->oAuthAccessToken = $loginUser->getOAuthAccessToken();
+}
+
+// formatters
+$formatUser = $this->formatUser();
+
+$userProfileDetailsTab = $input->userProfileDetailsTab ? $input->userProfileDetailsTab : 'overview';
+$offset = $input->offset ? $input->offset : 1;
+$count = $input->count ? $input->count : 12;
+
+$userType = $user->getUserType();
+$isKidProfile = $userType == 'kid' ? true : false;
+$isMentorProfile = $userType == 'mentor' ? true : false;
+$isProfileOwner = $loginUser == $user ? true : false;
+$isParentOfKid = $loginUser ? $loginUser->isParentOfKid( $user ) : false;
+
+$challengeIndex = 'user';
+$activityIndex = 'userActivity';
+if ( $isKidProfile && ( $isParentOfKid || $isProfileOwner ) ) {
+    $challengeIndex = 'userChallenges';
+}
+if ( $isKidProfile && $isProfileOwner ) {
+    $activityIndex = 'user';
+}
+
+$isJustDetails = $pageConfig->getName() == 'userProfileDetailsAjax' ? true : false;
+$isPagination = $pageConfig->getName() == 'userAjax' ? true : false;
+
+$urlIndex = array(
+    'badged' => 'userBadged',
+    'responses' => 'userResponses',
+    'overview' => 'user',
+    'challenges' => $challengeIndex,
+    'activity' => $activityIndex
+);
+
+$detailsConfig = array(
+    'userProfileDetailsTab' => $userProfileDetailsTab
+);
+$detailsConfig['count'] = $count;
+if ( $input->offset ) {
+    $detailsConfig['offset'] = $input->offset;
+}
+if ( $isPagination ) {
+    $detailsConfig['returnType'] = 'content';
+}
+if ( $input->startCount ) {
+    $detailsConfig['startCount'] = $input->startCount;
+}
+
+$profileDetailsModule = $formatUser->getProfileDetailsModule( $user, $detailsConfig );
+
+if ( $isJustDetails ) {
+    $this->addItem( 'multiReplace',
+        array(
+            'html' => $profileDetailsModule,
+            'selector' => '.user-profile-details'
+        )
+    );
+} else if ( $isPagination ) {
+    $urlParams['startCount'] = $offset + $count - 1;
+    $this->browserHistoryUrl = $user->getUrl( $urlIndex[$userProfileDetailsTab], $urlParams );
+    $this->historyReplace = true;
+    $this->noScroll = true;
+    $this->contentSelector = '.user-profile-details .pagination';
+    print $profileDetailsModule;
+} else {
+    $profileIntroModule = $formatUser->getProfileIntroModule( $user );
+    print $profileIntroModule;
+    print $profileDetailsModule;
+}
+?>

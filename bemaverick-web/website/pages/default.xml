@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>page-name</name>
+    <template>template_default.phtml</template>
+    <templateAjax>template_json.phtml</templateAjax>
+    <layout>default</layout>
+
+    <!--
+        The title will be used for both the window title(<title>)
+        and the heading that describes the page(H1).
+        The prefix is used only for the window title and only when 'usePrefix' is set to true.
+        window title can be 'prefix.delimiter.text' when usePrefix is true else window title is just 'text'
+    -->
+    <title>
+        <usePrefix>true</usePrefix>
+        <printHeading>true</printHeading>
+        <headingTag>h1</headingTag>
+        <prefixDelimiter> | </prefixDelimiter>
+        <prefix>Maverick</prefix>
+        <headingText>Maverick</headingText>
+    </title>
+
+    <!--
+        js init stuff here. add <command></command> inside the jsInit tag
+        to add commands
+    -->
+    <jsInit append="true">
+    </jsInit>
+
+    <!--
+        default behavior is to overwrite the default config.
+        if the 'append' attribute is set to be 'true' it will
+        append to the default config file.
+        This is useful for using global css and js files that get included on every page
+    -->
+
+    <includes>
+        <cssDefault>
+        </cssDefault>
+        <css>
+        </css>
+        <cssPrint>
+        </cssPrint>
+        <jsDefault>
+        </jsDefault>
+        <js>
+            <file>external/modernizr.js</file>
+            <file>external/request-animation-frame.js</file>
+            <file>external/jquery.js</file>
+            <file>external/get-cached-script.js</file>
+            <file>external/easing.js</file>
+            <file>external/browser.js</file>
+            <file>external/history.js</file>
+            <file>external/images-loaded.js</file>
+            <file>external/flickity.js</file>
+            <file>external/in-viewport.js</file>
+            <file>external/conic-gradient.js</file>
+
+            <file>site-pjax.js</file>
+            <file>images.js</file>
+            <file>unicorns.js</file>
+            <file>util.js</file>
+            <file>carousels.js</file>
+            <file>videos.js</file>
+            <file>badgers.js</file>
+            <file>controller-challenges.js</file>
+            <file>controller-responses.js</file>
+            <file>controller-users.js</file>
+            <file>controller-splash.js</file>
+            <file>branch-config.js</file>
+            <file>segment-config.js</file>
+            <file>leanplum.min.js</file>
+            <file>leanplum-config.js</file>
+            <file>comments.js</file>
+        </js>
+        <meta>
+            <file>meta.phtml</file>
+            <file>metaOpenGraph.phtml</file>
+            <file>favicon.phtml</file>
+            <file>jsPreloadIncludes.phtml</file>
+            <file>preConnect.phtml</file>
+            <file>jQueryDeferred.phtml</file>
+            <file>loadStyles.phtml</file>
+            <file>cssIncludes.phtml</file>
+            <file>inlineJsUtils.phtml</file>
+            <file>jsIncludes.phtml</file>
+        </meta>
+        <subHeader>
+            <file>pageTracking.phtml</file>
+        </subHeader>
+        <prePrimary>
+        </prePrimary>
+        <pageContent>
+            <file>pageContentHandler.phtml</file>
+        </pageContent>
+        <primary>
+        </primary>
+        <secondary>
+        </secondary>
+        <tertiary>
+        </tertiary>
+        <header>
+            <file>appBanner.phtml</file>
+            <file>header.phtml</file>
+            <file>responsiveMenu.phtml</file>
+        </header>
+        <footer>
+            <file>footer.phtml</file>
+        </footer>
+        <postFooter>
+            <file>noScript.phtml</file>
+            <file>jsConfig.phtml</file>
+            <file>jsHandler.phtml</file>
+        </postFooter>
+    </includes>
+
+</pageConfig>

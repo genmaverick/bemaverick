@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# OSX Compatibility - proper readlink
+function readlink() {
+  DIR=$(echo "${1%/*}")
+  (cd "$DIR" && echo "$(pwd -P)")
+}
+
+# Make sure a proper username is passed
+if [ -z "$1" ]
+  then
+    echo "No username passed"
+    exit 1
+fi
+
+read -p "Are you sure you want to remove the existing bemaverick-web container and start a new one. All data will be lost? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  docker stop bemaverick-web
+  docker rm bemaverick-web
+  # Creae a new container
+  docker run --name bemaverick-web \
+  -itd \
+  -p 80:80 \
+  -p 443:443 \
+  -p 3306:3306 \
+  -p 21:21 \
+  -v `readlink  ../../../`:/home/$1/dev/ \
+  -v `readlink  ~/.ssh/`:/root/.ssh/ \
+  -e USER=$1 \
+  slytrunk/bemaverick-web \
+  /home/$1/dev/bemaverick-web/docker/bootstrap/bootstrap-run \
+  > /dev/null
+fi

@@ -1,0 +1,550 @@
+.type.type-auth > #bd {
+  padding: 0 0 0 0;
+}
+.type.type-errors > #bd {
+  padding: 0 0 0 0;
+}
+.auth-parent-verify-maverick__retry {
+  color: #d0011b;
+  text-align: center;
+}
+.auth-parent-verify-maverick__success-message {
+  color: #003a49;
+  text-align: center;
+}
+.auth-login__retry {
+  color: #d0011b;
+  text-align: center;
+}
+.auth-login__success-message {
+  color: #003a49;
+  text-align: center;
+}
+.login-info {
+  display: none;
+}
+.login-content {
+  padding-top: 20px;
+}
+.login-content .login-content-container {
+  height: 50%;
+}
+.login-content .login-content-container .login-module__hd {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 55%;
+}
+.login-content .login-content-container .login-module__hd .error-header {
+  margin-top: 10vh;
+  color: #2c2c2c;
+  font-size: 50px;
+  font-weight: 700;
+}
+.login-content .login-content-container .login-module__hd .error-sub-header {
+  font-style: italic;
+  color: #2c2c2c;
+  font-size: 25px;
+}
+.login-content .login-content-container .login-module__hd h1 {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 700;
+  color: #000000;
+}
+.login-content .login-content-container .login-module__bd {
+  position: relative;
+  max-width: 592px;
+  margin: 0 auto;
+  margin-top: 24px;
+  width: 55%;
+}
+.login-content .login-content-container .login-module__bd .error-body-message {
+  margin-top: 5vh;
+  color: #00b0ac;
+  font-size: 18px;
+}
+.login-content .login-content-container .login-module__bd .error-body-contact {
+  margin-top: 5vh;
+  color: #2c2c2c;
+  font-size: 16px;
+}
+.login-module {
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #ffffff;
+}
+.login-module .errors {
+  text-align: center;
+}
+.login-module .instructions {
+  margin: 24px 0 16px 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #beb5ab;
+}
+.login-module .form-item-buttons .button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  margin-top: 50px;
+}
+.login-module a {
+  color: #00b0ac;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+.login-module a:hover {
+  color: #00918e;
+}
+.login-module a:focus {
+  outline: 1px dotted #00918e;
+}
+.login-module .formItems {
+  margin-top: 24px;
+}
+.login-module .additional-actions {
+  font-size: 13px;
+  line-height: 1.23076923;
+  margin: 32px 0 72px 0;
+  padding: 0 16px;
+  text-align: center;
+}
+.login-module .control-group {
+  position: relative;
+  width: 100%;
+  margin-top: 32px;
+}
+.login-module .control-group input.form-control {
+  border: none;
+  border-bottom: 1px solid #7b7b7b;
+  display: block;
+  width: 100%;
+  margin-top: 50px;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  padding-bottom: 4px;
+}
+.login-module .control-group input.form-control:focus {
+  z-index: 1;
+  outline: none !important;
+}
+.login-module .control-group .controls .error {
+  color: #d0011b;
+  font-size: 13px;
+  line-height: 1.23076923;
+  font-weight: 400;
+  margin: 4px 0 16px 0;
+}
+.login-module .control-group .controls div.checkbox {
+  color: #003a49;
+  position: relative;
+  padding-left: 24px;
+}
+.login-module .control-group .controls div.checkbox .checkbox {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+}
+.login-module .control-group .control-label {
+  color: #003a49;
+  padding: 0;
+  margin-bottom: 4px;
+  display: block;
+}
+.login-module .control-group.error .control-label {
+  color: #d0011b;
+}
+.login-module .confirm-message {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #beb5ab;
+  text-align: center;
+}
+.login-module .confirm-message strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  line-height: 1.33333333;
+  font-weight: 700;
+  color: #746f68;
+}
+.login-module .login-module__nav-list-item a {
+  padding: 16px 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 700;
+  color: #003a49;
+}
+.login-module .login-module__nav-list-item a:hover {
+  color: #001116;
+}
+.login-module .login-module__nav-list-item a .icon {
+  font-size: 16px;
+  color: #746f68;
+}
+.coppa-verify__retry {
+  color: #d0011b;
+  text-align: center;
+}
+.coppa-verify__success-message {
+  margin-top: 20px;
+}
+.coppa-module {
+  position: relative;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+}
+.coppa-module-container {
+  width: 100vw;
+  margin-left: -16px;
+  margin-bottom: -16px;
+}
+.coppa-info {
+  display: none;
+}
+.coppa-info-mobile {
+  position: relative;
+  text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #00b0ac;
+}
+.coppa-info-mobile .svgicon--maverick-m-thin {
+  padding-top: 10vh;
+  font-size: 40vh;
+  color: #06a29e;
+}
+.coppa-info-mobile .info-text {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 1vh;
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.coppa-info-mobile .info-text h1 {
+  position: relative;
+  margin: 5vh auto 5vh auto;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1.33333333;
+  font-weight: 600;
+}
+.coppa-info-mobile .info-text p {
+  font-size: 2.5vh;
+  position: relative;
+  width: 80%;
+  margin: 3vh auto 3vh auto;
+  text-align: left;
+  color: #ffffff;
+}
+.coppa-content {
+  position: relative;
+  left: 0;
+  background-color: #ffffff;
+  width: 100%;
+  height: 80vh;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.coppa-content .coppa-content-container {
+  height: 50%;
+}
+.coppa-content .coppa-content-container .coppa-module__hd {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 65%;
+}
+.coppa-content .coppa-content-container .coppa-module__hd h1 {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 600;
+  color: #000000;
+}
+.coppa-content .coppa-content-container .coppa-module__bd {
+  position: relative;
+  height: 70vh;
+  max-width: 592px;
+  margin: 0 auto;
+  width: 65%;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .pre-form-text {
+  margin-top: 50px;
+  font-size: 18px;
+  line-height: 1.33333333;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .errors {
+  text-align: center;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .instructions {
+  margin: 24px 0 16px 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #beb5ab;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .form-item-buttons .button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  margin-top: 7vh;
+}
+.coppa-content .coppa-content-container .coppa-module__bd a {
+  color: #00b0ac;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+.coppa-content .coppa-content-container .coppa-module__bd a:hover {
+  color: #00918e;
+}
+.coppa-content .coppa-content-container .coppa-module__bd a:focus {
+  outline: 1px dotted #00918e;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .formItems {
+  margin-top: 24px;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .additional-actions {
+  font-size: 13px;
+  line-height: 1.23076923;
+  margin: 32px 0 72px 0;
+  padding: 0 16px;
+  text-align: center;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .input-caption {
+  margin-top: 8px;
+  color: #a5a5a5;
+  font-size: 13px;
+  line-height: 1.23076923;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .form-agreement {
+  margin-top: 80px;
+  font-size: 14px;
+  line-height: 1.14285714;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group {
+  position: relative;
+  width: 100%;
+  margin-top: 7vh;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group input.form-control {
+  border: none;
+  border-bottom: 1px solid #7b7b7b;
+  display: block;
+  width: 100%;
+  padding-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group input.form-control:focus {
+  z-index: 1;
+  outline: none !important;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group .controls .error {
+  color: #f1495b;
+  font-size: 13px;
+  line-height: 1.23076923;
+  font-weight: 400;
+  margin: 4px 0 16px 0;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group .controls div.checkbox {
+  color: #003a49;
+  position: relative;
+  padding-left: 24px;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group .controls div.checkbox .checkbox {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group .control-label {
+  color: #003a49;
+  padding: 0;
+  margin-bottom: 4px;
+  display: block;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .control-group.error .control-label {
+  color: #d0011b;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .confirm-message {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #beb5ab;
+  text-align: center;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .confirm-message strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  line-height: 1.33333333;
+  font-weight: 700;
+  color: #746f68;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .coppa-module__nav-list-item a {
+  padding: 16px 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 700;
+  color: #003a49;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .coppa-module__nav-list-item a:hover {
+  color: #001116;
+}
+.coppa-content .coppa-content-container .coppa-module__bd .coppa-module__nav-list-item a .icon {
+  font-size: 16px;
+  color: #746f68;
+}
+@media (min-width: 768px) {
+  .login-info {
+    display: block;
+    position: fixed;
+    text-align: center;
+    background-color: #00b0ac;
+    width: 40%;
+    height: 100vh;
+  }
+  .login-info .svgicon--maverick-m-thin {
+    padding-top: 20%;
+    font-size: 23vw;
+    color: #06a29e;
+  }
+  .login-content {
+    margin-left: 40%;
+  }
+  .coppa-module-container {
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 0px;
+  }
+  .coppa-info-mobile {
+    display: none;
+  }
+  .coppa-info {
+    display: block;
+    position: fixed;
+    text-align: center;
+    background-color: #00b0ac;
+    width: 40%;
+    height: 95vh;
+  }
+  .coppa-info .svgicon--maverick-m-thin {
+    padding-top: 20%;
+    font-size: 23vw;
+    color: #06a29e;
+  }
+  .coppa-info .info-text {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .coppa-info .info-text h1 {
+    position: relative;
+    margin: 5vh auto 5vh auto;
+    color: #ffffff;
+    font-size: 28px;
+    line-height: 1.14285714;
+    font-weight: 600;
+  }
+  .coppa-info .info-text p {
+    position: relative;
+    width: 80%;
+    margin: 5vh auto 5vh auto;
+    text-align: left;
+    font-size: 2vh;
+    color: #ffffff;
+  }
+  .coppa-content {
+    left: 40%;
+    width: 60%;
+    height: 90vh;
+  }
+  .coppa-content .coppa-content-container .coppa-module__hd {
+    width: 55%;
+  }
+  .coppa-content .coppa-content-container .coppa-module__bd {
+    width: 55%;
+  }
+  .coppa-module {
+    position: fixed;
+  }
+}
+.page-type--auth .coppa-module {
+  position: static;
+}
+@media (min-width: 768px) {
+  .page-type--auth .coppa-module .coppa-content,
+  .page-type--auth .coppa-module .coppa-content .coppa-verify__bd {
+    height: auto;
+  }
+}

@@ -1,0 +1,86 @@
+.parent-home-mavericks__maverick {
+  margin: 16px 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+.parent-home-mavericks__maverick .stats {
+  margin-left: auto;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+}
+.parent-home-mavericks__maverick .profile-image {
+  min-width: 48px;
+}
+.parent-home-mavericks__maverick .name-wrap {
+  margin-left: 16px;
+}
+.parent-home-mavericks__maverick .username {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+.parent-home-mavericks__maverick .name + .username {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+}
+.parent-home-mavericks__maverick .stat {
+  text-align: center;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.parent-home-mavericks__maverick .stat .value {
+  -webkit-order: 1;
+  -moz-order: 1;
+  -ms-order: 1;
+  order: 1;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #474441;
+}
+.parent-home-mavericks__maverick .stat .label {
+  -webkit-order: 2;
+  -moz-order: 2;
+  -ms-order: 2;
+  order: 2;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+}
+.parent-home-mavericks__maverick .stat + .stat {
+  margin-left: 24px;
+}
+.parent-home-mavericks__maverick .num-followers,
+.parent-home-mavericks__maverick .num-following {
+  display: none;
+}
+@media (min-width: 480px) {
+  .parent-home-mavericks__maverick .stat {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+  }
+  .parent-home-mavericks__maverick .profile-image {
+    min-width: 64px;
+  }
+}

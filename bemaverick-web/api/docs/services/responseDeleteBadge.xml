@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Response Delete Badge</name>
+    <description>Delete a badge for a response by the user</description>
+    <uri>/response/deletebadge</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>responseId</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 542</examples>
+            <description>The response id</description>
+        </param>
+        <param>
+            <name>badgeId</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 2</examples>
+            <description>The badge id</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/response/deletebadge" \
+  --data "responseId=1&badgeId=1&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{"users":{"2":{"userId":"2"}},"mentors":{"1":{"mentorId":"1","firstName":"Ada","lastName":"Lovelace"}},"videos":{"1":{"videoId":"1","videoUrl":"https:\/\/s3.amazonaws.com\/bemaverick-videos-output\/challenge-1.mp4","thumbnailUrl":null},"2":{"videoId":"2","videoUrl":"https:\/\/s3.amazonaws.com\/bemaverick-videos-output\/iOS_video_3F655E67-6B5B-41D6-9B56-7C3C2C5D9DAB_1506097048.mp4","thumbnailUrl":"https:\/\/s3.amazonaws.com\/bemaverick-videos-thumbnail\/iOS_video_3F655E67-6B5B-41D6-9B56-7C3C2C5D9DAB_1506097048-thumbnail-00001.png"}},"badges":{"1":{"badgeId":"1","name":"Original"},"2":{"badgeId":"2","name":"Explorer"},"3":{"badgeId":"3","name":"Rebel"}},"challenges":{"1":{"challengeId":"1","mentorId":"1","title":"Create a new programming language","videoId":"1","startTime":null,"endTime":null,"winnerResponseId":null,"badgeIds":["1","2","3"]}},"responses":{"2":{"responseId":"2","userId":"2","challengeId":"1","videoId":"2","badges":{"1":{"badgeId":"1","count":1},"2":{"badgeId":"2","count":1},"3":{"badgeId":"3","count":0}}}}}]]>
+    </example_json_response>
+
+</docs>

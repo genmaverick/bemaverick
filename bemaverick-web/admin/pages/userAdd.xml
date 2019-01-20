@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>userAdd</name>
+    <title>
+        <text>Add Maverick</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>userAdd.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

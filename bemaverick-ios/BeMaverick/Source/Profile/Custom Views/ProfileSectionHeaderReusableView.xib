@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileSectionHeaderReusableViewId" id="JLx-Sg-tNQ" customClass="ProfileSectionHeaderReusableView" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Cy5-U7-Jqd" customClass="MaverickSegmentedControl" customModule="Maverick" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
+                    <segments>
+                        <segment title="First"/>
+                        <segment title="Second"/>
+                        <segment title=""/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentChanged:" destination="JLx-Sg-tNQ" eventType="valueChanged" id="wCU-AE-O9x"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <constraints>
+                <constraint firstItem="4cr-Nm-OyH" firstAttribute="bottom" secondItem="Cy5-U7-Jqd" secondAttribute="bottom" constant="2" id="k0K-15-ygW"/>
+                <constraint firstItem="Cy5-U7-Jqd" firstAttribute="top" secondItem="4cr-Nm-OyH" secondAttribute="top" id="kBR-20-ML9"/>
+                <constraint firstItem="Cy5-U7-Jqd" firstAttribute="leading" secondItem="4cr-Nm-OyH" secondAttribute="leading" id="qmr-Yi-E4m"/>
+                <constraint firstItem="4cr-Nm-OyH" firstAttribute="trailing" secondItem="Cy5-U7-Jqd" secondAttribute="trailing" id="vIU-vH-0kQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="4cr-Nm-OyH"/>
+            <connections>
+                <outlet property="segmentViewControl" destination="Cy5-U7-Jqd" id="Avn-10-Lx1"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="57"/>
+        </collectionReusableView>
+    </objects>
+</document>

@@ -1,0 +1,118 @@
+<?php
+// Include and instantiate the class.
+require_once (BEMAVERICK_COMMON_ROOT_DIR . '/helpers/MobileDetect.php');
+$detect = new Mobile_Detect;
+
+$loginUser = $this->loginUser;
+$translator = $this->translator;
+$pageConfig = $this->pageConfig;
+$site = $this->site;
+
+$primaryNav = $pageConfig->getPrimaryNav();
+
+$content = array();
+$links = array();
+
+// links for logged in users
+if ( $loginUser ) {
+
+    if( $loginUser->isParent() ) {
+        $links['users'] = array(
+            'link' => $this->url( 'parentHome' ),
+            'title' => $translator->_( 'Dashboard ' ),
+            'itemAttributes' => array(
+                'class' => 'link-item'
+            )
+        );
+    } elseif ( $loginUser->isKid() || $loginUser->isMentor() ) {
+        $links['users'] = array(
+            'link' => $this->url('maverickHome'),
+            'title' => $translator->_('Dashboard'),
+            'itemAttributes' => array(
+                'class' => 'link-item'
+            )
+        );
+    }
+}
+
+// link for any user
+$links['challenges'] = array(
+    'link' => $this->url( 'challenges' ),
+    'title' => $translator->_( 'Challenges' ),
+    'itemAttributes' => array(
+        'class' => 'link-item'
+    )
+);
+
+// links for user not logged in
+if ( $loginUser ) {
+    $links['settings'] = array(
+        'link' => $loginUser->getUrl( 'userSettings' ),
+        'title' => $translator->_( 'Account' ),
+        'itemAttributes' => array(
+            'class' => 'link-item'
+        )
+    );
+} else {
+    $links['signin'] = array(
+        'link' => '/signin',
+        'title' => $translator->_( 'Sign In' ),
+        'itemAttributes' => array(
+            'class' => 'link-item'
+        )
+    );
+
+    $links['signup'] = array(
+        'link' => '/signup',
+        'title' => $translator->_( 'Sign Up' ),
+        'itemAttributes' => array(
+            'class' => 'link-item link-item--log-in'
+        )
+    );
+}
+
+// set to the view so we can reuse in responsive menu
+$this->navLinks = $links;
+
+$content[] = $this->linkList(
+    $links,
+    array(
+        'selected' => $primaryNav,
+        'attributes' => array(
+            'class' => 'site-header__links site-header__links--primary'
+        )
+    )
+);
+
+$output = '
+    <div class="site-header">
+        <div class="site-header__content">';
+
+if (isset($_GET['share']) && $_GET['share'] == true && $detect->isiOS()) {
+    // hide the header banner
+} else {
+    // show the header banner
+    $output .= '
+                <div class="site-header__bd">
+                    <a href="'.$this->url( 'home' ).'">
+                        <div class="logo">
+                            <div class="svgicon--logo-brandmark-1"></div>
+                            <div class="svgicon--logo-wordmark"></div>
+                        </div>
+                    </a>
+                    <div class="menu-toggle toggle-responsive-menu">
+                        <div class="svgicon--menu-bars"></div>
+                    </div>
+                    '.join( '', $content ).'
+                </div>
+                ';
+}
+
+$output .= '
+        </div>
+    </div>
+';
+
+print $output;
+
+?>

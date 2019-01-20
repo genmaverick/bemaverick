@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>privacyPolicy</name>
+    <title>
+        <text>Privacy Policy</text>
+        <headingText>Maverick Privacy Policy</headingText>
+    </title>
+    <type>index</type>
+    <subType>privacy-policy</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>privacyPolicy.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

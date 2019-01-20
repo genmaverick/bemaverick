@@ -1,0 +1,123 @@
+<?php
+$pageConfig = $this->pageConfig;
+$this->adOrdValue = time();
+$documentTitleString = $this->formatPageTitle()->getDocumentTitle( $pageConfig );
+$this->documentTitleString = $documentTitleString;
+$this->isSiteResponsive = $this->systemConfig->getSetting( 'SYSTEM_IS_SITE_RESPONSIVE' );
+$systemConfig = $this->systemConfig;
+$site = $this->site;
+//get the content
+$content  = '';
+if ( $pageConfig->getGridId() ) {
+    $grid = $pageConfig->getGrid();
+    $content = $this->formatTemplate()->getGrid($grid);
+} else {
+    if ( $pageConfig->hasPageContentFiles() ) {
+        foreach( $pageConfig->getPageContentFiles() as $file ) {
+            $content .= $this->render( $file );
+        }
+    }
+}
+if ( $this->getItem( 'jsDynamicContent' ) ) {
+    $jsContent = $this->getItem( 'jsDynamicContent' );
+}
+
+// fix any utf8 encoding issues
+if ( ! mb_check_encoding( $content, 'UTF-8' ) ) {
+    $content = utf8_encode($content);
+}
+$jsContent['content'] = $content;
+
+//get the package build version
+$packageBuildVersion = $this->systemConfig->getSetting( 'SYSTEM_CHECK_PACKAGE_BUILD_VERSION' ) && $this->systemConfig->getPackageBuildVersion() ? $this->systemConfig->getPackageBuildVersion() : 0;
+$jsContent['packageBuildVersion'] = $packageBuildVersion;
+
+if ( $this->browserHistoryUrl ) {
+    $jsContent['browserHistoryUrl'] = $this->browserHistoryUrl;
+}
+if ( $this->redirectUrl ) {
+    $jsContent['redirectUrl'] = $this->redirectUrl;
+}
+if ( $this->fullPageLike ) {
+    $jsContent['fullPageLike'] = true;
+}
+
+if ( $this->noReplace ) {
+    $jsContent['noReplace'] = true;
+}
+if ( $this->noAds ) {
+    $jsContent['noAds'] = true;
+}
+if ( $this->noScroll ) {
+    $jsContent['noScroll'] = true;
+}
+if ( $this->noHistory ) {
+    $jsContent['noHistory'] = true;
+}
+if ( $this->adSelector ) {
+    $jsContent['unicornSelector'] = $this->adSelector;
+}
+if ( $this->adDelay ) {
+    $jsContent['unicornDelay'] = $this->adDelay;
+}
+if ( $this->adClear ) {
+    $jsContent['unicornClear'] = $this->adClear;
+}
+if ( $this->scrollToSelector ) {
+    $jsContent['scrollToSelector'] = $this->scrollToSelector;
+}
+if ( $this->scrollToOffset ) {
+    $jsContent['scrollToOffset'] = $this->scrollToOffset;
+}
+if ( $this->superHeaderTitle ) {
+    $jsContent['superHeaderTitle'] = $this->superHeaderTitle;
+}
+if ( $this->superHeaderClass ) {
+    $jsContent['superHeaderClass'] = $this->superHeaderClass;
+}
+
+if ( $this->getItem( 'extraJs' ) ) {
+    $jsContent['extraJs'] = $this->getItem( 'extraJs' );
+}
+if ( $this->galleryData ) {
+    $jsContent['galleryData'] = $this->galleryData;
+}
+if ( $this->galleryData ) {
+    $jsContent['galleryData'] = $this->galleryData;
+}
+if ( !$this->noPageTitle ) {
+    //add the pageTitle
+    $jsContent['pageTitle'] = html_entity_decode($documentTitleString);
+}
+$jsContent['time'] = time();
+$jsContent['isAjax'] = true;
+
+$pageVars = $this->getItem( 'pageVars' ) ?  $this->getItem( 'pageVars' ) : array();
+
+//get the page tracking
+$pageTrackingInfo = $this->noPageTracking ? array() : $this->formatPageTracking()->getTrackingInfo( $pageConfig );
+if ( !$this->noPageTracking && $pageTrackingInfo ) {
+    $jsContent['pageTracking'] = $pageTrackingInfo;
+}
+
+//if we need to slow down the updating of data so that an event can finish
+if ( $this->minRoundtripTime ) {
+    $jsContent['minRoundtripTime'] = $this->minRoundtripTime;
+}
+
+//need a url to fire a popup after load
+if ( $this->popupUrl ) {
+    $jsContent['popupUrl'] = $this->popupUrl;
+}
+
+if ( $this->currentUrl ) {
+    $jsContent['currentUrl'] = $this->currentUrl;
+}
+
+$environment = $systemConfig->getEnvironment();
+$debugMode = $environment != 'production' || ( @$_REQUEST['debug'] && @$_REQUEST['debug'] == 1 ) ? true : false;
+
+//usleep(300000);
+print json_encode($jsContent);
+
+?>

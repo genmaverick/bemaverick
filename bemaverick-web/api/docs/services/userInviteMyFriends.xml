@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Invite My Friends</name>
+    <description>Invite the list of users based on email address</description>
+    <uri>/user/invitemyfriends</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>deepLinkURL</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>https://bemaverick.app.link/bJVOFjqstL</examples>
+            <description>Branch link for app download or web</description>
+        </param>
+        <param>
+            <name>subject</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>Invitation to Maverick from {{{NAME}}}</examples>
+            <description>Subject of the email</description>
+        </param>
+        <param>
+            <name>body</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>
+               Your friend, {{{USERNAME}}}, wants you to join them at Maverick, a new creative social network.
+               Download it on the App Store.
+            </examples>
+            <description>Body of the email</description>
+        </param>
+    </parameters>
+    <request_body>
+        {
+        "emailAddresses" : "test@tes.com,test2@test.com",
+        "phoneNumbers":"1233456789,987654321"
+        }
+    </request_body>
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/invitemyfriends?appKey=test_key&emailAddresses=test@test.com,test2@test.com&deepLinkURL=https://bemaverick.app.link/bJVOFjqstL"
+]]></example_curl>
+
+    <example_json_response><![CDATA[ "TODO"
+]]></example_json_response>
+
+</docs>

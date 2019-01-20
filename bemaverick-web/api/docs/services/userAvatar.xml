@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Avatar</name>
+    <description>Returns the image for the user's profile image</description>
+    <uri>/user/avatar-[userId].jpg</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>x</name>
+            <required>no</required>
+            <default>200</default>
+            <format>integer</format>
+            <examples>500</examples>
+            <description>The width of the image to be returned</description>
+        </param>
+        <param>
+            <name>y</name>
+            <required>no</required>
+            <default>200</default>
+            <format>integer</format>
+            <examples>500</examples>
+            <description>The height of the image to be returned</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --url "<host>/v1/user/avatar-2.jpg?x=300&y=300"
+]]></example_curl>
+
+</docs>

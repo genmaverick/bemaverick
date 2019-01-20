@@ -1,0 +1,24 @@
+<?php
+// globals
+$loginUser = $this->loginUser;
+$user = $this->user;
+$input = $this->input;
+$pageConfig = $this->pageConfig;
+
+// formatters
+$formatUser = $this->formatUser();
+
+$pageName = $pageConfig->getName();
+
+
+$moduleType = 'followers';
+
+
+$moduleConfig = array(
+    'moduleType' => $moduleType
+);
+
+$usersModule = $formatUser->getEditCoverModule( $user, $moduleConfig );
+print $usersModule;
+?>
+

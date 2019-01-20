@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="ContactsHeaderViewId" id="r26-by-J8Z" customClass="ContactsHeaderView" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="464" height="347"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Responses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MV-Z0-VYf">
+                    <rect key="frame" x="10" y="0.0" width="84" height="347"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptf-pV-VvV">
+                    <rect key="frame" x="380" y="0.0" width="84" height="347"/>
+                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="20" maxY="0.0"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="buttonTapped:" destination="r26-by-J8Z" eventType="touchUpInside" id="Y0a-Gf-tx0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="9xM-Zz-R9h" firstAttribute="trailing" secondItem="ptf-pV-VvV" secondAttribute="trailing" id="1dr-U6-d0d"/>
+                <constraint firstItem="7MV-Z0-VYf" firstAttribute="leading" secondItem="9xM-Zz-R9h" secondAttribute="leading" constant="10" id="Cnn-Ms-ggJ"/>
+                <constraint firstItem="7MV-Z0-VYf" firstAttribute="top" secondItem="9xM-Zz-R9h" secondAttribute="top" id="FvE-cS-JAJ"/>
+                <constraint firstItem="ptf-pV-VvV" firstAttribute="top" secondItem="9xM-Zz-R9h" secondAttribute="top" id="iV9-4h-zb0"/>
+                <constraint firstItem="9xM-Zz-R9h" firstAttribute="bottom" secondItem="7MV-Z0-VYf" secondAttribute="bottom" id="pnU-bB-AKv"/>
+                <constraint firstAttribute="bottom" secondItem="ptf-pV-VvV" secondAttribute="bottom" id="vdk-my-RSs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="9xM-Zz-R9h"/>
+            <connections>
+                <outlet property="bottomSpaceConstraint" destination="pnU-bB-AKv" id="fZP-dc-nfF"/>
+                <outlet property="label" destination="7MV-Z0-VYf" id="R1O-nk-T8T"/>
+                <outlet property="leadingSpaceConstraint" destination="Cnn-Ms-ggJ" id="QyA-XD-8gI"/>
+                <outlet property="selectButton" destination="ptf-pV-VvV" id="MNb-7O-pSY"/>
+            </connections>
+            <point key="canvasLocation" x="85" y="51.5"/>
+        </view>
+    </objects>
+</document>

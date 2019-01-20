@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>user</name>
+    <title>
+        <text>:userUsername :userProfileDetailsTab</text>
+    </title>
+    <type>users</type>
+    <subType>user</subType>
+    <nav>
+        <primary>users</primary>
+    </nav>
+    <includes>
+        <primary append="true">
+            <file>user.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

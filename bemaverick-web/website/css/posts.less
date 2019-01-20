@@ -1,0 +1,16 @@
+@import "variables.less";
+.posts-list__post-cards {
+    margin: 0 -8px;
+    .flex-display();
+    .flex-wrap(wrap);
+    .post-card {
+        width: 100%/2;
+        position: relative;
+        margin-bottom: 32px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    > div:first-of-type {
+        width: 100%;
+    }
+}

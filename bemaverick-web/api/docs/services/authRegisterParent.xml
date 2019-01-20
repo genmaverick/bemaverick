@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Auth Register Parent</name>
+    <service_name>authRegisterParent</service_name>
+    <description>Register a new parent</description>
+    <uri>/auth/registerparent</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>username</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>testkid</examples>
+            <description>The parent's username</description>
+        </param>
+        <param>
+            <name>password</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples></examples>
+            <description>The parent's password</description>
+        </param>
+        <param>
+            <name>emailAddress</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test@test.com</examples>
+            <description>The email address</description>
+        </param>
+    </parameters>
+
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/auth/registerparent" \
+  --data "username=testparent&password=testpassword&emailAddress=parent@test.com&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0ZXN0X2tleSIsImV4cCI6MTUwNjAyMDEwNywic3ViIjo1fQ.mGFryId0o4_JuQKyTUKnR0W4FQarK8TRd44vn_CdmBA",
+"expires_in":86400,
+"token_type":"bearer",
+"scope":null,
+"refresh_token": "fa5256ca8f1b88522ba1e34a0792ee05236427a3"
+}
+]]></example_json_response>
+
+</docs>

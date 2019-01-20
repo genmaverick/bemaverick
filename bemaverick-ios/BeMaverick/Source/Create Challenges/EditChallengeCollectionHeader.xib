@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditChallengeCollectionHeaderId" id="ul4-Qy-AyR" customClass="EditChallengeCollectionHeader" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="221"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge other Mavericks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSh-lK-aW4">
+                    <rect key="frame" x="16" y="0.0" width="252" height="221"/>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huc-bQ-Mgh">
+                    <rect key="frame" x="268" y="0.0" width="109" height="221"/>
+                    <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="24" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-17" maxY="0.0"/>
+                    <state key="normal" title="Search" image="ugc_search">
+                        <color key="titleColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="searchTapped:" destination="ul4-Qy-AyR" eventType="touchUpInside" id="y0O-LJ-vL8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="huc-bQ-Mgh" firstAttribute="top" secondItem="PYf-HP-zEq" secondAttribute="top" id="1En-Kz-eal"/>
+                <constraint firstItem="huc-bQ-Mgh" firstAttribute="leading" secondItem="JSh-lK-aW4" secondAttribute="trailing" id="HX6-25-x8p"/>
+                <constraint firstItem="JSh-lK-aW4" firstAttribute="leading" secondItem="PYf-HP-zEq" secondAttribute="leading" constant="16" id="I4f-Or-4Ps"/>
+                <constraint firstItem="JSh-lK-aW4" firstAttribute="top" secondItem="PYf-HP-zEq" secondAttribute="top" id="Nh6-3e-hPT"/>
+                <constraint firstItem="PYf-HP-zEq" firstAttribute="bottom" secondItem="JSh-lK-aW4" secondAttribute="bottom" id="Oys-Wp-HeX"/>
+                <constraint firstItem="PYf-HP-zEq" firstAttribute="trailing" secondItem="huc-bQ-Mgh" secondAttribute="trailing" id="XDP-VU-8EV"/>
+                <constraint firstItem="PYf-HP-zEq" firstAttribute="bottom" secondItem="huc-bQ-Mgh" secondAttribute="bottom" id="ta4-8m-jnt"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="PYf-HP-zEq"/>
+            <connections>
+                <outlet property="searchButton" destination="huc-bQ-Mgh" id="z6s-vk-4C9"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="273.5"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="ugc_search" width="12" height="12"/>
+    </resources>
+</document>

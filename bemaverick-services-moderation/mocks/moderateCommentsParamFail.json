@@ -1,0 +1,8 @@
+{
+    "queryStringParameters": {
+        "EventType" : "onMessageSend",
+        "ChannelSid": "challenge_1",
+        "Body":"Test123",
+        "Attributes":"{\"report\":\"inappropriate \",\"uuid\":\"123\"}"
+    }
+}

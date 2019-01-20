@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilterTextOverlayView" customModule="BeMaverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fkf-Nf-3rk" userLabel="Doodle Content View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zMP-Je-y1D">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="zMP-Je-y1D" firstAttribute="top" secondItem="Fkf-Nf-3rk" secondAttribute="top" id="Dtn-Px-mdL"/>
+                        <constraint firstAttribute="trailing" secondItem="zMP-Je-y1D" secondAttribute="trailing" id="P1W-gG-UNU"/>
+                        <constraint firstItem="zMP-Je-y1D" firstAttribute="leading" secondItem="Fkf-Nf-3rk" secondAttribute="leading" id="gIC-It-h5J"/>
+                        <constraint firstAttribute="bottom" secondItem="zMP-Je-y1D" secondAttribute="bottom" id="maE-vv-bBc"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Fkf-Nf-3rk" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="KSS-EA-A82"/>
+                <constraint firstItem="Fkf-Nf-3rk" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="ZUl-VI-n0Y"/>
+                <constraint firstItem="Fkf-Nf-3rk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="icH-oP-JNQ"/>
+                <constraint firstItem="Fkf-Nf-3rk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zxV-BR-1gW"/>
+            </constraints>
+            <connections>
+                <outlet property="contentView" destination="Fkf-Nf-3rk" id="RHl-WW-RNa"/>
+                <outlet property="drawingImageView" destination="zMP-Je-y1D" id="SfU-QD-hXs"/>
+            </connections>
+        </view>
+    </objects>
+</document>

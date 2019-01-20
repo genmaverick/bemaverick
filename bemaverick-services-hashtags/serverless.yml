@@ -1,0 +1,87 @@
+service: hashtags-service
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: ${self:provider.stage}
+
+functions:
+  createHashtag:
+    handler: src/handler.createHashtag
+    events:
+      - http:
+          path: /
+          method: post
+          cors: true
+
+  updateHashtag:
+    handler: src/handler.updateHashtag
+    events:
+      - http:
+          path: /{id}
+          method: put
+          cors: true
+
+  deleteHashtag:
+    handler: src/handler.deleteHashtag
+    events:
+      - http:
+          path: /{id}
+          method: delete
+          cors: true
+
+  getHashtag:
+    handler: src/handler.getHashtag
+    events:
+      - http:
+          path: /{id}
+          method: get
+          cors: true
+
+  listHashtags:
+    handler: src/handler.listHashtags
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+
+  parseHashtags:
+    handler: src/handler.parseHashtags
+    events:
+      - http:
+          path: /parse
+          method: post
+          cors: true
+
+  changeContent:
+    handler: src/handler.changeContent
+    events:
+      - sns:
+          # arn: arn:aws:sns:us-east-1:415196061258:dev_change_content
+          arn: ${self:custom.changeContentArn.${self:provider.stage}, self:custom.changeContentArn.dev}
+      - http:
+          path: /changeContent
+          method: post
+          cors: false
+
+  autocomplete:
+    handler: src/handler.autocomplete
+    events:
+      - http:
+          path: /autocomplete
+          method: get
+          cors: true
+
+custom:
+  dotenv:
+    path: ./.env/.${self:provider.stage}.env
+  changeContentArn:
+    dev: arn:aws:sns:us-east-1:415196061258:dev_change_content
+    prod: arn:aws:sns:us-east-1:415196061258:prod_change_content

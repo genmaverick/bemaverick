@@ -1,0 +1,54 @@
+<?php
+// globals
+$loginUser = $this->loginUser;
+$challenge = $this->challenge;
+$input = $this->input;
+$pageConfig = $this->pageConfig;
+
+// formatters
+$formatChallenge = $this->formatChallenge();
+
+$pageName = $pageConfig->getName();
+$isPagination = $pageName == 'challengeAjax';
+$offset = $input->offset ? $input->offset : 1;
+$count = $input->count ? $input->count : 12;
+
+$videoModuleConfig = array(
+    'autoplay' => false
+);
+$challengeMediaModule = $formatChallenge->getChallengeMediaModule( $challenge, $videoModuleConfig );
+
+$responsesModuleConfig = array(
+    'includePagination' => true
+);
+
+$urlParams = array();
+$responsesModuleConfig['count'] = $count;
+if ( $input->offset ) {
+    $responsesModuleConfig['offset'] = $input->offset;
+}
+if ( $isPagination ) {
+    $responsesModuleConfig['returnType'] = 'content';
+}
+if ( $input->startCount ) {
+    $responsesModuleConfig['startCount'] = $input->startCount;
+}
+$responsesModule = $loginUser ? $formatChallenge->getResponsesModule( $challenge, $responsesModuleConfig ) : '';
+
+if ( $isPagination ) {
+    $urlParams['startCount'] = $offset + $count - 1;
+    $this->browserHistoryUrl = $challenge->getUrl( 'challenge', $urlParams );
+    $this->noScroll = true;
+    $this->historyReplace = true;
+    $this->contentSelector = '.challenge .pagination';
+    print $responsesModule;
+    return;
+}
+
+print '
+    <div class="challenge">
+        '.$challengeMediaModule.'
+        '.$responsesModule.'
+    </div>
+';
+?>

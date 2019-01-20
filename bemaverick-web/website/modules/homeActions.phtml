@@ -1,0 +1,26 @@
+<?php
+print '
+    <div class="home-actions">
+        <div class="home-actions__content">
+            <div class="home-actions__sections">
+                <div class="home-actions__section home-actions__section--register">
+                    <div class="home-actions__title">
+                        New to Maverick?
+                    </div>
+                    <div class="home-actions__cta">
+                        <a href="'.$this->url( 'authRegisterParent' ).'" class="button button--primary-gradient">Create an account</a>
+                    </div>
+                </div>
+                <div class="home-actions__section home-actions__section--login">
+                    <div class="home-actions__title">
+                        Already have an account?
+                    </div>
+                    <div class="home-actions__cta">
+                        <a href="'.$this->url( 'authLogin' ).'" class="button button--primary-gradient">Log in to your account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+';
+?>

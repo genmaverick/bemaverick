@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>page-name</name>
+    <template>template_default.phtml</template>
+    <gridId>full-2column</gridId>
+
+    <!--
+        The title will be used for both the window title(<title>)
+        and the heading that describes the page(H1).
+        The prefix is used only for the window title and only when 'usePrefix' is set to true.
+        window title can be 'prefix.delimiter.text' when usePrefix is true else window title is just 'text'
+    -->
+    <title>
+        <usePrefix>true</usePrefix>
+        <printHeading>true</printHeading>
+        <headingTag>h1</headingTag>        
+        <prefixDelimiter> - </prefixDelimiter>
+        <prefix>__SLY_SITE_NAME__</prefix>
+        <headingText>__SLY_SITE_NAME__</headingText>
+    </title>
+
+    <!--
+        js init stuff here. add <command></command> inside the jsInit tag
+        to add commands
+    -->
+    <jsInit append="true">
+    </jsInit>
+    <cssStyles>
+    </cssStyles>
+
+    <!--
+        default behavior is to overwrite the default config.
+        if the 'append' attribute is set to be 'true' it will
+        append to the default config file.
+        This is useful for using global css and js files that get included on every page
+    -->
+
+    <includes>
+        <cssDefault>
+        </cssDefault>
+        <css>
+        </css>
+        <cssPrint>
+        </cssPrint>
+        <jsDefault>
+        </jsDefault>
+        <js>
+        </js>        
+        <meta>
+        </meta>
+        <header>
+        </header>     
+        <footer>
+        </footer>
+        <featured>
+        </featured>
+        <primary>
+        </primary>
+        <secondary>
+        </secondary>
+
+        <grids>
+            <grid id="full-1column" type="fixed">
+                <row>
+                    <unit width="1-1" id="featured" wrapContent="true"></unit>
+                </row>
+                <row>
+                    <unit width="1-1" id="primary"></unit>
+                </row>
+                <row>
+                    <unit width="1-1" id="secondary"></unit>
+                </row>
+            </grid>
+            <grid id="full-2column" type="fluid">
+                <row>
+                    <unit width="1-1" id="featured"></unit>
+                </row>
+                <row>
+                    <unit width="1-4" id="primary"></unit>
+                    <unit width="3-4" id="secondary"></unit>
+                </row>
+            </grid>
+        </grids>
+
+    </includes>
+</pageConfig>

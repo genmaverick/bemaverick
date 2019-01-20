@@ -1,0 +1,78 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$input = $this->input;
+
+// formatters
+$formatFormBootstrap = $this->formatFormBootstrap2();
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+
+// module stuff
+$moduleClassPrefix = 'coppa-verify';
+$typeClassPrefix = 'coppa-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( 'Step 3 of 3' )
+    )
+);
+
+// body content
+$bodyContent = array();
+$verifyMaverickConfirmUrl = $this->url( 'authParentVerifyMaverickConfirm' );
+
+$formItems = array();
+$formItems['password'] = $formatFormBootstrap->getPassword( $input->getUnescaped( 'password' ), '', array('attributes' => array('placeholder' => 'Create a password') ), array('text' => '') );
+
+$buttons = array(
+    'signup'=> array(
+        'text' => 'Submit',
+        'type' => 'submit',
+        'style' => 'primary-gradient',
+    )
+);
+$options = $formatUtil->getSetting( 'button-options' );
+$formButtons[] = array();
+$formButtons['buttons'] = $formatFormBootstrap->getButtons( $buttons, $options );
+
+
+$bodyContent[] = '
+    <form class="ignore" action="'.$verifyMaverickConfirmUrl.'" method="POST">
+        '.$formatFormBootstrap->getList( $formItems ).'
+        <div class="input-caption">
+            Password should contain at least (1) one uppercase letter, (1) one number and (1) one special character.
+        </div>
+        '.$formatFormBootstrap->getList( $formButtons ).'
+    </form>
+';
+
+// using premade footer option to pass along info container content
+$footerContent[] = '
+<p>
+Remember what we said about keeping you looped in? Creating a password will allow you to continue to access your account and monitor your Maverick’s activity. 
+</p>
+';
+
+// print module
+print $formatModule->getBasicCoppaModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'footerContent' => join( '', $footerContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

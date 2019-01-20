@@ -1,0 +1,49 @@
+@import "variables.less";
+.text-module__bd-content {
+    .site-text(medium);
+    line-height: 24/14;
+    p {
+        margin-bottom: 24px;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: @sherpa;
+    }
+    h1 {
+        .site-text(x-large,bold);
+        margin-bottom: 8px;
+    }
+    h2 {
+        .site-text(large,bold);
+        margin-bottom: 8px;
+    }
+    > ul {
+        li {
+            margin-bottom: 8px;
+            list-style-type: disc;
+            margin-left: 32px;
+            color: @sherpa;
+        }
+        margin-bottom: 24px;
+    }
+    > ol {
+        li {
+            margin-bottom: 16px;
+            list-style-type: decimal;
+            margin-left: 32px;
+        }
+        margin-bottom: 24px;
+    }
+    b,
+    strong {
+        .text--weight-bold();
+    }
+    i,
+    em {
+        font-style: italic;
+    }
+}

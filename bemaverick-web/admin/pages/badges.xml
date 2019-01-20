@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>badges</name>
+    <nav>
+        <primary>badges</primary>
+    </nav>
+    <title>
+        <text>Badges</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>badges.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

@@ -1,0 +1,101 @@
+<?php
+// globals
+$translator = $this->translator;
+$user = $this->user;
+$input = $this->input;
+$loginUser = $this->loginUser;
+
+// formatters
+$formatFormBootstrap2 = $this->formatFormBootstrap2();
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+
+// variables
+$formItems = array();
+$notificationOptions = array(
+    'email' => array( 'text' => '<span class="checkbox__text">I would like to receive e-mail notifications</span>', 'value' => 'email' ),
+);
+
+$userNotifications = array();
+if ( $user->isEmailNotificationsEnabled() ) {
+    $userNotifications[] = 'email';
+}
+
+$formItems['notifications'] = $formatFormBootstrap2->getCheckboxes(
+    array(
+        'items' => $notificationOptions,
+        'values' => $input->notifications,
+        'defaultValues' => $userNotifications,
+        'name' => 'notifications[]'
+    )
+);
+// button
+$buttonOptions = $formatUtil->getSetting( 'button-options' );
+$formItems[] = $formatFormBootstrap2->getButtons(
+    array(
+        array(
+            'type' => 'submit',
+            'text' => $translator->_( 'Save' ),
+            'style' => 'primary',
+        )
+    ),
+    $buttonOptions
+);
+
+// module stuff
+$moduleClassPrefix = 'user-notifications-edit';
+$typeClassPrefix = 'user-settings-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+// header content
+$headerContent = array();
+$headerContent[] = '
+    <h1 class="'.join( ' ', $formatModule->getPrefixedClasses( 'title', $classPrefixes ) ).'">
+        '.$translator->_( 'Notifications' ).'
+    </h1>
+';
+
+$bodyContent = array();
+if ( $input->confirmMessage ) {
+    $bodyContent[] = '
+        <div class="confirm-message fade-out trigger-transition">
+            '.$translator->_( 'Your changes have been saved' ).'
+        </div>
+    ';
+}
+// body content
+$bodyContent[] = $this->render( 'unAssociatedErrors.phtml' );
+
+
+$bodyContent[] = '
+    <form action="'.$user->getUrl( 'userNotificationsEditConfirm' ).'" method="post">
+        '.$formatFormBootstrap2->getList( $formItems ).'
+        '.$formatFormBootstrap2->getHiddenSimple( 'accessToken', $loginUser->getOAuthAccessToken() ).'
+    </form>
+';
+
+// print module
+print $formatModule->getModule(
+    array(
+        'header' => array(
+            'content' => '
+                <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'hd-content', $classPrefixes ) ).'">
+                    '.join( '', $headerContent ).'
+                </div>
+            ',
+        ),
+        'body' => array(
+            'content' => '
+                <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'bd-content', $classPrefixes ) ).'">
+                    '.join( '', $bodyContent ).'
+                </div>
+            ',
+        ),
+        'classPrefixes' => $classPrefixes,
+    )
+);
+?>

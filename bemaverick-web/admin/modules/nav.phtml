@@ -1,0 +1,64 @@
+<?php
+$pageConfig = $this->pageConfig;
+$primaryNav = $pageConfig->getPrimaryNav();
+
+$navList = array(
+    'challenges' =>  array(
+        'title' => 'Challenges',
+        'link' => $this->url( 'challenges' ),
+    ),
+    'responses' =>  array(
+        'title' => 'Responses / Posts',
+        'link' => $this->url( 'responses' ),
+    ),
+    // 'contents' =>  array(
+    //     'title' => 'Contents',
+    //     'link' => $this->url( 'contents' ),
+    // ),
+    'kids' =>  array(
+        'title' => 'Users',
+        'link' => $this->url( 'users' ),
+    ),
+//    'parents' =>  array(
+//        'title' => 'Parents',
+//        'link' => $this->url( 'parents' ),
+//    ),
+    'tools' =>  array(
+        'title' => 'Tools',
+        'link' => $this->url( 'tools' ),
+    ),
+    'streams' =>  array(
+        'title' => 'Streams',
+        'link' => $this->url( 'streams' ),
+    ),
+    'badges' =>  array(
+        'title' => 'Badges',
+        'link' => $this->url( 'badges' ),
+    ),
+    'themes' =>  array(
+        'title' => 'Themes <sup>v2</sup>',
+        'link' => '/v2/#/themes',
+    ),
+    'comments' =>  array(
+        'title' => 'Comments <sup>v2</sup>',
+        'link' => '/v2/#/comments',
+    ),
+);
+
+$classNames = array(
+    'nav',
+);
+if ( $this->isNavBar ) {
+    $classNames[] = 'navbar-nav';
+} else {
+    $classNames[] = 'nav-sidebar';
+}
+
+$navListAttributes = array(
+    'attributes' => array( 'class' => join( ' ', $classNames ) ),
+    'selected' => $primaryNav,
+);
+
+print $this->linkList( $navList, $navListAttributes );
+
+?>

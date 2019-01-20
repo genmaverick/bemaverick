@@ -1,0 +1,173 @@
+.join-module {
+  background: #38477a;
+  background: linear-gradient(45deg, #38477a 0%, #00a8b0 100%);
+}
+.join-panel__content {
+  height: 100%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  width: 100%;
+}
+.join_panel__body {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  width: 90%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.join-panel {
+  display: none;
+  min-height: 500px;
+}
+.join_panel__footer {
+  height: 100px;
+  width: 90%;
+}
+.join_panel__footer .svgicon {
+  display: none;
+}
+.join_panel__footer .share-links-title {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.join_panel__footer .share-links-bar {
+  margin-bottom: 40px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+}
+.join_panel__footer .share-links-bar li + li {
+  margin-left: 40px;
+}
+.join_panel__footer .share-link {
+  width: 40px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  height: 40px;
+  overflow: hidden;
+  text-indent: -9000px;
+  display: inline-block;
+  background: center center no-repeat;
+  background-size: cover;
+}
+.join_panel__footer .share-link--twitter {
+  background-image: url(<?php print $this->view->url('imageStatic', array( 'imageName' => 'social-icon-twitter.png' )); ?>);
+}
+.join_panel__footer .share-link--facebook {
+  background-image: url(<?php print $this->view->url('imageStatic', array( 'imageName' => 'social-icon-facebook.png' )); ?>);
+}
+.join-panel__logo {
+  color: #ffffff;
+  background-color: #000000;
+  font-size: 200px;
+  height: 60px;
+  overflow: hidden;
+  display: inline-block;
+  padding: 0 20px;
+  -webkit-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+  margin-left: -60px;
+}
+.join-panel__logo span {
+  position: relative;
+  top: -70px;
+  display: block;
+}
+.join_panel__cta {
+  margin-bottom: 40px;
+}
+.join-panel__tagline {
+  color: #ffffff;
+  margin: 40px 10px;
+  display: inline-block;
+  background-color: #000000;
+  text-transform: uppercase;
+  position: relative;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: skew(-8deg);
+}
+.join-bar {
+  background-color: #f1495b;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  padding: 16px;
+}
+.join-bar__tagline {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.join_bar__cta {
+  margin-left: 12px;
+}
+.join_bar__cta img {
+  display: block;
+  width: 100px;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .join-panel {
+    display: block;
+    height: 100%;
+  }
+  .join-bar {
+    display: none;
+  }
+}

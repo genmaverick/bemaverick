@@ -1,0 +1,22 @@
+.posts-list__post-cards {
+  margin: 0 -8px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.posts-list__post-cards .post-card {
+  width: 50%;
+  position: relative;
+  margin-bottom: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.posts-list__post-cards > div:first-of-type {
+  width: 100%;
+}

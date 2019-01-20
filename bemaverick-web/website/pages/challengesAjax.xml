@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>challengesAjax</name>
+    <title>
+        <text>Challenges</text>
+    </title>
+    <type>challenges</type>
+    <subType>index</subType>
+    <nav>
+        <primary>challenges</primary>
+    </nav>
+    <includes>
+        <primary append="true">
+            <file>challenges.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

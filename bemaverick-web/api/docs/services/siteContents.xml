@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Contents</name>
+    <description>Get a list of all contents</description>
+    <uri>/site/contents</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>userId</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>92, 116</examples>
+            <description>The user id that created the content</description>
+        </param>
+        <param>
+            <name>sort</name>
+            <required>no</required>
+            <default>createdTimestamp</default>
+            <format>string</format>
+            <examples>createdTimestamp, sortOrder, title</examples>
+            <description>The order to sort. Valid values are: createdTimestamp, sortOrder, title</description>
+        </param>
+        <param>
+            <name>sortOrder</name>
+            <required>no</required>
+            <default>desc</default>
+            <format>string</format>
+            <examples>asc, desc</examples>
+            <description>The order in which to sort the contents. Valid values are: asc, desc</description>
+        </param>
+        <param>
+            <name>count</name>
+            <required>no</required>
+            <default>10</default>
+            <format>integer</format>
+            <examples>25, 50</examples>
+            <description>Return the number of contents</description>
+        </param>
+        <param>
+            <name>offset</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>10</examples>
+            <description>Start with the offset for list of contents. 0 based.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/contents?appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

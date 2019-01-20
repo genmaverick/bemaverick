@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>profileCoverPresetImagesEdit</name>
+    <nav>
+        <primary>tools</primary>
+    </nav>
+    <title>
+        <text>Edit Profile Cover Preset Images</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>profileCoverPresetImagesEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

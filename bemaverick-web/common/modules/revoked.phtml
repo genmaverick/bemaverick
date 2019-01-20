@@ -1,0 +1,46 @@
+<?php
+// globals
+$site = $this->site;
+
+// formatters
+$formatModule = $this->formatModule();
+
+// module stuff
+$moduleClassPrefix = 'auth-login';
+$typeClassPrefix = 'login-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+// header
+$headerContent = array();
+$headerContent[] = '<div class="error-header">OOPS!</div>';
+$headerContent[] = '
+    <div class="error-sub-header">
+        Access Disabled
+</div>';
+
+// body content/errors
+$bodyContent = array();
+$errors = $this->getErrorMessages();
+
+if (!$errors) {
+    $errors = 'Unknown error';
+}
+
+$bodyContent[] = '<div class="error-body-message">'.$errors.'</div>';
+
+// print module
+print $formatModule->getBasicLoginModule(
+    array(
+        'headerContent' => join('',$headerContent),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', array() )
+        )
+    )
+);
+?>

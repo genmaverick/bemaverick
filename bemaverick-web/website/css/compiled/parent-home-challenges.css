@@ -1,0 +1,17 @@
+.parent-home-challenges .challenge-previews {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+.parent-home-challenges .challenge-preview {
+  width: 50%;
+  padding: 0 8px;
+  margin-bottom: 16px;
+}

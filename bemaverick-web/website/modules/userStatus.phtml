@@ -1,0 +1,14 @@
+<?php
+$loginUser = $this->loginUser;
+$user = $this->user;
+
+$userStatus = array(
+    'id' => $user->getId(),
+    'isFollowing' => true // todo: update to loginUser->isFollowing()
+);
+
+$this->addItem( 'jsDynamicContent', array( $userStatus ), 'userStatuses' );
+$this->noReplace = true;
+$this->noPageTitle = true;
+
+?>

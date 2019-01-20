@@ -1,0 +1,8 @@
+<?php
+require_once( SLY_ROOT_DIR . '/lib/Sly/Minify/JS.php' );
+$utils = array( 'cookie.js', 'polyfills.js' );
+$utilJs = $this->mergeFiles( 'js', $utils, true );
+?>
+<script>
+<?php print Sly_Minify_JS::minify($utilJs); ?>
+</script>

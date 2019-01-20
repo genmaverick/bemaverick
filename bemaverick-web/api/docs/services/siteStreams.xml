@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Streams</name>
+    <description>Get a list of all streams</description>
+    <uri>/site/streams</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/streams?appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{"streams":{"1":{"streamId":"1","index":0,"label":"Featured Challenges","headers":{"Authorization":"__REQUIURED__"},"method":"get","url":{"host":"api.bemaverick.com","pathname":"\/v1\/site\/challenges","query":{"appKey":"__REQUIURED__","count":10,"sort":"featuredAndStartTimestamp","featuredType":"maverick-stream"}},"content":["challenge"],"responseVersion":"v1","streamType":"CHALLENGES"},"2":{"streamId":"2","index":1,"label":"Featured Responses","headers":{"Authorization":"__REQUIURED__"},"method":"get","url":{"host":"api.bemaverick.com","pathname":"\/v1\/site\/responses","query":{"appKey":"__REQUIURED__","count":10,"sort":"featured"}},"content":["response"],"responseVersion":"v1","streamType":"RESPONSES"}},"site":{"searchResults":{"streams":{"params":{"count":25,"offset":0},"streamIds":["1","2"],"totalStreamCount":"2"}}}}
+]]></example_json_response>
+
+</docs>

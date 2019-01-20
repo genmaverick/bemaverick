@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>copyright</name>
+    <title>
+        <text>Copyright Policy</text>
+        <headingText>Maverick Copyright Policy</headingText>
+    </title>
+    <type>index</type>
+    <subType>privacy-policy</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>copyright.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

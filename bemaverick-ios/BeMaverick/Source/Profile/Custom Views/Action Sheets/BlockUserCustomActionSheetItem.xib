@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BlockUserCustomActionSheetItem" customModule="Maverick" customModuleProvider="target">
+            <connections>
+                <outlet property="blockUserTextButton" destination="dzW-sU-Brm" id="qr5-Y0-YFD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="UOh-Ug-xPM">
+            <rect key="frame" x="0.0" y="0.0" width="268" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dD-gs-qj8" userLabel="Block User Icon">
+                    <rect key="frame" x="11" y="24" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="67v-P6-Ygc"/>
+                        <constraint firstAttribute="height" constant="26" id="Mfw-3i-GWF"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button" image="blockUser"/>
+                    <connections>
+                        <action selector="blockUserIconButton:" destination="-1" eventType="touchUpInside" id="c7q-Gb-fGo"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzW-sU-Brm">
+                    <rect key="frame" x="53" y="19" width="95" height="36"/>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Barlow" pointSize="20"/>
+                    <state key="normal" title="Block User">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="blockUserTextButton:" destination="-1" eventType="touchUpInside" id="nas-Or-Xim"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1dD-gs-qj8" firstAttribute="top" secondItem="Qpk-cS-vMd" secondAttribute="top" constant="24" id="8ys-11-isF"/>
+                <constraint firstItem="1dD-gs-qj8" firstAttribute="leading" secondItem="Qpk-cS-vMd" secondAttribute="leading" constant="11" id="M6Z-Em-uO9"/>
+                <constraint firstItem="dzW-sU-Brm" firstAttribute="centerY" secondItem="1dD-gs-qj8" secondAttribute="centerY" id="Qrn-0C-pSV"/>
+                <constraint firstItem="dzW-sU-Brm" firstAttribute="leading" secondItem="1dD-gs-qj8" secondAttribute="trailing" constant="16" id="mSY-Yq-Ig7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Qpk-cS-vMd"/>
+            <point key="canvasLocation" x="-15" y="-558"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="blockUser" width="110" height="115"/>
+    </resources>
+</document>

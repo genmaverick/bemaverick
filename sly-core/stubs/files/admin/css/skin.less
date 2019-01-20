@@ -1,0 +1,63 @@
+@import "bootstrap-variables.less";
+@import "bootstrap-mixins.less";
+
+body {
+    background: #f1f5f0;
+    padding-top: 40px;
+}
+
+h1 {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.mod {
+    margin-top: 5px;
+    padding: 25px 15px;
+    background: #ffffff;
+    border-bottom: 1px solid fadeout(@black, 90);
+    //font-size: 28px;
+    //line-height: 1.2em;
+    .clearfix();
+}
+
+
+.nav-pills {
+    margin-bottom: 0;
+}
+
+.thumbnail {
+    p {
+        text-align: center;
+    }
+    img {
+        width: 100px;
+        height: 100px;
+        background: #ebebee;
+        border: 5px solid @white;
+        .border-radius(5px);
+        .box-shadow(0 1px 3px fadeout(@black, 70%));
+    }
+}
+
+#ft {
+    .center-block();
+    width: 940px - 60px;
+    max-width: 100%;
+    .footer-module {
+        padding: 0 20px;
+    }
+}
+
+.formItems {
+    margin:0;
+
+    li {
+        margin:0;
+        list-style-type:none;
+    }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>errors</name>
+    <template>template_api.phtml</template>
+    <includes>
+        <primary>
+            <file>errors.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

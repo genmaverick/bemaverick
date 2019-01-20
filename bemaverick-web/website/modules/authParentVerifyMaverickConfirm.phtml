@@ -1,0 +1,73 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$input = $this->input;
+$retry = $this->retry;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatFormBootstrap = $this->formatFormBootstrap2();
+$formatUtil = $this->formatUtil();
+
+// module stuff
+$moduleClassPrefix = 'coppa-verify';
+$typeClassPrefix = 'coppa-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'title' => $translator->_( 'Success!' )
+    )
+);
+
+$buttons = array(
+    'signup'=> array(
+        'text' => 'View Parent Dashboard',
+        'type' => 'submit',
+        'style' => 'primary',
+    )
+);
+$options = $formatUtil->getSetting( 'button-options' );
+
+$formButtons = array();
+$formButtons['buttons'] = $formatFormBootstrap->getButtons( $buttons, $options );
+
+// body content
+$bodyContent = array();
+
+$bodyContent[] = '
+    <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'success-message', $classPrefixes ) ).'">
+        '.$translator->_( 'Your account has been created.' ).'
+        <form action="'.$this->url( 'parentHome' ).'" method="POST">
+        '.$formatFormBootstrap->getList( $formButtons ).'
+        </form>
+    </div>
+';
+
+// print module
+print $formatModule->getBasicCoppaModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>
+
+
+
+
+
+
+

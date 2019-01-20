@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+    <!--alphabetical-->
+    <INPUT_INVALID_ADDRESS>Address field must not be empty.</INPUT_INVALID_ADDRESS>
+    <INPUT_INVALID_CODE>Email verification code is either expired or invalid.</INPUT_INVALID_CODE>
+    <INPUT_INVALID_CONFIRM_PASSWORD>Your password must be at least 6 characters.</INPUT_INVALID_CONFIRM_PASSWORD>
+    <INPUT_INVALID_CONSENT_COLLECT>Privacy policy agreement box must be checked to continue.</INPUT_INVALID_CONSENT_COLLECT>
+    <INPUT_INVALID_EMAIL_ADDRESS>Please enter a valid email address.</INPUT_INVALID_EMAIL_ADDRESS>
+    <INPUT_INVALID_FIRST_NAME>First name field must not be empty.</INPUT_INVALID_FIRST_NAME>
+    <INPUT_INVALID_LAST_FOUR_SSN>Last 4 SSN field must not be empty.</INPUT_INVALID_LAST_FOUR_SSN>
+    <INPUT_INVALID_LAST_NAME>Last name field must not be empty.</INPUT_INVALID_LAST_NAME>
+    <INPUT_INVALID_NEW_PASSWORD>Your password must be at least 6 characters.</INPUT_INVALID_NEW_PASSWORD>
+    <INPUT_INVALID_PASSWORD>Your password must be at least 6 characters.</INPUT_INVALID_PASSWORD>
+    <INPUT_INVALID_USERNAME>Your username must be at least 6 characters, lowercase and cannot contain the following characters '!@#$%^*()".</INPUT_INVALID_USERNAME>
+    <INPUT_INVALID_ZIP_CODE>Zip code field must not be empty.</INPUT_INVALID_ZIP_CODE>
+    <INPUT_INVALID_RESPONSE_TYPE>Media Type field must be Video or Image</INPUT_INVALID_RESPONSE_TYPE>
+    <INPUT_INVALID_POST_TYPE>Post Type field must be Response or Content</INPUT_INVALID_POST_TYPE>
+
+    <RESET_PASSWORD_CODE_IS_INVALID>Your password reset code is invalid.</RESET_PASSWORD_CODE_IS_INVALID>
+    <RESET_PASSWORD_CODE_IS_EXPIRED>Your password reset link has expired.</RESET_PASSWORD_CODE_IS_EXPIRED>
+
+    <USER_ACCOUNT_DELETED>Your account has been marked as deleted. If you think this has happened by mistake, please contact support (support@bemaverick.com).</USER_ACCOUNT_DELETED>
+    <USER_ACCOUNT_REVOKED_ADMIN>Your account has been revoked due to violation of our terms of service. If you think this has happened by mistake, please contact support (support@bemaverick.com).</USER_ACCOUNT_REVOKED_ADMIN>
+    <USER_ACCOUNT_REVOKED_PARENT>Your account has been temporarily disabled by your guardian. If you would like to rejoin Maverick please speak with them to reinstate your access.</USER_ACCOUNT_REVOKED_PARENT>
+    <USER_PASSWORD_INVALID>You have entered an invalid password.</USER_PASSWORD_INVALID>
+    <USER_DOES_NOT_EXIST>This email address is not associated with any accounts or this user does not exist.</USER_DOES_NOT_EXIST>
+    <USERNAME_IS_NOT_AVAILABLE>This user name has already been used.</USERNAME_IS_NOT_AVAILABLE>
+    <VERIFY_ACCOUNT_CODE_IS_EXPIRED>Your verification code has expired, but you can still verify your Maverick through the Maverick home page.</VERIFY_ACCOUNT_CODE_IS_EXPIRED>
+    <VERIFY_ACCOUNT_CODE_IS_INVALID>Your verification code is invalid.</VERIFY_ACCOUNT_CODE_IS_INVALID>
+    <EMAIL_ADDRESS_IS_NOT_AVAILABLE>The email address is already in use.</EMAIL_ADDRESS_IS_NOT_AVAILABLE>
+    <EMAIL_ADDRESS_IS_NOT_AVAILABLE_PARENT>The parent email address is already in use by a Maverick.</EMAIL_ADDRESS_IS_NOT_AVAILABLE_PARENT>
+
+    <SHARE_LINK_INVALID>Sharing link invalid.</SHARE_LINK_INVALID>
+    <SHARE_LINK_NOT_FOUND>Sharing link not found.</SHARE_LINK_NOT_FOUND>
+</strings>

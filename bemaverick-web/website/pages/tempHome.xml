@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>tempHome</name>
+    <title>
+        <text>Maverick Web</text>
+        <headingText>Maverick Users</headingText>
+    </title>
+    <type>kid</type>
+    <subType>kid-home</subType>
+    <includes>
+        <primary append="true">
+            <file>textModule.phtml</file>
+        </primary>
+        <rail>
+            <file>tempHome.phtml</file>
+        </rail>
+    </includes>
+</pageConfig>

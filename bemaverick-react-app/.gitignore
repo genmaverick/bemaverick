@@ -1,0 +1,19 @@
+.DS_Store
+.next
+*.next
+.vscode
+node_modules
+aws_images
+.env
+.idea/
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+*.tfvars.prod
+*.tfvars.dev

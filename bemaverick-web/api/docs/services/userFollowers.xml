@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Followers</name>
+    <description>Get the list of users that are following and followed by this user</description>
+    <uri>/user/followers</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>userId</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>12</examples>
+            <description>The user id</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/followers" \
+  --data "userId=1&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>responseEditBadgeConfirmAjax</name>
+    <type>responses</type>
+    <subType>response-edit-badge-confirm</subType>
+    <template>template_json.phtml</template>
+    <title>
+        <text></text>
+    </title>
+    <includes>
+        <primary>
+            <file>responseBadge.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

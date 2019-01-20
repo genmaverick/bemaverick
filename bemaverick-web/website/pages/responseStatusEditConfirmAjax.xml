@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>responseStatusEditConfirmAjax</name>
+    <type>responses</type>
+    <subType>response-status-edit-confirm</subType>
+    <template>template_json.phtml</template>
+    <title>
+        <text></text>
+    </title>
+    <includes>
+        <primary>
+            <file>responseStatus.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

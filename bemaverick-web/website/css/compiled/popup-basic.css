@@ -1,0 +1,17 @@
+.basic-popup-module {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #000000;
+  text-align: center;
+}
+.basic-popup-module p {
+  margin-bottom: 16px;
+}
+.basic-popup-module .button {
+  margin: 16px auto;
+  font-size: 18px;
+  line-height: 1.33333333;
+  font-weight: 500;
+  color: #00a8b0;
+}

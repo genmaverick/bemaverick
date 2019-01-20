@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="stickerId" id="4qZ-m0-wi7" customClass="StickerCollectionViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="436" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="436" height="206"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jAW-LI-qYV">
+                        <rect key="frame" x="0.0" y="0.0" width="436" height="206"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locked_bubble" translatesAutoresizingMaskIntoConstraints="NO" id="ncK-DH-p9y" userLabel="Lock Image">
+                        <rect key="frame" x="396" y="166" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="GGK-EX-Gmh"/>
+                            <constraint firstAttribute="height" constant="40" id="eot-Gh-JU8"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="jAW-LI-qYV" firstAttribute="top" secondItem="4qZ-m0-wi7" secondAttribute="top" id="12F-1e-jJy"/>
+                <constraint firstAttribute="bottom" secondItem="jAW-LI-qYV" secondAttribute="bottom" id="H9q-Y6-c3T"/>
+                <constraint firstItem="tAt-ET-xkI" firstAttribute="bottom" secondItem="ncK-DH-p9y" secondAttribute="bottom" id="SQQ-l0-6hv"/>
+                <constraint firstItem="jAW-LI-qYV" firstAttribute="leading" secondItem="4qZ-m0-wi7" secondAttribute="leading" id="UFm-qM-FtC"/>
+                <constraint firstAttribute="trailing" secondItem="jAW-LI-qYV" secondAttribute="trailing" id="Utf-He-PO4"/>
+                <constraint firstItem="tAt-ET-xkI" firstAttribute="trailing" secondItem="ncK-DH-p9y" secondAttribute="trailing" id="clh-3Z-lsc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="tAt-ET-xkI"/>
+            <size key="customSize" width="436" height="206"/>
+            <connections>
+                <outlet property="coverImage" destination="jAW-LI-qYV" id="oeD-mH-Frf"/>
+                <outlet property="lockImage" destination="ncK-DH-p9y" id="56r-0O-39w"/>
+            </connections>
+            <point key="canvasLocation" x="-179" y="428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="locked_bubble" width="58" height="58"/>
+    </resources>
+</document>

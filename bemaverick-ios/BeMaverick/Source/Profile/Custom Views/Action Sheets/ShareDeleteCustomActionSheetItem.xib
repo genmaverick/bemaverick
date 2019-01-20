@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShareDeleteCustomActionSheetItem" customModule="Maverick" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iU8-0Y-Qu2">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muk-jd-HUL">
+                    <rect key="frame" x="11" y="24" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="26" id="5FM-r7-jeU"/>
+                        <constraint firstAttribute="height" constant="26" id="quB-km-nS9"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Share Icon" image="shareResponse"/>
+                    <connections>
+                        <action selector="shareIconButton:" destination="-1" eventType="touchUpInside" id="Alp-Ve-lfh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvY-9S-PVx">
+                    <rect key="frame" x="53" y="19" width="294" height="36"/>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Barlow" pointSize="20"/>
+                    <state key="normal" title="Share Response">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="shareTextButton:" destination="-1" eventType="touchUpInside" id="gih-yj-NlK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCL-eS-whN" userLabel="Delete Icon">
+                    <rect key="frame" x="11" y="74" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="H96-gT-AfE"/>
+                        <constraint firstAttribute="width" constant="26" id="iIX-ex-TmU"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button" image="delete"/>
+                    <connections>
+                        <action selector="deleteIconButton:" destination="-1" eventType="touchUpInside" id="ECD-77-YuE"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNS-vW-2zF">
+                    <rect key="frame" x="53" y="69" width="294" height="36"/>
+                    <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Barlow" pointSize="20"/>
+                    <state key="normal" title="Delete Response">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteTextButton:" destination="-1" eventType="touchUpInside" id="Q3V-kr-9vu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="yvY-9S-PVx" firstAttribute="centerY" secondItem="Muk-jd-HUL" secondAttribute="centerY" id="9fd-E2-Zi0"/>
+                <constraint firstItem="LFt-Wd-VVW" firstAttribute="trailing" secondItem="yvY-9S-PVx" secondAttribute="trailing" constant="-24" id="JV0-Cb-bQe"/>
+                <constraint firstItem="dNS-vW-2zF" firstAttribute="centerY" secondItem="hCL-eS-whN" secondAttribute="centerY" id="YhQ-BE-Nmu"/>
+                <constraint firstItem="LFt-Wd-VVW" firstAttribute="trailing" secondItem="dNS-vW-2zF" secondAttribute="trailing" constant="-24" id="eee-lt-tEH"/>
+                <constraint firstItem="Muk-jd-HUL" firstAttribute="leading" secondItem="LFt-Wd-VVW" secondAttribute="leading" constant="11" id="goH-ef-FfW"/>
+                <constraint firstItem="Muk-jd-HUL" firstAttribute="top" secondItem="LFt-Wd-VVW" secondAttribute="top" constant="24" id="hOc-gq-QJt"/>
+                <constraint firstItem="hCL-eS-whN" firstAttribute="top" secondItem="Muk-jd-HUL" secondAttribute="bottom" constant="24" id="iWG-Po-Bmd"/>
+                <constraint firstItem="hCL-eS-whN" firstAttribute="leading" secondItem="LFt-Wd-VVW" secondAttribute="leading" constant="11" id="o9U-la-1Nx"/>
+                <constraint firstItem="dNS-vW-2zF" firstAttribute="leading" secondItem="yvY-9S-PVx" secondAttribute="leading" id="oeo-Ov-SGm"/>
+                <constraint firstItem="yvY-9S-PVx" firstAttribute="leading" secondItem="Muk-jd-HUL" secondAttribute="trailing" constant="16" id="sBb-oj-Z9g"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="LFt-Wd-VVW"/>
+            <point key="canvasLocation" x="12.5" y="-496.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="delete" width="22" height="28"/>
+        <image name="shareResponse" width="21" height="27"/>
+    </resources>
+</document>

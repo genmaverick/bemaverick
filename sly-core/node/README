@@ -1,0 +1,6 @@
+Running lessServer.js Under SystemD:
+
+Install:  sudo systemctl link `realpath less.service`
+Start:    sudo systemctl start less
+Show log: sudo journalctl -u less
+Tail log: sudo journalctl -u less -f

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoggedInNoChallengesView" customModule="Maverick" customModuleProvider="target">
+            <connections>
+                <outlet property="ctaButton" destination="UhW-pF-ZM8" id="p8w-yD-n2N"/>
+                <outlet property="heightConstraint" destination="fyG-7A-TZY" id="hM4-wg-zQC"/>
+                <outlet property="imageView" destination="QOj-7u-uQr" id="UCT-Pb-QEn"/>
+                <outlet property="view" destination="x0M-7D-TWU" id="9Y1-zF-4by"/>
+                <outlet property="widthConstraint" destination="DhK-xb-fgt" id="CQs-Q2-0M1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="x0M-7D-TWU">
+            <rect key="frame" x="0.0" y="0.0" width="511" height="361"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M" translatesAutoresizingMaskIntoConstraints="NO" id="QOj-7u-uQr" userLabel="M Image View">
+                    <rect key="frame" x="5.5" y="0.0" width="500" height="361"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="500" id="DhK-xb-fgt" userLabel="500"/>
+                        <constraint firstAttribute="height" priority="999" constant="500" id="fyG-7A-TZY" userLabel="500"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="p7i-Ti-cTs" userLabel="Main Stack">
+                    <rect key="frame" x="55.5" y="109.5" width="400" height="156.5"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="caj-7D-c3q">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="19.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="ZrC-cE-C6d">
+                                    <rect key="frame" x="0.0" y="4.5" width="13" height="11"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Create and design custom Challenges" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrh-fy-jtZ">
+                                    <rect key="frame" x="23" y="0.0" width="377" height="19.5"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-Tg-2mi">
+                            <rect key="frame" x="0.0" y="49.5" width="400" height="38.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="GjF-CK-5Aw">
+                                    <rect key="frame" x="0.0" y="14" width="13" height="11"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Send them directly to your friends within the app and on social" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nH-He-zbf">
+                                    <rect key="frame" x="23" y="0.0" width="377" height="38.5"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sz4-fO-UFK">
+                            <rect key="frame" x="0.0" y="118" width="400" height="38.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="254" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="qIA-o2-zBc">
+                                    <rect key="frame" x="0.0" y="14" width="13" height="11"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Unlock new backgrounds to make your Challenges stand out" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nc-Fu-pv6">
+                                    <rect key="frame" x="23" y="0.0" width="377" height="38.5"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="pbj-1Z-oKR" firstAttribute="trailing" secondItem="sz4-fO-UFK" secondAttribute="trailing" id="Mwz-5H-wdR"/>
+                        <constraint firstItem="pbj-1Z-oKR" firstAttribute="trailing" secondItem="0fG-Tg-2mi" secondAttribute="trailing" id="mv8-H5-oQY"/>
+                        <constraint firstItem="pbj-1Z-oKR" firstAttribute="trailing" secondItem="caj-7D-c3q" secondAttribute="trailing" id="pn3-bi-mlB"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="pbj-1Z-oKR"/>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhW-pF-ZM8">
+                    <rect key="frame" x="95.5" y="296" width="320" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="mLb-XW-JbY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
+                    <state key="normal" title="MAKE YOUR OWN CHALLENGE" image="create_challenge_nav" backgroundImage="createChallengeProfileCTA"/>
+                    <connections>
+                        <action selector="ctaTapped:" destination="-1" eventType="touchUpInside" id="wA5-5a-0CT"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="1Ns-mA-ROo" firstAttribute="bottom" secondItem="QOj-7u-uQr" secondAttribute="bottom" id="H43-Wc-0Db"/>
+                <constraint firstItem="UhW-pF-ZM8" firstAttribute="top" secondItem="p7i-Ti-cTs" secondAttribute="bottom" constant="30" id="SQb-vY-F0m"/>
+                <constraint firstItem="1Ns-mA-ROo" firstAttribute="bottom" secondItem="UhW-pF-ZM8" secondAttribute="bottom" constant="15" id="Wgt-12-gMT"/>
+                <constraint firstItem="p7i-Ti-cTs" firstAttribute="width" secondItem="QOj-7u-uQr" secondAttribute="width" constant="-100" id="az6-aH-KAW"/>
+                <constraint firstItem="QOj-7u-uQr" firstAttribute="top" secondItem="1Ns-mA-ROo" secondAttribute="top" id="lhb-8W-8x1"/>
+                <constraint firstItem="QOj-7u-uQr" firstAttribute="trailing" secondItem="1Ns-mA-ROo" secondAttribute="trailing" priority="999" id="rfw-lZ-ydC"/>
+                <constraint firstItem="p7i-Ti-cTs" firstAttribute="centerX" secondItem="QOj-7u-uQr" secondAttribute="centerX" id="s9b-vf-lnE"/>
+                <constraint firstItem="UhW-pF-ZM8" firstAttribute="centerX" secondItem="1Ns-mA-ROo" secondAttribute="centerX" id="wEW-sg-06s"/>
+                <constraint firstItem="QOj-7u-uQr" firstAttribute="centerX" secondItem="1Ns-mA-ROo" secondAttribute="centerX" id="xT2-Uy-8aH"/>
+                <constraint firstItem="1Ns-mA-ROo" firstAttribute="leading" secondItem="QOj-7u-uQr" secondAttribute="leading" priority="999" id="yqT-7v-sNc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="1Ns-mA-ROo"/>
+            <point key="canvasLocation" x="59.5" y="-158.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="M" width="198" height="217"/>
+        <image name="checkmark" width="14" height="11"/>
+        <image name="createChallengeProfileCTA" width="158" height="50"/>
+        <image name="create_challenge_nav" width="26" height="26"/>
+    </resources>
+</document>

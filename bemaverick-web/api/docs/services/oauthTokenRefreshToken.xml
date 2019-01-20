@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>OAuth Token - Grant Type: Refresh Token </name>
+    <service_name>oauthTokenRefreshToken</service_name>
+    <description>To obtain new access token based off refresh token.</description>
+    <method>POST</method>
+    <uri>/oauth/token</uri>
+    <parameters>
+        <param>
+            <name>grant_type</name>
+            <required>yes</required>
+            <default>refresh_token</default>
+            <format>string</format>
+            <examples>refresh_token</examples>
+            <description>Must be the default specified.</description>
+        </param>
+        <param>
+            <name>client_id</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your client id</description>
+        </param>
+        <param>
+            <name>client_secret</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_secret</examples>
+            <description>Your client secret</description>
+        </param>
+        <param>
+            <name>refresh_token</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>a83d02418d2fa45838371e9cccc81eaba6b094af</examples>
+            <description>The refresh token you obtained from authorization or password grant-type token requests.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --url "<host>/v1/oauth/token" \
+  --data "grant_type=refresh_token&client_id=test_key&client_secret=test_secret&refresh_token=a83d02418d2fa45838371e9cccc81eaba6b094af"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ0ZXN0X2tleSIsImV4cCI6MTQ4ODk2MzM0NCwic3ViIjoiMTQifQ.RG2Sps4qUOHxcUweSATkdy8r0wtDt-QDFh7tMrJ9Ivc",
+  "expires_in": "86400",
+  "token_type": "bearer",
+  "scope": null,
+  "refresh_token": "df92c0e66d62116f8ad1ed1d48955cb247937276"
+}
+]]></example_json_response>
+
+</docs>

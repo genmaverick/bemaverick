@@ -1,0 +1,49 @@
+<?php
+require_once( BEMAVERICK_COMMON_ROOT_DIR . '/lib/Stream.php' );
+$input = $this->input;
+$site = $this->site;
+
+// Input Fields
+$streamId = $input->streamId;
+$stream = isset( $streamId ) ? $site->getStream( $streamId ) : null;
+$image = $input->image ?? null;
+
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$hiddenFields = array(
+    $formatFormBootstrap->getHiddenSimple( 'streamId', $streamId ),
+);
+
+
+// Stream Settings Forms
+$streamSettingsForm = $formatFormBootstrap->getStreamSettingsForm( $stream );
+$streamDeeplinkForm = $formatFormBootstrap->getStreamDeeplinkForm( $stream );
+$streamImageForm = $formatFormBootstrap->getStreamImageForm( $stream, $input );
+?>
+
+<h1 class="page-header">Edit Advertisement Block</h1>
+
+<form method="post" action="<?php print $this->url( 'streamsAdBlockEditConfirm' ); ?>" enctype="multipart/form-data" >
+    <div style='display: block; float: right;'>
+        <?php
+        $formItems = array();
+        $formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => '<span class="glyphicon glyphicon-floppy-disk"></span>&nbsp; Save Stream', 'style' => 'btn btn-success' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+        print $formatFormBootstrap->getList( $formItems );
+        ?>
+    </div>
+
+    <?php /** Hidden Fields */ ?>
+    <?php foreach($hiddenFields as $hiddenField) { print $hiddenField; } ?>
+
+
+    <?php /** Stream Forms */ ?>
+    <?php print $streamSettingsForm; ?>
+    <?php print $streamDeeplinkForm; ?>
+    <?php print $streamImageForm; ?>
+    
+    <?php
+        $formItems = array();
+        $formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => '<span class="glyphicon glyphicon-floppy-disk"></span>&nbsp; Save Stream', 'style' => 'btn btn-success' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+        print $formatFormBootstrap->getList( $formItems );
+    ?>
+</form>

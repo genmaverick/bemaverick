@@ -1,0 +1,69 @@
+<?php
+$input = $this->input;
+$site = $this->site;
+$challenge = $this->challenge;
+$formatFormBootstrap = $this->formatFormBootstrap2();
+
+$video = $challenge->getVideo();
+$videoHtml = $video ? '<br/><a href="' . $video->getVideoUrl() . '">'.$video->getVideoUrl() . '</a>' : '';
+
+$imageUrl = $challenge->getImageUrl( 60, 108 );
+$imageHtml = $imageUrl ? '<br/><img class="image" src="'.$imageUrl.'" width="60" height="108">' : '';
+
+$mainImageUrl = $challenge->getMainImageUrl( 60, 108 );
+$mainImageHtml = $mainImageUrl ? '<br/><img class="image" src="'.$mainImageUrl.'" width="60" height="108">' : '';
+
+$cardImageUrl = $challenge->getCardImageUrl( 108, 60 );
+$cardImageHtml = $cardImageUrl ? '<br/><img class="image" src="'.$cardImageUrl.'" width="108" height"60">' : '';
+
+$formItems = array();
+$inputUsername = $input->username;
+$inputMentorId = $input->mentorId;
+$challengeUser = $challenge->getUser();
+$challengeUserId = $challengeUser->getId();
+$challengeUsername = $challengeUser->getUsername();
+
+
+$formItems[] = $formatFormBootstrap->getMentor( $inputMentorId, $challengeUserId );
+$formItems[] = $formatFormBootstrap->getUserAutocomplete( $inputUsername, $challengeUsername);
+$formItems[] = $formatFormBootstrap->getChallengeTitle( $input->getUnescaped( 'challengeTitle' ), $challenge->getTitle() );
+$formItems[] = $formatFormBootstrap->getChallengeDescription( $input->getUnescaped( 'challengeDescription' ), $challenge->getDescription() );
+$formItems[] = $formatFormBootstrap->getChallengeLinkUrl( $input->getUnescaped( 'challengeLinkUrl' ), $challenge->getLinkUrl() );
+$formItems[] = $formatFormBootstrap->getHashtagsValue( $challenge->getHashtags() );
+$formItems[] = $formatFormBootstrap->getChallengeStatus( $input->challengeStatus, $challenge->getStatus() );
+$formItems[] = $formatFormBootstrap->getHideFromStreams( $input->hideFromStreams, $challenge->isHideFromStreams() ? 1 : 0 );
+$formItems[] = $formatFormBootstrap->getStartTime( $input->startTime, $challenge->getStartTime(), 'America/Los_Angeles' );
+$formItems[] = $formatFormBootstrap->getEndTime( $input->endTime, $challenge->getEndTime(), 'America/Los_Angeles' );
+$formItems[] = $formatFormBootstrap->getTagNames( $input->tagNames, join( ', ', $challenge->getTagNames() ) );
+
+$formItems[] = $formatFormBootstrap->getChallengeType( $input->challengeType, $challenge->getChallengeType() );
+
+$formItems['cardImage'] = $formatFormBootstrap->getImageFileUpload( $input->cardImage, 'cardImage', 'Card Image' );
+$formItems['cardImage']['postTitleContent'] = $cardImageHtml;
+
+$formItems[] = array('title' => '<hr /><h3>Video Challenge</h3>', 'itemAttributes' => array( 'class' => null) );
+
+$formItems['video'] = $formatFormBootstrap->getVideoFileUpload();
+$formItems['video']['postTitleContent'] = $videoHtml;
+
+$formItems['mainImage'] = $formatFormBootstrap->getImageFileUpload( $input->mainImage, 'mainImage', 'Main Image' );
+$formItems['mainImage']['postTitleContent'] = $mainImageHtml;
+
+$formItems[] = array('title' => '<hr /><h3>Image Challenge</h3>', 'itemAttributes' => array( 'class' => null) );
+
+$formItems['image'] = $formatFormBootstrap->getImageFileUpload( $input->image, 'image', 'Challenge Image' );
+$formItems['image']['postTitleContent'] = $imageHtml;
+
+$formItems[] = array( 'title' => '<hr />', 'itemAttributes' => array( 'class' => null) );
+
+$formItems[] = $formatFormBootstrap->getButtons( array( array( 'text' => 'Submit', 'style' => 'btn btn-primary' ) ), $formatFormBootstrap->getDefaultButtonsOptions() );
+?>
+
+<h1 class="page-header">Edit Challenge: <?php print $challenge->getTitle() ?></h1>
+
+<form method="post" action="<?php print $this->url( 'challengeEditConfirm' ); ?>" enctype="multipart/form-data">
+    <input type="hidden" name="challengeId" value="<?php print $challenge->getId() ?>">
+    <div class="bd">
+        <?php print $formatFormBootstrap->getList( $formItems ); ?>
+    </div>
+</form>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Response Favorite</name>
+    <description>Favorite a response</description>
+    <uri>/response/favorite</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>responseId</name>
+            <required>yes</required>
+            <default></default>
+            <format>integer</format>
+            <examples>1, 542</examples>
+            <description>The response id</description>
+        </param>
+        <param>
+            <name>favoriteAction</name>
+            <required>yes</required>
+            <default></default>
+            <format>String</format>
+            <examples>favorite, unfavorite</examples>
+            <description>Favorite or unfavorite this response</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/response/favorite" \
+  --data "responseId=1&appKey=test_key&action=favorite"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+]]>
+    </example_json_response>
+
+</docs>

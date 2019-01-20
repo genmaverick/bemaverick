@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Site Challenges</name>
+    <description>Get a list of all challenges</description>
+    <uri>/site/challenges</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>test_key</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>status</name>
+            <required>no</required>
+            <default>active</default>
+            <format>string</format>
+            <examples>active, closed, published</examples>
+            <description>Only return challenges within a certain time as of now. Valid values are: draft, published, active, closed, hidden</description>
+        </param>
+        <param>
+            <name>sort</name>
+            <required>no</required>
+            <default>numBadges</default>
+            <format>string</format>
+            <examples>numBadges, sortOrder, title, created</examples>
+            <description>The order to sort. Valid values are: numBadges, created, sortOrder, title, startTime, endTime, featuredAndStartTimestamp</description>
+        </param>
+        <param>
+            <name>sortOrder</name>
+            <required>no</required>
+            <default>desc</default>
+            <format>string</format>
+            <examples>asc, desc</examples>
+            <description>The order in which to sort the challenges. Valid values are: asc, desc</description>
+        </param>
+        <param>
+            <name>featuredType</name>
+            <required>no</required>
+            <default>maverick-stream</default>
+            <format>string</format>
+            <examples>maverick-stream, challenge-stream</examples>
+            <description>The type of featured stream to join when sorting by `featuredAndStartTimestamp`. Valid values are: `maverick-stream`, `challenge-stream`</description>
+        </param>
+        <param>
+            <name>hasResponse</name>
+            <required>no</required>
+            <format>string</format>
+            <examples>true, false</examples>
+            <description>Filters challenges based on whether or not they have one or more responses.</description>
+        </param>
+        <param>
+            <name>hasLinkUrl</name>
+            <required>no</required>
+            <format>string</format>
+            <examples>true, false</examples>
+            <description>Filters challenges based on whether or not they have a link url.</description>
+        </param>
+        <param>
+            <name>responseUserId</name>
+            <required>no</required>
+            <format>int, string</format>
+            <examples>1, 100, me</examples>
+            <description>Filters challenges where a specific user has responded.  Accepts either the userId or the string value 'me' to filter by the logged in user.</description>
+        </param>
+        <param>
+            <name>mentionedUserId</name>
+            <required>no</required>
+            <format>int, string</format>
+            <examples>1, 100, me</examples>
+            <description>Filters challenges where a specific user has been mentioned.  Accepts either the userId or the string value 'me' to filter by the logged in user.</description>
+        </param>
+        <param>
+            <name>userId</name>
+            <required>no</required>
+            <format>int, string</format>
+            <examples>1, 100, me</examples>
+            <description>Filters challenges created by the userId provided.  Accepts either the userId or the string value 'me' to filter by the logged in user.</description>
+        </param>
+        <param>
+            <name>minimumHours</name>
+            <required>no</required>
+            <format>integer</format>
+            <examples>1, 12, 24</examples>
+            <description>Filters challenges based on the minimum age in hours.  E.g. minimumHours=2 will return challenges that are at least 2 hours old.</description>
+        </param>
+        <param>
+            <name>count</name>
+            <required>no</required>
+            <default>10</default>
+            <format>integer</format>
+            <examples>25, 50</examples>
+            <description>Return the number of challenges</description>
+        </param>
+        <param>
+            <name>offset</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>10</examples>
+            <description>Start with the offset for list of challenges. 0 based.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/site/challenges?appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

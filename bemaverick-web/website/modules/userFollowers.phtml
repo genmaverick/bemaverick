@@ -1,0 +1,26 @@
+<?php
+// globals
+$loginUser = $this->loginUser;
+$user = $this->user;
+$input = $this->input;
+$pageConfig = $this->pageConfig;
+
+// formatters
+$formatUser = $this->formatUser();
+
+$pageName = $pageConfig->getName();
+
+if ( $pageName == 'userFollowers' ) {
+    $moduleType = 'followers';
+} else {
+    $moduleType = 'following';
+}
+
+$moduleConfig = array(
+    'moduleType' => $moduleType
+);
+
+$usersModule = $formatUser->getUsersModule( $user, $moduleConfig );
+print $usersModule;
+?>
+

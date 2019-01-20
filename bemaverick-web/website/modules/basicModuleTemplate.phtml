@@ -1,0 +1,44 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$user = $this->user;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+
+// module stuff
+$moduleClassPrefix = 'user-settings';
+$typeClassPrefix = 'basic-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+// header content
+$headerContent = $formatModule->getBasicModuleHeader(
+    array(
+        'returnLinkUrl' => 'REPLACE_WITH_RETURN_LINK',
+        'title' => $translator->_( 'REPLACE_WITH_TITLE' )
+    )
+);
+
+// body content
+$bodyContent = array();
+
+// print module
+print $formatModule->getBasicModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

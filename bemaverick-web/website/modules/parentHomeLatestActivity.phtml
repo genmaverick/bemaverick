@@ -1,0 +1,68 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$loginUser = $this->loginUser;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+$formatUser = $this->formatUser();
+$formatActivity = $this->formatActivity();
+
+// variables
+$kids = $loginUser->getKids();
+
+// module stuff
+$moduleClassPrefix = 'parent-home-latest-activity';
+$typeClassPrefix = 'mini-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+
+// header content
+$headerContent = array();
+$headerContent[] = $formatModule->getTitleBar(
+    array(
+        'classPrefixes' => $classPrefixes,
+        'title' => $translator->_( 'Latest Activity' ),
+    )
+);
+
+
+// body content
+$bodyContent = array();
+$html = array();
+
+if ( $kids ) {
+    $activities = $formatActivity->getFakeActivities( 5, $kids );
+
+    foreach ( $activities as $activity ) {
+        $html[] = $formatActivity->getItem( $activity );
+    }
+}
+
+$bodyContent[] = '
+    <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'activities', $classPrefixes ) ).' activities">
+        '.join( '', $html ).'
+    </div>
+';
+
+
+// print module
+print $formatModule->getMiniModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>

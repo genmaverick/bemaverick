@@ -1,0 +1,54 @@
+@import "site-colors.less";
+@import "site-images.less";
+@import "site-icon-variables.less";
+@import "bootstrap-mixins.less";
+@import "mixins.less";
+@import "mixins-typography.less";
+
+// colors
+@text-color: @grey-100;
+@text-color-light: @grey-60;
+@link-color: @link-on-light;
+@link-hover-color: darken(@link-on-light, 6%);
+@border-color: @grey-20;
+@border-color-darker: @grey-40;
+@body-bg-color: @white;
+
+// fonts
+@font-family-system: -apple-system, BlinkMacSystemFont, "Systemic", sans-serif;
+@font-weight-base: 400;
+@font-family-sans-serif: "Barlow";
+@font-family-sans-serif-alternate: "GoodDog";
+@font-family-serif: serif;
+@font-family-base: @font-family-sans-serif;
+@font-size-base: 14px;
+@line-height-base: 16/14;
+
+// layout - breaks
+@break-phone-small-max: 374px;
+@break-phone-medium-min: 375px;
+@break-phone-medium-max: 413px;
+@break-phone-big-min: 414px;
+@break-phone-big-max: 767px;
+@break-phone-max: 767px;
+@break-tablet-min: 768px;
+@break-tablet-max: 991px;
+@break-desktop-min: 992px;
+@break-desktop-max: 1199px;
+@break-desktop-big-min: 1200px;
+@break-desktop-big-max: 100000px;
+@max-content-width: 1280px;
+
+@max-module-width: 592px;
+@break-good-size-min: 480px;
+
+// layout - gutters
+@gutter-phone-small: 16px;
+@gutter-phone-big: 16px;
+@gutter-tablet: 24px;
+@gutter-desktop: 24px;
+
+// easings
+@easeOutBack: ~"cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+
+@import "site-mixins.less";

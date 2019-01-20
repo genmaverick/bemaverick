@@ -1,0 +1,58 @@
+<?php
+$translator = $this->translator;
+$input = $this->input;
+
+$formatModule = $this->formatModule();
+$classPrefixes = array(
+    'auth-error',
+    'basic-popup-module'
+);
+$classNames = array();
+$bodyContent = array();
+$title = 'Error';
+$errorCode = $input && $input->errorCode ? $input->errorCode : '';
+
+$codesToText = array(
+    'EMAIL_NOT_ASSOCIATED' => array(
+        'title' => $translator->_( "Email not associated"),
+        'description' => $translator->_( 'This email is currently not associated with any Maverick accounts. Please have your Maverick create an account <a href="https://itunes.apple.com/us/app/maverick-do-your-thing/id1301478918?mt=8">through the app</a> first.' ),
+    ),
+    'EMAIL_NOT_AVAILABLE' => array(
+        'title' => $translator->_( "Email not available"),
+        'description' => $translator->_( "This is the text for the error" ),
+    )
+);
+
+
+if ( $errorCode && isset( $codesToText[$errorCode] ) ) {
+    $textObj = new Sly_DataObject( $codesToText[$errorCode] );
+    $title = $textObj->getTitle();
+    $description = $textObj->getDescription();
+}
+
+
+$bodyContent[] = '
+    <p>'.$translator->_( $description ).'</p>
+';
+
+
+
+
+print $formatModule->getModule(
+    array(
+        'body' => array(
+            'content' => '
+                <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'bd-content', $classPrefixes ) ).'">
+                    '.join( '', $bodyContent ).'
+                </div>
+            '
+        ),
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        ),
+        'classPrefixes' => $classPrefixes
+    )
+);
+$this->AddItem( 'popupSettings', $title, 'title' );
+$this->AddItem( 'popupSettings', 'basic', 'type' );
+?>

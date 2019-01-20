@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+
+    <INPUT_INVALID_USERNAME>Your username must be at least 4 characters. Valid characters are A-Z a-z 0-9 . _ -</INPUT_INVALID_USERNAME>
+    <INPUT_INVALID_EMAIL_ADDRESS>Please enter a valid email address.</INPUT_INVALID_EMAIL_ADDRESS>
+    <INPUT_INVALID_PARENT_EMAIL_ADDRESS>Please enter a valid email address.</INPUT_INVALID_PARENT_EMAIL_ADDRESS>
+    <INPUT_INVALID_PASSWORD>Your password must be at least 6 characters.</INPUT_INVALID_PASSWORD>
+    <INPUT_INVALID_NEW_PASSWORD>Your password must be at least 6 characters.</INPUT_INVALID_NEW_PASSWORD>
+    <INPUT_INVALID_POST_TYPE>Post Type of Response or Content is required.</INPUT_INVALID_POST_TYPE>
+    <INPUT_INVALID_RESPONSE_TYPE>Media Type of Video or Image is required.</INPUT_INVALID_RESPONSE_TYPE>
+    <INPUT_INVALID_UPLOAD_FILE>You must upload a file</INPUT_INVALID_UPLOAD_FILE>
+    <INPUT_INVALID_CHALLENGE_ID>Challenge field is required</INPUT_INVALID_CHALLENGE_ID>
+    <INPUT_INVALID_START_TIME>You must enter a valid start time.</INPUT_INVALID_START_TIME>
+    <INPUT_INVALID_END_TIME>You must enter a valid end time.</INPUT_INVALID_END_TIME>
+    <INPUT_INVALID_JPEG_ONLY>Image file must be a Jpeg.</INPUT_INVALID_JPEG_ONLY>
+
+    <CHALLENGE_NEEDS_ALL_FIELDS_TO_BE_PUBLISHED>The challenge must have a Title, Sort Order, Catalyst, Video, Main Image and Card Image to be published.</CHALLENGE_NEEDS_ALL_FIELDS_TO_BE_PUBLISHED>
+    <CHALLENGE_NEEDS_ALL_FIELDS_TO_BE_PUBLISHED_IMAGE>The image challenge must have a Title, Sort Order, Catalyst, and Image to be published.</CHALLENGE_NEEDS_ALL_FIELDS_TO_BE_PUBLISHED_IMAGE>
+    <CHALLENGE_NEEDS_ALL_FIELDS_TO_BE_PUBLISHED_VIDEO>The video challenge must have a Title, Sort Order, Catalyst, Video, Main Image and Card Image to be published.</CHALLENGE_NEEDS_ALL_FIELDS_TO_BE_PUBLISHED_VIDEO>
+    <CHALLENGE_TITLE_REQUIRED>Challenge Title is required.</CHALLENGE_TITLE_REQUIRED>
+    <CHALLENGE_MENTOR_REQUIRED>Catalyst is required.</CHALLENGE_MENTOR_REQUIRED>
+    <CHALLENGE_OWNER_REQUIRED>Challenge owner/user required.</CHALLENGE_OWNER_REQUIRED>
+    <CHALLENGE_CARD_IMAGE_REQUIRED>You must upload a Card Image (landscape).</CHALLENGE_CARD_IMAGE_REQUIRED>
+    <CHALLENGE_IMAGE_REQUIRED>You must upload an Image (portrait) for Image Challenges.</CHALLENGE_IMAGE_REQUIRED>
+    <CHALLENGE_VIDEO_REQUIRED>You must upload a Video file for Video Challenges.</CHALLENGE_VIDEO_REQUIRED>
+    <CHALLENGE_MAIN_IMAGE_REQUIRED>You must upload an Image (portrait) for Video Challenges.</CHALLENGE_MAIN_IMAGE_REQUIRED>
+    <CHALLENGE_DOES_NOT_EXIST>Challenge not found.</CHALLENGE_DOES_NOT_EXIST>
+
+    <USERNAME_IS_NOT_AVAILABLE>This username has already been used.</USERNAME_IS_NOT_AVAILABLE>
+    <USER_DOES_NOT_EXIST>This username does not exist.</USER_DOES_NOT_EXIST>
+    <USER_TYPE_MENTOR_REQUIRED>User must be a catalyst.</USER_TYPE_MENTOR_REQUIRED>
+    <EMAIL_ADDRESS_IS_NOT_AVAILABLE>Whoops, someone already snapped up that email address.</EMAIL_ADDRESS_IS_NOT_AVAILABLE>
+    <EMAIL_ADDRESS_IS_NOT_AVAILABLE_PARENT>The parent email address is already in use by a Maverick.</EMAIL_ADDRESS_IS_NOT_AVAILABLE_PARENT>
+    <EMAIL_ADDRESS_REQUIRED>An email address is required.</EMAIL_ADDRESS_REQUIRED>
+
+    <USERS_CANNOT_BE_CHANGED_TO_PARENT>User type cannot be changed from Kid or Catalyst to Parent.</USERS_CANNOT_BE_CHANGED_TO_PARENT>
+    <CANNOT_CREATE_USER_PARENT>Cannot create parent users through admin.</CANNOT_CREATE_USER_PARENT>
+    <USER_TYPE_KID_MUST_BE_HAVE_BIRTHDATE>User type kid must have a birthdate.</USER_TYPE_KID_MUST_BE_HAVE_BIRTHDATE>
+
+</strings>

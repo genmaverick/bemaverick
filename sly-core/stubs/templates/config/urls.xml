@@ -1,0 +1,32 @@
+    <objects>
+        <url>/_primary_nav_/objects</url>
+    </objects>
+
+    <object>
+        <url>/_primary_nav_/object/:objectId</url>
+        <params>
+            <param required="true">objectId</param>
+        </params>
+    </object>
+
+    <objectAdd>
+        <url>/_primary_nav_/object/add</url>
+    </objectAdd>
+
+    <objectAddConfirm>
+        <url>/_primary_nav_/object/addconfirm</url>
+    </objectAddConfirm>
+
+    <objectEdit>
+        <url>/_primary_nav_/object/:objectId/edit</url>
+        <params>
+            <param required="true">objectId</param>
+        </params>
+    </objectEdit>
+
+    <objectEditConfirm>
+        <url>/_primary_nav_/object/:objectId/editconfirm</url>
+        <params>
+            <param required="true">objectId</param>
+        </params>
+    </objectEditConfirm>

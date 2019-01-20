@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>notfound</name>
+    <type>errors</type>
+    <subType>notfound</subType>
+    <title>
+        <text>Page Not Found</text>
+    </title>
+    <includes>
+        <primary>
+            <file>notFoundWeb.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

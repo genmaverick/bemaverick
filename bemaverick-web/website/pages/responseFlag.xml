@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>responseFlag</name>
+    <type>responses</type>
+    <subType>response-flag-popup</subType>
+    <title>
+        <text></text>
+    </title>
+    <includes>
+        <primary>
+            <file>responseFlag.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

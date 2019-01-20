@@ -1,0 +1,103 @@
+# Javascript Node CircleCI 2.0 configuration file
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: node-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - node_modules
+  test:
+    docker:
+      - image: circleci/node:8.10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - restore_cache:
+          keys:
+            - node-{{ .Branch }}-{{ .Revision }}
+      - run:
+          name: Run lint & test
+          command: npm run test
+  deploy-dev:
+    docker:
+        - image: rdfriedl/circleci-node-aws  
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - restore_cache:
+          keys:
+            - node-{{ .Branch }}-{{ .Revision }}
+      - run: 
+          name: Check node version
+          command: node -v
+      - run: 
+          name: Check npm version
+          command: npm -v
+      - run:
+          name: Download .env variables
+          command: aws s3 sync s3://bemaverick-infrastructure-deployment/bemaverick-services/shared-service/.env/ ./.env --delete
+      - run:
+          name: Deploy to AWS Lambda
+          command: npm run deploy
+  deploy-prod:
+    docker:
+        - image: rdfriedl/circleci-node-aws  
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - restore_cache:
+          keys:
+            - node-{{ .Branch }}-{{ .Revision }}
+      - run: 
+          name: Check node version
+          command: node -v
+      - run: 
+          name: Check npm version
+          command: npm -v
+      - run:
+          name: Download .env variables
+          command: aws s3 sync s3://bemaverick-infrastructure-deployment/bemaverick-services/shared-service/.env/ ./.env --delete
+      - run:
+          name: Deploy to AWS Lambda
+          command: npm run deploy:prod
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy-dev:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
+            - test
+      - deploy-prod:
+          filters:
+            branches:
+              only: release
+          requires:
+            - build
+            - test

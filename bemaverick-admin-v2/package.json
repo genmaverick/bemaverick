@@ -1,0 +1,53 @@
+{
+    "name": "bemaverick-admin",
+    "version": "2.0.0",
+    "private": true,
+    "devDependencies": {
+        "@material-ui/core": "~1.0.0",
+        "@material-ui/icons": "~1.0.0",
+        "babel-core": "~6.26.0",
+        "babel-loader": "~7.1.1",
+        "babel-plugin-transform-react-jsx": "~6.24.1",
+        "babel-polyfill": "~6.26.0",
+        "babel-preset-react": "~6.24.1",
+        "css-loader": "~0.28.4",
+        "hard-source-webpack-plugin": "^0.6.4",
+        "html-loader": "~0.5.5",
+        "html-webpack-plugin": "~3.2.0",
+        "ra-data-fakerest": "^2.0.0",
+        "ra-input-rich-text": "^2.0.0",
+        "ra-language-english": "^2.0.0",
+        "ra-language-french": "^2.0.0",
+        "react": "~16.3.1",
+        "react-admin": "^2.0.3",
+        "react-admin-color-input": "^1.0.6",
+        "react-dom": "~16.3.1",
+        "style-loader": "~0.20.3",
+        "webpack": "~4.5.0",
+        "webpack-cli": "~2.0.13",
+        "webpack-dev-server": "~3.1.1"
+    },
+    "scripts": {
+        "start": "yarn run dev",
+        "local": "./node_modules/.bin/webpack-dev-server --progress --color --hot --watch --mode development --env.NODE_ENV=local",
+        "dev": "./node_modules/.bin/webpack-dev-server --progress --color --hot --watch --mode development --env.NODE_ENV=development",
+        "build": "yarn run build:prod",
+        "build:dev": "./node_modules/.bin/webpack-cli --color --mode development --env.NODE_ENV=development --hide-modules true",
+        "build:prod": "./node_modules/.bin/webpack-cli --color --mode development --env.NODE_ENV=production --hide-modules true",
+        "deploy": "yarn run deploy:dev",
+        "deploy:dev": "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./dist bemaverick@dev.genmaverick.com:/home/bemaverick/files/admin_v2",
+        "deploy:prod": "yarn run deploy:prod-www01 && yarn run deploy:prod-www02",
+        "deploy:prod-www01": "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./dist bemaverick@www01.usw1c.prd.bemaverick.com:/home/bemaverick/files/admin_v2",
+        "deploy:prod-www02": "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r ./dist bemaverick@www02.usw1c.prd.bemaverick.com:/home/bemaverick/files/admin_v2",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "homepage": "https://github.com/BeMaverickCo/bemaverick-admin",
+    "dependencies": {
+        "babel-preset-stage-0": "^6.24.1",
+        "dotenv": "^6.0.0",
+        "flat": "^4.1.0",
+        "ra-data-simple-rest": "^2.0.3",
+        "react-dropzone-s3-uploader": "^1.1.0",
+        "react-sortable-hoc": "^0.8.3"
+    }
+}

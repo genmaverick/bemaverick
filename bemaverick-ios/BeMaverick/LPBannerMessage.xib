@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-ExtraBold.ttf">
+            <string>OpenSans-ExtraBold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LPBannerMessage" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="666" height="186"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDu-9A-MBc" userLabel="Content View">
+                    <rect key="frame" x="0.0" y="0.0" width="666" height="186"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ea4-3t-6mt">
+                            <rect key="frame" x="14" y="16" width="495" height="160"/>
+                            <string key="text">Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!Your invites have been sent!</string>
+                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Barlow" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.25132758771531938" blue="0.38861441852563949" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-sk-nj6" customClass="CTAButton" customModule="Maverick" customModuleProvider="target">
+                            <rect key="frame" x="519" y="73" width="97" height="40"/>
+                            <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans" pointSize="14"/>
+                            <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                            <state key="normal" title="adsfads"/>
+                            <connections>
+                                <action selector="ctaPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="FEs-em-EQN"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BES-mz-hUb">
+                            <rect key="frame" x="626" y="73" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="BES-mz-hUb" secondAttribute="height" multiplier="1:1" id="reN-bA-iuy"/>
+                                <constraint firstAttribute="width" constant="40" id="wAh-gu-8E3"/>
+                            </constraints>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                            <state key="normal" image="nevermind"/>
+                            <connections>
+                                <action selector="closeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="eh2-hG-WYI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ea4-3t-6mt" firstAttribute="top" secondItem="KDu-9A-MBc" secondAttribute="top" constant="16" id="31S-NE-inp"/>
+                        <constraint firstItem="BES-mz-hUb" firstAttribute="leading" secondItem="sWv-sk-nj6" secondAttribute="trailing" constant="10" id="5TW-xX-Wxk"/>
+                        <constraint firstItem="evN-VG-LDa" firstAttribute="trailing" secondItem="BES-mz-hUb" secondAttribute="trailing" id="5aW-db-lbw"/>
+                        <constraint firstItem="sWv-sk-nj6" firstAttribute="centerY" secondItem="evN-VG-LDa" secondAttribute="centerY" id="6va-Wa-tRg"/>
+                        <constraint firstItem="BES-mz-hUb" firstAttribute="centerY" secondItem="evN-VG-LDa" secondAttribute="centerY" id="NwZ-Hp-6ai"/>
+                        <constraint firstItem="sWv-sk-nj6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ea4-3t-6mt" secondAttribute="trailing" constant="10" id="Qt2-zx-ImS"/>
+                        <constraint firstItem="ea4-3t-6mt" firstAttribute="leading" secondItem="evN-VG-LDa" secondAttribute="leading" constant="14" id="Z9T-mq-5qq"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="d6c-FD-Jbe"/>
+                        <constraint firstAttribute="bottom" secondItem="ea4-3t-6mt" secondAttribute="bottom" constant="10" id="ydn-H4-igG"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="evN-VG-LDa"/>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KDu-9A-MBc" secondAttribute="trailing" id="53z-rm-9V5"/>
+                <constraint firstItem="KDu-9A-MBc" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="BZT-GJ-lZL"/>
+                <constraint firstItem="KDu-9A-MBc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="duf-gP-B5u"/>
+                <constraint firstAttribute="bottom" secondItem="KDu-9A-MBc" secondAttribute="bottom" id="lzH-Oz-Pea"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="button" destination="sWv-sk-nj6" id="Pq5-73-9XQ"/>
+                <outlet property="closeButton" destination="BES-mz-hUb" id="Cn3-hD-T7D"/>
+                <outlet property="closeButtonWidthConstraint" destination="wAh-gu-8E3" id="jOs-N5-5aY"/>
+                <outlet property="contentView" destination="KDu-9A-MBc" id="amE-We-26e"/>
+                <outlet property="titleLabel" destination="ea4-3t-6mt" id="G4F-mD-YTq"/>
+            </connections>
+            <point key="canvasLocation" x="-11" y="-144"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="nevermind" width="150" height="150"/>
+    </resources>
+</document>

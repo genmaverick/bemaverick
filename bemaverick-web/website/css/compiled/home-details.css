@@ -1,0 +1,134 @@
+.home-details {
+  background-color: #ffffff;
+  position: relative;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 414px) {
+  .home-details {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .home-details {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+.home-details__wrap {
+  overflow: hidden;
+}
+.home-details__content {
+  min-height: 580px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1280px;
+  z-index: 1;
+}
+.home-details__text-wrap {
+  margin-top: 128px;
+  margin-bottom: 128px;
+  max-width: 360px;
+  position: relative;
+  z-index: 1;
+}
+.home-details__image-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 800px;
+}
+.home-details__image-wrap .home-details__image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: contain;
+  background-position: bottom left;
+}
+.home-details__title {
+  font-size: 24px;
+  line-height: 1.33333333;
+  font-weight: 600;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+.home-details__text {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.home-details__text p {
+  margin-bottom: 24px;
+}
+.home-details__cta {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.home-details__cta span {
+  font-size: 12px;
+}
+.home-details--1 .home-details__text-wrap {
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  justify-content: flex-start;
+  margin-left: calc( 50% - 360px );
+}
+.home-details--1:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  pointer-events: none;
+  background: url(<?php print $this->view->url('imageStatic', array( 'imageName' => 'paint-white.png' )); ?>) repeat-x;
+  transform: scaleY(-1);
+  bottom: auto;
+  top: -5px;
+}
+.home-details--1 .home-details__image-wrap {
+  left: 50%;
+}
+.home-details--2 {
+  background-color: #eae5e0;
+}
+.home-details--2:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  pointer-events: none;
+  background: url(<?php print $this->view->url('imageStatic', array( 'imageName' => 'paint-grey-20.png' )); ?>) repeat-x;
+  transform: scaleY(-1);
+  bottom: auto;
+  top: -5px;
+}
+.home-details--2 .home-details__text-wrap {
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  justify-content: flex-end;
+  margin-left: 50%;
+}
+.home-details--2 .home-details__image-wrap {
+  right: 50%;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>userProfileDetailsAjax</name>
+    <type>users</type>
+    <subType>user-profile-details</subType>
+    <template>template_json.phtml</template>
+    <title>
+        <text>:userUsername :userProfileDetailsTab</text>
+    </title>
+    <includes>
+        <primary>
+            <file>user.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>

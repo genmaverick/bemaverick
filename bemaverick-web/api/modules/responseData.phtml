@@ -1,0 +1,13 @@
+<?php
+
+$this->apiData = $this->responseData->getData();
+
+// if the format is not xml, just return because the template_api will handle
+// all other formats.  If it is xml, we have to do the rendering here.
+if ( $this->format != 'xml' ) {
+    return;
+}
+
+print 'XML Unsupported for this service';
+
+?>

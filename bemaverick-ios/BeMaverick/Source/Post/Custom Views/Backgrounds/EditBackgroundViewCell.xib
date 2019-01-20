@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditBackgroundViewCellId" id="Via-8y-yy1" customClass="EditBackgroundViewCell" customModule="Maverick" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="274"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="399" height="274"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2a2-LE-Km3">
+                        <rect key="frame" x="97" y="0.0" width="205.5" height="274"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="2a2-LE-Km3" secondAttribute="height" multiplier="3:4" id="K7L-js-eQV"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="2a2-LE-Km3" firstAttribute="top" secondItem="Via-8y-yy1" secondAttribute="top" id="CiB-Jk-09N"/>
+                <constraint firstItem="2a2-LE-Km3" firstAttribute="centerX" secondItem="CRa-Xi-9Uh" secondAttribute="centerX" id="JrV-cA-TY0"/>
+                <constraint firstAttribute="bottom" secondItem="2a2-LE-Km3" secondAttribute="bottom" id="StN-Mc-YUV"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="CRa-Xi-9Uh"/>
+            <size key="customSize" width="399" height="274"/>
+            <connections>
+                <outlet property="maverickBackgroundView" destination="2a2-LE-Km3" id="HBg-dn-02v"/>
+            </connections>
+            <point key="canvasLocation" x="177.5" y="166"/>
+        </collectionViewCell>
+    </objects>
+</document>

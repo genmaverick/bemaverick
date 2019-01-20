@@ -1,0 +1,50 @@
+<?php
+$pageConfig = $this->pageConfig;
+
+$useCriticalCss = $this->systemConfig->getSetting( 'SYSTEM_USE_CRITICAL_CSS' );
+if ( ( @$_REQUEST['criticalCss'] && @$_REQUEST['criticalCss'] == 'true' ) ) {
+    $useCriticalCss = true;
+}
+$cssIncludes = array();
+if ( $useCriticalCss ) {
+    $criticalFiles = $this->formatCss()->getCriticalFiles( $pageConfig );
+    $cssIncludes[] ='<style id="critical-css">';
+    if ( $criticalFiles ) {
+        $cssIncludes[] = str_replace( "\n", " ", $this->mergeFiles( 'css', $criticalFiles, true ) );
+    }
+    $cssIncludes[] = '</style>';
+
+    $defaultFiles = $this->formatCss()->getDefaultFiles();
+    if ( $defaultFiles ) {
+        $defaultCss = $this->mergeFiles( 'css', array_merge( $defaultFiles, array( 'css-default.css' ) ) );
+        $this->AddItem( 'jsInit', 'setTimeout(function(){loadCSS( "'.$defaultCss.'", "default" ); }, 1000);' );
+        $this->AddItem( 'noScript', '<link href="'.$defaultCss.'" rel="stylesheet">' );
+    }
+    if ( $pageConfig->hasCssFiles() ) {
+        $css = $this->mergeFiles( 'css', array_merge( $pageConfig->getCssFiles(), array( 'css-css.css' ) ) );
+        $this->AddItem( 'jsInit', 'setTimeout( function(){ loadCSS( "'.$css.'", "css" ); }, 1000);' );
+        $this->AddItem( 'noScript', '<link href="'.$css.'" rel="stylesheet">' );
+    }
+
+} else {
+    $defaultFiles = $this->formatCss()->getDefaultFiles();
+    if ( $defaultFiles ) {
+        //have to add in fonts.css for case of using critical css where it would cause a flash
+        $defaultCssFiles =  $defaultFiles;
+        $defaultCss = $this->mergeFiles( 'css', $defaultCssFiles );
+        $cssIncludes[] =  '<link rel="stylesheet" type="text/css" href="'.$defaultCss.'" />';
+    }
+    if ( $pageConfig->hasCssFiles() ) {
+        $css = $this->mergeFiles( 'css', $pageConfig->getCssFiles() );
+        $cssIncludes[] = '<link rel="stylesheet" type="text/css" href="'.$css.'" />';
+    }
+}
+
+// include css
+// $cssIncludes[] = $this->formatExperiment()->getExperiments( 'css' );
+
+$cssContent = join( '', $cssIncludes );
+
+
+
+print $cssContent;

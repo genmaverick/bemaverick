@@ -1,0 +1,134 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.1.20-cli-jessie
+    working_directory: ~/bemaverick-web
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - add_ssh_keys:
+          fingerprints:
+            - "f4:e8:79:fa:7b:f8:e1:30:53:c3:d1:5f:a8:94:f3:5e"
+      - run: pwd
+      # # - run: mkdir ~/.ssh
+      - run: touch ~/.ssh/known_hosts && ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run: ls ~/.ssh
+      - run: cat ~/.ssh/known_hosts
+      - run: git clone git@github.com:SlyTrunk/less.js-server.git ../less.js-server/
+      - run: git clone git@github.com:SlyTrunk/sly-core.git ../sly-core/
+      - run: git clone git@github.com:SlyTrunk/zend.git ../zend/
+      # - restore_cache:
+      #     key: dependency-cache-{{ checksum "composer.json" }}
+      - run: curl -l -O https://getcomposer.org/download/1.5.2/composer.phar
+      - run: php composer.phar install
+
+      # - type: shell
+      #   name: Install Docker Client
+      #   command: |
+      #     echo "test"
+      #     curl -L -o /tmp/docker.tgz https://get.docker.com/builds/Linux/x86_64/docker-1.12.3.tgz
+      #     tar -xz -C /tmp -f /tmp/docker.tgz
+      #     sudo mv /tmp/docker/docker* /usr/bin/ --force
+
+      #     sudo curl -L "https://github.com/docker/compose/releases/download/1.9.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+          # # chmod +x  /usr/bin/docker-compose
+      # - type: setup-docker-engine
+      # - type: shell
+      #   name: Verify Docker Works
+      #   command: |
+      #     docker --version
+      #     docker run hello-world
+      # - run: cd docker/bin && ./build-image
+      - run: ln -s ~/ ~/dev
+
+      - persist_to_workspace:
+          root: /home/circleci
+          paths: 
+            - bemaverick-web/vendor
+            - less.js-server
+            - sly-core
+            - zend
+
+
+      # - save_cache:
+      #     key: dependency-cache-{{ checksum "composer.json" }}
+      #     paths:
+      #       - vendor
+
+  test:
+    docker:
+      - image: circleci/php:7.1.20-cli-jessie
+    working_directory: ~/bemaverick-web
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - run: cd docker/bin && ./test test
+
+  deploy-dev:
+    docker:
+      - image: circleci/php:7.1.20-cli-jessie
+    working_directory: ~/bemaverick-web
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - add_ssh_keys:
+          fingerprints:
+            - "f4:e8:79:fa:7b:f8:e1:30:53:c3:d1:5f:a8:94:f3:5e"
+      - run: pwd
+      - run: touch ~/.ssh/known_hosts
+      - run: ssh-keyscan 35.227.161.200 >> ~/.ssh/known_hosts
+      - run: ls
+      - run: ls ..
+      - run: mkdir ~/bemaverick-web/packages/builds
+      - run: cd ~/bemaverick-web/packages && ./build_all_packages.sh
+      - run: cd ~/bemaverick-web/packages && php ./install_package.php --environment dev --code all
+
+  deploy-prod:
+    docker:
+      - image: circleci/php:7.1.20-cli-jessie
+    working_directory: ~/bemaverick-web
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - add_ssh_keys:
+          fingerprints:
+            - "f4:e8:79:fa:7b:f8:e1:30:53:c3:d1:5f:a8:94:f3:5e"
+      - run: pwd
+      - run: touch ~/.ssh/known_hosts
+      - run: ssh-keyscan www01.usw1c.prd.bemaverick.com >> ~/.ssh/known_hosts
+      - run: ssh-keyscan www02.usw1c.prd.bemaverick.com >> ~/.ssh/known_hosts
+      - run: ssh-keyscan api01.usw1c.prd.bemaverick.com >> ~/.ssh/known_hosts
+      - run: ssh-keyscan api02.usw1c.prd.bemaverick.com >> ~/.ssh/known_hosts
+      - run: ls
+      - run: ls ..
+      - run: mkdir ~/bemaverick-web/packages/builds
+      - run: cd ~/bemaverick-web/packages && ./build_all_packages.sh
+      - run: cd ~/bemaverick-web/packages && php ./install_package.php --environment production --code all
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      # - test:
+      #     requires:
+      #       - build
+      - deploy-dev:
+          requires:
+            - build
+            # - test
+          filters:
+            branches:
+              only: master
+      - deploy-prod:
+          requires:
+            - build
+            # - test
+          filters:
+            branches:
+              only: release

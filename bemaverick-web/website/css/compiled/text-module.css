@@ -1,0 +1,54 @@
+.text-module__bd-content {
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  line-height: 1.71428571;
+}
+.text-module__bd-content p {
+  margin-bottom: 24px;
+}
+.text-module__bd-content h1,
+.text-module__bd-content h2,
+.text-module__bd-content h3,
+.text-module__bd-content h4,
+.text-module__bd-content h5,
+.text-module__bd-content h6 {
+  color: #003a49;
+}
+.text-module__bd-content h1 {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.text-module__bd-content h2 {
+  font-size: 18px;
+  line-height: 1.33333333;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.text-module__bd-content > ul {
+  margin-bottom: 24px;
+}
+.text-module__bd-content > ul li {
+  margin-bottom: 8px;
+  list-style-type: disc;
+  margin-left: 32px;
+  color: #003a49;
+}
+.text-module__bd-content > ol {
+  margin-bottom: 24px;
+}
+.text-module__bd-content > ol li {
+  margin-bottom: 16px;
+  list-style-type: decimal;
+  margin-left: 32px;
+}
+.text-module__bd-content b,
+.text-module__bd-content strong {
+  font-weight: 700;
+}
+.text-module__bd-content i,
+.text-module__bd-content em {
+  font-style: italic;
+}

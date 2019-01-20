@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>Challenge Add</name>
+    <description>Add a new challenge</description>
+    <uri>/challenge/add</uri>
+    <method>POST</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>filename</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>myresponse.mp4</examples>
+            <description>The name of the video or image file that got uploaded to S3</description>
+        </param>
+        <param>
+            <name>challengeType</name>
+            <required>yes</required>
+            <default>video</default>
+            <format>string</format>
+            <examples>video or image</examples>
+            <description>The challenge type which can be: video or image</description>
+        </param>
+        <param>
+            <name>coverImage</name>
+            <required>no (required if challengeType=video)</required>
+            <default></default>
+            <format>uploaded file</format>
+            <examples></examples>
+            <description>This should be the uploaded file as an image of type: png, jpg</description>
+        </param>
+        <param>
+            <name>title</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>My Challenge Title</examples>
+            <description>Some text describing the challenge title</description>
+        </param>
+        <param>
+            <name>description</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>This is my response to the challenge</examples>
+            <description>Some text describing the response</description>
+        </param>
+        <param>
+            <name>tags</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>art,cool,thisisdope</examples>
+            <description>A comma delimited list of tags for this response</description>
+        </param>
+        <param>
+            <name>mentions</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>@art @cool @thisisdope</examples>
+            <description>An @ delimited list of mentions for this response</description>
+        </param>
+        <param>
+            <name>width</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>600</examples>
+            <description>The width of the video or image</description>
+        </param>
+        <param>
+            <name>height</name>
+            <required>no</required>
+            <default></default>
+            <format>integer</format>
+            <examples>800</examples>
+            <description>The height of the video or image</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request POST \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/challenge/add" \
+  --data "challengeType=image&filename=myresponse.mp4&tags=art,cool,thisisdope&mentions=@testkid1&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

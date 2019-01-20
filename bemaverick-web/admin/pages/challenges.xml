@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>challenges</name>
+    <title>
+        <text>Challenges</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>challenges.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

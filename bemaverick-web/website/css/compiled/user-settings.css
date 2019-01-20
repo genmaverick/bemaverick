@@ -1,0 +1,263 @@
+.users-user-password-edit .global-bd,
+.users-user-notifications-edit .global-bd {
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 0;
+}
+.user-settings-nav {
+  padding: 24px 16px 0 16px;
+  background-color: #f4e9ea;
+}
+.user-settings-nav__title {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.user-settings-nav__items {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+.user-settings-nav__item {
+  white-space: nowrap;
+  position: relative;
+}
+.user-settings-nav__item a {
+  display: block;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #000000;
+  padding: 8px 0;
+  text-transform: uppercase;
+}
+.user-settings-nav__item a:hover {
+  color: #00b0ac;
+}
+.user-settings-nav__item.selected a {
+  font-weight: 700;
+  color: #00b0ac;
+}
+.user-settings-nav__item.selected:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  height: 3px;
+  background-color: #00b0ac;
+}
+.user-settings-nav__item + .user-settings-nav__item {
+  margin-left: 16px;
+}
+.user-settings-module {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  padding: 30px 30px 0 30px;
+  margin-bottom: 70px;
+}
+.user-settings-module .formItems {
+  max-width: 400px;
+}
+.user-settings-module .control-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+  padding-top: 20px;
+}
+.user-settings-module .control-group input.form-control {
+  border: none;
+  border-bottom: 1px solid #7b7b7b;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #000000;
+  padding: 8px 0;
+}
+.user-settings-module .control-group input.form-control:focus {
+  z-index: 1;
+  outline: none !important;
+  border-bottom-color: #00b0ac;
+}
+.user-settings-module .control-group .controls .error {
+  color: #d0011b;
+  font-size: 13px;
+  line-height: 1.23076923;
+  font-weight: 400;
+  margin: 4px 0 16px 0;
+}
+.user-settings-module .control-group .control-label {
+  position: absolute;
+  padding: 0;
+  white-space: nowrap;
+  display: block;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  color: #000000;
+  font-size: 13px;
+  line-height: 1.23076923;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: top 0.1s ease-in;
+  transition: top 0.1s ease-in;
+}
+.user-settings-module .control-group.error .control-label {
+  color: #d0011b;
+}
+.user-settings-module .control-group.error input.form-control {
+  border-bottom-color: #d0011b;
+}
+.user-settings-module .control-group.empty:not(.active):not(.error) .control-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  line-height: 1;
+  font-weight: 400;
+}
+.user-settings-module .checkbox input {
+  display: none;
+}
+.user-settings-module .checkbox input:checked + .checkbox__text:after {
+  right: 0;
+}
+.user-settings-module .checkbox input:checked + .checkbox__text:before {
+  background-color: #00b0ac;
+  border-color: #00b0ac;
+}
+.user-settings-module .checkbox__text {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  cursor: pointer;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.14285714;
+  font-weight: 400;
+  color: #000000;
+}
+.user-settings-module .checkbox__text:before {
+  content: "";
+  width: 46px;
+  height: 30px;
+  border-radius: 16px;
+  border: 1px solid #eae5e0;
+  background-color: #f8f8f7;
+  display: inline-block;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-left: 8px;
+  -webkit-order: 2;
+  -moz-order: 2;
+  -ms-order: 2;
+  order: 2;
+}
+.user-settings-module .checkbox__text:after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  display: block;
+  right: 16px;
+  top: 0px;
+  border: 1px solid #eae5e0;
+  -webkit-transition: right 0.2s ease-in;
+  transition: right 0.2s ease-in;
+}
+.user-settings-module .form-actions {
+  margin-top: 40px;
+}
+.user-settings-module .form-actions .button {
+  min-width: 250px;
+  margin: 0 auto;
+}
+.user-settings-module__title {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: none;
+}
+@media (min-width: 768px) {
+  .users-user-password-edit .global-primary,
+  .users-user-notifications-edit .global-primary {
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    -ms-align-items: stretch;
+    align-items: stretch;
+  }
+  .user-settings-nav {
+    padding: 24px 40px;
+    min-height: calc( 100vh - 228px );
+    min-width: 30%;
+  }
+  .user-settings-module {
+    display: block;
+    padding: 30px 50px;
+    width: 100%;
+  }
+  .user-settings-module__title {
+    display: block;
+  }
+  .user-settings-nav__title {
+    margin-bottom: 32px;
+    text-align: left;
+  }
+  .user-settings-nav__items {
+    display: block;
+  }
+  .user-settings-nav__item {
+    margin-bottom: 8px;
+  }
+  .user-settings-nav__item + .user-settings-nav__item {
+    margin-left: 0;
+  }
+  .user-settings-nav__item.selected:after {
+    display: none;
+  }
+}

@@ -1,0 +1,99 @@
+service: themes-service
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  environment:
+    NODE_ENV: ${self:provider.stage}
+
+functions:
+  createTheme:
+    handler: src/handler.createTheme
+    events:
+      - http:
+          path: /
+          method: post
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false
+
+  updateTheme:
+    handler: src/handler.updateTheme
+    events:
+      - http:
+          path: /{id}
+          method: put
+          cors: true
+
+  deleteTheme:
+    handler: src/handler.deleteTheme
+    events:
+      - http:
+          path: /{id}
+          method: delete
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false
+
+  getTheme:
+    handler: src/handler.getTheme
+    events:
+      - http:
+          path: /{id}
+          method: get
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false
+
+  listThemes:
+    handler: src/handler.listThemes
+    events:
+      - http:
+          path: /
+          method: get
+          cors: 
+              origins:
+                  - '*'
+              headers:
+                  - Content-Type
+                  - X-Amz-Date
+                  - Authorization
+                  - X-Api-Key
+                  - X-Amz-Security-Token
+                  - Token
+              allowCredentials: false
+
+
+custom:
+  dotenv:
+    # path: ./.env
+    path: ./.env/.${self:provider.stage}.env

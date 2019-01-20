@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Details</name>
+    <description>Get the details of a user or list of users.  You must pass either a userId, userIds or username param
+    to know which users should be retrieved.</description>
+    <uri>/user/details</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>userId</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>12</examples>
+            <description>The user id</description>
+        </param>
+        <param>
+            <name>userIds</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>12,13,272,1</examples>
+            <description>A comma delimited list of user ids</description>
+        </param>
+        <param>
+            <name>username</name>
+            <required>no</required>
+            <default></default>
+            <format>string</format>
+            <examples>12</examples>
+            <description>The username</description>
+        </param>
+        <param>
+            <name>basic</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>0 or 1</examples>
+            <description>use null or 0 for large, extended user details and 1 for basic user details</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/details" \
+  --data "userId=1&appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{
+  "TODO": "TODO"
+}
+]]></example_json_response>
+
+</docs>

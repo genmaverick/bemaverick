@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pageConfig>
+    <name>featuredUsersEdit</name>
+    <nav>
+        <primary>tools</primary>
+    </nav>
+    <title>
+        <text>Edit Featured Mavericks</text>
+    </title>
+    <includes>
+        <primary append="true">
+            <file>featuredUsersEdit.phtml</file>
+        </primary>
+    </includes>
+</pageConfig>
+

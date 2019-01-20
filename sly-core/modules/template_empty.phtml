@@ -1,0 +1,16 @@
+<?php
+/**
+ * To use this template <template> must be set to template_empty.phtml in the page config.
+ * Only the <primary> includes will be used.
+ *
+ */
+
+// header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+
+$pageConfig = $this->pageConfig;
+
+if ( $pageConfig->hasPrimaryFiles() ) {
+    foreach( $pageConfig->getPrimaryFiles() as $file ) {
+        print $this->render( $file );
+    }
+}

@@ -1,0 +1,19 @@
+<?php
+$errors = $this->errors->getErrors();
+
+$apiData = array(
+    'errors' => array(),
+);
+
+foreach( $errors as $error ) {
+    $errorData = array(
+        'id' => $error->getKey(),
+        'message' => $error->getMessage(),
+    );
+
+    $apiData['errors'][] = $errorData;
+}
+
+$this->apiData = $apiData;
+
+?>

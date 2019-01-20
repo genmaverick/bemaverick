@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<docs>
+    <name>User Notifications</name>
+    <description>Get the list of notifications for the user</description>
+    <uri>/user/notifications</uri>
+    <method>GET</method>
+    <parameters>
+        <param>
+            <name>appKey</name>
+            <required>yes</required>
+            <default></default>
+            <format>string</format>
+            <examples>qiusdjsls9273sd</examples>
+            <description>Your application key</description>
+        </param>
+        <param>
+            <name>count</name>
+            <required>no</required>
+            <default>10</default>
+            <format>integer</format>
+            <examples>25, 50</examples>
+            <description>Return the number of notifications</description>
+        </param>
+        <param>
+            <name>offset</name>
+            <required>no</required>
+            <default>0</default>
+            <format>integer</format>
+            <examples>10</examples>
+            <description>Start with the offset for list of notifications. 0 based.</description>
+        </param>
+    </parameters>
+
+    <example_curl><![CDATA[
+curl --request GET \
+  --header "Authorization: Bearer <accessToken>" \
+  --url "<host>/v1/user/notifications?appKey=test_key"
+]]></example_curl>
+
+    <example_json_response><![CDATA[
+{"users":{"1":{"userId":1,"username":"shawn_kid","userType":"kid","firstName":null,"lastName":null,"profileImageUrls":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e71ea42038a33642be170c30eeb2eac9.png?&icq=90&sig=563b5d2d387775f86dec8f113173cf0e","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e71ea42038a33642be170c30eeb2eac9.png?&x=200&y=200&icq=90&sig=dddcb64a5e55665a3455147f808b527f","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e71ea42038a33642be170c30eeb2eac9.png?&x=50&y=50&icq=90&sig=42794c69716748a9c93abe9c915e3b4d"},"profileCoverImageType":"preset","profileCoverPresetImageId":"2","profileCoverTint":"FFCCFF","searchResults":{"notifications":{"params":{"count":10,"offset":0},"totalNotificationCount":1,"notificationIds":["1"]}}},"2":{"userId":"2","username":"mcgraw","userType":"kid","firstName":null,"lastName":null,"profileImageUrls":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/3d4512f15b46f88327706388d259e8b9.jpg?&icq=90&sig=22de264bc0536a1888da5e8ab8cade80","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/3d4512f15b46f88327706388d259e8b9.jpg?&x=200&y=200&icq=90&sig=af3a41c5619cdc11cba69587e098984c","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/3d4512f15b46f88327706388d259e8b9.jpg?&x=50&y=50&icq=90&sig=aa4f208f4a75b29c32c55dc5e1504793"},"profileCoverImageType":"custom","profileCoverImageUrls":{"original":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&icq=90&sig=b385089cb76764c649cf018594f125c3","medium":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=200&y=200&icq=90&sig=4d15c988c0f4d07e1d9c2ff816230a3d","small":"https:\/\/shawnr-api-bemaverick.dev.slytrunk.com\/image\/e68745362adc71c867d345600e28fc4f.jpg?&x=50&y=50&icq=90&sig=9d4051a542573b8919145a248acb5a24"}}},"notifications":{"1":{"notificationId":"1","userId":"1","action":"follow","object_id":"2","object_type":"user"}}}
+]]></example_json_response>
+
+</docs>

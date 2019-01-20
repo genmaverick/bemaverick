@@ -1,0 +1,116 @@
+@import "variables.less";
+.user-profile-edit {
+    form {
+        .flex-display();
+        .flex-wrap(wrap);
+        .align-items(stretch);
+    }
+
+    &__upload {
+        flex: 1;
+        margin: 0 auto;
+
+        .button {
+            font-weight: normal;
+        }
+    }
+
+    &__fields {
+        flex: 1;
+    }
+
+    .control-group {
+        position: relative;
+        width: 100%;
+        margin-bottom: 24px;
+        padding-top: 20px;
+        input.form-control, textarea.form-control {
+            border: none;
+            border-bottom: 1px solid @dark-text-3;
+            display: block;
+            width: 100%;
+            .site-text(medium,normal);
+            color: @black;
+            padding: 8px 0;
+            &:focus {
+                z-index: 1;
+                outline: none !important;
+                border-bottom-color: @teal-bg;
+            }
+        }
+        textarea.form-control {
+            min-height: 80px;
+        }
+        .controls {
+            .error {
+                color: @cherry;
+                .site-text(small,normal);
+                margin: 4px 0 16px 0;
+            }
+        }
+        .control-label {
+            position: absolute;
+            padding: 0;
+            white-space: nowrap;
+            display: block;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            color: @black;
+            .site-text(small,medium);
+            text-transform: uppercase;
+            cursor: pointer;
+            .transition( top .1s ease-in);
+        }
+        &.error {
+            .control-label {
+                color: @cherry;
+            }
+            input.form-control, textarea.form-control {
+                border-bottom-color: @cherry;
+            }
+        }
+
+        &.empty:not(.active):not(.error) {
+            .control-label {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 30px;
+                line-height: 1;
+                .text--weight-normal();
+            }
+        }
+    }
+
+    .form-actions {
+        .button {
+            min-width: 250px;
+            margin: 0 auto;
+        }
+    }
+
+    .profile-image {
+        box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.15);
+        margin: 0 auto 15px auto;
+    }
+
+    .dz-preview {
+        position: relative;
+        z-index: 1;
+    }
+
+    .dz-image {
+      height: 128px;
+    }
+
+    @media (min-width: @break-tablet-min) {
+        form {
+            .flex-wrap(none);
+        }
+
+        &__upload {
+            max-width: 250px;
+        }
+    }
+}

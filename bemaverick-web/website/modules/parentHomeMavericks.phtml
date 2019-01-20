@@ -1,0 +1,100 @@
+<?php
+// globals
+$site = $this->site;
+$translator = $this->translator;
+$loginUser = $this->loginUser;
+
+// formatters
+$formatModule = $this->formatModule();
+$formatUtil = $this->formatUtil();
+$formatUser = $this->formatUser();
+
+// variables
+$kids = $loginUser->getKids();
+
+// module stuff
+$moduleClassPrefix = 'parent-home-mavericks';
+$typeClassPrefix = 'mini-module';
+
+$classPrefixes = array(
+    $moduleClassPrefix,
+    $typeClassPrefix
+);
+
+$classNames = array();
+
+
+// header content
+$title = count( $kids ) > 1 ? 'My Mavericks' : 'My Maverick';
+$headerContent = array();
+$headerContent[] = $formatModule->getTitleBar(
+    array(
+        'classPrefixes' => $classPrefixes,
+        'title' => $translator->_( $title ),
+    )
+);
+
+// body content
+$bodyContent = array();
+
+$rows = array();
+
+$imageConfig = array(
+    'imageHeight' => 128,
+    'imageWidth' => 128,
+    'imageSize' => 'medium',
+    'showMaverickLevel' => true,
+    'siteBadges' => $site->getBadges()
+);
+
+foreach( $kids as $kid ) {
+    $row = array();
+    $row[] = $formatUser->getProfileImage( $kid , $imageConfig );
+    $row[] = '
+        <div class="name-wrap">
+            '.$formatUser->getUsername( $kid ).'
+        </div>
+    ';
+    $row[] = '
+        <div class="stats">
+            <div class="stat num-responses">
+                <div class="label">'.$translator->_( 'Responses' ).'</div>
+                <div class="value">'.number_format( $kid->getResponseCount() ).'</div>
+            </div>
+            <div class="stat num-followers">
+                <div class="label">'.$translator->_( 'Followers' ).'</div>
+                <div class="value">'.number_format( $kid->getFollowersUserCount() ).'</div>
+            </div>
+            <div class="stat num-following">
+                <div class="label">'.$translator->_( 'Following' ).'</div>
+                <div class="value">'.number_format( $kid->getFollowingUserCount() ).'</div>
+            </div>
+        </div>
+    ';
+
+    $rows[] = '
+        <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'maverick', $classPrefixes ) ).' link" data-href="'.$kid->getUrl( 'user' ).'">
+            '.join( '', $row ).'
+        </div>
+    ';
+}
+
+$bodyContent[] = '
+    <div class="'.join( ' ', $formatModule->getPrefixedClasses( 'mavericks', $classPrefixes ) ).'">
+        '.join( '', $rows ).'
+    </div>
+';
+
+
+// print module
+print $formatModule->getMiniModule(
+    array(
+        'headerContent' => join( '', $headerContent ),
+        'bodyContent' => join( '', $bodyContent ),
+        'classPrefixes' => $classPrefixes,
+        'attributes' => array(
+            'class' => join( ' ', $classNames )
+        )
+    )
+);
+?>
